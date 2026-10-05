@@ -180,25 +180,77 @@
 <section id="education" class="section alt">
   <h3>Formations</h3>
 
-  <div class="timeline">
-    
-    <div class="timeline-item">
-      <h4>Mastère Expert Informatique & Systèmes d'Information - Spécialité Infrastructure IT</h4>
-      <p class="institution">EPSI - L'école d'ingénierie informatique, Courbevoie</p>
-      <time class="timeline-date">Sept. 2024 - Sept. 2026</time>
-    </div>
+  <style>
+          .pro-timeline {
+            border-left: 2px solid #8b5cf6; /* Ligne violette */
+            padding-left: 25px;
+            margin-left: 10px;
+          }
+          .pro-timeline-item {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03); /* Fond de carte léger */
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease; /* Animation fluide */
+          }
+          .pro-timeline-item:hover {
+            transform: translateX(5px); /* Décale légèrement la carte au survol */
+            background: rgba(255, 255, 255, 0.06);
+            border-color: #8b5cf6; /* Bordure qui s'illumine */
+          }
+          .pro-timeline-dot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background-color: #8b5cf6;
+            border-radius: 50%;
+            left: -33px; /* Place le point exactement sur la ligne */
+            top: 25px;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.8); /* Effet néon */
+          }
+          .pro-title {
+            margin: 0 0 8px 0;
+            color: #ffffff;
+            font-size: 1.15rem;
+          }
+          .pro-school {
+            color: #a78bfa; /* Violet clair pour l'école */
+            font-weight: 600;
+            margin: 0 0 8px 0;
+          }
+          .pro-date {
+            color: #9ca3af; /* Gris clair pour la date */
+            font-size: 0.9rem;
+            display: block;
+          }
+        </style>
 
-    <div class="timeline-item">
-      <h4>Licence Sciences technologies santé mention informatique, parcours Informatique générale</h4>
-      <p class="institution">Conservatoire National des Arts et Métiers (CNAM), Paris-Nanterre</p>
-      <time class="timeline-date">Déc. 2022 - Sept. 2023</time>
-    </div>
+        <div class="pro-timeline">
+          
+          <div class="pro-timeline-item">
+            <div class="pro-timeline-dot"></div>
+            <h4 class="pro-title">Mastère Expert Informatique & Systèmes d'Information - Spécialité Infrastructure IT</h4>
+            <p class="pro-school"><i class="fa-solid fa-graduation-cap" style="margin-right:8px;"></i>EPSI - L'école d'ingénierie informatique, Courbevoie</p>
+            <span class="pro-date"><i class="fa-regular fa-calendar" style="margin-right:8px;"></i>Sept. 2024 - Sept. 2026</span>
+          </div>
 
-    <div class="timeline-item">
-      <h4>Titre professionnel Technicien supérieur systèmes et réseaux (Bac +2)</h4>
-      <p class="institution">WebForce3, Paris 18</p>
-      <time class="timeline-date">Nov. 2021 - Juin 2022</time>
-    </div>
+          <div class="pro-timeline-item">
+            <div class="pro-timeline-dot"></div>
+            <h4 class="pro-title">Licence Sciences technologies santé mention informatique, parcours Informatique générale</h4>
+            <p class="pro-school"><i class="fa-solid fa-building-columns" style="margin-right:8px;"></i>Conservatoire National des Arts et Métiers (CNAM), Paris-Nanterre</p>
+            <span class="pro-date"><i class="fa-regular fa-calendar" style="margin-right:8px;"></i>Déc. 2022 - Sept. 2023</span>
+          </div>
+
+          <div class="pro-timeline-item">
+            <div class="pro-timeline-dot"></div>
+            <h4 class="pro-title">Titre professionnel Technicien supérieur systèmes et réseaux (Bac +2)</h4>
+            <p class="pro-school"><i class="fa-solid fa-laptop-code" style="margin-right:8px;"></i>WebForce3, Paris 18</p>
+            <span class="pro-date"><i class="fa-regular fa-calendar" style="margin-right:8px;"></i>Nov. 2021 - Juin 2022</span>
+          </div>
+
+        </div>
 
   </div>
 </section>
