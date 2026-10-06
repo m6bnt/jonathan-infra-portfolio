@@ -320,7 +320,7 @@
     <div class="system-badge">
       <div class="indicator"></div> PROJET MSPR - BLOC 5
     </div>
-    <h1>Infrastructure SI Hybride Sécurisée</h1>
+    <h1>Infrastructure SI <br><span class="text-plasma">Hybride Sécurisée</span></h1>
     <p>Conception et intégration d'une infrastructure multi-sites pour l'Association of Tennis Professionals (ATP). Virtualisation VMware ESXi, pare-feux pfSense en Haute Disponibilité, PRA/PCA à Monaco, et gestion de la mobilité sécurisée.</p>
     
     <div class="action-group">
@@ -474,6 +474,20 @@
     </div>
   </section>
 
+  <!-- RESULTATS & APPRENTISSAGE (NOUVELLE SECTION AJOUTÉE) -->
+  <section id="results" class="section">
+    <div class="content-card">
+      <div class="section-header">
+        <h3 class="section-title">Bilan & Apprentissage</h3>
+      </div>
+      <p>Ce projet a permis de concevoir et déployer une infrastructure réseau et système hautement disponible pour l'ATP, répartie sur plusieurs sites géographiques. La mise en place de clusters pfSense, d'un annuaire Active Directory multi-sites et d'une stratégie PRA complète garantit la sécurité et la résilience des données critiques.</p>
+      
+      <br>
+      <h4 style="color: var(--text-pure); font-size: 1.5rem; margin-bottom: 15px;">Ce que j'ai appris</h4>
+      <p>Cette mission m'a permis de consolider mes compétences en administration système et réseau (Windows Server, VMware ESXi), en sécurité périmétrique (pfSense, IPsec, CARP), ainsi qu'en supervision (Zabbix). La configuration du PRA de Monaco m'a également permis de mieux appréhender les enjeux de continuité et de reprise d'activité (PCA/PRA) dans les environnements de production.</p>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="contact-panel">
@@ -591,7 +605,7 @@
       let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
       let directionX = (Math.random() * 1) - 0.5;
       let directionY = (Math.random() * 1) - 0.5;
-      let color = '#00ff88'; // Couleur verte cyber pour les particules (thème Infra)
+      let color = '#00ff88'; /* Couleur Vert Cyber explicitement définie pour ce projet */
       particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
   }
@@ -613,7 +627,7 @@
                        ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
         if (distance < (canvas.width/7) * (canvas.height/7)) {
           opacityValue = 1 - (distance/20000);
-          ctx.strokeStyle = 'rgba(0, 255, 136,' + opacityValue + ')'; // Lignes de connexion
+          ctx.strokeStyle = 'rgba(0, 255, 136,' + opacityValue + ')'; /* Lignes Vertes Cyber */
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
