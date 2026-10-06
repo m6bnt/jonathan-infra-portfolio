@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Architecture & Gouvernance SI</title>
+  <title>Architecture & Gouvernance SI | Mehdi MAZOUZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- CSS GLOBAL -->
@@ -10,13 +10,112 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <!-- CSS PROJET -->
   <link rel="stylesheet" href="../../assets/css/projects.css">
+
+  <!-- ========================================== -->
+  <!-- THÈME GLOBAL NEXTCLOUD / CLOUD ENGINEER -->
+  <!-- ========================================== -->
+  <style>
+    :root {
+      --nc-blue: #0082c9;         
+      --nc-blue-light: #00a5ff;   
+      --nc-dark: #181e25;         
+      --nc-card: #212932;         
+      --nc-card-hover: #293440;
+      --nc-text: #e5e7eb;
+      --nc-muted: #9ca3af;
+      --nc-border: rgba(255, 255, 255, 0.08);
+    }
+    
+    /* Écrasement du style.css et projects.css précédents */
+    body {
+      background-color: var(--nc-dark) !important;
+      color: var(--nc-text) !important;
+    }
+    h1, h2, h3, h4 {
+      color: #ffffff !important;
+    }
+    
+    /* Adaptation de la navbar */
+    nav {
+      background-color: rgba(24, 30, 37, 0.95) !important;
+      border-bottom: 1px solid var(--nc-border) !important;
+      backdrop-filter: blur(10px);
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: var(--nc-blue-light) !important;
+    }
+    .logo {
+      color: #fff !important;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Adaptation des sections de projet */
+    .project-section {
+      background-color: var(--nc-dark) !important;
+      border-bottom: 1px solid var(--nc-border) !important;
+    }
+    .project-section.alt {
+      background-color: #1c242c !important; /* Alternance de fond subtile */
+    }
+    .project-section ul li {
+      color: var(--nc-muted);
+    }
+    .project-section p {
+      color: var(--nc-text);
+      line-height: 1.7;
+    }
+    .screen-block img {
+      border: 1px solid var(--nc-border);
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Boutons */
+    .cv-btn, .btn {
+      background-color: var(--nc-blue) !important;
+      border: none !important;
+      color: #fff !important;
+      border-radius: 6px !important;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: inline-block;
+    }
+    .cv-btn:hover, .btn:hover {
+      background-color: var(--nc-blue-light) !important;
+      transform: translateY(-2px);
+    }
+    
+    /* Boutons secondaires (Retour) */
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--nc-text);
+      padding: 12px 24px;
+      text-decoration: none;
+      border: 1px solid var(--nc-border);
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--nc-blue-light);
+      color: var(--nc-blue-light);
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
   <div class="nav-container">
-    <a href="../../index.html" class="logo">Jonathan JACOB SELVARATHINAM</a>
+    <a href="../../index.html" class="logo"><i class="fa-solid fa-cloud" style="color: var(--nc-blue);"></i> Mehdi MAZOUZ</a>
     <ul>
       <li><a href="#overview">Contexte</a></li>
       <li><a href="#cartography">Cartographie SI</a></li>
@@ -33,16 +132,16 @@
 
 <!-- MOI -->
 <section class="hero">
-  <div class="hero-content">
-    <h1>Architecture & Gouvernance SI</h1>
-    <p>
+  <div class="hero-content" style="text-align: center; max-width: 900px; margin: 0 auto; padding-top: 80px;">
+    <h1 style="font-family: system-ui, -apple-system, sans-serif; font-weight: 600; color: var(--nc-blue-light) !important; margin-bottom: 20px;">Architecture & Gouvernance SI</h1>
+    <p style="color: var(--nc-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px;">
       Accompagnement stratégique d’une entreprise en croissance dans la structuration,
       la gouvernance et la transformation de son système d’information, avec une approche
       orientée performance, cybersécurité, durabilité et création de valeur métier.
     </p>
-    <div class="hero-buttons">
-      <a href="../../index.html#projects" class="btn">← Retour aux projets</a>
-      <a class="cv-btn" href="../../assets/Jonathan_Jacob_CV.pdf" target="_blank">📄 CV</a>
+    <div class="hero-buttons" style="display: flex; justify-content: center; gap: 15px;">
+      <a href="../../index.html#projects" class="btn-secondary"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+      <a class="btn" href="../../assets/CV Mehdi Mazouz 2026.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Voir le CV</a>
     </div>
   </div>
 </section>
@@ -75,9 +174,8 @@
 
   <div class="screen-block">
     <img src="../../assets/projects/architecture-si/URBANISATION-SI.jpg" alt="Cartographie du SI">
-    
   </div>
-  <p>Vue d’ensemble des couches métier, fonctionnel, applicatif et infrastructure du système d’information</p>
+  <p style="text-align: center; font-style: italic; color: var(--nc-muted); margin-top: 10px;">Vue d’ensemble des couches métier, fonctionnel, applicatif et infrastructure du système d’information</p>
 </section>
 
 <!-- PROCESS -->
@@ -91,16 +189,16 @@
     de performance mesurables.
   </p>
   <ul>
-    <li>Définition des rôles métiers et IT dans le cycle de campagne</li>
-    <li>Formalisation des étapes de validation et de publication</li>
-    <li>Identification des points de contrôle et de pilotage</li>
-    <li>Proposition d’indicateurs de suivi de performance marketing</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Définition des rôles métiers et IT dans le cycle de campagne</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Formalisation des étapes de validation et de publication</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Identification des points de contrôle et de pilotage</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Proposition d’indicateurs de suivi de performance marketing</li>
   </ul>
 
   <div class="screen-block">
     <img src="../../assets/projects/architecture-si/BPMN.jpg" alt="Processus BPMN">
   </div>
-  <p>Modélisation BPMN du processus de gestion de campagne marketing</p>
+  <p style="text-align: center; font-style: italic; color: var(--nc-muted); margin-top: 10px;">Modélisation BPMN du processus de gestion de campagne marketing</p>
 </section>
 
 <!-- GOUVERNANCE -->
@@ -116,12 +214,12 @@
     <div class="screen-block">
     <img src="../../assets/projects/architecture-si/RACI.jpg" alt="Roadmap IT">
   </div>
-  <p>Matrice RACI : Définition des responsabilités pour les parties prenantes</p>
+  <p style="text-align: center; font-style: italic; color: var(--nc-muted); margin-top: 10px;">Matrice RACI : Définition des responsabilités pour les parties prenantes</p>
 
   <div class="screen-block">
     <img src="../../assets/projects/architecture-si/ROADMAP.jpg" alt="Roadmap IT">
   </div>
-  <p>Radar de maturité pour la gouvernance et la sécurité du SI</p>
+  <p style="text-align: center; font-style: italic; color: var(--nc-muted); margin-top: 10px;">Radar de maturité pour la gouvernance et la sécurité du SI</p>
 </section>
 
 <!-- SÉCURITÉ -->
@@ -134,16 +232,16 @@
     les standards de bonnes pratiques et les exigences réglementaires.
   </p>
   <ul>
-    <li>Identification des risques métiers et IT</li>
-    <li>Classification des données sensibles</li>
-    <li>Définition des activités vitales pour la continuité d’activité</li>
-    <li>Élaboration d’une PSSI et d’un cadre PCA / PRA</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Identification des risques métiers et IT</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Classification des données sensibles</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Définition des activités vitales pour la continuité d’activité</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Élaboration d’une PSSI et d’un cadre PCA / PRA</li>
   </ul>
 
   <div class="screen-block">
     <img src="../../assets/projects/architecture-si/RISQUES-SECURITE.jpg" alt="Analyse des risques">
   </div>
-  <p>Tableau de risques</p>
+  <p style="text-align: center; font-style: italic; color: var(--nc-muted); margin-top: 10px;">Tableau de risques</p>
 </section>
 
 <!-- PERFORMANCE -->
@@ -159,7 +257,7 @@
   <div class="screen-block">
     <img src="../../assets/projects/architecture-si/DASHBOARD-IT.jpg" alt="Dashboard IT">
   </div>
-  <p>Indicateurs clés de performance IT</p>
+  <p style="text-align: center; font-style: italic; color: var(--nc-muted); margin-top: 10px;">Indicateurs clés de performance IT</p>
 </section>
 
 <!-- GREEN IT -->
@@ -172,10 +270,10 @@
     tout en améliorant l’efficience des ressources IT.
   </p>
   <ul>
-    <li>Optimisation de l’usage des ressources matérielles</li>
-    <li>Allongement du cycle de vie des équipements</li>
-    <li>Réduction de la consommation énergétique des infrastructures</li>
-    <li>Définition d’indicateurs Green IT et RSE</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Optimisation de l’usage des ressources matérielles</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Allongement du cycle de vie des équipements</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Réduction de la consommation énergétique des infrastructures</li>
+    <li><i class="fa-solid fa-chevron-right" style="color: var(--nc-blue); font-size: 0.8em; margin-right: 8px;"></i> Définition d’indicateurs Green IT et RSE</li>
   </ul>
 
   <div class="screen-block">
@@ -185,17 +283,17 @@
   <div class="screen-block">
     <img src="../../assets/projects/architecture-si/SWOT.jpg" alt="Green IT">
   </div>
-  <p>Analyse stratégique</p>
+  <p style="text-align: center; font-style: italic; color: var(--nc-muted); margin-top: 10px;">Analyse stratégique</p>
 
   <div class="screen-block">
     <img src="../../assets/projects/architecture-si/OKR.jpg" alt="Green IT">
   </div>
-  <p>Priorités stratégiques</p>
+  <p style="text-align: center; font-style: italic; color: var(--nc-muted); margin-top: 10px;">Priorités stratégiques</p>
 
   <div class="screen-block">
     <img src="../../assets/projects/architecture-si/GREEN-IT.jpg" alt="Green IT">
   </div>
-  <p>Indicateurs RSE et actions d’amélioration continue du système d’information</p>
+  <p style="text-align: center; font-style: italic; color: var(--nc-muted); margin-top: 10px;">Indicateurs RSE et actions d’amélioration continue du système d’information</p>
   <p>Cette démarche a permis d’intégrer les enjeux RSE dans la stratégie IT comme un levier de différenciation commerciale et de conformité aux appels d’offres.</p>
 </section>
 
@@ -231,28 +329,42 @@
 </main>
 
 <!-- CONTACT -->
-<section id="contact" class="section alt">
-  <h3>Contact</h3>
+<section id="contact" class="section">
+  <div style="text-align: center; padding: 40px 20px;">
+    <h3 style="margin-bottom: 20px;">Contact</h3>
+    <p style="color: var(--nc-text); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6;">
+      Une idée à concrétiser ? Un poste à proposer ? Ou simplement un petit bonjour ?<br>
+      Faisons le premier pas, contactons-nous !
+    </p>
 
-  <p class="contact-text">
-    Une idée à concrétiser ? Un poste à proposer ? Ou simplement un petit bonjour ?
-    Faisons le premier pas, contactons-nous !
-  </p>
+    <div style="background: var(--nc-card); border: 1px solid var(--nc-border); border-radius: 8px; padding: 40px; text-align: center; max-width: 600px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+      
+      <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px;">
+        <a href="mailto:mehdimazouz78@gmail.com" style="color: var(--nc-text); text-decoration: none; font-size: 1.1rem; display: inline-flex; align-items: center; justify-content: center; gap: 12px; transition: color 0.2s ease;" onmouseover="this.style.color='var(--nc-blue-light)'" onmouseout="this.style.color='var(--nc-text)'">
+          <i class="fa-solid fa-envelope" style="color: var(--nc-blue); font-size: 1.4rem;"></i> mehdimazouz78@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" style="color: var(--nc-text); text-decoration: none; font-size: 1.1rem; display: inline-flex; align-items: center; justify-content: center; gap: 12px; transition: color 0.2s ease;" onmouseover="this.style.color='var(--nc-blue-light)'" onmouseout="this.style.color='var(--nc-text)'">
+          <i class="fa-brands fa-linkedin" style="color: var(--nc-blue); font-size: 1.4rem;"></i> linkedin.com/in/mehdi-mazouz
+        </a>
+        <a href="https://github.com/m6bnt" target="_blank" style="color: var(--nc-text); text-decoration: none; font-size: 1.1rem; display: inline-flex; align-items: center; justify-content: center; gap: 12px; transition: color 0.2s ease;" onmouseover="this.style.color='var(--nc-blue-light)'" onmouseout="this.style.color='var(--nc-text)'">
+          <i class="fa-brands fa-github" style="color: var(--nc-blue); font-size: 1.4rem;"></i> github.com/m6bnt
+        </a>
+      </div>
 
-  <div class="contact-card">
-    <p><i class="fa-solid fa-envelope"></i> jonathanjacob129@gmail.com</p>
-    <p><i class="fa-brands fa-linkedin"></i> LinkedIn</p>
-    <p><i class="fa-brands fa-github"></i> GitHub</p>
-
-    <div class="hero-buttons">
-      <a href="mailto:jonathanjacob129@gmail.com">M’envoyer un message</a>
-      <a href="../../assets/Jonathan_Jacob_CV.pdf" target="_blank">Télécharger CV</a>
+      <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="mailto:mehdimazouz78@gmail.com" class="btn"><i class="fa-solid fa-paper-plane"></i> M’envoyer un message</a>
+        <a href="../../assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="btn-secondary"><i class="fa-solid fa-download"></i> Télécharger CV</a>
+      </div>
     </div>
   </div>
 </section>
 
-<footer>
-  © Jonathan JACOB SELVARATHINAM — Consultant IT / Administrateur Systèmes & Cloud
+<!-- FOOTER -->
+<footer style="text-align: center; padding: 40px 20px; color: var(--nc-muted); font-size: 0.95rem; border-top: 1px solid var(--nc-border); background: var(--nc-dark);">
+  <p style="margin-bottom: 15px;">© 2026 Mehdi MAZOUZ — Consultant IT & Ingénieur Systèmes Cloud</p>
+  <a href="#" style="color: var(--nc-blue); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s ease;" onmouseover="this.style.color='var(--nc-blue-light)'" onmouseout="this.style.color='var(--nc-blue)'">
+    <i class="fa-solid fa-arrow-up"></i> Retour en haut
+  </a>
 </footer>
 
 <script>
