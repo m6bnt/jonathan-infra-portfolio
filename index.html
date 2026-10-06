@@ -131,7 +131,7 @@
       padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 1.05rem;
       text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
       transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
-      pointer-events: none;
+      /* pointer-events: none; REMOVED SO BUTTON IS CLICKABLE */
     }
     .magnetic-wrap:hover .btn-magnetic { box-shadow: 0 10px 30px rgba(255,255,255,0.25); }
     
@@ -309,7 +309,7 @@
     <li><a href="#projects">Projets</a></li>
   </ul>
   <div class="magnetic-wrap nav-magnetic">
-    <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="btn-nav" style="pointer-events: none;">Extraire CV</a>
+    <a href="assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-nav">Extraire CV</a>
   </div>
 </nav>
 
@@ -591,7 +591,7 @@
       </div>
       
       <div class="magnetic-wrap" style="margin-top: 20px;">
-        <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="btn-magnetic" style="pointer-events: none;">
+        <a href="assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-magnetic">
           <i class="fa-solid fa-download"></i> Télécharger le CV (PDF)
         </a>
       </div>
