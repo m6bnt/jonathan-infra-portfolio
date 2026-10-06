@@ -140,60 +140,113 @@
 
 </section>
 
-<!-- SKILLS -->
+<!-- COMPÉTENCES -->
 <section id="skills" class="section alt">
   <h3>Compétences</h3>
 
-  <!-- Conteneur forcé en grille 2x2 -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); gap: 25px; width: 100%;">
-          
-          <!-- Carte 1 -->
-          <div class="skill-card">
-            <h4>Systèmes & Cloud</h4>
-            <ul>
-              <li>Windows Server & Active Directory</li>
-              <li>Microsoft 365 & Entra ID</li>
-              <li>VMware ESXi</li>
-              <li>Microsoft Azure</li>
-            </ul>
-          </div>
+  <style>
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+    }
+    .skill-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 30px;
+        transition: all 0.3s ease;
+    }
+    .skill-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.06);
+        border-color: #8b5cf6;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .skill-title {
+        color: #a78bfa;
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .skill-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .skill-item {
+        color: #cbd5e1;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+    .skill-item:last-child {
+        border-bottom: none;
+    }
+    .skill-icon {
+        color: #8b5cf6;
+        font-size: 0.85rem;
+        margin-top: 4px;
+    }
+  </style>
 
-          <!-- Carte 2 -->
-          <div class="skill-card">
-            <h4>Réseaux & Sécurité</h4>
-            <ul>
-              <li>Firewall & pfSense</li>
-              <li>VPN IPsec</li>
-              <li>TCP/IP, DNS, DHCP</li>
-              <li>Switching & VLAN (Cisco Packet Tracer/Meraki)</li>
-              <li>Téléphonie VoIP</li>
-            </ul>
-          </div>
+  <div class="skills-grid">
+    
+    <!-- Systèmes & Cloud -->
+    <div class="skill-card">
+      <div class="skill-title"><i class="fa-solid fa-cloud"></i> Systèmes & Cloud</div>
+      <ul class="skill-list">
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Windows Server & Active Directory</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Microsoft 365 & Entra ID</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> VMware ESXi</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Microsoft Azure</li>
+      </ul>
+    </div>
 
-          <!-- Carte 3 -->
-          <div class="skill-card">
-            <h4>Automatisation & Supervision</h4>
-            <ul>
-              <li>Zabbix, NAS & Sauvegardes (PRA/PCA)</li>
-              <li>Notions DevOps (Terraform, Ansible, Kubernetes)</li>
-              <li>Git / GitHub</li>
-            </ul>
-          </div>
+    <!-- Réseaux & Sécurité -->
+    <div class="skill-card">
+      <div class="skill-title"><i class="fa-solid fa-shield-halved"></i> Réseaux & Sécurité</div>
+      <ul class="skill-list">
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Firewall & pfSense</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> VPN IPsec</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> TCP/IP, DNS, DHCP</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Switching & VLAN (Cisco Packet Tracer/Meraki)</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Téléphonie VoIP</li>
+      </ul>
+    </div>
 
-          <!-- Carte 4 -->
-          <div class="skill-card">
-            <h4>Gestion de Projet IT & ITSM</h4>
-            <ul>
-              <li>Méthodologies Agiles (Scrum, Kanban)</li>
-              <li>Planification & Suivi (Jira, Diagramme de Gantt, Burndown Chart)</li>
-              <li>Cahier des charges, Spécifications & Chiffrage</li>
-              <li>ITSM & Gestion des incidents (EasyVista, GLPI, Oxygène)</li>
-              <li>Pilotage d'éditeurs & prestataires</li>
-              <li>Démarches d'optimisation (Lean IT & Green IT)</li>
-            </ul>
-          </div>
+    <!-- Automatisation & Supervision -->
+    <div class="skill-card">
+      <div class="skill-title"><i class="fa-solid fa-gears"></i> Automatisation & Supervision</div>
+      <ul class="skill-list">
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Zabbix, NAS & Sauvegardes (PRA/PCA)</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Notions DevOps (Terraform, Ansible, Kubernetes)</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Git / GitHub</li>
+      </ul>
+    </div>
 
-        </div>
+    <!-- Gestion de Projet IT & ITSM -->
+    <div class="skill-card">
+      <div class="skill-title"><i class="fa-solid fa-list-check"></i> Gestion de Projet IT & ITSM</div>
+      <ul class="skill-list">
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Méthodologies Agiles (Scrum, Kanban)</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Planification & Suivi (Jira, Diagramme de Gantt, Burndown Chart)</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Cahier des charges, Spécifications & Chiffrage</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> ITSM & Gestion des incidents (EasyVista, GLPI, Oxygène)</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Pilotage d'éditeurs & prestataires</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Démarches d'optimisation (Lean IT & Green IT)</li>
+      </ul>
+    </div>
+
+  </div>
 </section>
 
 <!-- CERTIFICATIONS -->
