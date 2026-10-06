@@ -59,22 +59,85 @@
 <!-- ABOUT -->
 <section id="about" class="section">
   <h3>À propos</h3>
-  <p>
+
+  <style>
+    .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+    }
+    .about-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 30px;
+        transition: all 0.3s ease;
+        line-height: 1.7;
+        color: #cbd5e1;
+    }
+    .about-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.06);
+        border-color: #8b5cf6;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .about-icon {
+        font-size: 1.8rem;
+        color: #8b5cf6;
+        margin-bottom: 15px;
+    }
+    .about-title {
+        color: #ffffff;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    .about-cta {
+        margin-top: 35px;
+        text-align: center;
+        font-size: 1.1rem;
+        color: #f8fafc;
+        font-weight: 500;
+    }
+  </style>
+
+  <div class="about-grid">
+    
+    <div class="about-card">
+      <div class="about-icon"><i class="fa-solid fa-server"></i></div>
+      <div class="about-title">Parcours & Compétences</div>
+      <p>
     Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. 
     Mon parcours m’a permis de travailler sur des infrastructures hybrides, d’automatiser des processus et de sécuriser des environnements de production, 
     tout en portant la casquette de chef de projet, et en nourrissant ma curiosité pour les technologies émergentes.
-  </p>
-  <p>
+      </p>
+    </div>
+
+    <div class="about-card">
+      <div class="about-icon"><i class="fa-solid fa-lightbulb"></i></div>
+      <div class="about-title">Implication & Motivation</div>
+      <p>
     J’aime autant m’impliquer activement dans les projets d’une entreprise que mener des expérimentations personnelles, 
     afin de continuer à apprendre et à perfectionner mes compétences. Concevoir des infrastructures fiables représente pour moi un véritable défi et une source de motivation quotidienne.
-  </p>
-  <p>
+      </p>
+    </div>
+
+    <div class="about-card">
+      <div class="about-icon"><i class="fa-solid fa-rocket"></i></div>
+      <div class="about-title">Vision & Objectifs</div>
+      <p>
     Mon intérêt pour l'administration systèmes et réseaux, le cloud, l’automatisation et la supervision me pousse à rechercher constamment des solutions innovantes, 
     pour rendre les systèmes plus robustes et l’expérience utilisateur toujours plus fluide.
-  </p>
-  <p>
+      </p>
+    </div>
+
+  </div>
+
+  <p class="about-cta">
     Pour en savoir plus sur mon parcours ou pour me contacter, n’hésitez pas à explorer ce site ou à télécharger mon CV ! 😊
   </p>
+
 </section>
 
 <!-- SKILLS -->
