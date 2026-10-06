@@ -9,86 +9,93 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <!-- ========================================== -->
-  <!-- THÈME GLOBAL CLOUD / DASHBOARD (AWS/AZURE) -->
+  <!-- THÈME ULTIME : MODERN TECH / GLASSMORPHISM -->
   <!-- ========================================== -->
   <style>
     :root {
-      --cloud-bg: #0f172a;         /* Fond Slate très sombre (Modern Cloud) */
-      --cloud-card: #1e293b;       /* Fond des cartes/ressources */
-      --cloud-card-hover: #334155; /* Fond au survol */
-      --cloud-primary: #0ea5e9;    /* Bleu Azure/AWS */
-      --cloud-primary-hover: #0284c7;
-      --cloud-text: #f8fafc;       /* Texte blanc cassé */
-      --cloud-muted: #94a3b8;      /* Texte secondaire gris-bleu */
-      --cloud-border: #334155;     /* Bordures des composants */
-      --cloud-success: #10b981;    /* Vert statut "Running" */
+      --bg-dark: #050505;          /* Noir absolu */
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+      --accent-1: #00f2fe;         /* Cyan électrique */
+      --accent-2: #4facfe;         /* Bleu profond */
+      --accent-3: #8b5cf6;         /* Violet tech */
+      --gradient-main: linear-gradient(135deg, var(--accent-1), var(--accent-3));
     }
     
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-      background-color: var(--cloud-bg);
-      color: var(--cloud-text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
       line-height: 1.6;
-    }
-    
-    h1, h2, h3, h4 {
-      color: var(--cloud-text);
-      font-weight: 600;
-    }
-    
-    a {
-      text-decoration: none;
-      color: var(--cloud-primary);
+      overflow-x: hidden;
     }
 
-    /* Grille de fond pour le style "Architecture" */
-    .bg-grid {
-      background-size: 40px 40px;
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    /* Effet de lueur en arrière-plan (Glow Orb) */
+    .glow-bg {
+      position: fixed;
+      top: -20%;
+      left: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(80px);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .glow-bg-2 {
+      position: fixed;
+      bottom: -20%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(0,242,254,0.1) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(80px);
+      z-index: -1;
+      pointer-events: none;
     }
 
+    h1, h2, h3, h4 { color: var(--text-main); font-weight: 700; }
+    a { text-decoration: none; }
+
+    /* Conteneur global */
     .section {
-      padding: 80px 20px;
-      max-width: 1100px;
+      padding: 100px 20px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* En-têtes de section type "Dashboard Panel" */
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 30px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid var(--cloud-border);
+    /* Titres de section dynamiques */
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      text-align: center;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
     }
-    .section-header h3 {
-      font-size: 1.5rem;
-      letter-spacing: -0.5px;
-    }
-    .status-dot {
-      width: 10px;
-      height: 10px;
-      background-color: var(--cloud-success);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--cloud-success);
-    }
-    
-    /* Navbar Console */
+
+    /* Navbar Glassmorphism */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: rgba(15, 23, 42, 0.95);
-      border-bottom: 1px solid var(--cloud-border);
-      backdrop-filter: blur(12px);
+      background: rgba(5, 5, 5, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
       z-index: 1000;
       padding: 15px 20px;
     }
@@ -100,225 +107,370 @@
       align-items: center;
     }
     .logo {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--cloud-text);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      gap: 30px;
       align-items: center;
     }
     nav ul li a {
-      color: var(--cloud-muted);
+      color: var(--text-muted);
       font-size: 0.95rem;
       font-weight: 500;
-      transition: color 0.2s;
+      transition: all 0.3s ease;
     }
     nav ul li a:hover, nav ul li a.active {
-      color: var(--cloud-text);
+      color: var(--text-main);
+      text-shadow: 0 0 10px rgba(255,255,255,0.3);
     }
     .cv-btn {
-      background-color: var(--cloud-primary);
+      background: var(--gradient-main);
       color: #fff !important;
-      padding: 8px 16px;
-      border-radius: 4px;
+      padding: 10px 20px;
+      border-radius: 30px;
       font-weight: 600;
-      transition: background 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .cv-btn:hover {
-      background-color: var(--cloud-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
     }
 
-    /* Hero Section - Identity and Access Management */
+    /* HERO SECTION */
     .hero {
-      padding: 160px 20px 100px;
-      max-width: 1100px;
+      padding: 180px 20px 100px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 50px;
+      min-height: 100vh;
     }
     .hero-text h1 {
-      font-size: 3rem;
-      letter-spacing: -1px;
-      margin-bottom: 10px;
+      font-size: 4rem;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(14, 165, 233, 0.15);
-      color: var(--cloud-primary);
-      padding: 6px 12px;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
+    .hero-text h2 {
+      font-size: 1.5rem;
+      color: var(--text-main);
       margin-bottom: 20px;
-      border: 1px solid rgba(14, 165, 233, 0.3);
+      font-weight: 600;
     }
     .hero-text p {
       font-size: 1.1rem;
-      color: var(--cloud-muted);
-      margin-bottom: 10px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
       max-width: 600px;
+      line-height: 1.8;
     }
     .hero-location {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--cloud-muted);
+      background: rgba(255,255,255,0.05);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
       font-size: 0.95rem;
       margin-bottom: 30px;
     }
     .hero-buttons {
       display: flex;
-      gap: 15px;
+      gap: 20px;
     }
-    .btn-secondary {
-      background: var(--cloud-card);
-      border: 1px solid var(--cloud-border);
-      color: var(--cloud-text);
-      padding: 10px 20px;
-      border-radius: 4px;
-      font-weight: 500;
+    .btn-social {
       display: flex;
       align-items: center;
-      gap: 8px;
-      transition: all 0.2s;
+      justify-content: center;
+      gap: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
     }
-    .btn-secondary:hover {
-      background: var(--cloud-card-hover);
-      border-color: var(--cloud-muted);
+    .btn-social:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--accent-1);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 242, 254, 0.2);
     }
-    .hero-photo img {
-      width: 280px;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border: 1px solid var(--cloud-border);
+    .btn-social i {
+      font-size: 1.2rem;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    /* Cards Cloud */
+    /* Animation Photo Glow */
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+      50% { box-shadow: 0 0 50px rgba(0, 242, 254, 0.5); transform: translateY(-5px); }
+      100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+    }
+    .hero-photo {
+      position: relative;
+    }
+    .hero-photo img {
+      width: 320px;
+      border-radius: 24px;
+      object-fit: cover;
+      animation: pulseGlow 6s infinite ease-in-out;
+      border: 2px solid rgba(255,255,255,0.1);
+      z-index: 2;
+      position: relative;
+    }
+
+    /* CARTES GLOBALES (Glassmorphism) */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
+      gap: 30px;
     }
-    .cloud-card {
-      background: var(--cloud-card);
-      border: 1px solid var(--cloud-border);
-      border-radius: 6px;
-      padding: 25px;
-      transition: all 0.2s ease;
+    .glass-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 35px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow: hidden;
     }
-    .cloud-card:hover {
-      border-color: var(--cloud-primary);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      transform: translateY(-2px);
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-main);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(139, 92, 246, 0.1);
+      border-color: rgba(255,255,255,0.15);
+    }
+    .glass-card:hover::before {
+      opacity: 1;
     }
     .card-icon {
-      font-size: 1.5rem;
-      color: var(--cloud-primary);
-      margin-bottom: 15px;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .card-title {
-      font-size: 1.1rem;
-      margin-bottom: 12px;
-      color: var(--cloud-text);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--text-main);
     }
     .card-desc {
-      color: var(--cloud-muted);
-      font-size: 0.95rem;
-      flex-grow: 1;
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
     }
 
     /* Listes pour les compétences */
-    .resource-list {
-      list-style: none;
-      margin-top: 15px;
-    }
-    .resource-item {
+    .skill-list { list-style: none; margin-top: 15px; }
+    .skill-item {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
       font-size: 0.95rem;
-      color: var(--cloud-text);
+      color: var(--text-muted);
     }
-    .resource-item:last-child {
-      border-bottom: none;
-    }
-    .resource-icon {
-      color: var(--cloud-success);
-      font-size: 0.8rem;
+    .skill-item:last-child { border-bottom: none; }
+    .skill-icon {
+      color: var(--accent-1);
+      font-size: 0.9rem;
+      margin-top: 4px;
     }
 
     /* Timeline (Formations & Expériences) */
     .timeline {
-      border-left: 2px solid var(--cloud-border);
-      padding-left: 25px;
-      margin-left: 10px;
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gradient-main);
+      opacity: 0.5;
     }
     .timeline-item {
       position: relative;
-      background: var(--cloud-card);
-      padding: 24px;
-      border-radius: 6px;
-      margin-bottom: 24px;
-      border: 1px solid var(--cloud-border);
+      margin-bottom: 40px;
     }
     .timeline-dot {
       position: absolute;
-      width: 14px;
-      height: 14px;
-      background-color: var(--cloud-bg);
-      border: 2px solid var(--cloud-primary);
+      width: 20px;
+      height: 20px;
+      background: var(--bg-dark);
+      border: 3px solid var(--accent-3);
       border-radius: 50%;
-      left: -33px;
-      top: 28px;
+      left: -50px;
+      top: 0;
+      box-shadow: 0 0 15px var(--accent-3);
+    }
+    .timeline-content {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 30px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    .timeline-content:hover {
+      border-color: var(--accent-3);
+      transform: translateX(10px);
     }
     .timeline-date {
-      color: var(--cloud-muted);
-      font-size: 0.85rem;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      color: var(--accent-1);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    /* Footer */
+    /* Badges Certifs et Projets */
+    .badge {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    .badge-primary {
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--accent-3);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+    .badge-outline {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px dashed var(--text-muted);
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      color: var(--accent-1);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: gap 0.3s ease;
+    }
+    .project-link:hover {
+      gap: 15px;
+      color: #fff;
+    }
+
+    /* Formulaire de Contact Visuel */
+    .contact-wrapper {
+      background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-wrapper::after {
+      content: '';
+      position: absolute;
+      top: -50%; right: -50%;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(0,242,254,0.1) 0%, rgba(0,0,0,0) 60%);
+      z-index: -1;
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    .contact-item i {
+      font-size: 2rem;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .contact-item:hover {
+      transform: translateY(-5px);
+    }
+
     footer {
       text-align: center;
       padding: 40px 20px;
-      border-top: 1px solid var(--cloud-border);
-      color: var(--cloud-muted);
-      font-size: 0.9rem;
-      background: var(--cloud-card);
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      margin-top: 80px;
+    }
+
+    /* Media Queries pour le responsive */
+    @media (max-width: 900px) {
+      .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+      .hero-text h1 { font-size: 2.8rem; }
+      .hero-buttons { justify-content: center; flex-wrap: wrap; }
+      nav ul { display: none; /* Simplification sur mobile */ }
     }
   </style>
 </head>
-<body class="bg-grid">
+<body>
+
+<div class="glow-bg"></div>
+<div class="glow-bg-2"></div>
 
 <!-- NAVBAR -->
 <nav>
   <div class="nav-container">
-    <a href="index.html" class="logo">
-      <i class="fa-solid fa-cloud" style="color: var(--cloud-primary);"></i> Mehdi MAZOUZ
-    </a>
+    <a href="index.html" class="logo">Mehdi.</a>
     <ul>
-      <li><a href="#about">Overview</a></li>
-      <li><a href="#skills">Resources</a></li>
-      <li><a href="#certifications">Certificates</a></li>
-      <li><a href="#experience">Activity Log</a></li>
-      <li><a href="#projects">Deployments</a></li>
-      <li><a class="cv-btn" href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank">Download CV</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#skills">Expertises</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#experience">Parcours</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a class="cv-btn" href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank">Télécharger CV</a></li>
     </ul>
   </div>
 </nav>
@@ -326,24 +478,20 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <span class="hero-badge">GLOBAL ADMINISTRATOR</span>
+    <div class="hero-location"><i class="fa-solid fa-location-dot" style="color: var(--accent-1);"></i> Île-de-France</div>
     <h1>Mehdi MAZOUZ</h1>
-    <p style="font-weight: 500; color: #fff;">Consultant IT / Ingénieur Systèmes & Réseaux / Admin Cloud</p>
-    <p>Architecture de solutions hybrides, automatisation des déploiements (IaC), sécurisation des accès et maintien en condition opérationnelle.</p>
+    <h2>Consultant IT / Ingénieur Systèmes & Réseaux</h2>
+    <p>Expert en architectures hybrides et cloud. J'automatise les déploiements, sécurise les infrastructures et garantis le maintien en condition opérationnelle des SI critiques.</p>
     
-    <div class="hero-location">
-      <i class="fa-solid fa-location-dot"></i> Region: eu-west-3 (Île-de-France)
-    </div>
-
     <div class="hero-buttons">
-      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="btn-secondary">
-        <i class="fa-brands fa-linkedin" style="color: #0ea5e9;"></i> LinkedIn
+      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="btn-social">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
       </a>
-      <a href="https://github.com/m6bnt" target="_blank" class="btn-secondary">
+      <a href="https://github.com/m6bnt" target="_blank" class="btn-social">
         <i class="fa-brands fa-github"></i> GitHub
       </a>
-      <a href="mailto:mehdimazouz78@gmail.com" class="btn-secondary">
-        <i class="fa-solid fa-envelope"></i> Contact
+      <a href="mailto:mehdimazouz78@gmail.com" class="btn-social">
+        <i class="fa-solid fa-paper-plane"></i> Contact
       </a>
     </div>
   </div>
@@ -354,77 +502,67 @@
 
 <!-- ABOUT -->
 <section id="about" class="section">
-  <div class="section-header">
-    <div class="status-dot"></div>
-    <h3>Overview</h3>
-  </div>
+  <h3 class="section-title">À propos</h3>
 
   <div class="grid-container">
-    <div class="cloud-card">
+    <div class="glass-card">
       <i class="fa-solid fa-server card-icon"></i>
-      <h4 class="card-title">Instance Profile</h4>
-      <p class="card-desc">Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. Mon parcours m’a permis de concevoir et sécuriser des environnements de production.</p>
+      <h4 class="card-title">Profil & Expertise</h4>
+      <p class="card-desc">Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. Mon parcours m’a permis de concevoir des environnements robustes et d'automatiser des processus complexes.</p>
     </div>
-    <div class="cloud-card">
+    <div class="glass-card">
       <i class="fa-solid fa-microchip card-icon"></i>
-      <h4 class="card-title">Computing & Methodology</h4>
-      <p class="card-desc">J’aime autant m’impliquer activement dans les projets d’une entreprise que mener des expérimentations en lab. Concevoir des infrastructures scalables et fiables représente pour moi un véritable défi quotidien.</p>
+      <h4 class="card-title">Vision & Méthode</h4>
+      <p class="card-desc">J’aime autant m’impliquer activement dans les projets critiques d’une entreprise que mener des expérimentations en laboratoire. Concevoir des infrastructures fiables représente pour moi une véritable source de motivation quotidienne.</p>
     </div>
-    <div class="cloud-card">
-      <i class="fa-solid fa-route card-icon"></i>
-      <h4 class="card-title">Target Architecture</h4>
-      <p class="card-desc">Mon intérêt pour l'administration systèmes, le cloud, l’automatisation DevOps et la supervision me pousse à intégrer des solutions innovantes pour garantir la continuité d'activité (PCA/PRA).</p>
+    <div class="glass-card">
+      <i class="fa-solid fa-bolt card-icon"></i>
+      <h4 class="card-title">L'Objectif</h4>
+      <p class="card-desc">Mon intérêt pour le cloud, l’automatisation DevOps et la supervision me pousse à rechercher constamment des solutions innovantes. L'objectif : rendre les systèmes résilients et l’expérience utilisateur parfaitement fluide.</p>
     </div>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills" class="section">
-  <div class="section-header">
-    <div class="status-dot"></div>
-    <h3>Resource Groups (Skills)</h3>
-  </div>
+  <h3 class="section-title">Domaines d'Expertise</h3>
 
   <div class="grid-container">
-    <!-- Systèmes & Cloud -->
-    <div class="cloud-card">
-      <h4 class="card-title"><i class="fa-brands fa-microsoft" style="color: var(--cloud-muted); margin-right: 8px;"></i> Compute & Identity</h4>
-      <ul class="resource-list">
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> Windows Server & Active Directory</li>
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> Microsoft 365 & Entra ID</li>
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> VMware ESXi / vSphere</li>
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> Microsoft Azure Cloud</li>
+    <div class="glass-card">
+      <h4 class="card-title"><i class="fa-solid fa-cloud" style="color: var(--text-muted); margin-right: 10px;"></i> Systèmes & Cloud</h4>
+      <ul class="skill-list">
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Windows Server & Active Directory</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Microsoft 365 & Entra ID</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> VMware ESXi / vSphere</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Microsoft Azure Cloud</li>
       </ul>
     </div>
 
-    <!-- Réseaux & Sécurité -->
-    <div class="cloud-card">
-      <h4 class="card-title"><i class="fa-solid fa-shield-network" style="color: var(--cloud-muted); margin-right: 8px;"></i> Networking & Security</h4>
-      <ul class="resource-list">
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> Firewall & pfSense</li>
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> VPN IPsec / OpenVPN</li>
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> TCP/IP, DNS, DHCP</li>
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> Switching & VLAN (Meraki)</li>
+    <div class="glass-card">
+      <h4 class="card-title"><i class="fa-solid fa-shield-halved" style="color: var(--text-muted); margin-right: 10px;"></i> Réseaux & Sécurité</h4>
+      <ul class="skill-list">
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Firewall & pfSense</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> VPN IPsec / OpenVPN</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> TCP/IP, DNS, DHCP</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Switching & VLAN (Meraki)</li>
       </ul>
     </div>
 
-    <!-- Automatisation & Supervision -->
-    <div class="cloud-card">
-      <h4 class="card-title"><i class="fa-solid fa-gears" style="color: var(--cloud-muted); margin-right: 8px;"></i> DevOps & Monitoring</h4>
-      <ul class="resource-list">
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> Zabbix, NAS & PRA/PCA</li>
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> Terraform, Ansible, Kubernetes</li>
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> Git / GitHub</li>
+    <div class="glass-card">
+      <h4 class="card-title"><i class="fa-solid fa-robot" style="color: var(--text-muted); margin-right: 10px;"></i> DevOps & Supervision</h4>
+      <ul class="skill-list">
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Zabbix, NAS & Sauvegardes (PRA/PCA)</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Terraform, Ansible, Kubernetes</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Git / GitHub CI/CD</li>
       </ul>
     </div>
 
-    <!-- Gestion de Projet IT -->
-    <div class="cloud-card">
-      <h4 class="card-title"><i class="fa-solid fa-list-check" style="color: var(--cloud-muted); margin-right: 8px;"></i> IT Governance</h4>
-      <ul class="resource-list">
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> Agile (Scrum, Kanban), Jira</li>
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> ITSM & Incidents (EasyVista, GLPI)</li>
-        <li class="resource-item"><i class="fa-solid fa-check resource-icon"></i> Pilotage d'éditeurs & prestataires</li>
+    <div class="glass-card">
+      <h4 class="card-title"><i class="fa-solid fa-chart-pie" style="color: var(--text-muted); margin-right: 10px;"></i> Gouvernance IT & ITSM</h4>
+      <ul class="skill-list">
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Méthodologies Agiles (Scrum, Kanban)</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Gestion des incidents (EasyVista, GLPI)</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Cahier des charges & Pilotage prestataires</li>
       </ul>
     </div>
   </div>
@@ -432,114 +570,162 @@
 
 <!-- CERTIFICATIONS -->
 <section id="certifications" class="section">
-  <div class="section-header">
-    <div class="status-dot"></div>
-    <h3>Security & Compliance Certificates</h3>
-  </div>
+  <h3 class="section-title">Certifications</h3>
 
   <div class="grid-container">
-    <div class="cloud-card" style="padding: 20px;">
-      <p style="font-weight: 600; color: #fff; margin-bottom: 5px;">Dataiku Advanced Designer</p>
-      <p style="font-size: 0.85rem; color: var(--cloud-muted); margin-bottom: 15px;">Provider: Dataiku | Status: Valid</p>
-      <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" style="font-size: 0.9rem; font-weight: 500;">Verify Certificate <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8em;"></i></a>
+    <div class="glass-card" style="padding: 25px;">
+      <span class="badge badge-primary">Dataiku</span>
+      <h4 class="card-title" style="margin-bottom: 5px;">Advanced Designer</h4>
+      <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="project-link">Voir le diplôme <i class="fa-solid fa-arrow-right"></i></a>
     </div>
     
-    <div class="cloud-card" style="padding: 20px;">
-      <p style="font-weight: 600; color: #fff; margin-bottom: 5px;">Dataiku Core Designer</p>
-      <p style="font-size: 0.85rem; color: var(--cloud-muted); margin-bottom: 15px;">Provider: Dataiku | Status: Valid</p>
-      <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" style="font-size: 0.9rem; font-weight: 500;">Verify Certificate <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8em;"></i></a>
+    <div class="glass-card" style="padding: 25px;">
+      <span class="badge badge-primary">Dataiku</span>
+      <h4 class="card-title" style="margin-bottom: 5px;">Core Designer</h4>
+      <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="project-link">Voir le diplôme <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="cloud-card" style="padding: 20px;">
-      <p style="font-weight: 600; color: #fff; margin-bottom: 5px;">Dataiku ML Practitioner</p>
-      <p style="font-size: 0.85rem; color: var(--cloud-muted); margin-bottom: 15px;">Provider: Dataiku | Status: Valid</p>
-      <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" style="font-size: 0.9rem; font-weight: 500;">Verify Certificate <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8em;"></i></a>
+    <div class="glass-card" style="padding: 25px;">
+      <span class="badge badge-primary">Dataiku</span>
+      <h4 class="card-title" style="margin-bottom: 5px;">ML Practitioner</h4>
+      <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="project-link">Voir le diplôme <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="cloud-card" style="padding: 20px;">
-      <p style="font-weight: 600; color: #fff; margin-bottom: 5px;">Cisco CCNA (200-301)</p>
-      <p style="font-size: 0.85rem; color: var(--cloud-muted); margin-bottom: 15px;">Provider: Cisco | Status: Provisioning</p>
-      <span style="font-size: 0.9rem; color: var(--cloud-muted);"><i class="fa-solid fa-spinner"></i> In Progress</span>
+    <div class="glass-card" style="padding: 25px;">
+      <span class="badge badge-primary">Dataiku</span>
+      <h4 class="card-title" style="margin-bottom: 5px;">MLOps Practitioner</h4>
+      <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="project-link">Voir le diplôme <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="glass-card" style="padding: 25px;">
+      <span class="badge badge-outline">Cisco</span>
+      <h4 class="card-title" style="margin-bottom: 5px;">CCNA (200-301)</h4>
+      <p class="card-desc" style="margin-top: 15px;"><i class="fa-solid fa-spinner"></i> En cours de préparation</p>
+    </div>
+
+    <div class="glass-card" style="padding: 25px;">
+      <span class="badge badge-outline">ITIL</span>
+      <h4 class="card-title" style="margin-bottom: 5px;">ITIL 4 Foundation</h4>
+      <p class="card-desc" style="margin-top: 15px;"><i class="fa-solid fa-spinner"></i> En cours de préparation</p>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE & EDUCATION -->
+<!-- EXP & EDUCATION -->
 <section id="experience" class="section">
-  <div class="section-header">
-    <div class="status-dot"></div>
-    <h3>Activity Log</h3>
-  </div>
+  <h3 class="section-title">Expérience & Formations</h3>
 
   <div class="timeline">
     
-    <!-- Experience -->
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <div class="timeline-date"><i class="fa-regular fa-clock"></i> Oct. 2024 - Oct. 2026</div>
-      <h4 style="font-size: 1.15rem; color: #fff; margin-bottom: 5px;">Chef de projet SI (Alternance)</h4>
-      <p style="color: var(--cloud-primary); font-size: 0.95rem; margin-bottom: 15px;">Grand Paris Seine & Oise (GPS&O)</p>
-      <ul class="resource-list">
-        <li class="resource-item"><i class="fa-solid fa-angle-right resource-icon" style="color: var(--cloud-muted);"></i> Pilotage & Déploiement Cloud (SaaS) : Conduite de projets SI de bout en bout.</li>
-        <li class="resource-item"><i class="fa-solid fa-angle-right resource-icon" style="color: var(--cloud-muted);"></i> Urbanisation SI & ITSM : Cartographie du SI (Power BI) et administration (EasyVista).</li>
-        <li class="resource-item"><i class="fa-solid fa-angle-right resource-icon" style="color: var(--cloud-muted);"></i> Maintien en Condition Opérationnelle (MCO) : Paramétrage, support et évolutions.</li>
-        <li class="resource-item"><i class="fa-solid fa-angle-right resource-icon" style="color: var(--cloud-muted);"></i> Coordination Technique & Sécurité : Pilotage des éditeurs et intégration cybersécurité.</li>
-      </ul>
+      <div class="timeline-content">
+        <div class="timeline-date">Oct. 2024 - Oct. 2026</div>
+        <h4 style="font-size: 1.3rem; margin-bottom: 5px;">Chef de projet SI (Alternance)</h4>
+        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 15px;"><i class="fa-solid fa-building"></i> Grand Paris Seine & Oise (GPS&O)</p>
+        <ul class="skill-list">
+          <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> <span><strong>Pilotage & Déploiement Cloud :</strong> Conduite de projets SI de bout en bout dans une architecture 100% Cloud SaaS.</span></li>
+          <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> <span><strong>Urbanisation SI & ITSM :</strong> Cartographie du SI (Power BI) et administration de la plateforme ITSM (EasyVista).</span></li>
+          <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> <span><strong>MCO & Cybersécurité :</strong> Paramétrage du parc, pilotage des éditeurs et intégration des enjeux réseaux/sécurité.</span></li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Education 1 -->
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <div class="timeline-date"><i class="fa-regular fa-clock"></i> Sept. 2024 - Sept. 2026</div>
-      <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Mastère Expert Informatique & Systèmes d'Information</h4>
-      <p style="color: var(--cloud-muted); font-size: 0.95rem;">EPSI - Spécialité Infrastructure IT</p>
+      <div class="timeline-content">
+        <div class="timeline-date">Sept. 2024 - Sept. 2026</div>
+        <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Mastère Expert Informatique & Systèmes d'Information</h4>
+        <p style="color: var(--text-muted);"><i class="fa-solid fa-graduation-cap"></i> EPSI, Courbevoie — Spécialité Infrastructure IT</p>
+      </div>
     </div>
 
-    <!-- Education 2 -->
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <div class="timeline-date"><i class="fa-regular fa-clock"></i> Déc. 2022 - Sept. 2023</div>
-      <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Licence Informatique générale</h4>
-      <p style="color: var(--cloud-muted); font-size: 0.95rem;">Conservatoire National des Arts et Métiers (CNAM)</p>
+      <div class="timeline-content">
+        <div class="timeline-date">Déc. 2022 - Sept. 2023</div>
+        <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Licence Sciences & Technologies Informatiques</h4>
+        <p style="color: var(--text-muted);"><i class="fa-solid fa-building-columns"></i> Conservatoire National des Arts et Métiers (CNAM), Paris</p>
+      </div>
     </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">Nov. 2021 - Juin 2022</div>
+        <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Titre pro Technicien Supérieur Systèmes & Réseaux</h4>
+        <p style="color: var(--text-muted);"><i class="fa-solid fa-laptop-code"></i> WebForce3, Paris</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="section">
-  <div class="section-header">
-    <div class="status-dot"></div>
-    <h3>Recent Deployments</h3>
-  </div>
+  <h3 class="section-title">Réalisations</h3>
 
   <div class="grid-container">
-    <div class="cloud-card">
-      <span class="hero-badge" style="font-size: 0.7rem; padding: 4px 8px; margin-bottom: 15px;">PROJET UNIVERSITAIRE</span>
-      <h4 class="card-title">Infrastructure SI Hybride Sécurisée</h4>
-      <p class="card-desc">Architecture SI Hybride Résiliente – Sécurité, Supervision & Continuité d’Activité.</p>
-      <a href="projects/infrastructure-cloud/infrastructure-cloud.html" style="font-weight: 500; margin-top: 15px; display: inline-block;">View Configuration <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="glass-card">
+      <span class="badge badge-primary" style="align-self: flex-start;"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
+      <h4 class="card-title" style="margin-top: 15px;">Infrastructure SI Hybride Sécurisée</h4>
+      <p class="card-desc">Architecture multi-sites résiliente. Intégration de la virtualisation (ESXi), sécurité réseau (pfSense), supervision (Zabbix) et continuité d’activité (PCA/PRA).</p>
+      <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="project-link">Découvrir le projet <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="cloud-card">
-      <span class="hero-badge" style="font-size: 0.7rem; padding: 4px 8px; margin-bottom: 15px;">PROJET UNIVERSITAIRE</span>
-      <h4 class="card-title">Architecture & Gouvernance SI</h4>
-      <p class="card-desc">Analyser et définir la stratégie d’un système d’information aligné aux objectifs métier.</p>
-      <a href="projects/architecture-si/architecture-si.html" style="font-weight: 500; margin-top: 15px; display: inline-block;">View Configuration <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="glass-card">
+      <span class="badge badge-primary" style="align-self: flex-start;"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
+      <h4 class="card-title" style="margin-top: 15px;">Architecture & Gouvernance SI</h4>
+      <p class="card-desc">Analyse, urbanisation et définition stratégique d’un système d’information aligné sur les objectifs métier (Cartographie, BPMN, EBIOS, Green IT).</p>
+      <a href="projects/architecture-si/architecture-si.html" class="project-link">Découvrir le projet <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="cloud-card">
-      <span class="hero-badge" style="font-size: 0.7rem; padding: 4px 8px; margin-bottom: 15px;">PROJET UNIVERSITAIRE</span>
-      <h4 class="card-title">Gestion de Projet IT Agile & Cloud</h4>
-      <p class="card-desc">Pilotage agile, automatisation DevOps et déploiement avec Terraform, Ansible, Kubernetes.</p>
-      <a href="projects/agile-projet/agile-gestion-projet.html" style="font-weight: 500; margin-top: 15px; display: inline-block;">View Configuration <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="glass-card">
+      <span class="badge badge-primary" style="align-self: flex-start;"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
+      <h4 class="card-title" style="margin-top: 15px;">Gestion de Projet IT Agile & Cloud</h4>
+      <p class="card-desc">Pilotage Scrum et automatisation DevOps complète. Déploiement d'une infrastructure avec Terraform, création d'images Packer, orchestration Ansible et cluster Kubernetes.</p>
+      <a href="projects/agile-projet/agile-gestion-projet.html" class="project-link">Découvrir le projet <i class="fa-solid fa-arrow-right"></i></a>
     </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h3 class="section-title">Contact</h3>
+
+  <div class="contact-wrapper">
+    <h4 style="font-size: 1.8rem; margin-bottom: 20px;">Démarrons un projet ensemble</h4>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; max-width: 500px; margin-inline: auto;">
+      Une idée à concrétiser ? Un poste à proposer ? Ou simplement échanger sur l'IT et le Cloud ? N'hésitez pas.
+    </p>
+
+    <div class="contact-links">
+      <a href="mailto:mehdimazouz78@gmail.com" class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <span>mehdimazouz78@gmail.com</span>
+      </a>
+      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="contact-item">
+        <i class="fa-brands fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/m6bnt" target="_blank" class="contact-item">
+        <i class="fa-brands fa-github"></i>
+        <span>GitHub</span>
+      </a>
+    </div>
+
+    <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="cv-btn" style="display: inline-block; margin-top: 20px; font-size: 1.1rem;">
+      <i class="fa-solid fa-download"></i> Télécharger mon CV
+    </a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p style="margin-bottom: 10px;">© 2026 Mehdi MAZOUZ — Cloud & Systems Administrator</p>
-  <p style="font-size: 0.8rem;">UI Inspired by Modern Cloud Dashboards</p>
+  <p>© 2026 Mehdi MAZOUZ — Ingénieur Systèmes & Cloud</p>
+  <a href="#" style="color: var(--text-muted); margin-top: 10px; display: inline-block; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">
+    <i class="fa-solid fa-arrow-up"></i> Retour en haut
+  </a>
 </footer>
 
 <script>
