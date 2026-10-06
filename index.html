@@ -98,23 +98,30 @@
 <!-- MOI -->
 <section class="hero">
   <style>
-    /* Animation de flottaison fluide */
     @keyframes floatName {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-8px); }
       100% { transform: translateY(0px); }
     }
-    
-    /* Nouveau style pour le nom */
     .hero-text h1 {
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      font-weight: 600 !important; /* Moins gras, plus élégant */
+      font-weight: 600 !important;
       letter-spacing: -0.5px;
-      color: var(--nc-blue-light) !important; /* Bleu Nextcloud lumineux */
+      color: var(--nc-blue-light) !important;
       display: inline-block;
-      animation: floatName 4s ease-in-out infinite; /* Application de l'animation */
-      text-shadow: 0 4px 20px rgba(0, 165, 255, 0.35); /* Effet de halo cloud */
+      animation: floatName 4s ease-in-out infinite;
+      text-shadow: 0 4px 20px rgba(0, 165, 255, 0.35);
       margin-bottom: 15px;
+    }
+    /* Nouvel effet doré pour la photo */
+    .hero-photo img {
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+    }
+    .hero-photo img:hover {
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4); /* Halo doré */
+      border-color: rgba(255, 215, 0, 0.6); /* Bordure dorée subtile */
+      transform: translateY(-5px) scale(1.02);
     }
   </style>
 
@@ -381,7 +388,7 @@
     }
     .cert-badge {
         padding: 6px 16px;
-        border-radius: 4px; /* Bouton carré style console IT */
+        border-radius: 4px;
         font-size: 0.85rem;
         align-self: flex-start;
         transition: all 0.2s ease;
@@ -412,7 +419,7 @@
         <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Dataiku</p>
         <p class="cert-title">Advanced Designer</p>
       </div>
-      <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="cert-badge badge-active">Voir le diplôme</a>
+      <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="cert-badge badge-active">Voir la certification</a>
     </div>
 
     <div class="cert-card">
@@ -420,7 +427,7 @@
         <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Dataiku</p>
         <p class="cert-title">Core Designer</p>
       </div>
-      <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="cert-badge badge-active">Voir le diplôme</a>
+      <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="cert-badge badge-active">Voir la certification</a>
     </div>
 
     <div class="cert-card">
@@ -428,7 +435,7 @@
         <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Dataiku</p>
         <p class="cert-title">ML Practitioner</p>
       </div>
-      <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="cert-badge badge-active">Voir le diplôme</a>
+      <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="cert-badge badge-active">Voir la certification</a>
     </div>
 
     <div class="cert-card">
@@ -436,7 +443,7 @@
         <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Dataiku</p>
         <p class="cert-title">MLOps Practitioner</p>
       </div>
-      <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="cert-badge badge-active">Voir le diplôme</a>
+      <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="cert-badge badge-active">Voir la certification</a>
     </div>
 
     <div class="cert-card">
@@ -690,6 +697,18 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
+    .project-tag {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--nc-blue-light);
+      background: rgba(0, 165, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
     .project-card h4 {
       font-size: 1.15rem;
       margin-bottom: 12px;
@@ -719,25 +738,27 @@
 
   <div class="project-grid">
     <div class="project-card">
+      <span class="project-tag"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
       <h4>Infrastructure SI Hybride Sécurisée</h4>
       <p>Architecture SI Hybride Résiliente – Sécurité, Supervision & Continuité d’Activité</p>
       <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="project-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
     <div class="project-card">
+      <span class="project-tag"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
       <h4>Architecture & Gouvernance SI</h4>
       <p>Analyser et définir la stratégie d’un système d’information aligné aux objectifs métier</p>
       <a href="projects/architecture-si/architecture-si.html" class="project-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
     <div class="project-card">
+      <span class="project-tag"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
       <h4>Gestion de Projet IT Agile & Cloud</h4>
       <p>Pilotage agile, automatisation DevOps et déploiement avec Terraform, Ansible, Kubernetes</p>
       <a href="projects/agile-projet/agile-gestion-projet.html" class="project-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
-
 <!-- CONTACT -->
 <section id="contact" class="section">
   <h3>Contact</h3>
