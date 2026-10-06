@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <title>Mehdi MAZOUZ | Cloud & Systems Architect</title>
+  <title>Mehdi MAZOUZ | Quantum Cloud Architect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <!-- ========================================== -->
-  <!-- THÈME ABSOLU : ETHEREAL UI / NEBULA GLASS  -->
-  <!-- ========================================== -->
   <style>
     :root {
-      --space-black: #030303;
-      --glass-surface: rgba(255, 255, 255, 0.015);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --glass-highlight: rgba(255, 255, 255, 0.15);
-      --text-pure: #ffffff;
-      --text-muted: #a1a1aa;
-      --nebula-purple: #7928ca;
-      --quantum-cyan: #ff0080; /* Rose/Cyan mix for Next-Gen feel */
-      --ai-blue: #00d2ff;
-      --gradient-liquid: linear-gradient(270deg, var(--ai-blue), var(--nebula-purple), var(--quantum-cyan), var(--ai-blue));
+      --bg-core: #020205;
+      --cyan-glow: #00f0ff;
+      --purple-plasma: #8a2be2;
+      --magenta-neon: #ff003c;
+      --glass-bg: rgba(10, 12, 20, 0.4);
+      --glass-border: rgba(0, 240, 255, 0.15);
+      --text-main: #f0f4f8;
+      --text-muted: #8b9bb4;
+      --holo-gradient: linear-gradient(135deg, rgba(0,240,255,0.1), rgba(138,43,226,0.1));
     }
 
     * {
@@ -30,602 +23,648 @@
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, sans-serif;
-      background-color: var(--space-black);
-      color: var(--text-pure);
-      line-height: 1.6;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-core);
+      color: var(--text-main);
       overflow-x: hidden;
+      perspective: 1000px;
     }
 
-    /* --- AMBIENT NEBULA BACKGROUND --- */
-    .ambient-canvas {
+    /* --- ENVIRONNEMENT 3D CYBER-QUANTUM --- */
+    .cyber-grid {
       position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      overflow: hidden;
+      bottom: -50vh;
+      left: -50vw;
+      width: 200vw;
+      height: 200vh;
+      background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+      background-size: 60px 60px;
+      transform: rotateX(80deg);
+      transform-origin: center top;
+      animation: gridMove 15s linear infinite;
       z-index: -2;
-      background: var(--space-black);
+      pointer-events: none;
     }
-    .ambient-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.35;
-      animation: drift 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .orb-1 { width: 60vw; height: 60vw; background: var(--nebula-purple); top: -20%; left: -10%; }
-    .orb-2 { width: 50vw; height: 50vw; background: var(--ai-blue); bottom: -20%; right: -10%; animation-delay: -7s; }
-    .orb-3 { width: 40vw; height: 40vw; background: var(--quantum-cyan); top: 30%; left: 30%; animation-duration: 30s; opacity: 0.2; }
-
-    /* Noise Texture Overlay for premium feel */
-    .noise-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-      z-index: -1; pointer-events: none;
+    .grid-fade {
+      position: fixed;
+      bottom: 0; left: 0; width: 100vw; height: 100vh;
+      background: linear-gradient(to top, transparent, var(--bg-core) 60%);
+      z-index: -1;
+      pointer-events: none;
     }
 
-    @keyframes drift {
-      0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-      100% { transform: translate(15vw, 15vh) scale(1.1) rotate(20deg); }
+    @keyframes gridMove {
+      0% { transform: rotateX(80deg) translateY(0); }
+      100% { transform: rotateX(80deg) translateY(60px); }
     }
 
-    /* --- DYNAMIC ISLAND NAVBAR --- */
+    /* --- HUD NAVBAR --- */
     nav {
       position: fixed;
-      top: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(10, 10, 10, 0.4);
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
-      border-radius: 100px;
-      z-index: 1000;
-      padding: 8px 12px 8px 24px;
+      top: 0; left: 0; width: 100%;
+      background: linear-gradient(to bottom, rgba(2,2,5,0.9), transparent);
+      padding: 20px 40px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 40px;
-      transition: all 0.4s ease;
-    }
-    .logo {
-      font-weight: 800; font-size: 1.1rem; color: #fff; letter-spacing: -0.5px; text-decoration: none;
-    }
-    nav ul { list-style: none; display: flex; gap: 24px; align-items: center; margin: 0; padding: 0; }
-    nav ul li a {
-      color: var(--text-muted); font-size: 0.9rem; font-weight: 500; text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    nav ul li a:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
-    .cv-btn {
-      background: var(--text-pure); color: var(--space-black) !important;
-      padding: 10px 20px; border-radius: 100px; font-weight: 600; font-size: 0.9rem;
-      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .cv-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,255,255,0.3); }
-
-    /* --- LAYOUT GLOBALS --- */
-    .section { padding: 160px 20px 60px; max-width: 1200px; margin: 0 auto; }
-    .section-title {
-      font-size: 3rem; font-weight: 800; letter-spacing: -1.5px;
-      margin-bottom: 60px; text-align: center;
-    }
-    .text-glow {
-      background: var(--gradient-liquid);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: flow 8s ease infinite;
-    }
-    @keyframes flow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-
-    /* --- HERO SECTION --- */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center; justify-content: space-between;
-      gap: 60px; padding-top: 120px; max-width: 1200px; margin: 0 auto; padding-inline: 20px;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
-      padding: 8px 20px; border-radius: 100px;
-      font-size: 0.85rem; font-weight: 600; color: var(--text-muted);
-      margin-bottom: 30px; letter-spacing: 0.5px; text-transform: uppercase;
+      z-index: 1000;
       backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.1);
     }
-    .hero-badge .dot {
-      width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 12px #10b981;
+    .hud-logo {
+      font-family: monospace;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--cyan-glow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
     }
-    .hero-text h1 {
-      font-size: 5.5rem; font-weight: 800; line-height: 1; letter-spacing: -3px; margin-bottom: 20px;
+    .hud-links {
+      display: flex; gap: 30px; list-style: none;
     }
-    .hero-text h2 {
-      font-size: 1.8rem; font-weight: 400; color: var(--text-muted); margin-bottom: 30px; letter-spacing: -0.5px;
+    .hud-links a {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
     }
-    .hero-text p {
-      font-size: 1.15rem; color: var(--text-muted); max-width: 580px; line-height: 1.8; margin-bottom: 40px;
+    .hud-links a::after {
+      content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px;
+      background: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow);
+      transition: width 0.3s ease;
+    }
+    .hud-links a:hover { color: var(--text-main); }
+    .hud-links a:hover::after { width: 100%; }
+    
+    .hud-btn {
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--cyan-glow);
+      color: var(--cyan-glow);
+      padding: 8px 20px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: inset 0 0 10px rgba(0,240,255,0.1);
+    }
+    .hud-btn:hover {
+      background: var(--cyan-glow);
+      color: #000;
+      box-shadow: 0 0 20px var(--cyan-glow);
+    }
+
+    /* --- STRUCTURATION GLOBALE --- */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .section {
+      padding: 150px 0 50px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* --- HERO : GLITCH & HOLOGRAM --- */
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .system-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: monospace;
+      color: var(--cyan-glow);
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      padding: 6px 16px;
+      border-radius: 4px;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+    .system-status .blink {
+      width: 8px; height: 8px; background: var(--cyan-glow); border-radius: 50%;
+      animation: blinker 1s linear infinite;
+      box-shadow: 0 0 8px var(--cyan-glow);
+    }
+    @keyframes blinker { 50% { opacity: 0; } }
+
+    .glitch-title {
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 20px;
+      position: relative;
+      color: #fff;
+      letter-spacing: -2px;
+    }
+    .glitch-title::before, .glitch-title::after {
+      content: attr(data-text);
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg-core);
+    }
+    .glitch-title::before {
+      left: 3px; text-shadow: -2px 0 var(--magenta-neon);
+      animation: glitch-anim-1 2s infinite linear alternate-reverse;
+      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    }
+    .glitch-title::after {
+      left: -3px; text-shadow: -2px 0 var(--cyan-glow);
+      animation: glitch-anim-2 3s infinite linear alternate-reverse;
+      clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    }
+    @keyframes glitch-anim-1 { 0% { clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%); } 100% { clip-path: polygon(0 60%, 100% 60%, 100% 61%, 0 61%); } }
+    @keyframes glitch-anim-2 { 0% { clip-path: polygon(0 80%, 100% 80%, 100% 81%, 0 81%); } 100% { clip-path: polygon(0 40%, 100% 40%, 100% 41%, 0 41%); } }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+    .hero-subtitle span {
+      color: var(--purple-plasma);
+      font-weight: 600;
+      text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+    }
+
+    .hero-actions { display: flex; gap: 20px; margin-top: 40px; }
+    
+    .btn-holo {
+      position: relative;
+      padding: 15px 30px;
+      background: transparent;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-holo::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(45deg, transparent 5%, var(--cyan-glow) 5%, var(--purple-plasma) 95%, transparent 95%);
+      z-index: -1; transition: all 0.3s;
+    }
+    .btn-holo::after {
+      content: ''; position: absolute; top: 2px; left: 2px; right: 2px; bottom: 2px;
+      background: var(--bg-core); z-index: -1; transition: all 0.3s;
+    }
+    .btn-holo:hover::after { background: transparent; }
+    .btn-holo:hover { text-shadow: 0 0 5px #fff; box-shadow: 0 0 30px rgba(0,240,255,0.4); }
+
+    /* Avatar avec scanner laser */
+    .avatar-container {
+      position: relative;
+      width: 400px; height: 400px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+    .avatar-frame {
+      width: 100%; height: 100%;
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 10px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(0,240,255,0.1);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.1s;
+    }
+    .avatar-frame img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 12px; filter: contrast(1.1) saturate(1.2);
+    }
+    .scanner-line {
+      position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+      background: var(--cyan-glow);
+      box-shadow: 0 0 15px 5px rgba(0,240,255,0.4);
+      animation: scan 3s infinite linear;
+      z-index: 10;
+    }
+    @keyframes scan { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+
+    /* --- HOLOGRAPHIC BENTO GRID --- */
+    .section-heading {
+      font-size: 2.5rem; font-weight: 800; margin-bottom: 60px;
+      display: inline-block; position: relative;
+    }
+    .section-heading::after {
+      content: ''; position: absolute; left: 0; bottom: -10px; width: 50px; height: 4px;
+      background: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .holo-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .holo-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--holo-gradient);
+      opacity: 0; transition: opacity 0.4s; pointer-events: none;
+    }
+    .holo-card:hover {
+      border-color: rgba(0, 240, 255, 0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(0,240,255,0.05);
+    }
+    .holo-card:hover::before { opacity: 1; }
+
+    .card-icon-wrapper {
+      width: 60px; height: 60px;
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 25px;
+      font-size: 1.5rem; color: var(--cyan-glow);
+      box-shadow: inset 0 0 15px rgba(0,240,255,0.1);
     }
     
-    .hero-buttons { display: flex; gap: 20px; flex-wrap: wrap; }
-    .btn-super {
-      background: var(--text-pure); color: var(--space-black);
-      padding: 16px 32px; border-radius: 100px;
-      font-weight: 700; font-size: 1rem; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 10px;
-      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .btn-super:hover { transform: scale(1.05); box-shadow: 0 15px 35px rgba(255,255,255,0.2); }
-    .btn-glass {
-      background: var(--glass-surface); border: 1px solid var(--glass-border); color: var(--text-pure);
-      padding: 16px 32px; border-radius: 100px;
-      font-weight: 500; font-size: 1rem; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 10px;
-      backdrop-filter: blur(20px); transition: all 0.3s ease;
-    }
-    .btn-glass:hover {
-      background: rgba(255,255,255,0.05); border-color: var(--glass-highlight);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); transform: translateY(-2px);
-    }
+    .holo-card h4 { font-size: 1.4rem; margin-bottom: 15px; color: #fff; transform: translateZ(30px); }
+    .holo-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; transform: translateZ(20px); }
 
-    /* Hero Image Evolution */
-    .hero-photo-wrapper { position: relative; }
-    .hero-photo-wrapper::after {
-      content: ''; position: absolute; inset: -4px;
-      background: var(--gradient-liquid); background-size: 200% 200%;
-      border-radius: 40px; z-index: -1; filter: blur(25px); opacity: 0.6;
-      animation: flow 8s ease infinite;
+    .tech-list { list-style: none; margin-top: 20px; transform: translateZ(25px); }
+    .tech-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.95rem; color: #e2e8f0;
     }
-    .hero-photo-wrapper img {
-      width: 380px; border-radius: 36px; object-fit: cover;
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: inset 0 0 20px rgba(255,255,255,0.1);
-      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .hero-photo-wrapper:hover img { transform: scale(1.02) translateY(-10px); }
+    .tech-item:last-child { border-bottom: none; }
+    .tech-icon { color: var(--purple-plasma); font-size: 0.8rem; }
 
-    /* --- PREMIUM BENTO GRID (Glassmorphism 2.0) --- */
-    .bento-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px;
+    /* --- DATA STREAM TIMELINE --- */
+    .stream-timeline {
+      position: relative; padding-left: 40px; margin-top: 40px;
     }
-    .glass-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.005) 100%);
-      backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
-      border: 1px solid var(--glass-border);
-      border-radius: 32px; padding: 40px;
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 0 20px 40px rgba(0,0,0,0.5);
-      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    .stream-line {
+      position: absolute; top: 0; left: 5px; width: 2px; height: 100%;
+      background: rgba(255,255,255,0.05);
+    }
+    .stream-particle {
+      position: absolute; left: 4px; width: 4px; height: 40px;
+      background: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow);
+      animation: streamFall 4s linear infinite;
+    }
+    @keyframes streamFall { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+
+    .stream-node {
+      position: relative; margin-bottom: 60px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      padding: 30px; border-radius: 12px; backdrop-filter: blur(10px);
+    }
+    .node-point {
+      position: absolute; left: -42px; top: 30px; width: 14px; height: 14px;
+      background: var(--bg-core); border: 2px solid var(--purple-plasma);
+      border-radius: 50%; box-shadow: 0 0 15px var(--purple-plasma);
+    }
+    .node-date { font-family: monospace; color: var(--cyan-glow); margin-bottom: 10px; letter-spacing: 1px; }
+    .node-title { font-size: 1.4rem; color: #fff; margin-bottom: 5px; }
+    .node-corp { color: var(--text-muted); font-size: 1rem; margin-bottom: 15px; }
+
+    /* --- NEON BADGES --- */
+    .neon-badge {
+      display: inline-block; padding: 4px 12px; border-radius: 4px;
+      font-family: monospace; font-size: 0.8rem; margin-bottom: 20px;
+      border: 1px solid;
+    }
+    .badge-data { color: var(--cyan-glow); border-color: rgba(0,240,255,0.3); background: rgba(0,240,255,0.05); }
+    .badge-net { color: var(--purple-plasma); border-color: rgba(138,43,226,0.3); background: rgba(138,43,226,0.05); }
+
+    .action-link {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
+      color: var(--cyan-glow); font-family: monospace; text-transform: uppercase;
+      font-size: 0.9rem; transition: all 0.3s;
+    }
+    .action-link:hover { gap: 15px; text-shadow: 0 0 8px var(--cyan-glow); }
+
+    /* --- TERMINAL CONTACT BOX --- */
+    .terminal-box {
+      background: rgba(5, 5, 10, 0.8);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 12px;
+      padding: 60px; text-align: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,240,255,0.02);
       position: relative; overflow: hidden;
-      display: flex; flex-direction: column;
     }
-    /* Inner Glow on Hover */
-    .glass-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, -20%), rgba(255,255,255,0.06), transparent 40%);
-      opacity: 0; transition: opacity 0.5s; pointer-events: none;
+    .terminal-box::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--cyan-glow), var(--purple-plasma), var(--magenta-neon));
     }
-    .glass-card:hover {
-      transform: translateY(-8px); border-color: rgba(255,255,255,0.15);
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(121, 40, 202, 0.15);
+    .term-links { display: flex; justify-content: center; gap: 30px; margin: 40px 0; flex-wrap: wrap; }
+    .term-link {
+      display: flex; align-items: center; gap: 10px; color: var(--text-muted);
+      padding: 12px 24px; border: 1px solid var(--glass-border); border-radius: 8px;
+      background: rgba(255,255,255,0.02); transition: all 0.3s; text-decoration: none;
     }
-    .glass-card:hover::before { opacity: 1; }
-
-    .card-icon {
-      font-size: 2rem; margin-bottom: 24px;
-      background: var(--gradient-liquid); background-size: 200%;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      animation: flow 8s ease infinite; display: inline-block;
-    }
-    .card-title { font-size: 1.4rem; margin-bottom: 16px; font-weight: 700; letter-spacing: -0.5px; }
-    .card-desc { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; flex-grow: 1; }
-
-    /* Lists inside cards */
-    .skill-list { list-style: none; margin-top: 24px; }
-    .skill-item {
-      display: flex; align-items: center; gap: 12px;
-      padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
-      font-size: 1rem; color: #e4e4e7;
-    }
-    .skill-item:last-child { border-bottom: none; }
-    .skill-icon { color: var(--ai-blue); font-size: 0.85rem; }
-
-    /* --- TIMELINE (Experience) --- */
-    .timeline { position: relative; padding-left: 40px; }
-    .timeline::before {
-      content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px;
-      background: linear-gradient(to bottom, var(--ai-blue), var(--nebula-purple), transparent);
-      opacity: 0.5; border-radius: 2px;
-    }
-    .timeline-item { position: relative; margin-bottom: 60px; }
-    .timeline-dot {
-      position: absolute; width: 24px; height: 24px;
-      background: var(--space-black); border: 4px solid var(--ai-blue); border-radius: 50%;
-      left: -51px; top: 0; box-shadow: 0 0 20px var(--ai-blue);
-    }
-    .timeline-content {
-      background: var(--glass-surface); border: 1px solid var(--glass-border);
-      padding: 40px; border-radius: 32px; backdrop-filter: blur(20px);
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.05);
-      transition: all 0.4s ease;
-    }
-    .timeline-content:hover { border-color: rgba(255,255,255,0.15); transform: translateX(10px); }
-    .timeline-date {
-      display: inline-block; padding: 6px 16px; background: rgba(255,255,255,0.05);
-      border-radius: 20px; color: var(--text-muted); font-size: 0.85rem; font-weight: 600;
-      margin-bottom: 16px; font-family: monospace; letter-spacing: 1px;
-    }
-    .timeline-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
-    .timeline-company { color: var(--ai-blue); font-size: 1.1rem; margin-bottom: 20px; font-weight: 500; }
-
-    /* Badges */
-    .badge {
-      padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 600;
-      display: inline-block; margin-bottom: 24px; letter-spacing: 0.5px;
-      backdrop-filter: blur(10px);
-    }
-    .badge-gradient {
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-      color: var(--text-pure); box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
-    }
-    .badge-outline { background: transparent; color: var(--text-muted); border: 1px dashed var(--glass-border); }
-
-    .project-link {
-      display: inline-flex; align-items: center; gap: 8px; margin-top: 30px;
-      color: var(--text-pure); font-size: 1rem; font-weight: 600;
-      background: rgba(255,255,255,0.05); padding: 12px 24px; border-radius: 100px;
-      border: 1px solid var(--glass-border); transition: all 0.3s ease;
-    }
-    .project-link:hover {
-      background: var(--text-pure); color: var(--space-black); transform: scale(1.05);
+    .term-link:hover {
+      border-color: var(--cyan-glow); color: #fff; background: rgba(0,240,255,0.05);
+      box-shadow: 0 0 20px rgba(0,240,255,0.2);
     }
 
-    /* --- IMMERSIVE CONTACT BOX --- */
-    .contact-box {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 100%);
-      border: 1px solid var(--glass-border); border-radius: 40px;
-      padding: 100px 40px; text-align: center; max-width: 900px; margin: 0 auto;
-      position: relative; backdrop-filter: blur(40px);
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 0 30px 60px rgba(0,0,0,0.5);
-    }
-    .contact-box h3 { font-size: 4rem; letter-spacing: -2px; margin-bottom: 24px; line-height: 1; }
-    .social-links { display: flex; justify-content: center; gap: 24px; margin: 50px 0; flex-wrap: wrap; }
-    .social-link {
-      display: flex; align-items: center; gap: 12px; color: var(--text-pure);
-      padding: 16px 32px; border-radius: 100px; border: 1px solid var(--glass-border);
-      background: rgba(255,255,255,0.03); font-weight: 500; font-size: 1.1rem;
-      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .social-link:hover {
-      background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);
-      box-shadow: 0 15px 35px rgba(255,255,255,0.1); transform: translateY(-5px);
-    }
+    footer { text-align: center; padding: 40px 0; font-family: monospace; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 100px; }
 
-    footer {
-      text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 0.95rem;
-      border-top: 1px solid var(--glass-border); margin-top: 100px;
-    }
-
-    @media (max-width: 950px) {
-      .hero { flex-direction: column-reverse; text-align: center; padding-top: 160px; }
-      .hero-text h1 { font-size: 4rem; }
-      .hero-buttons { justify-content: center; }
-      nav { width: 90%; border-radius: 30px; gap: 15px; }
-      nav ul { display: none; }
-      .section-title { font-size: 2.5rem; }
-      .contact-box h3 { font-size: 2.8rem; }
+    @media (max-width: 960px) {
+      .hero-layout { grid-template-columns: 1fr; text-align: center; margin-top: 50px;}
+      .system-status { margin: 0 auto 30px; }
+      .hero-actions { justify-content: center; }
+      .glitch-title { font-size: 3.5rem; }
+      .avatar-container { width: 300px; height: 300px; }
+      .hud-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- EFFETS DE FOND -->
-<div class="ambient-canvas">
-  <div class="ambient-orb orb-1"></div>
-  <div class="ambient-orb orb-2"></div>
-  <div class="ambient-orb orb-3"></div>
-</div>
-<div class="noise-overlay"></div>
+<!-- ENVIRONNEMENT 3D -->
+<div class="cyber-grid"></div>
+<div class="grid-fade"></div>
 
-<!-- DYNAMIC NAVBAR -->
+<!-- HUD NAVBAR -->
 <nav>
-  <a href="index.html" class="logo">Mehdi<span style="color: var(--ai-blue);">.</span></a>
-  <ul>
-    <li><a href="#about">Overview</a></li>
-    <li><a href="#skills">Capacités</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#experience">Parcours</a></li>
-    <li><a href="#projects">Écosystème</a></li>
+  <a href="#" class="hud-logo">SYS_ARCHITECT</a>
+  <ul class="hud-links">
+    <li><a href="#about">Specs</a></li>
+    <li><a href="#skills">Matrice</a></li>
+    <li><a href="#certifications">Logs</a></li>
+    <li><a href="#experience">Timeline</a></li>
+    <li><a href="#projects">Déploiements</a></li>
   </ul>
-  <a class="cv-btn" href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank">Accès CV</a>
+  <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="hud-btn">[ EXTRAIRE_CV ]</a>
 </nav>
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-text">
-    <div class="hero-badge">
-      <div class="dot"></div> Systèmes Opérationnels
-    </div>
-    <h1>Mehdi<br><span class="text-glow">MAZOUZ</span></h1>
-    <h2>Architecte d'Infrastructures Cloud & Systèmes</h2>
-    <p>Je conçois, déploie et sécurise l'avenir des systèmes d'information. Maîtrise des environnements hybrides, automatisation de l'infrastructure as code (IaC) et résilience à grande échelle.</p>
-    
-    <div class="hero-buttons">
-      <a href="mailto:mehdimazouz78@gmail.com" class="btn-super">
-        <i class="fa-solid fa-bolt"></i> Initier un déploiement
-      </a>
-      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="btn-glass">
-        <i class="fa-brands fa-linkedin"></i> Réseau
-      </a>
-      <a href="https://github.com/m6bnt" target="_blank" class="btn-glass">
-        <i class="fa-brands fa-github"></i> Dépôts
-      </a>
-    </div>
-  </div>
-  <div class="hero-photo-wrapper">
-   <img src="assets/images/ma_photo.png" alt="Photo Mehdi MAZOUZ" />
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section">
-  <h3 class="section-title">Vision & <span class="text-glow">Architecture</span></h3>
-
-  <div class="bento-grid">
-    <div class="glass-card">
-      <i class="fa-solid fa-layer-group card-icon"></i>
-      <h4 class="card-title">Fondations Solides</h4>
-      <p class="card-desc">Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je fusionne la théorie architecturale avec une passion prononcée pour la virtualisation et l'écosystème Cloud.</p>
-    </div>
-    <div class="glass-card">
-      <i class="fa-solid fa-microchip card-icon"></i>
-      <h4 class="card-title">Ingénierie & Laboratoire</h4>
-      <p class="card-desc">Mon approche est duale : pilotage rigoureux de projets critiques en entreprise et expérimentation continue des technologies émergentes dans mon propre laboratoire de test.</p>
-    </div>
-    <div class="glass-card">
-      <i class="fa-solid fa-shield-halved card-icon"></i>
-      <h4 class="card-title">Résilience Absolue</h4>
-      <p class="card-desc">L'automatisation DevOps, la supervision proactive et la sécurité réseau ne sont pas des options. L'objectif est de concevoir des systèmes infaillibles où la complexité devient invisible.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" class="section">
-  <h3 class="section-title">Matrice <span class="text-glow">Technologique</span></h3>
-
-  <div class="bento-grid">
-    <div class="glass-card">
-      <h4 class="card-title">Compute & Cloud</h4>
-      <p class="card-desc" style="margin-bottom: 20px;">Orchestration des environnements de production.</p>
-      <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Windows Server & Active Directory</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Microsoft 365 & Entra ID</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> VMware ESXi / vSphere</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Microsoft Azure Cloud</li>
-      </ul>
+<div class="container">
+  
+  <!-- HERO SECTION -->
+  <section class="section hero-layout">
+    <div class="hero-content">
+      <div class="system-status">
+        <div class="blink"></div> CONNECTION_ESTABLISHED : EU-WEST-3
+      </div>
+      <h1 class="glitch-title" data-text="Mehdi MAZOUZ">Mehdi MAZOUZ</h1>
+      <h2 class="hero-subtitle">Ingénierie Cloud & <span>Architecture Systèmes</span></h2>
+      <p>Conception, automatisation et sécurisation d'infrastructures hybrides critiques. Maîtrise des écosystèmes complexes via l'Infrastructure as Code, l'orchestration de conteneurs et la supervision proactive.</p>
+      
+      <div class="hero-actions">
+        <a href="#projects" class="btn-holo">Initialiser la séquence</a>
+      </div>
     </div>
 
-    <div class="glass-card">
-      <h4 class="card-title">Network & Sécurité</h4>
-      <p class="card-desc" style="margin-bottom: 20px;">Sécurisation des flux et étanchéité des données.</p>
-      <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Firewalling avancé & pfSense</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Tunnels VPN IPsec / OpenVPN</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Protocoles (TCP/IP, DNS, DHCP)</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Switching & VLAN (Meraki/Cisco)</li>
-      </ul>
+    <div class="avatar-container" id="holo-avatar">
+      <div class="avatar-frame">
+        <div class="scanner-line"></div>
+        <img src="assets/images/ma_photo.png" alt="Mehdi Mazouz">
+      </div>
     </div>
+  </section>
 
-    <div class="glass-card">
-      <h4 class="card-title">DevOps & Observabilité</h4>
-      <p class="card-desc" style="margin-bottom: 20px;">Automatisation et supervision proactive.</p>
-      <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Terraform, Ansible, Kubernetes</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Git & Intégration Continue (CI/CD)</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Zabbix & Monitoring centralisé</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> NAS & Stratégies PRA/PCA</li>
-      </ul>
+  <!-- OVERVIEW -->
+  <section id="about" class="section">
+    <h3 class="section-heading">Spécifications Core</h3>
+    <div class="bento-grid">
+      <div class="holo-card">
+        <div class="card-icon-wrapper"><i class="fa-solid fa-microchip"></i></div>
+        <h4>Architecture Résiliente</h4>
+        <p>Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information. Conception d'infrastructures capables d'encaisser la charge et de garantir la continuité d'activité (PCA/PRA).</p>
+      </div>
+      <div class="holo-card">
+        <div class="card-icon-wrapper"><i class="fa-solid fa-code-branch"></i></div>
+        <h4>Automatisation Totale</h4>
+        <p>L'intervention manuelle est un risque. Mon approche repose sur l'automatisation DevOps (Ansible, Terraform) pour des déploiements standardisés et reproductibles.</p>
+      </div>
+      <div class="holo-card">
+        <div class="card-icon-wrapper"><i class="fa-solid fa-shield-virus"></i></div>
+        <h4>Sécurité & Observabilité</h4>
+        <p>Intégration de la sécurité dès la conception (Security by Design). Mise en place de réseaux étanches (VLAN, IPsec) et de monitoring granulaire (Zabbix) pour une visibilité absolue.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="glass-card">
-      <h4 class="card-title">Gouvernance & ITSM</h4>
-      <p class="card-desc" style="margin-bottom: 20px;">Alignement stratégique et gestion des services.</p>
-      <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Pilotage Agile (Scrum, Kanban)</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Gestion des incidents (EasyVista, GLPI)</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Architecture SI & Cartographie</li>
-        <li class="skill-item"><i class="fa-solid fa-circle-check skill-icon"></i> Pilotage des prestataires IT</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section id="certifications" class="section">
-  <h3 class="section-title">Validation des <span class="text-glow">Acquis</span></h3>
-
-  <div class="bento-grid">
-    <div class="glass-card">
-      <span class="badge badge-gradient">Dataiku</span>
-      <h4 class="card-title">Advanced Designer</h4>
-      <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="project-link">Authentifier <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-    </div>
-    
-    <div class="glass-card">
-      <span class="badge badge-gradient">Dataiku</span>
-      <h4 class="card-title">Core Designer</h4>
-      <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="project-link">Authentifier <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-    </div>
-
-    <div class="glass-card">
-      <span class="badge badge-gradient">Dataiku</span>
-      <h4 class="card-title">ML Practitioner</h4>
-      <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="project-link">Authentifier <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-    </div>
-
-    <div class="glass-card">
-      <span class="badge badge-gradient">Dataiku</span>
-      <h4 class="card-title">MLOps Practitioner</h4>
-      <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="project-link">Authentifier <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-    </div>
-
-    <div class="glass-card">
-      <span class="badge badge-outline">Cisco</span>
-      <h4 class="card-title">CCNA (200-301)</h4>
-      <p class="card-desc" style="margin-top: auto; font-weight: 500;"><i class="fa-solid fa-rotate fa-spin"></i> Traitement en cours</p>
-    </div>
-
-    <div class="glass-card">
-      <span class="badge badge-outline">ITIL</span>
-      <h4 class="card-title">ITIL 4 Foundation</h4>
-      <p class="card-desc" style="margin-top: auto; font-weight: 500;"><i class="fa-solid fa-rotate fa-spin"></i> Traitement en cours</p>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience" class="section">
-  <h3 class="section-title">Évolution du <span class="text-glow">Noyau</span></h3>
-
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-date">OCT. 2024 — OCT. 2026</div>
-        <h4 class="timeline-title">Chef de projet SI (Alternance)</h4>
-        <p class="timeline-company">Grand Paris Seine & Oise (GPS&O)</p>
-        <ul class="skill-list">
-          <li class="skill-item"><i class="fa-solid fa-circle-dot skill-icon"></i> <span><strong>Pilotage Cloud (SaaS) :</strong> Conduite de projets SI critiques dans une architecture 100% Cloud.</span></li>
-          <li class="skill-item"><i class="fa-solid fa-circle-dot skill-icon"></i> <span><strong>Urbanisation & ITSM :</strong> Cartographie complexe (Power BI) et administration de la plateforme (EasyVista).</span></li>
-          <li class="skill-item"><i class="fa-solid fa-circle-dot skill-icon"></i> <span><strong>Cybersécurité & MCO :</strong> Maintien opérationnel, pilotage des éditeurs et intégration stricte des normes de sécurité.</span></li>
+  <!-- SKILLS MATRIX -->
+  <section id="skills" class="section">
+    <h3 class="section-heading">Matrice d'Expertise</h3>
+    <div class="bento-grid">
+      <div class="holo-card">
+        <h4>Compute & Identity</h4>
+        <ul class="tech-list">
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Windows Server & Active Directory</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Microsoft 365 & Entra ID</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> VMware ESXi / vSphere</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Microsoft Azure Cloud</li>
+        </ul>
+      </div>
+      <div class="holo-card">
+        <h4>Network & SecOps</h4>
+        <ul class="tech-list">
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Pare-feux & Clusters pfSense</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Routage, VLANs & Tunnels IPsec</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Services Core (TCP/IP, DNS, DHCP)</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Sécurisation des accès distants</li>
+        </ul>
+      </div>
+      <div class="holo-card">
+        <h4>DevOps & Orchestration</h4>
+        <ul class="tech-list">
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> IaC avec Terraform</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Configuration via Ansible</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Cluster Kubernetes & Conteneurs</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Zabbix & Stockage NAS</li>
+        </ul>
+      </div>
+      <div class="holo-card">
+        <h4>ITSM & Agilité</h4>
+        <ul class="tech-list">
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Scrum, Kanban & JIRA</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Processus ITIL & Gestion d'incidents</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Cartographie du SI & BPMN</li>
+          <li class="tech-item"><i class="fa-solid fa-play tech-icon"></i> Démarches Green IT & EBIOS</li>
         </ul>
       </div>
     </div>
+  </section>
 
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background: var(--bg-dark); border-color: var(--text-muted); box-shadow: none;"></div>
-      <div class="timeline-content" style="background: rgba(255,255,255,0.01);">
-        <div class="timeline-date">SEPT. 2024 — SEPT. 2026</div>
-        <h4 class="timeline-title">Mastère Expert Informatique & SI</h4>
-        <p class="card-desc">EPSI, Courbevoie — Spécialité Infrastructure IT</p>
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="section">
+    <h3 class="section-heading">Validation Protocoles</h3>
+    <div class="bento-grid">
+      <div class="holo-card" style="padding: 30px;">
+        <span class="neon-badge badge-data">DATAIKU_CERTIFIED</span>
+        <h4 style="margin-bottom: 5px;">Advanced Designer</h4>
+        <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="action-link">Run_Verification <i class="fa-solid fa-angle-right"></i></a>
+      </div>
+      <div class="holo-card" style="padding: 30px;">
+        <span class="neon-badge badge-data">DATAIKU_CERTIFIED</span>
+        <h4 style="margin-bottom: 5px;">Core Designer</h4>
+        <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="action-link">Run_Verification <i class="fa-solid fa-angle-right"></i></a>
+      </div>
+      <div class="holo-card" style="padding: 30px;">
+        <span class="neon-badge badge-data">DATAIKU_CERTIFIED</span>
+        <h4 style="margin-bottom: 5px;">ML Practitioner</h4>
+        <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="action-link">Run_Verification <i class="fa-solid fa-angle-right"></i></a>
+      </div>
+      <div class="holo-card" style="padding: 30px;">
+        <span class="neon-badge badge-data">DATAIKU_CERTIFIED</span>
+        <h4 style="margin-bottom: 5px;">MLOps Practitioner</h4>
+        <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="action-link">Run_Verification <i class="fa-solid fa-angle-right"></i></a>
+      </div>
+      <div class="holo-card" style="padding: 30px;">
+        <span class="neon-badge badge-net">CISCO_SYSTEMS</span>
+        <h4 style="margin-bottom: 5px;">CCNA (200-301)</h4>
+        <p style="margin-top: 15px; font-family: monospace; color: var(--text-muted);">[ STATUS: PROCESSING... ]</p>
+      </div>
+      <div class="holo-card" style="padding: 30px;">
+        <span class="neon-badge badge-net">AXELOS_ITIL</span>
+        <h4 style="margin-bottom: 5px;">ITIL 4 Foundation</h4>
+        <p style="margin-top: 15px; font-family: monospace; color: var(--text-muted);">[ STATUS: PROCESSING... ]</p>
       </div>
     </div>
+  </section>
 
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background: var(--bg-dark); border-color: var(--text-muted); box-shadow: none;"></div>
-      <div class="timeline-content" style="background: rgba(255,255,255,0.01);">
-        <div class="timeline-date">DÉC. 2022 — SEPT. 2023</div>
-        <h4 class="timeline-title">Licence Sciences & Tech Informatiques</h4>
-        <p class="card-desc">Conservatoire National des Arts et Métiers (CNAM)</p>
+  <!-- TIMELINE -->
+  <section id="experience" class="section">
+    <h3 class="section-heading">Data Stream</h3>
+    
+    <div class="stream-timeline">
+      <div class="stream-line"></div>
+      <div class="stream-particle"></div>
+
+      <div class="stream-node">
+        <div class="node-point"></div>
+        <div class="node-date">OCT. 2024 - OCT. 2026</div>
+        <h4 class="node-title">Chef de projet SI (Alternance)</h4>
+        <div class="node-corp"><i class="fa-solid fa-server"></i> Grand Paris Seine & Oise (GPS&O)</div>
+        <ul class="tech-list">
+          <li class="tech-item"><i class="fa-solid fa-terminal tech-icon"></i> <span>Pilotage & Déploiement Cloud (SaaS) : Conduite de projets SI dans une architecture cloud-native.</span></li>
+          <li class="tech-item"><i class="fa-solid fa-terminal tech-icon"></i> <span>Urbanisation SI & ITSM : Administration plateforme EasyVista et cartographie via Power BI.</span></li>
+          <li class="tech-item"><i class="fa-solid fa-terminal tech-icon"></i> <span>Maintien en Condition Opérationnelle & Sécurité : Support matériel/applicatif et pilotage prestataires.</span></li>
+        </ul>
+      </div>
+
+      <div class="stream-node">
+        <div class="node-point"></div>
+        <div class="node-date">SEPT. 2024 - SEPT. 2026</div>
+        <h4 class="node-title">Mastère Expert Informatique & SI</h4>
+        <div class="node-corp">EPSI — Spécialité Infrastructure IT</div>
+      </div>
+
+      <div class="stream-node">
+        <div class="node-point"></div>
+        <div class="node-date">DÉC. 2022 - SEPT. 2023</div>
+        <h4 class="node-title">Licence Sciences & Tech Informatiques</h4>
+        <div class="node-corp">Conservatoire National des Arts et Métiers (CNAM)</div>
       </div>
     </div>
+  </section>
 
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background: var(--bg-dark); border-color: var(--text-muted); box-shadow: none;"></div>
-      <div class="timeline-content" style="background: rgba(255,255,255,0.01);">
-        <div class="timeline-date">NOV. 2021 — JUIN 2022</div>
-        <h4 class="timeline-title">Titre pro Tech. Supérieur Systèmes & Réseaux</h4>
-        <p class="card-desc">WebForce3, Paris 18</p>
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <h3 class="section-heading">Déploiements Majeurs</h3>
+    <div class="bento-grid">
+      <div class="holo-card">
+        <span class="neon-badge badge-net">LAB_ENV</span>
+        <h4>Infrastructure SI Hybride Sécurisée</h4>
+        <p>Architecture multi-sites. Déploiement ESXi, clusters de pare-feux pfSense en HA, supervision Zabbix intégrale et stratégie PRA.</p>
+        <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="action-link">Access_Terminal <i class="fa-solid fa-angle-right"></i></a>
+      </div>
+      <div class="holo-card">
+        <span class="neon-badge badge-net">LAB_ENV</span>
+        <h4>Architecture & Gouvernance SI</h4>
+        <p>Analyse et urbanisation d’un SI pour l'alignement métier. Implémentation des standards EBIOS, modélisation BPMN et Green IT.</p>
+        <a href="projects/architecture-si/architecture-si.html" class="action-link">Access_Terminal <i class="fa-solid fa-angle-right"></i></a>
+      </div>
+      <div class="holo-card">
+        <span class="neon-badge badge-net">LAB_ENV</span>
+        <h4>Gestion de Projet IT Agile & Cloud</h4>
+        <p>Pipeline DevOps complet : Infrastructure as Code (Terraform), masterisation (Packer), configuration (Ansible) et orchestration (Kubernetes).</p>
+        <a href="projects/agile-projet/agile-gestion-projet.html" class="action-link">Access_Terminal <i class="fa-solid fa-angle-right"></i></a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="section">
-  <h3 class="section-title">Déploiements <span class="text-glow">Majeurs</span></h3>
+  <!-- CONTACT TERMINAL -->
+  <section id="contact" class="section">
+    <div class="terminal-box">
+      <h3 style="font-size: 3rem; margin-bottom: 20px; font-weight: 900; letter-spacing: -1px;">Etablir la <span style="color: var(--cyan-glow);">Connexion</span></h3>
+      <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+        Besoin d'optimiser une infrastructure, de sécuriser des flux ou d'automatiser des déploiements complexes ? Le canal est ouvert.
+      </p>
 
-  <div class="bento-grid">
-    <div class="glass-card">
-      <span class="badge badge-gradient" style="align-self: flex-start;">Lab Universitaire</span>
-      <h4 class="card-title" style="margin-top: 20px;">Infrastructure SI Hybride Sécurisée</h4>
-      <p class="card-desc">Conception d'une architecture multi-sites ultra-résiliente. Déploiement ESXi, clusters pfSense HA, supervision Zabbix intégrale et stratégie de bascule PRA.</p>
-      <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="project-link">Ouvrir le dossier <i class="fa-solid fa-chevron-right"></i></a>
+      <div class="term-links">
+        <a href="mailto:mehdimazouz78@gmail.com" class="term-link">
+          <i class="fa-solid fa-envelope"></i> Transmission (Email)
+        </a>
+        <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="term-link">
+          <i class="fa-brands fa-linkedin"></i> Réseau (LinkedIn)
+        </a>
+        <a href="https://github.com/m6bnt" target="_blank" class="term-link">
+          <i class="fa-brands fa-github"></i> Sources (GitHub)
+        </a>
+      </div>
+      
+      <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="hud-btn" style="padding: 12px 30px; font-size: 1rem;">[ TELECHARGER_DATA_CV ]</a>
     </div>
+  </section>
 
-    <div class="glass-card">
-      <span class="badge badge-gradient" style="align-self: flex-start;">Lab Universitaire</span>
-      <h4 class="card-title" style="margin-top: 20px;">Architecture & Gouvernance SI</h4>
-      <p class="card-desc">Audit, urbanisation et modélisation stratégique d’un SI pour l'alignement métier. Implémentation des standards EBIOS, BPMN et directives Green IT.</p>
-      <a href="projects/architecture-si/architecture-si.html" class="project-link">Ouvrir le dossier <i class="fa-solid fa-chevron-right"></i></a>
-    </div>
+  <footer>
+    > SYSTEM_HALTED // 2026 Mehdi MAZOUZ - Quantum Architecture.
+  </footer>
 
-    <div class="glass-card">
-      <span class="badge badge-gradient" style="align-self: flex-start;">Lab Universitaire</span>
-      <h4 class="card-title" style="margin-top: 20px;">Gestion de Projet IT Agile & Cloud</h4>
-      <p class="card-desc">Pilotage Scrum couplé à une chaîne DevOps complète : Infrastructure as Code (Terraform), masterisation (Packer), configuration (Ansible) et orchestration (K8s).</p>
-      <a href="projects/agile-projet/agile-gestion-projet.html" class="project-link">Ouvrir le dossier <i class="fa-solid fa-chevron-right"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section">
-  <div class="contact-box">
-    <h3 class="text-glow">Initialiser la séquence.</h3>
-    <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: 0 auto; line-height: 1.8;">
-      À la recherche d'un architecte pour scaler votre infrastructure, sécuriser vos données ou repenser votre gouvernance IT ? Le réseau est ouvert.
-    </p>
-
-    <div class="social-links">
-      <a href="mailto:mehdimazouz78@gmail.com" class="social-link">
-        <i class="fa-solid fa-envelope"></i> Transmettre un message
-      </a>
-      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-link">
-        <i class="fa-brands fa-linkedin"></i> Connecter via LinkedIn
-      </a>
-      <a href="https://github.com/m6bnt" target="_blank" class="social-link">
-        <i class="fa-brands fa-github"></i> Explorer les dépôts
-      </a>
-    </div>
-
-    <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="btn-super" style="margin-top: 20px;">
-      <i class="fa-solid fa-download"></i> Extraire le CV (PDF)
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Mehdi MAZOUZ — Ingénierie Cloud & Systèmes d'Information.</p>
-  <a href="#" style="color: var(--text-pure); margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none; padding: 10px 20px; background: rgba(255,255,255,0.05); border-radius: 100px; transition: background 0.3s;">
-    <i class="fa-solid fa-arrow-up"></i> Top
-  </a>
-</footer>
+</div>
 
 <script>
-// Animation fluide pour la navbar et les sections
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("nav ul li a");
+// --- 3D TILT EFFECT FOR HOLO CARDS ---
+const cards = document.querySelectorAll('.holo-card, .avatar-frame');
 
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 300;
-    const sectionHeight = section.clientHeight;
-    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active");
-    }
-  });
-});
-
-// Suivi de la souris pour l'effet de lueur interne (Inner Glow) des cartes
-document.querySelectorAll('.glass-card').forEach(card => {
+cards.forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
+    
+    // Calculate rotation limits (max 10 degrees)
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
   });
 });
 </script>
