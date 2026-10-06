@@ -142,6 +142,13 @@
     }
     .btn-glass:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
 
+    /* LINKEDIN PREMIUM GOLD STYLE */
+    .linkedin-premium {
+      color: #e8a846 !important;
+      filter: drop-shadow(0 0 8px rgba(232, 168, 70, 0.6));
+      transition: all 0.3s ease;
+    }
+
     /* Hero Image */
     .hero-visual { position: relative; flex-shrink: 0; z-index: 10; }
     .hero-visual img {
@@ -161,18 +168,8 @@
     /* --- SPOTLIGHT BENTO CARDS --- */
     .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
     
-    /* Masonry style grid specifically for skills section */
-    .skills-grid {
-      display: block; /* Fallback */
-      column-count: 3;
-      column-gap: 24px;
-    }
-    .skills-grid .spotlight-card {
-      break-inside: avoid; /* Prevent cards from splitting across columns */
-      margin-bottom: 24px;
-      display: inline-block;
-      width: 100%;
-    }
+    /* 2x2 Grid explicitly for Skills section to avoid empty spaces */
+    .bento-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     
     .spotlight-card {
       background: rgba(255, 255, 255, 0.01);
@@ -301,10 +298,7 @@
       nav ul { display: none; }
       .section-title { font-size: 2.8rem; }
       .contact-panel h3 { font-size: 3rem; }
-      .skills-grid { column-count: 1; } /* Fallback to single column on mobile */
-    }
-    @media (min-width: 951px) and (max-width: 1200px) {
-      .skills-grid { column-count: 2; }
+      .bento-grid-2 { grid-template-columns: 1fr; } /* Fallback en 1 colonne sur mobile */
     }
   </style>
 </head>
@@ -348,7 +342,7 @@
           </a>
         </div>
         <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="btn-glass">
-          <i class="fa-brands fa-linkedin"></i> LinkedIn
+          <i class="fa-brands fa-linkedin linkedin-premium"></i> LinkedIn
         </a>
         <a href="https://github.com/m6bnt" target="_blank" class="btn-glass">
           <i class="fa-brands fa-github"></i> GitHub
@@ -399,8 +393,8 @@
       <h3 class="section-title">Technologies & <span class="text-plasma">Outils</span></h3>
     </div>
 
-    <!-- Modified layout for masonry effect -->
-    <div class="skills-grid cards-wrapper">
+    <!-- Grille 2x2 parfaite pour éviter les vides -->
+    <div class="bento-grid-2 cards-wrapper">
       
       <div class="spotlight-card">
         <div class="card-content">
@@ -416,24 +410,24 @@
 
       <div class="spotlight-card">
         <div class="card-content">
-          <h4 class="card-title">Gouvernance & ITSM</h4>
-          <ul class="data-list">
-            <li><i class="fa-solid fa-arrow-right"></i> Pilotage Agile (Scrum, Kanban)</li>
-            <li><i class="fa-solid fa-arrow-right"></i> Gestion d'incidents (EasyVista, GLPI)</li>
-            <li><i class="fa-solid fa-arrow-right"></i> Cartographie du SI & BPMN</li>
-            <li><i class="fa-solid fa-arrow-right"></i> Démarches Green IT & EBIOS</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="spotlight-card">
-        <div class="card-content">
           <h4 class="card-title">Network & SecOps</h4>
           <ul class="data-list">
             <li><i class="fa-solid fa-arrow-right"></i> Pare-feux & Clusters pfSense</li>
             <li><i class="fa-solid fa-arrow-right"></i> Routage, VLANs & Tunnels IPsec</li>
             <li><i class="fa-solid fa-arrow-right"></i> Services Core (TCP/IP, DNS, DHCP)</li>
             <li><i class="fa-solid fa-arrow-right"></i> Switching & Sécurité (Meraki/Cisco)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="spotlight-card">
+        <div class="card-content">
+          <h4 class="card-title">Gouvernance & ITSM</h4>
+          <ul class="data-list">
+            <li><i class="fa-solid fa-arrow-right"></i> Pilotage Agile (Scrum, Kanban)</li>
+            <li><i class="fa-solid fa-arrow-right"></i> Gestion d'incidents (EasyVista, GLPI)</li>
+            <li><i class="fa-solid fa-arrow-right"></i> Cartographie du SI & BPMN</li>
+            <li><i class="fa-solid fa-arrow-right"></i> Démarches Green IT & EBIOS</li>
           </ul>
         </div>
       </div>
@@ -605,7 +599,7 @@
           <i class="fa-solid fa-envelope" style="color: var(--ai-cyan);"></i> Transmission (Mail)
         </a>
         <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-pill">
-          <i class="fa-brands fa-linkedin" style="color: var(--ai-purple);"></i> Réseau LinkedIn
+          <i class="fa-brands fa-linkedin linkedin-premium"></i> Réseau LinkedIn
         </a>
         <a href="https://github.com/m6bnt" target="_blank" class="social-pill">
           <i class="fa-brands fa-github" style="color: var(--text-main);"></i> Dépôts GitHub
