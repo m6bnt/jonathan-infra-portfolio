@@ -123,6 +123,11 @@
       padding: 50px;
       margin-bottom: 40px;
       backdrop-filter: blur(20px);
+      transition: transform 0.3s ease;
+    }
+
+    .content-card:hover {
+      transform: translateY(-5px);
     }
     
     .content-card p {
@@ -144,30 +149,6 @@
       color: var(--ai-cyan);
       font-size: 0.85rem;
       margin-top: 4px;
-    }
-
-    /* Images */
-    .project-image {
-      width: 100%;
-      border-radius: 16px;
-      border: 1px solid var(--glass-border);
-      margin-top: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    
-    .image-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .image-caption {
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-top: 15px;
-      font-family: 'JetBrains Mono', monospace;
     }
 
     /* --- TERMINAL FOOTER / CONTACT --- */
@@ -199,7 +180,6 @@
       .hero h1 { font-size: 3rem; }
       nav { width: calc(100% - 40px); justify-content: space-between; }
       nav ul { display: none; }
-      .image-grid { grid-template-columns: 1fr; }
       .content-card { padding: 30px; }
     }
   </style>
@@ -213,11 +193,11 @@
   <a href="../../index.html" class="nav-logo">SYS_CORE</a>
   <ul>
     <li><a href="#contexte">Contexte</a></li>
-    <li><a href="#schema">Schéma SI</a></li>
     <li><a href="#securite">Sécurité</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#supervision">Supervision</a></li>
     <li><a href="#pra">PCA/PRA</a></li>
+    <li><a href="#datacenter">Datacenter & Cloud</a></li>
   </ul>
 </nav>
 
@@ -228,7 +208,7 @@
       <div class="indicator"></div> LAB UNIVERSITAIRE
     </div>
     <h1>Infrastructure SI Hybride Sécurisée</h1>
-    <p>Conception d'une infrastructure multi-sites sécurisée pour une entreprise fictive, intégrant virtualisation, haute disponibilité et accès nomade, avec migration progressive vers le cloud.</p>
+    <p>Conception d'une infrastructure multi-sites sécurisée pour une entreprise fictive (ATP), intégrant virtualisation, haute disponibilité et accès nomade, avec migration progressive vers le cloud[cite: 45].</p>
     
     <div class="action-group">
       <a href="../../index.html" class="btn-glass">
@@ -245,27 +225,13 @@
       <div class="section-header">
         <h3 class="section-title">Contexte</h3>
       </div>
-      <p>Ce projet vise à concevoir une infrastructure multi-sites sécurisée pour une entreprise fictive, en centralisant les services critiques, assurant la haute disponibilité et permettant une migration progressive vers le cloud. L'objectif est de garantir la continuité de service tout en facilitant l'accès sécurisé pour les utilisateurs nomades et en optimisant la supervision et la gestion de l'infrastructure.</p>
+      <p>L'association de Tennis Professionals (ATP) rencontre des défis majeurs dans l'unification de son système d'information. Avec son siège mondial à Londres et des bureaux régionaux en Floride, Monaco et Sidney, l'ATP doit gérer la difficulté d'accès aux outils informatiques pour ses nombreux salariés nomades[cite: 45]. Ce projet vise à centraliser les applications au siège londonien, avec une perspective d'externalisation dans le cloud sur le moyen terme[cite: 45].</p>
       <ul class="data-list">
-        <li>Infrastructure virtualisée sur ESXi avec gestion centralisée</li>
-        <li>Interconnexion sécurisée via VPN IPsec multi-sites</li>
-        <li>Accès distant protégé pour les utilisateurs nomades</li>
-        <li>Supervision et alerting centralisés pour une visibilité complète</li>
-        <li>PCA et PRA pour assurer la continuité et la reprise d'activité</li>
+        <li>Mise en place de l'ensemble de l'infrastructure des différents sites (UK, US, MONACO, AUSTRALIE)[cite: 45]</li>
+        <li>Configuration du PRA (Plan de Reprise d'Activité) et de l'hébergement Cloud sur le datacenter[cite: 45]</li>
+        <li>Interconnexion sécurisée via des tunnels VPN site-à-site (pfSense)[cite: 45]</li>
+        <li>Supervision de l'infrastructure (monitoring avec Zabbix)[cite: 45]</li>
       </ul>
-    </div>
-  </section>
-
-  <section id="schema" class="section">
-    <div class="content-card">
-      <div class="section-header">
-        <h3 class="section-title">Schéma de l'Infrastructure SI</h3>
-      </div>
-      <p>Architecture multi-sites composée de cinq sites interconnectés, avec des clusters pfSense assurant la redondance et la haute disponibilité, et des tunnels VPN IPsec sécurisés garantissant la confidentialité et l'intégrité des échanges entre les sites et pour les utilisateurs nomades. Chaque site intègre des services virtualisés et un monitoring centralisé pour optimiser la gestion et la continuité de l'infrastructure.</p>
-      
-      <!-- Remplacez le src par le bon chemin de votre image -->
-      <img src="../../assets/images/schema_infra.png" alt="Schéma de l'infrastructure" class="project-image">
-      <div class="image-caption">Vue globale de l'architecture SI avec site principal, PRA et Datacenter cloud</div>
     </div>
   </section>
 
@@ -274,22 +240,13 @@
       <div class="section-header">
         <h3 class="section-title">Sécurité & Réseau</h3>
       </div>
-      <p>L'infrastructure multi-sites repose sur une architecture sécurisée et résiliente, combinant firewalls redondants, tunnels VPN et segmentation réseau pour protéger les services et les utilisateurs nomades.</p>
+      <p>L'infrastructure multi-sites repose sur une architecture sécurisée et résiliente, combinant firewalls redondants, tunnels VPN et segmentation réseau[cite: 46, 52].</p>
       <ul class="data-list">
-        <li>Clusters pfSense en haute disponibilité avec CARP VIP</li>
-        <li>Tunnels VPN IPsec sécurisant l'interconnexion multi-sites</li>
-        <li>OpenVPN pour un accès distant protégé</li>
-        <li>Segmentation LAN / WAN / PRA pour isoler les services critiques</li>
-        <li>Filtrage réseau avancé par règles restrictives</li>
-        <li>Supervision centralisée et alerting pour le trafic et la sécurité</li>
+        <li>Chaque site est équipé d'un cluster de pare-feux pfSense configuré en haute disponibilité (HA) via le protocole CARP[cite: 46].</li>
+        <li>Une adresse VIP CARP est partagée entre l'instance principale (Master) et secondaire (Backup), servant de point d'accès unique[cite: 46].</li>
+        <li>Une interface SYNC permet de synchroniser les configurations et les états entre les deux équipements pfSense[cite: 46].</li>
+        <li>Un utilisateur externe peut accéder aux services via un tunnel VPN configuré sur le pare-feu de Londres (OpenVPN), garantissant un accès sécurisé à distance[cite: 48].</li>
       </ul>
-
-      <!-- Remplacez le src par les bons chemins de vos images -->
-      <img src="../../assets/images/firewall_rules.png" alt="Règles Firewall" class="project-image">
-      <div class="image-caption">Règles de filtrage réseau sur le firewall pfSense</div>
-
-      <img src="../../assets/images/vpn_ipsec.png" alt="Tunnels VPN IPsec" class="project-image">
-      <div class="image-caption">Tunnels VPN IPsec entre les sites ATP</div>
     </div>
   </section>
 
@@ -298,28 +255,13 @@
       <div class="section-header">
         <h3 class="section-title">Services & Plateformes</h3>
       </div>
-      <p>L'infrastructure fournit des services critiques et des plateformes centralisées pour les utilisateurs, en garantissant accessibilité, redondance et continuité des données entre les sites.</p>
+      <p>L'infrastructure fournit des services critiques et des plateformes centralisées, garantissant accessibilité, redondance et continuité des données entre les sites[cite: 49, 50, 51].</p>
       <ul class="data-list">
-        <li>Active Directory multi-sites avec DNS redondant pour la gestion des identités</li>
-        <li>Bureaux virtuels RDP offrant un accès sécurisé aux utilisateurs nomades</li>
-        <li>Stockage cloud interne via OpenMediaVault pour centraliser les données</li>
-        <li>Synchronisation automatique des données vers le site PRA pour la continuité</li>
+        <li>Le contrôleur de domaine principal a été installé sur le site de Londres[cite: 49].</li>
+        <li>Un contrôleur de domaine secondaire a été mis en place sur le site de Ponte Vedra, assurant la redondance du service AD[cite: 49].</li>
+        <li>Le serveur Nextcloud, installé sur le Datacenter, permet la centralisation et le partage des fichiers pour tous les sites[cite: 50].</li>
+        <li>Un serveur de bureau virtuel a été mis en place (VM-RDS-UK) pour permettre aux utilisateurs d'accéder à leur environnement de travail à distance via le protocole RDP[cite: 51].</li>
       </ul>
-
-      <!-- Remplacez le src par les bons chemins de vos images -->
-      <div class="image-grid">
-        <div>
-          <img src="../../assets/images/ad.png" alt="Active Directory" class="project-image" style="margin-top:0;">
-          <div class="image-caption">Gestion des identités via AD</div>
-        </div>
-        <div>
-          <img src="../../assets/images/openvpn.png" alt="Accès VPN" class="project-image" style="margin-top:0;">
-          <div class="image-caption">Accès distant sécurisé (OpenVPN)</div>
-        </div>
-      </div>
-
-      <img src="../../assets/images/omv.png" alt="OpenMediaVault" class="project-image">
-      <div class="image-caption">Plateforme de stockage cloud et partage de fichiers</div>
     </div>
   </section>
 
@@ -328,13 +270,11 @@
       <div class="section-header">
         <h3 class="section-title">Supervision</h3>
       </div>
-      <p>L'infrastructure est surveillée en continu pour assurer disponibilité et performance, grâce à une supervision centralisée et des alertes proactives sur l'ensemble des services critiques.</p>
+      <p>Le serveur de supervision a été mis en place avec Zabbix, avec un agent Zabbix installé sur le serveur du siège de Londres[cite: 50]. Zabbix permet de voir l'état des machines et d'envoyer des alertes mails si l'une d'elles est dans une phase critique[cite: 50].</p>
       <ul class="data-list">
-        <li>Surveillance détaillée de la CPU, RAM et stockage des serveurs</li>
-        <li>Alertes e-mail et notifications en cas de seuil critique</li>
-        <li>Dashboard IT centralisé offrant une vision complète de l'état du système</li>
-        <li>Suivi de la disponibilité des services et des accès distants</li>
-        <li>Rapports réguliers pour anticiper les incidents et planifier la maintenance</li>
+         <li>Surveillance détaillée de la CPU, RAM et stockage des serveurs.</li>
+         <li>Alertes proactives en cas de dégradation de service.</li>
+         <li>Dashboard IT centralisé offrant une vision complète de l'état du système.</li>
       </ul>
     </div>
   </section>
@@ -344,7 +284,27 @@
       <div class="section-header">
         <h3 class="section-title">PCA / PRA</h3>
       </div>
-      <p>Le site de Monaco assure la continuité de l'activité en hébergeant les serveurs de secours, permettant une bascule rapide en cas d'incident majeur sur le site principal de Londres. L'infrastructure garantit un objectif RPO de 36h et un RTO de 48h, assurant ainsi la disponibilité des services critiques et la protection des données.</p>
+      <p>Une réplication PRA (Plan de Reprise d'Activité) du contrôleur principal a été configurée sur le site de Monaco[cite: 49]. Une stratégie de sauvegarde des données Nextcloud a été mise en place pour garantir la continuité du service en cas de défaillance du Datacenter[cite: 53].</p>
+      <ul class="data-list">
+        <li>Une synchronisation des fichiers hébergés sur le serveur principal Nextcloud a été mise en œuvre vers une VM de secours située sur le site de Monaco[cite: 53].</li>
+        <li>Un script de sauvegarde Robocopy, lancé automatiquement via le planificateur de tâches Windows, permet de copier à intervalle régulier les fichiers depuis Londres vers Monaco[cite: 53].</li>
+        <li>Un serveur de bureau virtuel de secours (VM-RDS-MONACO) est installé sur le site de Monaco[cite: 51].</li>
+      </ul>
+    </div>
+  </section>
+  
+  <section id="datacenter" class="section">
+    <div class="content-card">
+      <div class="section-header">
+        <h3 class="section-title">Datacenter & Cloud</h3>
+      </div>
+      <p>Le Datacenter centralise le stockage et l'échange de fichiers pour toute l'organisation via un serveur Nextcloud hébergé localement[cite: 48]. Une infrastructure réseau dédiée sécurise cet accès[cite: 60]. Dans le but de moderniser ses outils de communication interne et de favoriser le télétravail, l'ATP souhaite mettre en place une solution complète UCaaS (Microsoft Teams)[cite: 62] et externaliser la gestion de l'authentification avec Entra ID (SSO Cloud)[cite: 63].</p>
+      <ul class="data-list">
+        <li>Le Datacenter possède son propre cluster pfSense (Master/Backup) avec IP VIP CARP (10.10.5.3/24)[cite: 60].</li>
+        <li>Nextcloud offre un environnement sécurisé et personnalisable pour gérer, partager et collaborer sur des fichiers[cite: 60].</li>
+        <li>La solution Teams offre la téléphonie IP intégrée, une messagerie collaborative et des réunions en ligne sécurisées[cite: 62].</li>
+        <li>Entra ID offre le SSO vers les principales applications SaaS, et l'authentification multifactorielle (MFA) pour renforcer la sécurité[cite: 63].</li>
+      </ul>
     </div>
   </section>
 
@@ -353,11 +313,11 @@
       <div class="section-header">
         <h3 class="section-title">Résultats & Apprentissage</h3>
       </div>
-      <p>Le projet a permis d'atteindre une infrastructure stable et résiliente, avec une haute disponibilité des services multi-sites. L'automatisation des déploiements et des tâches de supervision a réduit les interventions manuelles et optimisé la gestion quotidienne. La centralisation et la sécurisation des services ont également amélioré la productivité et la sécurité des utilisateurs nomades.</p>
+      <p>Un grand nombre de fonctionnalités a pu être mis en place, dont le bureau virtuel RDP, la synchronisation/échange des fichiers, la supervision, et l'AD/DNS[cite: 66]. L'hyperviseur ESXI avec les différents VPN pfSense, sites et serveurs sont opérationnels[cite: 66].</p>
       
       <br>
       <h4 style="color: var(--text-pure); font-size: 1.5rem; margin-bottom: 15px;">Ce que j'ai appris</h4>
-      <p>Ce projet m'a permis de renforcer ma posture d'ingénieur en infrastructures en intégrant une vision globale allant de la conception à l'exploitation d'environnements multi-sites. J'ai consolidé mes compétences en architectures hybrides, en sécurisation des flux, en supervision proactive et en gestion de la continuité d'activité, tout en développant une approche orientée performance, résilience et alignement avec les enjeux métiers.</p>
+      <p>Durant nos différentes missions, on a pu constater réellement les difficultés que ce projet proposait, mais aussi nous rendre compte de la rapidité d'analyse et d'action à avoir[cite: 66]. On a ainsi pu développer nos qualités d'analyse et notre communication dans le groupe[cite: 66].</p>
     </div>
   </section>
 
