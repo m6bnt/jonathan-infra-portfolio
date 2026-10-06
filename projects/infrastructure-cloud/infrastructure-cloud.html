@@ -133,10 +133,15 @@
       margin-bottom: 20px;
     }
 
+    /* Improved List Styling */
     .data-list { list-style: none; margin-top: 24px; padding: 0; }
     .data-list li {
-      display: flex; align-items: flex-start; gap: 12px; padding: 12px 0;
-      font-size: 1rem; color: #d4d4d8; line-height: 1.6;
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 16px;
+      font-size: 1rem; 
+      color: #d4d4d8; 
+      line-height: 1.6;
     }
     .data-list li::before {
       content: '\f061';
@@ -144,7 +149,14 @@
       font-weight: 900;
       color: var(--ai-cyan);
       font-size: 0.85rem;
-      margin-top: 4px;
+      position: absolute;
+      left: 0;
+      top: 4px;
+    }
+    .list-title {
+      font-weight: 700;
+      color: var(--text-pure);
+      margin-right: 6px;
     }
 
     /* --- IMAGES & VISUALIZATION --- */
@@ -291,9 +303,9 @@
   <!-- HERO -->
   <section class="hero">
     <div class="system-badge">
-      <div class="indicator"></div> LAB UNIVERSITAIRE
+      <div class="indicator"></div> PROJET MSPR - BLOC 5
     </div>
-    <h1>PROJET MSPR - BLOC 5 : <br><span class="text-plasma">Infrastructure SI Hybride Sécurisée</span></h1>
+    <h1>Infrastructure SI Hybride Sécurisée</h1>
     <p>Conception et intégration d'une infrastructure multi-sites pour l'Association of Tennis Professionals (ATP). Virtualisation VMware ESXi, pare-feux pfSense en Haute Disponibilité, PRA/PCA à Monaco, et gestion de la mobilité sécurisée.</p>
     
     <div class="action-group">
@@ -315,14 +327,14 @@
     <div class="content-card">
       <div class="section-header">
         <span class="section-tag">01 / Enjeux</span>
-        <h3 class="section-title">Contexte : Unification du SI de l'ATP</h3>
+        <h3 class="section-title">Le contexte : Unification du SI de l'ATP</h3>
       </div>
       <p>L'organisation de l'ATP rencontrait des défis majeurs dans la gestion de son SI réparti entre son siège de Londres et ses bureaux à Ponte Vedra (US), Sydney et Monaco. L'objectif de ce projet MSPR était de centraliser les ressources critiques, d'assurer une haute disponibilité et de garantir un accès sécurisé aux nombreux salariés nomades.</p>
       <ul class="data-list">
-        <li><strong>Virtualisation :</strong> Déploiement d'un hyperviseur VMware ESXi (Type 1) hébergeant l'ensemble des machines virtuelles du projet.</li>
-        <li><strong>Interconnexion :</strong> Création de tunnels VPN IPsec pour relier l'ensemble des sites de manière sécurisée.</li>
-        <li><strong>Continuité d'activité :</strong> Conception d'un Plan de Reprise d'Activité (PRA) complet hébergé sur le site de Monaco.</li>
-        <li><strong>Mobilité :</strong> Implémentation d'accès distants (OpenVPN) et de bureaux virtuels (RDS) pour les collaborateurs en déplacement.</li>
+        <li><span class="list-title">Virtualisation</span> Déploiement d'un hyperviseur VMware ESXi (Type 1) hébergeant l'ensemble des machines virtuelles du projet.</li>
+        <li><span class="list-title">Interconnexion</span> Création de tunnels VPN IPsec pour relier l'ensemble des sites de manière sécurisée.</li>
+        <li><span class="list-title">Continuité d'activité</span> Conception d'un Plan de Reprise d'Activité (PRA) complet hébergé sur le site de Monaco.</li>
+        <li><span class="list-title">Mobilité</span> Implémentation d'accès distants (OpenVPN) et de bureaux virtuels (RDS) pour les collaborateurs en déplacement.</li>
       </ul>
     </div>
   </section>
@@ -352,9 +364,9 @@
       </div>
       <p>La sécurité périmétrique de chaque site est assurée par une solution pfSense. Pour garantir une résilience totale, un cluster de pare-feux (Master / Backup) a été mis en place sur les sites critiques.</p>
       <ul class="data-list">
-        <li><strong>Cluster Haute Disponibilité (HA) :</strong> Utilisation du protocole CARP pour le partage d'une adresse IP virtuelle (VIP) entre les firewalls Master et Backup.</li>
-        <li><strong>Synchronisation :</strong> Configuration d'interfaces dédiées (SYNC) avec pfSync pour maintenir l'état des connexions en cas de bascule.</li>
-        <li><strong>Filtrage LAN/WAN :</strong> Mise en place de règles de filtrage strictes pour maîtriser les flux entre les différents VLANs et le Datacenter.</li>
+        <li><span class="list-title">Cluster Haute Disponibilité (HA)</span> Utilisation du protocole CARP pour le partage d'une adresse IP virtuelle (VIP) entre les firewalls Master et Backup.</li>
+        <li><span class="list-title">Synchronisation</span> Configuration d'interfaces dédiées (SYNC) avec pfSync pour maintenir l'état des connexions en cas de bascule.</li>
+        <li><span class="list-title">Filtrage LAN/WAN</span> Mise en place de règles de filtrage strictes pour maîtriser les flux entre les différents VLANs et le Datacenter.</li>
       </ul>
 
       <div class="project-image-container">
@@ -378,9 +390,9 @@
       </div>
       <p>Pour répondre aux besoins métiers de l'ATP, nous avons déployé un ensemble de services Windows et Linux, en veillant toujours à la redondance de l'information.</p>
       <ul class="data-list">
-        <li><strong>Active Directory Multisite :</strong> Contrôleur de domaine principal à Londres (VM-UK), secondaire à Ponte Vedra (VM-US) et serveur de secours à Monaco (PRA).</li>
-        <li><strong>Stockage Nextcloud :</strong> Hébergé dans le Datacenter, il permet le partage et la synchronisation sécurisée des fichiers. L'accès s'effectue via une interface web ou des clients lourds.</li>
-        <li><strong>Bureaux Virtuels (RDS) :</strong> Les collaborateurs nomades s'authentifient sur le VPN (OpenVPN) puis accèdent à une VM-RDS-UK via le protocole RDP pour travailler de manière centralisée.</li>
+        <li><span class="list-title">Active Directory Multisite</span> Contrôleur de domaine principal à Londres (VM-UK), secondaire à Ponte Vedra (VM-US) et serveur de secours à Monaco (PRA).</li>
+        <li><span class="list-title">Stockage Nextcloud</span> Hébergé dans le Datacenter, il permet le partage et la synchronisation sécurisée des fichiers. L'accès s'effectue via une interface web ou des clients lourds.</li>
+        <li><span class="list-title">Bureaux Virtuels (RDS)</span> Les collaborateurs nomades s'authentifient sur le VPN (OpenVPN) puis accèdent à une VM-RDS-UK via le protocole RDP pour travailler de manière centralisée.</li>
       </ul>
 
       <div class="project-image-container">
@@ -409,9 +421,9 @@
       </div>
       <p>L'anticipation des pannes est au cœur de ce projet. Outre la redondance des pare-feux et des serveurs AD, un PRA complet a été documenté et scripté pour le site de Monaco.</p>
       <ul class="data-list">
-        <li><strong>Monitoring Zabbix :</strong> Installation d'un serveur Zabbix à Londres. Remontée des alertes via des agents déployés sur les machines critiques (CPU, RAM, Disque, Statut réseau).</li>
-        <li><strong>Sauvegarde automatisée :</strong> Création d'un script `Robocopy` planifié via le planificateur de tâches Windows, qui copie les données critiques de Londres vers le NAS de Monaco tous les jours à 22h.</li>
-        <li><strong>Bascule (Failover) :</strong> En cas de chute du site londonien, les utilisateurs sont redirigés vers le serveur VM-RDS-MONACO disposant des dernières données synchronisées.</li>
+        <li><span class="list-title">Monitoring Zabbix</span> Installation d'un serveur Zabbix à Londres. Remontée des alertes via des agents déployés sur les machines critiques (CPU, RAM, Disque, Statut réseau).</li>
+        <li><span class="list-title">Sauvegarde automatisée</span> Création d'un script `Robocopy` planifié via le planificateur de tâches Windows, qui copie les données critiques de Londres vers le NAS de Monaco tous les jours à 22h.</li>
+        <li><span class="list-title">Bascule (Failover)</span> En cas de chute du site londonien, les utilisateurs sont redirigés vers le serveur VM-RDS-MONACO disposant des dernières données synchronisées.</li>
       </ul>
 
       <div class="project-image-container">
@@ -435,9 +447,9 @@
       </div>
       <p>En conclusion du projet, nous avons proposé au bureau exécutif de l'ATP une feuille de route pour externaliser l'infrastructure vers le Cloud à moyen terme.</p>
       <ul class="data-list">
-        <li><strong>Migration vers Microsoft Azure :</strong> Choix justifié par la fiabilité (SLA 99.9%), la sécurité (ISO 27001) et l'intégration native avec l'écosystème Windows existant.</li>
-        <li><strong>Communication Unifiée (UCaaS) :</strong> Recommandation de Microsoft Teams pour centraliser la téléphonie IP, la messagerie et les visioconférences des salariés nomades.</li>
-        <li><strong>Authentification SSO :</strong> Intégration de Microsoft Entra ID pour sécuriser les accès distants via l'authentification multifactorielle (MFA) et faciliter l'expérience utilisateur (Single Sign-On).</li>
+        <li><span class="list-title">Migration vers Microsoft Azure</span> Choix justifié par la fiabilité (SLA 99.9%), la sécurité (ISO 27001) et l'intégration native avec l'écosystème Windows existant.</li>
+        <li><span class="list-title">Communication Unifiée (UCaaS)</span> Recommandation de Microsoft Teams pour centraliser la téléphonie IP, la messagerie et les visioconférences des salariés nomades.</li>
+        <li><span class="list-title">Authentification SSO</span> Intégration de Microsoft Entra ID pour sécuriser les accès distants via l'authentification multifactorielle (MFA) et faciliter l'expérience utilisateur (Single Sign-On).</li>
       </ul>
     </div>
   </section>
