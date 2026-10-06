@@ -2,285 +2,334 @@
 <html lang="fr" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <title>Mehdi MAZOUZ | Obsidian Cloud Architect</title>
+  <title>Mehdi MAZOUZ | Vivid AI Architect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- Polices Haute Couture : Instrument Sans & Space Mono -->
+  <!-- Police Ultra-Premium : Plus Jakarta Sans (The Startup Font) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   
   <style>
-    /* --- VARIABLES CORE --- */
+    /* --- VARIABLES VIVID AI --- */
     :root {
-      --obsidian: #050505;
-      --glass-base: rgba(20, 20, 20, 0.5);
-      --border-ghost: rgba(255, 255, 255, 0.05);
-      --border-light: rgba(255, 255, 255, 0.15);
-      --text-pure: #ffffff;
-      --text-mute: #8a8a93;
-      --fluid-1: #432c7a;
-      --fluid-2: #801a6b;
-      --fluid-3: #1a4a76;
+      --bg-core: #030008;
+      --glass-panel: rgba(15, 10, 25, 0.4);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-highlight: rgba(255, 255, 255, 0.2);
+      --text-main: #ffffff;
+      --text-muted: #a0a0ab;
+      
+      /* Couleurs Vibrantes (Neural Prism) */
+      --neon-pink: #ff2a85;
+      --neon-purple: #8a2be2;
+      --neon-cyan: #00f0ff;
+      --neon-orange: #ff6a00;
+      
+      --gradient-vivid: linear-gradient(135deg, var(--neon-pink), var(--neon-orange), var(--neon-purple), var(--neon-cyan));
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; cursor: none; /* Curseur natif caché */ }
+    * { box-sizing: border-box; margin: 0; padding: 0; cursor: none; }
 
     body {
-      font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--obsidian);
-      color: var(--text-pure);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-core);
+      color: var(--text-main);
       overflow-x: hidden;
       scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
     }
 
-    /* --- CURSEUR INVERSÉ (MIX-BLEND-MODE) --- */
-    #cursor {
-      position: fixed; top: 0; left: 0; width: 24px; height: 24px;
-      background-color: #fff; border-radius: 50%;
-      pointer-events: none; z-index: 10000;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: difference; /* C'est la magie ici */
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    /* Quand on survole un lien, le curseur grossit */
-    body.hover-link #cursor { width: 80px; height: 80px; }
-
-    /* --- LIQUID BACKGROUND --- */
-    .liquid-bg {
+    /* --- VIVID FLUID BACKGROUND --- */
+    .vivid-bg {
       position: fixed; inset: 0; z-index: -2; overflow: hidden;
-      background: var(--obsidian);
+      background: var(--bg-core);
     }
-    .liquid-blob {
-      position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.4;
-      animation: fluidMotion 25s infinite alternate ease-in-out;
+    .vivid-orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); opacity: 0.6; mix-blend-mode: screen;
+      animation: fluidOrbit 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .blob-1 { width: 70vw; height: 70vw; background: var(--fluid-1); top: -20%; left: -20%; }
-    .blob-2 { width: 60vw; height: 60vw; background: var(--fluid-2); bottom: -10%; right: -20%; animation-delay: -5s; }
-    .blob-3 { width: 50vw; height: 50vw; background: var(--fluid-3); top: 30%; left: 30%; animation-duration: 30s; }
+    .orb-pink { width: 55vw; height: 55vw; background: var(--neon-pink); top: -20%; left: -10%; animation-duration: 20s;}
+    .orb-cyan { width: 45vw; height: 45vw; background: var(--neon-cyan); bottom: -10%; right: -10%; animation-delay: -5s; }
+    .orb-purple { width: 50vw; height: 50vw; background: var(--neon-purple); top: 30%; left: 30%; animation-duration: 30s; }
+    .orb-orange { width: 40vw; height: 40vw; background: var(--neon-orange); bottom: 10%; left: 10%; animation-delay: -10s; opacity: 0.4;}
 
-    /* Voile noir pour assombrir et unifier */
-    .bg-overlay {
+    /* Noise Layer pour la texture */
+    .noise-layer {
       position: fixed; inset: 0; z-index: -1; pointer-events: none;
-      background: radial-gradient(circle at center, transparent 0%, var(--obsidian) 100%);
-    }
-    /* Grain photo */
-    .noise {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
     }
 
-    @keyframes fluidMotion {
+    @keyframes fluidOrbit {
       0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-      100% { transform: translate(10vw, 15vh) scale(1.1) rotate(15deg); }
+      100% { transform: translate(15vw, 10vh) scale(1.2) rotate(45deg); }
     }
 
-    /* --- MINIMALIST NAVBAR --- */
+    /* --- CURSEUR COMÈTE --- */
+    #cursor-dot {
+      position: fixed; width: 8px; height: 8px; background: #fff;
+      border-radius: 50%; pointer-events: none; z-index: 10000;
+      transform: translate(-50%, -50%); box-shadow: 0 0 20px 4px #fff;
+    }
+    #cursor-trail {
+      position: fixed; width: 40px; height: 40px;
+      border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s;
+    }
+    body.hover-target-active #cursor-trail {
+      width: 70px; height: 70px; background: rgba(255, 255, 255, 0.1);
+      border-color: #fff; backdrop-filter: blur(4px);
+    }
+
+    /* --- PILL NAVBAR --- */
     nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-      padding: 30px 50px; display: flex; justify-content: space-between; align-items: center;
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      background: rgba(10, 5, 20, 0.4);
+      backdrop-filter: blur(30px) saturate(200%); -webkit-backdrop-filter: blur(30px) saturate(200%);
+      border: 1px solid var(--glass-border); border-radius: 100px;
+      padding: 10px 14px 10px 30px; display: flex; align-items: center; gap: 50px;
+      z-index: 1000; box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
       transition: all 0.4s ease;
     }
-    nav.scrolled {
-      padding: 15px 50px; background: rgba(5,5,5,0.7);
-      backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-ghost);
-    }
+    nav:hover { background: rgba(15, 10, 25, 0.6); border-color: rgba(255,255,255,0.15); }
     
-    .logo {
-      font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.1rem;
-      color: var(--text-pure); text-decoration: none; letter-spacing: -0.5px;
-    }
-    .logo span { color: #801a6b; }
+    .nav-logo { font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -0.5px;}
+    .nav-logo span { background: var(--gradient-vivid); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     
-    nav ul { list-style: none; display: flex; gap: 40px; align-items: center; }
+    nav ul { list-style: none; display: flex; gap: 35px; align-items: center; }
     nav ul li a {
-      font-size: 0.95rem; font-weight: 500; color: var(--text-mute);
-      text-decoration: none; transition: color 0.3s;
+      color: var(--text-muted); font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      transition: color 0.3s;
     }
-    nav ul li a:hover, nav ul li a.active { color: var(--text-pure); }
+    nav ul li a:hover, nav ul li a.active { color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.5); }
     
     .nav-btn {
-      background: transparent; color: var(--text-pure);
-      border: 1px solid var(--border-light); padding: 10px 24px; border-radius: 100px;
-      font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: all 0.3s;
+      background: #fff; color: #000; padding: 12px 24px; border-radius: 100px;
+      font-weight: 800; font-size: 0.85rem; text-decoration: none; transition: all 0.3s;
     }
-    .nav-btn:hover { background: var(--text-pure); color: #000; }
+    .nav-btn:hover { box-shadow: 0 0 20px rgba(255,255,255,0.5); transform: scale(1.05); }
 
-    /* --- LAYOUT GLOBALS --- */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 10; }
-    .section { padding: 180px 0 80px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;}
+    /* --- LAYOUT GLOBAL --- */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
+    .section { padding: 180px 0 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;}
     
     .section-tag {
-      font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--text-mute);
-      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block;
+      display: inline-block; padding: 6px 16px; border-radius: 100px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+      font-family: 'Space Mono', monospace; font-size: 0.8rem; font-weight: 700;
+      color: var(--text-main); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;
+      backdrop-filter: blur(10px);
     }
     .section-title {
-      font-size: 4rem; font-weight: 500; letter-spacing: -2px; margin-bottom: 60px;
-      color: var(--text-pure); line-height: 1.1;
+      font-size: 4.5rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 60px;
+      color: var(--text-main); line-height: 1.1;
     }
-    .section-title i { font-style: italic; font-weight: 400; color: var(--text-mute); }
+
+    /* VIVID TEXT GRADIENT */
+    .text-vivid {
+      background: var(--gradient-vivid); background-size: 300% 300%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      animation: vividShine 6s ease infinite;
+    }
+    @keyframes vividShine { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
     /* --- HERO --- */
     .hero { min-height: 100vh; display: flex; align-items: center; gap: 80px; padding-top: 100px; }
     .hero-content { flex: 1.2; }
     
-    .hero-h1 {
-      font-size: 6rem; font-weight: 600; line-height: 0.9; letter-spacing: -3px; margin-bottom: 30px;
-    }
-    .hero-h1 span {
-      background: linear-gradient(135deg, #fff, #8a8a93);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hero-h2 { font-family: 'Space Mono', monospace; font-size: 1.2rem; font-weight: 400; color: var(--text-mute); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px;}
-    .hero-p { font-size: 1.25rem; color: #a1a1aa; line-height: 1.7; max-width: 550px; margin-bottom: 50px; font-weight: 400; }
+    .hero-h1 { font-size: 7rem; font-weight: 900; line-height: 0.9; letter-spacing: -4px; margin-bottom: 20px; }
+    .hero-h2 { font-size: 2rem; font-weight: 500; color: #fff; margin-bottom: 30px; letter-spacing: -1px; }
+    .hero-p { font-size: 1.25rem; color: var(--text-muted); line-height: 1.7; max-width: 580px; margin-bottom: 50px; font-weight: 400; }
 
+    /* Boutons Magnétiques Vibrants */
     .action-group { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-    .btn-solid {
-      background: var(--text-pure); color: #000; padding: 18px 36px; border-radius: 100px;
-      font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: transform 0.3s;
-    }
-    .btn-solid:hover { transform: scale(1.05); }
-    .social-link {
-      color: var(--text-pure); font-size: 1.5rem; text-decoration: none;
-      width: 56px; height: 56px; border: 1px solid var(--border-ghost); border-radius: 50%;
-      display: flex; justify-content: center; align-items: center; transition: all 0.3s;
-    }
-    .social-link:hover { border-color: var(--border-light); transform: translateY(-3px); }
-
-    /* Hero Image avec Parallax */
-    .hero-img-wrap { flex: 1; position: relative; perspective: 1000px; }
-    .hero-img {
-      width: 100%; max-width: 450px; height: 550px; object-fit: cover; border-radius: 24px;
-      border: 1px solid var(--border-ghost);
-      filter: grayscale(40%) contrast(1.1); transition: transform 0.5s ease-out;
-      transform: rotateY(-10deg) rotateX(5deg);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.8);
-    }
-    .hero-img-wrap:hover .hero-img { transform: rotateY(0deg) rotateX(0deg) scale(1.02); filter: grayscale(0%); }
-
-    /* --- OBSIDIAN CARDS (Ultra-Premium Glass) --- */
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
     
-    .obsidian-card {
-      background: var(--glass-base); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
-      border: 1px solid var(--border-ghost); border-radius: 32px; padding: 40px;
+    .magnetic-wrap { display: inline-block; padding: 10px; margin: -10px; }
+    .btn-vivid {
+      background: #fff; color: #000; padding: 18px 36px; border-radius: 100px;
+      font-weight: 800; font-size: 1.05rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+    }
+    .magnetic-wrap:hover .btn-vivid { box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3); }
+    
+    .btn-glass {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: #fff;
+      padding: 18px 36px; border-radius: 100px; font-weight: 600; font-size: 1.05rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px; backdrop-filter: blur(10px); transition: all 0.3s;
+    }
+    .btn-glass:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); transform: translateY(-3px); }
+
+    /* Hero Image Holographique */
+    .hero-img-wrap { flex: 1; position: relative; perspective: 1000px; }
+    .hero-img-inner {
+      position: relative; width: 100%; max-width: 480px; height: 580px;
+      border-radius: 30px; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero-img-wrap:hover .hero-img-inner { transform: rotateY(-15deg) rotateX(10deg); }
+    
+    .hero-img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+      position: relative; z-index: 2; filter: contrast(1.1) saturate(1.2);
+    }
+    /* Halo coloré derrière la photo */
+    .hero-img-inner::after {
+      content: ''; position: absolute; inset: -20px;
+      background: var(--gradient-vivid); background-size: 300% 300%;
+      border-radius: 40px; filter: blur(40px); opacity: 0.6; z-index: 1;
+      animation: vividShine 6s linear infinite;
+    }
+
+    /* --- PRISM CARDS (Bento Grid 3D) --- */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; perspective: 1500px;}
+    
+    .prism-card {
+      background: var(--glass-panel);
+      backdrop-filter: blur(60px) saturate(250%); -webkit-backdrop-filter: blur(60px) saturate(250%);
+      border: 1px solid var(--glass-border); border-radius: 32px; padding: 40px;
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex; flex-direction: column; position: relative; overflow: hidden;
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.05);
-    }
-    .obsidian-card:hover {
-      background: rgba(30, 30, 30, 0.6); border-color: var(--border-light);
-      transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+      transform-style: preserve-3d; box-shadow: inset 0 1px 1px rgba(255,255,255,0.08), 0 20px 40px rgba(0,0,0,0.4);
     }
     
-    .card-icon { font-size: 2rem; color: var(--text-pure); margin-bottom: 24px; }
-    .card-title { font-size: 1.6rem; font-weight: 500; margin-bottom: 16px; color: var(--text-pure); letter-spacing: -0.5px; }
-    .card-desc { color: var(--text-mute); font-size: 1.1rem; line-height: 1.6; flex-grow: 1; font-weight: 400; }
+    /* Effet Spotlight Interactif */
+    .prism-card::before {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.08), transparent 40%);
+      z-index: 0; opacity: 0; transition: opacity 0.5s; pointer-events: none;
+    }
+    .prism-card:hover { border-color: rgba(255,255,255,0.2); box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 0 30px 60px rgba(0,0,0,0.6); }
+    .prism-card:hover::before { opacity: 1; }
+    
+    .card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; transform: translateZ(30px); }
+    
+    .card-icon {
+      font-size: 2.2rem; margin-bottom: 24px;
+      background: var(--gradient-vivid); background-size: 300%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;
+      animation: vividShine 8s linear infinite;
+    }
+    .card-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 16px; color: #fff; letter-spacing: -0.5px; }
+    .card-desc { color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; flex-grow: 1; font-weight: 400; }
 
     .data-list { list-style: none; margin-top: 24px; }
     .data-list li {
-      display: flex; align-items: center; gap: 12px; padding: 12px 0;
-      border-bottom: 1px solid var(--border-ghost); font-size: 1.05rem; color: #e4e4e7; font-weight: 400;
+      display: flex; align-items: flex-start; gap: 12px; padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 1.05rem; color: #e4e4e7; font-weight: 500;
     }
     .data-list li:last-child { border-bottom: none; padding-bottom: 0; }
-    .data-list i { font-size: 0.6rem; color: var(--text-mute); }
+    .data-list i { font-size: 0.9rem; color: var(--neon-cyan); margin-top: 4px; }
 
-    /* --- MINIMAL TIMELINE --- */
-    .timeline { border-left: 1px solid var(--border-ghost); padding-left: 40px; margin-left: 20px;}
-    .timeline-item { position: relative; margin-bottom: 80px; transition: opacity 0.3s; }
-    .timeline:hover .timeline-item { opacity: 0.4; }
-    .timeline-item:hover { opacity: 1 !important; }
+    /* --- TIMELINE --- */
+    .timeline { border-left: 2px solid rgba(255,255,255,0.05); padding-left: 50px; margin-left: 20px;}
+    .timeline-item { position: relative; margin-bottom: 80px; transition: all 0.4s; }
+    .timeline:hover .timeline-item { opacity: 0.3; filter: blur(2px); }
+    .timeline-item:hover { opacity: 1 !important; filter: blur(0) !important; transform: translateX(10px); }
     
     .timeline-item::before {
-      content: ''; position: absolute; left: -44.5px; top: 10px; width: 8px; height: 8px;
-      background: var(--text-mute); border-radius: 50%; transition: all 0.3s;
+      content: ''; position: absolute; left: -57px; top: 10px; width: 12px; height: 12px;
+      background: var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 20px var(--neon-cyan);
+      transition: all 0.4s;
     }
-    .timeline-item:hover::before { background: #fff; transform: scale(1.5); box-shadow: 0 0 10px #fff; }
+    .timeline-item:hover::before { transform: scale(1.5); background: #fff; box-shadow: 0 0 30px #fff; }
 
-    .t-date { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--text-mute); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
-    .t-title { font-size: 2rem; font-weight: 500; margin-bottom: 8px; color: #fff; letter-spacing: -1px; }
-    .t-org { font-size: 1.1rem; color: var(--text-mute); margin-bottom: 24px; }
+    .t-date { display: inline-block; padding: 8px 16px; background: rgba(255,255,255,0.05); border-radius: 100px; font-family: 'Space Mono', monospace; font-size: 0.85rem; color: #fff; margin-bottom: 20px; font-weight: 700; letter-spacing: 1px; }
+    .t-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; color: #fff; letter-spacing: -1px; }
+    .t-org { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 24px; font-weight: 500;}
 
     /* --- BADGES & LINKS --- */
-    .badge-outline {
-      font-family: 'Space Mono', monospace; font-size: 0.75rem; padding: 6px 16px; border-radius: 100px;
-      border: 1px solid var(--border-light); color: var(--text-pure); display: inline-block; margin-bottom: 24px; text-transform: uppercase;
+    .badge-vivid {
+      font-family: 'Space Mono', monospace; font-size: 0.8rem; padding: 8px 18px; border-radius: 100px;
+      background: rgba(255,255,255,0.05); color: #fff; display: inline-block; margin-bottom: 24px; text-transform: uppercase; font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
     }
-    .badge-ghost { border-color: var(--border-ghost); color: var(--text-mute); }
 
     .link-hover {
       display: inline-flex; align-items: center; gap: 8px; margin-top: 30px;
-      color: var(--text-pure); font-size: 1rem; font-weight: 500; text-decoration: none;
-      padding-bottom: 4px; border-bottom: 1px solid transparent; transition: all 0.3s;
+      color: var(--text-main); font-size: 1.05rem; font-weight: 700; text-decoration: none;
+      transition: all 0.3s;
     }
-    .link-hover:hover { border-bottom-color: var(--text-pure); gap: 16px; }
+    .link-hover:hover { color: var(--neon-cyan); gap: 16px; }
 
     /* --- FOOTER CONTACT (Monumental) --- */
     .contact-monument {
-      text-align: center; padding: 150px 0; border-top: 1px solid var(--border-ghost); margin-top: 100px;
+      background: linear-gradient(180deg, rgba(15,10,25,0.6) 0%, transparent 100%);
+      border: 1px solid var(--glass-border); border-radius: 40px;
+      padding: 120px 40px; text-align: center; max-width: 1000px; margin: 0 auto;
+      backdrop-filter: blur(40px); box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+      position: relative; overflow: hidden;
     }
-    .contact-monument h3 { font-size: 6rem; font-weight: 500; letter-spacing: -3px; margin-bottom: 30px; line-height: 1; }
+    .contact-monument h3 { font-size: 6rem; font-weight: 900; letter-spacing: -3px; margin-bottom: 30px; line-height: 1; }
     
-    .contact-email {
-      display: inline-block; font-size: 2rem; font-weight: 400; color: var(--text-mute); text-decoration: none;
-      margin-bottom: 60px; transition: color 0.3s;
+    .social-dock { display: flex; justify-content: center; gap: 24px; margin: 60px 0; flex-wrap: wrap; }
+    .social-pill {
+      display: flex; align-items: center; gap: 12px; color: var(--text-pure);
+      padding: 18px 36px; border-radius: 100px; border: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.03); font-weight: 600; font-size: 1.1rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none;
     }
-    .contact-email:hover { color: #fff; }
+    .social-pill:hover {
+      background: rgba(255,255,255,0.1); border-color: #fff;
+      transform: translateY(-5px); box-shadow: 0 20px 40px rgba(255,255,255,0.1); color: #fff;
+    }
 
     footer {
-      display: flex; justify-content: space-between; align-items: center; padding: 40px 0;
-      border-top: 1px solid var(--border-ghost); font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--text-mute);
+      display: flex; justify-content: space-between; align-items: center; padding: 50px 0;
+      border-top: 1px solid var(--glass-border); font-family: 'Space Mono', monospace; font-size: 0.9rem; color: var(--text-muted); margin-top: 100px;
     }
     .footer-links { display: flex; gap: 30px; }
-    .footer-links a { color: var(--text-mute); text-decoration: none; transition: color 0.3s; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; font-weight: 700;}
     .footer-links a:hover { color: #fff; }
 
     /* Scroll Reveal */
-    .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal { opacity: 0; transform: translateY(50px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 950px) {
-      .hero { flex-direction: column-reverse; text-align: center; padding-top: 150px; }
-      .hero-h1 { font-size: 4rem; }
+      .hero { flex-direction: column-reverse; text-align: center; padding-top: 160px; }
+      .hero-h1 { font-size: 4.5rem; }
       .action-group { justify-content: center; }
-      nav { width: 100%; padding: 20px; border-radius: 0; border: none; border-bottom: 1px solid var(--border-ghost); }
+      nav { width: calc(100% - 40px); justify-content: space-between; padding: 15px 20px;}
       nav ul { display: none; }
       .section-title { font-size: 3rem; }
-      .grid-3 { grid-template-columns: 1fr; }
       .contact-monument h3 { font-size: 4rem; }
-      .contact-email { font-size: 1.2rem; }
-      #cursor { display: none; } /* Disable custom cursor on mobile */
+      #cursor-dot, #cursor-trail { display: none; }
       * { cursor: auto; }
     }
   </style>
 </head>
 <body>
 
-<!-- LIQUID BACKGROUND & NOISE -->
-<div class="liquid-bg">
-  <div class="liquid-blob blob-1"></div>
-  <div class="liquid-blob blob-2"></div>
-  <div class="liquid-blob blob-3"></div>
+<!-- VIVID BACKGROUND & NOISE -->
+<div class="vivid-bg">
+  <div class="vivid-orb orb-pink"></div>
+  <div class="vivid-orb orb-cyan"></div>
+  <div class="vivid-orb orb-purple"></div>
+  <div class="vivid-orb orb-orange"></div>
 </div>
-<div class="bg-overlay"></div>
-<div class="noise"></div>
+<div class="noise-layer"></div>
 
-<!-- DIFFERENCE CURSOR -->
-<div id="cursor"></div>
+<!-- CUSTOM CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-trail"></div>
 
 <!-- NAVIGATION -->
 <nav id="navbar">
-  <a href="index.html" class="logo hover-target">Mehdi<span>.</span></a>
+  <a href="index.html" class="nav-logo hover-target">Mehdi<span>.</span></a>
   <ul>
     <li><a href="#about" class="hover-target">Vision</a></li>
     <li><a href="#skills" class="hover-target">Expertise</a></li>
+    <li><a href="#certifications" class="hover-target">Accréditations</a></li>
     <li><a href="#experience" class="hover-target">Parcours</a></li>
     <li><a href="#projects" class="hover-target">Projets</a></li>
   </ul>
-  <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="nav-btn hover-target">Extraire CV</a>
+  <div class="magnetic-wrap nav-magnetic">
+    <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="nav-btn hover-target" style="pointer-events: none;">Télécharger CV</a>
+  </div>
 </nav>
 
 <div class="container">
@@ -288,19 +337,23 @@
   <!-- HERO -->
   <section class="hero reveal">
     <div class="hero-content">
-      <span class="section-tag">Systèmes & Ingénierie Cloud</span>
-      <h1 class="hero-h1">Mehdi <br><span>MAZOUZ</span></h1>
+      <span class="section-tag"><i class="fa-solid fa-satellite-dish"></i> SYSTÈMES & INGÉNIERIE CLOUD</span>
+      <h1 class="hero-h1">Mehdi <br><span class="text-vivid">MAZOUZ</span></h1>
       <h2 class="hero-h2">Architecte d'Infrastructures</h2>
-      <p class="hero-p">Je conçois l'invisible. Architectures cloud hybrides, automatisation DevOps absolue et maintien en condition opérationnelle des systèmes d'information critiques.</p>
+      <p class="hero-p">Je conçois l'invisible. Architectures cloud hybrides, automatisation DevOps (IaC) absolue et maintien en condition opérationnelle des systèmes d'information critiques.</p>
       
       <div class="action-group">
-        <a href="mailto:mehdimazouz78@gmail.com" class="btn-solid hover-target">Initier le contact</a>
-        <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-link hover-target"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://github.com/m6bnt" target="_blank" class="social-link hover-target"><i class="fa-brands fa-github"></i></a>
+        <div class="magnetic-wrap">
+          <a href="mailto:mehdimazouz78@gmail.com" class="btn-vivid hover-target" style="pointer-events: none;">Démarrer un projet</a>
+        </div>
+        <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="btn-glass hover-target"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/m6bnt" target="_blank" class="btn-glass hover-target"><i class="fa-brands fa-github"></i> GitHub</a>
       </div>
     </div>
     <div class="hero-img-wrap hover-target">
-      <img src="assets/images/ma_photo.png" alt="Mehdi Mazouz" class="hero-img">
+      <div class="hero-img-inner">
+        <img src="assets/images/ma_photo.png" alt="Mehdi Mazouz" class="hero-img">
+      </div>
     </div>
   </section>
 
@@ -308,24 +361,30 @@
   <section id="about" class="section reveal">
     <div class="section-header">
       <span class="section-tag">01 / L'Approche</span>
-      <h3 class="section-title">Ingénierie <i>par la résilience.</i></h3>
+      <h3 class="section-title">Ingénierie par la <span class="text-vivid">résilience.</span></h3>
     </div>
     
-    <div class="grid-3">
-      <div class="obsidian-card hover-target">
-        <i class="fa-solid fa-server card-icon"></i>
-        <h4 class="card-title">Architecture Résiliente</h4>
-        <p class="card-desc">Diplômé d’un Mastère Expert en SI. Conception d'infrastructures cloud capables d'encaisser la charge et de garantir la continuité (PCA/PRA).</p>
+    <div class="grid-3 cards-wrapper">
+      <div class="prism-card hover-target">
+        <div class="card-content">
+          <i class="fa-solid fa-server card-icon"></i>
+          <h4 class="card-title">Architecture Résiliente</h4>
+          <p class="card-desc">Diplômé d’un Mastère Expert en SI. Conception d'infrastructures cloud capables d'encaisser la charge et de garantir la continuité (PCA/PRA).</p>
+        </div>
       </div>
-      <div class="obsidian-card hover-target">
-        <i class="fa-solid fa-terminal card-icon"></i>
-        <h4 class="card-title">Automatisation DevOps</h4>
-        <p class="card-desc">L'intervention manuelle est une faille. Mon approche repose sur l'automatisation intégrale (Ansible, Terraform) pour des déploiements fluides.</p>
+      <div class="prism-card hover-target">
+        <div class="card-content">
+          <i class="fa-solid fa-terminal card-icon"></i>
+          <h4 class="card-title">Automatisation DevOps</h4>
+          <p class="card-desc">L'intervention manuelle est une faille. Mon approche repose sur l'automatisation intégrale (Ansible, Terraform) pour des déploiements fluides.</p>
+        </div>
       </div>
-      <div class="obsidian-card hover-target">
-        <i class="fa-solid fa-shield-halved card-icon"></i>
-        <h4 class="card-title">SecOps & Observabilité</h4>
-        <p class="card-desc">Sécurité dès la conception (Security by Design). Mise en place de réseaux étanches et de monitoring granulaire (Zabbix) pour une visibilité absolue.</p>
+      <div class="prism-card hover-target">
+        <div class="card-content">
+          <i class="fa-solid fa-shield-halved card-icon"></i>
+          <h4 class="card-title">SecOps & Observabilité</h4>
+          <p class="card-desc">Sécurité dès la conception (Security by Design). Mise en place de réseaux étanches et de monitoring granulaire (Zabbix) pour une visibilité absolue.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -334,27 +393,42 @@
   <section id="skills" class="section reveal">
     <div class="section-header">
       <span class="section-tag">02 / Écosystème</span>
-      <h3 class="section-title">Matrice <i>Technologique.</i></h3>
+      <h3 class="section-title">Matrice <span class="text-vivid">Technologique.</span></h3>
     </div>
 
-    <div class="grid-2">
-      <div class="obsidian-card hover-target">
-        <h4 class="card-title">Compute & Network</h4>
-        <ul class="data-list">
-          <li><i class="fa-solid fa-circle"></i> Windows Server, AD & Microsoft 365</li>
-          <li><i class="fa-solid fa-circle"></i> VMware ESXi / vSphere & Azure Cloud</li>
-          <li><i class="fa-solid fa-circle"></i> Clusters pfSense, Routage & IPsec</li>
-          <li><i class="fa-solid fa-circle"></i> Core Services (TCP/IP, DNS, DHCP) & Meraki</li>
-        </ul>
+    <div class="grid-3 cards-wrapper">
+      <div class="prism-card hover-target">
+        <div class="card-content">
+          <h4 class="card-title">Compute & Network</h4>
+          <ul class="data-list">
+            <li><i class="fa-solid fa-circle-check"></i> Windows Server & AD</li>
+            <li><i class="fa-solid fa-circle-check"></i> Microsoft 365 & Entra ID</li>
+            <li><i class="fa-solid fa-circle-check"></i> VMware ESXi / vSphere</li>
+            <li><i class="fa-solid fa-circle-check"></i> Microsoft Azure Cloud</li>
+          </ul>
+        </div>
       </div>
-      <div class="obsidian-card hover-target">
-        <h4 class="card-title">DevOps & Gouvernance</h4>
-        <ul class="data-list">
-          <li><i class="fa-solid fa-circle"></i> Infrastructure as Code (Terraform)</li>
-          <li><i class="fa-solid fa-circle"></i> Configuration (Ansible) & Kubernetes</li>
-          <li><i class="fa-solid fa-circle"></i> Monitoring Zabbix & NAS (Stratégies PRA)</li>
-          <li><i class="fa-solid fa-circle"></i> Agile (Scrum), ITSM (EasyVista) & Cartographie SI</li>
-        </ul>
+      <div class="prism-card hover-target">
+        <div class="card-content">
+          <h4 class="card-title">SecOps & Routing</h4>
+          <ul class="data-list">
+            <li><i class="fa-solid fa-circle-check"></i> Pare-feux & Clusters pfSense</li>
+            <li><i class="fa-solid fa-circle-check"></i> Routage, VLANs & Tunnels IPsec</li>
+            <li><i class="fa-solid fa-circle-check"></i> Protocoles (TCP/IP, DNS, DHCP)</li>
+            <li><i class="fa-solid fa-circle-check"></i> Switching Meraki / Cisco</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prism-card hover-target">
+        <div class="card-content">
+          <h4 class="card-title">DevOps & ITSM</h4>
+          <ul class="data-list">
+            <li><i class="fa-solid fa-circle-check"></i> IaC (Terraform) & Ansible</li>
+            <li><i class="fa-solid fa-circle-check"></i> Kubernetes & Conteneurs</li>
+            <li><i class="fa-solid fa-circle-check"></i> Monitoring Zabbix & NAS PRA</li>
+            <li><i class="fa-solid fa-circle-check"></i> Agile, ITSM (EasyVista) & BPMN</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -363,39 +437,51 @@
   <section id="certifications" class="section reveal">
     <div class="section-header">
       <span class="section-tag">03 / Accréditations</span>
-      <h3 class="section-title">Validation des <i>Acquis.</i></h3>
+      <h3 class="section-title">Validation des <span class="text-vivid">Acquis.</span></h3>
     </div>
 
-    <div class="grid-3">
-      <div class="obsidian-card hover-target" style="padding: 30px;">
-        <span class="badge-outline">DATAIKU</span>
-        <h4 class="card-title" style="margin-bottom: 0;">Advanced Designer</h4>
-        <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="link-hover">Vérifier le diplôme <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="grid-3 cards-wrapper">
+      <div class="prism-card hover-target" style="padding: 30px;">
+        <div class="card-content">
+          <span class="badge-vivid">DATAIKU</span>
+          <h4 class="card-title" style="margin-bottom: 0;">Advanced Designer</h4>
+          <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="link-hover">Vérifier le diplôme <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
-      <div class="obsidian-card hover-target" style="padding: 30px;">
-        <span class="badge-outline">DATAIKU</span>
-        <h4 class="card-title" style="margin-bottom: 0;">Core Designer</h4>
-        <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="link-hover">Vérifier le diplôme <i class="fa-solid fa-arrow-right"></i></a>
+      <div class="prism-card hover-target" style="padding: 30px;">
+        <div class="card-content">
+          <span class="badge-vivid">DATAIKU</span>
+          <h4 class="card-title" style="margin-bottom: 0;">Core Designer</h4>
+          <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="link-hover">Vérifier le diplôme <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
-      <div class="obsidian-card hover-target" style="padding: 30px;">
-        <span class="badge-outline">DATAIKU</span>
-        <h4 class="card-title" style="margin-bottom: 0;">ML Practitioner</h4>
-        <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="link-hover">Vérifier le diplôme <i class="fa-solid fa-arrow-right"></i></a>
+      <div class="prism-card hover-target" style="padding: 30px;">
+        <div class="card-content">
+          <span class="badge-vivid">DATAIKU</span>
+          <h4 class="card-title" style="margin-bottom: 0;">ML Practitioner</h4>
+          <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="link-hover">Vérifier le diplôme <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
-      <div class="obsidian-card hover-target" style="padding: 30px;">
-        <span class="badge-outline">DATAIKU</span>
-        <h4 class="card-title" style="margin-bottom: 0;">MLOps Practitioner</h4>
-        <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="link-hover">Vérifier le diplôme <i class="fa-solid fa-arrow-right"></i></a>
+      <div class="prism-card hover-target" style="padding: 30px;">
+        <div class="card-content">
+          <span class="badge-vivid">DATAIKU</span>
+          <h4 class="card-title" style="margin-bottom: 0;">MLOps Practitioner</h4>
+          <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="link-hover">Vérifier le diplôme <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
-      <div class="obsidian-card hover-target" style="padding: 30px;">
-        <span class="badge-outline badge-ghost">CISCO</span>
-        <h4 class="card-title" style="color: var(--text-mute); margin-bottom: 0;">CCNA (200-301)</h4>
-        <p style="font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--text-mute); margin-top: 30px;">[ EN PRÉPARATION ]</p>
+      <div class="prism-card hover-target" style="padding: 30px; opacity: 0.7;">
+        <div class="card-content">
+          <span class="badge-vivid" style="background: transparent; color: var(--text-muted); border-style: dashed;">CISCO</span>
+          <h4 class="card-title" style="color: var(--text-muted); margin-bottom: 0;">CCNA (200-301)</h4>
+          <p style="font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--text-muted); margin-top: 30px; font-weight: 700;">[ EN PRÉPARATION ]</p>
+        </div>
       </div>
-      <div class="obsidian-card hover-target" style="padding: 30px;">
-        <span class="badge-outline badge-ghost">ITIL</span>
-        <h4 class="card-title" style="color: var(--text-mute); margin-bottom: 0;">ITIL 4 Foundation</h4>
-        <p style="font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--text-mute); margin-top: 30px;">[ EN PRÉPARATION ]</p>
+      <div class="prism-card hover-target" style="padding: 30px; opacity: 0.7;">
+        <div class="card-content">
+          <span class="badge-vivid" style="background: transparent; color: var(--text-muted); border-style: dashed;">ITIL</span>
+          <h4 class="card-title" style="color: var(--text-muted); margin-bottom: 0;">ITIL 4 Foundation</h4>
+          <p style="font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--text-muted); margin-top: 30px; font-weight: 700;">[ EN PRÉPARATION ]</p>
+        </div>
       </div>
     </div>
   </section>
@@ -404,7 +490,7 @@
   <section id="experience" class="section reveal">
     <div class="section-header">
       <span class="section-tag">04 / Chronologie</span>
-      <h3 class="section-title">Timeline <i>Opérationnelle.</i></h3>
+      <h3 class="section-title">Timeline <span class="text-vivid">Opérationnelle.</span></h3>
     </div>
 
     <div class="timeline">
@@ -412,30 +498,32 @@
         <div class="timeline-dot"></div>
         <div class="t-date">Oct. 2024 — Oct. 2026</div>
         <h4 class="t-title">Chef de projet SI (Alternance)</h4>
-        <div class="t-org">Grand Paris Seine & Oise (GPS&O)</div>
-        <ul class="data-list" style="margin-top: 20px; max-width: 800px;">
-          <li><i class="fa-solid fa-minus"></i> <span><strong>Pilotage Cloud (SaaS) :</strong> Conduite de projets SI critiques dans une architecture cloud-native.</span></li>
-          <li><i class="fa-solid fa-minus"></i> <span><strong>Urbanisation SI & ITSM :</strong> Administration de la plateforme EasyVista et cartographie via Power BI.</span></li>
-          <li><i class="fa-solid fa-minus"></i> <span><strong>Cybersécurité & MCO :</strong> Maintien opérationnel, support applicatif et sécurisation des déploiements.</span></li>
+        <div class="t-org"><i class="fa-solid fa-building"></i> Grand Paris Seine & Oise (GPS&O)</div>
+        <ul class="data-list" style="margin-top: 20px; max-width: 800px; transform: none;">
+          <li><i class="fa-solid fa-arrow-right"></i> <span><strong>Pilotage Cloud (SaaS) :</strong> Conduite de projets SI critiques dans une architecture cloud-native.</span></li>
+          <li><i class="fa-solid fa-arrow-right"></i> <span><strong>Urbanisation SI & ITSM :</strong> Administration de la plateforme EasyVista et cartographie via Power BI.</span></li>
+          <li><i class="fa-solid fa-arrow-right"></i> <span><strong>Cybersécurité & MCO :</strong> Maintien opérationnel, support applicatif et sécurisation des déploiements.</span></li>
         </ul>
       </div>
 
       <div class="timeline-item hover-target">
-        <div class="timeline-dot"></div>
+        <div class="timeline-dot" style="background: transparent; border-color: var(--text-muted); box-shadow: none;"></div>
         <div class="t-date">Sept. 2024 — Sept. 2026</div>
-        <h4 class="t-title" style="font-size: 1.6rem;">Mastère Expert Informatique & SI</h4>
+        <h4 class="t-title" style="font-size: 1.8rem;">Mastère Expert Informatique & SI</h4>
         <div class="t-org" style="margin-bottom: 0;">EPSI, Courbevoie — Spécialité Infrastructure IT</div>
       </div>
 
       <div class="timeline-item hover-target">
+        <div class="timeline-dot" style="background: transparent; border-color: var(--text-muted); box-shadow: none;"></div>
         <div class="t-date">Déc. 2022 — Sept. 2023</div>
-        <h4 class="t-title" style="font-size: 1.6rem;">Licence Sciences & Tech Informatiques</h4>
+        <h4 class="t-title" style="font-size: 1.8rem;">Licence Sciences & Tech Informatiques</h4>
         <div class="t-org" style="margin-bottom: 0;">Conservatoire National des Arts et Métiers (CNAM)</div>
       </div>
 
       <div class="timeline-item hover-target">
+        <div class="timeline-dot" style="background: transparent; border-color: var(--text-muted); box-shadow: none;"></div>
         <div class="t-date">Nov. 2021 — Juin 2022</div>
-        <h4 class="t-title" style="font-size: 1.6rem;">Titre pro Tech. Sup. Systèmes & Réseaux</h4>
+        <h4 class="t-title" style="font-size: 1.8rem;">Titre pro Tech. Sup. Systèmes & Réseaux</h4>
         <div class="t-org" style="margin-bottom: 0;">WebForce3, Paris 18</div>
       </div>
     </div>
@@ -445,44 +533,62 @@
   <section id="projects" class="section reveal">
     <div class="section-header">
       <span class="section-tag">05 / Laboratoire</span>
-      <h3 class="section-title">Déploiements <i>Majeurs.</i></h3>
+      <h3 class="section-title">Déploiements <span class="text-vivid">Majeurs.</span></h3>
     </div>
 
-    <div class="grid-3">
-      <div class="obsidian-card hover-target">
-        <span class="badge-outline badge-ghost" style="align-self: flex-start;">Lab Universitaire</span>
-        <h4 class="card-title">Infrastructure SI Hybride Sécurisée</h4>
-        <p class="card-desc">Architecture multi-sites ultra-résiliente. Déploiement ESXi, clusters de pare-feux pfSense en HA, supervision Zabbix intégrale et stratégie de bascule PRA.</p>
-        <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="link-hover">Explorer l'architecture <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="grid-3 cards-wrapper">
+      <div class="prism-card hover-target">
+        <div class="card-content">
+          <span class="badge-vivid" style="align-self: flex-start; background: transparent; border-style: dashed; color: var(--text-muted);">Lab Universitaire</span>
+          <h4 class="card-title">Infrastructure SI Hybride Sécurisée</h4>
+          <p class="card-desc">Architecture multi-sites ultra-résiliente. Déploiement ESXi, clusters de pare-feux pfSense en HA, supervision Zabbix intégrale et stratégie de bascule PRA.</p>
+          <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="link-hover">Explorer l'architecture <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
-      <div class="obsidian-card hover-target">
-        <span class="badge-outline badge-ghost" style="align-self: flex-start;">Lab Universitaire</span>
-        <h4 class="card-title">Architecture & Gouvernance SI</h4>
-        <p class="card-desc">Audit, urbanisation et modélisation stratégique d’un SI pour l'alignement métier. Implémentation des standards EBIOS, modélisation BPMN et Green IT.</p>
-        <a href="projects/architecture-si/architecture-si.html" class="link-hover">Explorer l'architecture <i class="fa-solid fa-arrow-right"></i></a>
+      <div class="prism-card hover-target">
+        <div class="card-content">
+          <span class="badge-vivid" style="align-self: flex-start; background: transparent; border-style: dashed; color: var(--text-muted);">Lab Universitaire</span>
+          <h4 class="card-title">Architecture & Gouvernance SI</h4>
+          <p class="card-desc">Audit, urbanisation et modélisation stratégique d’un SI pour l'alignement métier. Implémentation des standards EBIOS, modélisation BPMN et Green IT.</p>
+          <a href="projects/architecture-si/architecture-si.html" class="link-hover">Explorer l'architecture <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
-      <div class="obsidian-card hover-target">
-        <span class="badge-outline badge-ghost" style="align-self: flex-start;">Lab Universitaire</span>
-        <h4 class="card-title">Gestion de Projet IT Agile & Cloud</h4>
-        <p class="card-desc">Pilotage Scrum couplé à une chaîne DevOps complète : Infrastructure as Code (Terraform), masterisation (Packer), configuration (Ansible) et orchestration (K8s).</p>
-        <a href="projects/agile-projet/agile-gestion-projet.html" class="link-hover">Explorer l'architecture <i class="fa-solid fa-arrow-right"></i></a>
+      <div class="prism-card hover-target">
+        <div class="card-content">
+          <span class="badge-vivid" style="align-self: flex-start; background: transparent; border-style: dashed; color: var(--text-muted);">Lab Universitaire</span>
+          <h4 class="card-title">Gestion de Projet IT Agile & Cloud</h4>
+          <p class="card-desc">Pilotage Scrum couplé à une chaîne DevOps complète : Infrastructure as Code (Terraform), masterisation (Packer), configuration (Ansible) et orchestration (K8s).</p>
+          <a href="projects/agile-projet/agile-gestion-projet.html" class="link-hover">Explorer l'architecture <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="contact-monument reveal">
-    <h3>Discutons de<br>l'avenir.</h3>
-    <a href="mailto:mehdimazouz78@gmail.com" class="contact-email hover-target">mehdimazouz78@gmail.com</a>
+    <h3 class="text-vivid">Discutons de<br>l'avenir.</h3>
+    <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 50px;">Une opportunité professionnelle, un défi technique ou simplement envie d'échanger sur l'avenir du Cloud ? N'hésitez pas.</p>
     
-    <div style="margin-top: 40px;">
-      <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="btn-solid hover-target">Télécharger le CV PDF</a>
+    <div class="social-dock">
+      <a href="mailto:mehdimazouz78@gmail.com" class="social-pill hover-target">
+        <i class="fa-solid fa-envelope"></i> mehdimazouz78@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-pill hover-target">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/m6bnt" target="_blank" class="social-pill hover-target">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+    </div>
+
+    <div class="magnetic-wrap">
+      <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="btn-solid hover-target" style="pointer-events: none;">Télécharger le CV (PDF)</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Mehdi MAZOUZ — Architecte SI</p>
+    <p>© 2026 Mehdi MAZOUZ — Hyper-Réalité & Architecture SI</p>
     <div class="footer-links">
       <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="hover-target">LinkedIn</a>
       <a href="https://github.com/m6bnt" target="_blank" class="hover-target">GitHub</a>
@@ -493,23 +599,82 @@
 </div>
 
 <script>
-  // --- 1. DIFFERENCE CURSOR LOGIC ---
-  const cursor = document.getElementById('cursor');
+  // --- 1. COMET CURSOR LOGIC ---
+  const cursorDot = document.getElementById('cursor-dot');
+  const cursorTrail = document.getElementById('cursor-trail');
   
-  // Suivi de la souris
   window.addEventListener('mousemove', (e) => {
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY}px`;
+    cursorDot.style.left = `${e.clientX}px`;
+    cursorDot.style.top = `${e.clientY}px`;
+    
+    cursorTrail.animate({
+      left: `${e.clientX}px`,
+      top: `${e.clientY}px`
+    }, { duration: 100, fill: "forwards" });
   });
 
-  // Grossir le curseur sur les éléments interactifs
   const hoverTargets = document.querySelectorAll('.hover-target, a, button');
   hoverTargets.forEach(target => {
-    target.addEventListener('mouseenter', () => document.body.classList.add('hover-link'));
-    target.addEventListener('mouseleave', () => document.body.classList.remove('hover-link'));
+    target.addEventListener('mouseenter', () => document.body.classList.add('hover-target-active'));
+    target.addEventListener('mouseleave', () => document.body.classList.remove('hover-target-active'));
   });
 
-  // --- 2. NAVBAR SCROLL EFFECT ---
+  // --- 2. MAGNETIC BUTTONS ---
+  const magneticWraps = document.querySelectorAll('.magnetic-wrap');
+  magneticWraps.forEach(wrap => {
+    const btn = wrap.querySelector('.btn-vivid, .btn-solid, .nav-btn');
+    wrap.addEventListener('mousemove', (e) => {
+      const rect = wrap.getBoundingClientRect();
+      const h = rect.width / 2;
+      const v = rect.height / 2;
+      const x = e.clientX - rect.left - h;
+      const y = e.clientY - rect.top - v;
+      btn.style.transform = `translate(${x * 0.4}px, ${y * 0.4}px)`;
+    });
+    wrap.addEventListener('mouseleave', () => {
+      btn.style.transform = `translate(0px, 0px)`;
+    });
+  });
+
+  // --- 3. 3D TILT CARDS LOGIC ---
+  const tiltCards = document.querySelectorAll('.prism-card');
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -8;
+      const rotateY = ((x - centerX) / centerX) * 8;
+      
+      card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    });
+  });
+
+  // --- 4. SCROLL REVEAL (Apparition cinématique) ---
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 100;
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      }
+    }
+  }
+  window.addEventListener("scroll", reveal);
+  reveal(); // Trigger on load
+
+  // --- 5. NAVBAR SCROLL EFFECT ---
   const nav = document.getElementById('navbar');
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("nav ul li a");
@@ -534,21 +699,6 @@
       }
     });
   });
-
-  // --- 3. SCROLL REVEAL (Apparition cinématique) ---
-  function reveal() {
-    var reveals = document.querySelectorAll(".reveal");
-    for (var i = 0; i < reveals.length; i++) {
-      var windowHeight = window.innerHeight;
-      var elementTop = reveals[i].getBoundingClientRect().top;
-      var elementVisible = 100;
-      if (elementTop < windowHeight - elementVisible) {
-        reveals[i].classList.add("active");
-      }
-    }
-  }
-  window.addEventListener("scroll", reveal);
-  reveal(); // Trigger on load
 </script>
 
 </body>
