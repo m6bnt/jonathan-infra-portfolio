@@ -203,12 +203,18 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       background: #0a0a0c;
       width: 100%;
+      /* Modification pour limiter la largeur maximale globale */
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .project-image {
       width: 100%;
       height: auto;
       display: block;
+      /* Modification pour s'assurer que l'image ne dépasse pas de son conteneur */
+      max-width: 100%;
       transition: transform 0.5s ease;
       cursor: pointer;
     }
