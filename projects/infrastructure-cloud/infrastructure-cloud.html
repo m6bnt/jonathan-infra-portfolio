@@ -15,9 +15,10 @@
       --glass-border: rgba(255, 255, 255, 0.1);
       --text-pure: #ffffff;
       --text-muted: #a1a1aa;
-      --ai-cyan: #00f0ff;
-      --ai-purple: #8b5cf6;
-      --ai-magenta: #ff0055;
+      /* Thème spécifique Infra (Vert Émeraude / Cyber) */
+      --ai-cyan: #00ff88; /* Vert fluo */
+      --ai-purple: #00b8ff; /* Bleu cyan */
+      --ai-magenta: #8b5cf6; /* Violet */
       --plasma-gradient: linear-gradient(135deg, var(--ai-cyan), var(--ai-purple), var(--ai-magenta));
     }
 
@@ -46,7 +47,7 @@
 
     .ambient-glow {
       position: fixed; top: -20vh; left: 10vw; width: 80vw; height: 80vh;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, transparent 60%);
       filter: blur(100px); z-index: -3; pointer-events: none;
     }
 
@@ -75,7 +76,7 @@
       color: var(--text-muted); font-size: 0.85rem; font-weight: 500; text-decoration: none;
       text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s;
     }
-    nav ul li a:hover, nav ul li a.active { color: var(--ai-cyan); text-shadow: 0 0 10px rgba(0,240,255,0.5); }
+    nav ul li a:hover, nav ul li a.active { color: var(--ai-cyan); text-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
 
     /* --- LAYOUT GLOBAL --- */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -95,7 +96,7 @@
     
     .system-badge {
       display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(0, 240, 255, 0.05); border: 1px solid rgba(0, 240, 255, 0.2);
+      background: rgba(0, 255, 136, 0.05); border: 1px solid rgba(0, 255, 136, 0.2);
       padding: 6px 16px; border-radius: 100px; font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem; color: var(--ai-cyan); margin-bottom: 30px; letter-spacing: 1px;
     }
@@ -124,6 +125,13 @@
       margin-bottom: 60px;
       backdrop-filter: blur(20px);
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      border-color: rgba(0, 255, 136, 0.2);
     }
     
     .content-card p {
@@ -133,7 +141,6 @@
       margin-bottom: 20px;
     }
 
-    /* Improved List Styling */
     .data-list { list-style: none; margin-top: 24px; padding: 0; }
     .data-list li {
       position: relative;
@@ -191,6 +198,13 @@
       background: rgba(0,0,0,0.4);
       border-top: 1px solid var(--glass-border);
       font-family: 'JetBrains Mono', monospace;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 30px;
     }
 
     /* --- IMAGE MODAL (For zooming) --- */
@@ -270,6 +284,7 @@
       nav { width: calc(100% - 40px); justify-content: space-between; }
       nav ul { display: none; }
       .content-card { padding: 30px; }
+      .image-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -305,7 +320,7 @@
     <div class="system-badge">
       <div class="indicator"></div> PROJET MSPR - BLOC 5
     </div>
-    <h1>Infrastructure SI Hybride Sécurisée</h1>
+    <h1>Infrastructure SI <br><span class="text-plasma">Hybride Sécurisée</span></h1>
     <p>Conception et intégration d'une infrastructure multi-sites pour l'Association of Tennis Professionals (ATP). Virtualisation VMware ESXi, pare-feux pfSense en Haute Disponibilité, PRA/PCA à Monaco, et gestion de la mobilité sécurisée.</p>
     
     <div class="action-group">
@@ -315,7 +330,6 @@
       <a href="#schema" class="btn-glass" style="border-color: var(--ai-cyan); color: var(--ai-cyan);">
         Voir l'architecture <i class="fa-solid fa-arrow-down"></i>
       </a>
-      <!-- Lien vers le PDF -->
       <a href="../../assets/projects/infra-cloud/BLOC5_Concevoir_des_solutions_d'infrastructure_virtualisées_et_cloud.pdf" target="_blank" class="btn-glass" style="border-color: var(--ai-purple); color: var(--ai-purple);">
         <i class="fa-solid fa-file-pdf"></i> Consulter le rapport (PDF)
       </a>
@@ -327,7 +341,7 @@
     <div class="content-card">
       <div class="section-header">
         <span class="section-tag">01 / Enjeux</span>
-        <h3 class="section-title">Le contexte : Unification du SI de l'ATP</h3>
+        <h3 class="section-title">Contexte : Unification du SI de l'ATP</h3>
       </div>
       <p>L'organisation de l'ATP rencontrait des défis majeurs dans la gestion de son SI réparti entre son siège de Londres et ses bureaux à Ponte Vedra (US), Sydney et Monaco. L'objectif de ce projet MSPR était de centraliser les ressources critiques, d'assurer une haute disponibilité et de garantir un accès sécurisé aux nombreux salariés nomades.</p>
       <ul class="data-list">
@@ -369,14 +383,16 @@
         <li><span class="list-title">Filtrage LAN/WAN</span> Mise en place de règles de filtrage strictes pour maîtriser les flux entre les différents VLANs et le Datacenter.</li>
       </ul>
 
-      <div class="project-image-container">
-        <img src="../../assets/projects/infra-cloud/pfsense_carp.png" alt="Statut CARP pfSense" class="project-image zoomable">
-        <div class="image-caption">Vérification des statuts MASTER/BACKUP via CARP sur le site de Monaco. (Cliquez pour zoomer)</div>
-      </div>
-      
-      <div class="project-image-container">
-        <img src="../../assets/projects/infra-cloud/pfsense_ipsec.png" alt="Règles IPsec pfSense" class="project-image zoomable">
-        <div class="image-caption">Configuration des règles IPsec autorisant le trafic inter-sites. (Cliquez pour zoomer)</div>
+      <div class="image-grid">
+        <div class="project-image-container">
+          <img src="../../assets/projects/infra-cloud/pfsense_carp.png" alt="Statut CARP pfSense" class="project-image zoomable">
+          <div class="image-caption">Vérification des statuts MASTER/BACKUP via CARP sur le site de Monaco. (Cliquez pour zoomer)</div>
+        </div>
+        
+        <div class="project-image-container">
+          <img src="../../assets/projects/infra-cloud/pfsense_ipsec.png" alt="Règles IPsec pfSense" class="project-image zoomable">
+          <div class="image-caption">Configuration des règles IPsec autorisant le trafic inter-sites. (Cliquez pour zoomer)</div>
+        </div>
       </div>
     </div>
   </section>
@@ -395,17 +411,19 @@
         <li><span class="list-title">Bureaux Virtuels (RDS)</span> Les collaborateurs nomades s'authentifient sur le VPN (OpenVPN) puis accèdent à une VM-RDS-UK via le protocole RDP pour travailler de manière centralisée.</li>
       </ul>
 
-      <div class="project-image-container">
-        <img src="../../assets/projects/infra-cloud/ad_multisite.png" alt="Active Directory Multisite" class="project-image zoomable">
-        <div class="image-caption">Gestion des sites et sous-réseaux dans Active Directory (UK, US, MONACO). (Cliquez pour zoomer)</div>
+      <div class="image-grid">
+        <div class="project-image-container">
+          <img src="../../assets/projects/infra-cloud/ad_multisite.png" alt="Active Directory Multisite" class="project-image zoomable">
+          <div class="image-caption">Gestion des sites et sous-réseaux dans Active Directory (UK, US, MONACO). (Cliquez pour zoomer)</div>
+        </div>
+        
+        <div class="project-image-container">
+          <img src="../../assets/projects/infra-cloud/nextcloud_sync.png" alt="Synchronisation Nextcloud" class="project-image zoomable">
+          <div class="image-caption">Dossiers synchronisés localement via le client Nextcloud. (Cliquez pour zoomer)</div>
+        </div>
       </div>
       
-      <div class="project-image-container">
-        <img src="../../assets/projects/infra-cloud/nextcloud_sync.png" alt="Synchronisation Nextcloud" class="project-image zoomable">
-        <div class="image-caption">Dossiers synchronisés localement via le client Nextcloud. (Cliquez pour zoomer)</div>
-      </div>
-      
-      <div class="project-image-container">
+      <div class="project-image-container" style="max-width: 800px; margin: 30px auto 0;">
           <img src="../../assets/projects/infra-cloud/RDP.jpg" alt="Accès VPN et RDS" class="project-image zoomable">
           <div class="image-caption">Connexion OpenVPN réussie permettant l'accès distant sécurisé aux ressources internes. (Cliquez pour zoomer)</div>
       </div>
@@ -426,14 +444,16 @@
         <li><span class="list-title">Bascule (Failover)</span> En cas de chute du site londonien, les utilisateurs sont redirigés vers le serveur VM-RDS-MONACO disposant des dernières données synchronisées.</li>
       </ul>
 
-      <div class="project-image-container">
-        <img src="../../assets/projects/infra-cloud/zabbix_supervision.png" alt="Monitoring Zabbix" class="project-image zoomable">
-        <div class="image-caption">Dashboard Zabbix surveillant l'état de l'infrastructure. (Cliquez pour zoomer)</div>
-      </div>
-      
-      <div class="project-image-container">
-        <img src="../../assets/projects/infra-cloud/robocopy_script.png" alt="Script Robocopy PRA" class="project-image zoomable">
-        <div class="image-caption">Script d'automatisation des sauvegardes vers l'environnement PRA (Monaco). (Cliquez pour zoomer)</div>
+      <div class="image-grid">
+        <div class="project-image-container">
+          <img src="../../assets/projects/infra-cloud/zabbix_supervision.png" alt="Monitoring Zabbix" class="project-image zoomable">
+          <div class="image-caption">Dashboard Zabbix surveillant l'état de l'infrastructure. (Cliquez pour zoomer)</div>
+        </div>
+        
+        <div class="project-image-container">
+          <img src="../../assets/projects/infra-cloud/robocopy_script.png" alt="Script Robocopy PRA" class="project-image zoomable">
+          <div class="image-caption">Script d'automatisation des sauvegardes vers l'environnement PRA (Monaco). (Cliquez pour zoomer)</div>
+        </div>
       </div>
     </div>
   </section>
@@ -454,6 +474,20 @@
     </div>
   </section>
 
+  <!-- RESULTATS & APPRENTISSAGE -->
+  <section id="results" class="section">
+    <div class="content-card">
+      <div class="section-header">
+        <h3 class="section-title">Bilan & Apprentissage</h3>
+      </div>
+      <p>Ce projet a permis de concevoir et déployer une infrastructure réseau et système hautement disponible pour l'ATP, répartie sur plusieurs sites géographiques. La mise en place de clusters pfSense, d'un annuaire Active Directory multi-sites et d'une stratégie PRA complète garantit la sécurité et la résilience des données critiques.</p>
+      
+      <br>
+      <h4 style="color: var(--text-pure); font-size: 1.5rem; margin-bottom: 15px;">Ce que j'ai appris</h4>
+      <p>Cette mission m'a permis de consolider mes compétences en administration système et réseau (Windows Server, VMware ESXi), en sécurité périmétrique (pfSense, IPsec, CARP), ainsi qu'en supervision (Zabbix). La configuration du PRA de Monaco m'a également permis de mieux appréhender les enjeux de continuité et de reprise d'activité (PCA/PRA) dans les environnements de production.</p>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="contact-panel">
@@ -465,7 +499,7 @@
           <i class="fa-solid fa-envelope"></i> Me contacter
         </a>
         <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-pill">
-          <i class="fa-brands fa-linkedin" style="color: #e8a846;"></i> LinkedIn
+          <i class="fa-brands fa-linkedin" style="color: #00ff88;"></i> LinkedIn
         </a>
         <a href="../../assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="social-pill" style="border-color: var(--ai-cyan); color: var(--ai-cyan);">
           <i class="fa-solid fa-download"></i> Télécharger CV
@@ -571,7 +605,7 @@
       let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
       let directionX = (Math.random() * 1) - 0.5;
       let directionY = (Math.random() * 1) - 0.5;
-      let color = '#8b5cf6'; 
+      let color = '#00ff88'; /* Couleur Vert Cyber explicite */
       particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
   }
@@ -593,7 +627,7 @@
                        ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
         if (distance < (canvas.width/7) * (canvas.height/7)) {
           opacityValue = 1 - (distance/20000);
-          ctx.strokeStyle = 'rgba(0, 240, 255,' + opacityValue + ')';
+          ctx.strokeStyle = 'rgba(0, 255, 136,' + opacityValue + ')'; /* Lignes Vertes Cyber */
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
