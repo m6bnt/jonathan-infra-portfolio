@@ -203,7 +203,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       background: #0a0a0c;
       width: 100%;
-      /* Modification pour limiter la largeur maximale globale */
+      /* Limitation de la largeur maximale pour éviter que les images soient trop grosses */
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
@@ -213,7 +213,6 @@
       width: 100%;
       height: auto;
       display: block;
-      /* Modification pour s'assurer que l'image ne dépasse pas de son conteneur */
       max-width: 100%;
       transition: transform 0.5s ease;
       cursor: pointer;
@@ -231,6 +230,13 @@
       background: rgba(0,0,0,0.4);
       border-top: 1px solid var(--glass-border);
       font-family: 'JetBrains Mono', monospace;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 30px;
     }
 
     /* --- IMAGE MODAL (For zooming) --- */
@@ -310,6 +316,7 @@
       nav { width: calc(100% - 40px); justify-content: space-between; }
       nav ul { display: none; }
       .content-card { padding: 30px; }
+      .image-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -335,7 +342,7 @@
     <li><a href="#green">Green IT & RSE</a></li>
   </ul>
   <div class="magnetic-wrap nav-magnetic">
-    <a href="../../assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-glass" style="padding: 8px 20px; font-size: 0.85rem; border-radius: 100px;">Extraire CV</a>
+    <a href="../../assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-glass" style="padding: 8px 20px; font-size: 0.85rem; border-radius: 100px;">CV</a>
   </div>
 </nav>
 
@@ -414,7 +421,7 @@
       <p>Une analyse de maturité de la gouvernance IT a été menée selon plusieurs axes (alignement métier/IT, gestion des risques, création de valeur). Cette évaluation a servi de base à l’élaboration d’une matrice de responsabilités (RACI).</p>
 
       <div class="project-image-container">
-        <img src="../../assets/projects/architecture-si/radar_maturité.png" alt="Radar de maturité" class="project-image zoomable">
+        <img src="../../assets/projects/architecture-si/radarnew.png" alt="Radar de maturité" class="project-image zoomable">
         <div class="image-caption">Radar de maturité actuel vs cible pour la gouvernance du SI. (Cliquez pour zoomer)</div>
       </div>
 
