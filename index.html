@@ -11,69 +11,116 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 
   <!-- ========================================== -->
-  <!-- THÈME GLOBAL NEXTCLOUD / CLOUD ENGINEER -->
+  <!-- THÈME GLOBAL TERMINAL / HACKER -->
   <!-- ========================================== -->
   <style>
     :root {
-      --nc-blue: #0082c9;         /* Bleu classique Nextcloud */
-      --nc-blue-light: #00a5ff;   /* Bleu lumineux pour le survol */
-      --nc-dark: #181e25;         /* Fond Dark Mode Nextcloud */
-      --nc-card: #212932;         /* Fond des cartes */
-      --nc-card-hover: #293440;
-      --nc-text: #e5e7eb;
-      --nc-muted: #9ca3af;
-      --nc-border: rgba(255, 255, 255, 0.08);
+      --term-green: #00ff41;       /* Vert terminal classique */
+      --term-glow: #00ff41;        /* Vert lumineux pour le survol */
+      --term-dark: #050505;        /* Fond noir profond */
+      --term-card: #0d0d0d;        /* Fond des cartes très sombre */
+      --term-card-hover: #141414;
+      --term-text: #cccccc;        /* Gris clair pour la lisibilité des paragraphes */
+      --term-muted: #008f11;       /* Vert sombre pour les détails */
+      --term-border: #004d00;      /* Bordure vert foncé */
     }
     
-    /* Écrasement du style.css précédent */
+    /* Écrasement global vers une police Monospace */
+    body, p, span, a, li, h1, h2, h3, h4, div {
+      font-family: "Consolas", "Courier New", Courier, monospace !important;
+    }
+    
     body {
-      background-color: var(--nc-dark) !important;
-      color: var(--nc-text) !important;
-    }
-    h1, h2, h3, h4 {
-      color: #ffffff !important;
-    }
-    .section.alt {
-      background-color: #1c242c !important; /* Alternance de fond subtile */
+      background-color: var(--term-dark) !important;
+      color: var(--term-text) !important;
     }
     
-    /* Navbar façon Nextcloud */
+    h1, h2, h3, h4 {
+      color: var(--term-green) !important;
+    }
+    
+    .section.alt {
+      background-color: #080808 !important; /* Alternance de fond ultra subtile */
+    }
+    
+    /* Navbar façon Terminal */
     nav {
-      background-color: rgba(24, 30, 37, 0.95) !important;
-      border-bottom: 1px solid var(--nc-border) !important;
+      background-color: rgba(5, 5, 5, 0.95) !important;
+      border-bottom: 1px solid var(--term-border) !important;
       backdrop-filter: blur(10px);
     }
+    nav ul li a {
+      text-transform: lowercase;
+    }
     nav ul li a:hover, nav ul li a.active {
-      color: var(--nc-blue-light) !important;
+      color: var(--term-glow) !important;
+      text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
     }
     .cv-btn {
-      background-color: var(--nc-blue) !important;
-      border: none !important;
-      color: #fff !important;
-      border-radius: 6px !important; /* Arrondi léger Nextcloud */
+      background-color: transparent !important;
+      border: 1px solid var(--term-green) !important;
+      color: var(--term-green) !important;
+      border-radius: 0px !important; /* Bords carrés façon console */
     }
     .cv-btn:hover {
-      background-color: var(--nc-blue-light) !important;
-      transform: translateY(-2px);
+      background-color: var(--term-green) !important;
+      color: #000 !important;
+      box-shadow: 0 0 10px var(--term-glow);
     }
 
-    /* Hero Section */
+    /* Hero Section avec animation de frappe */
     .hero-text p, .hero-text span {
-      color: var(--nc-muted) !important;
+      color: var(--term-text) !important;
     }
     .hero-buttons a {
-      border-color: var(--nc-border) !important;
-      color: var(--nc-text) !important;
-      border-radius: 6px !important;
+      border-color: var(--term-border) !important;
+      color: var(--term-green) !important;
+      border-radius: 0px !important;
+      background: transparent !important;
     }
     .hero-buttons a:hover {
-      border-color: var(--nc-blue-light) !important;
-      color: var(--nc-blue-light) !important;
-      background: rgba(0, 165, 255, 0.05) !important;
+      border-color: var(--term-glow) !important;
+      color: #000 !important;
+      background: var(--term-green) !important;
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.4) !important;
     }
     .logo {
-      color: #fff !important;
+      color: var(--term-green) !important;
       font-weight: bold;
+    }
+    
+    /* Animation Machine à écrire pour le H1 */
+    .typewriter-text {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 0.15em solid var(--term-green);
+      animation: typing 2.5s steps(30, end), blink-caret 0.75s step-end infinite;
+      display: inline-block;
+      max-width: 100%;
+      color: var(--term-glow);
+      text-shadow: 0 0 5px rgba(0,255,65,0.5);
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--term-green); }
+    }
+
+    /* Effet scanline sur la photo */
+    .hero-photo img {
+      transition: all 0.4s ease;
+      border: 1px solid var(--term-border);
+      border-radius: 0px !important;
+      filter: grayscale(20%) contrast(120%);
+    }
+    .hero-photo img:hover {
+      box-shadow: 0 0 25px rgba(0, 255, 65, 0.4); /* Halo vert Matrix */
+      border-color: var(--term-glow);
+      transform: translateY(-5px) scale(1.02);
+      filter: grayscale(0%) contrast(100%);
     }
   </style>
 </head>
@@ -82,57 +129,32 @@
 <!-- NAVBAR -->
 <nav>
   <div class="nav-container">
-    <a href="index.html" class="logo"><i class="fa-solid fa-cloud" style="color: var(--nc-blue); margin-right: 8px;"></i>Mehdi MAZOUZ</a>
+    <a href="index.html" class="logo"><span style="color: #fff;">root@</span>Mehdi:~#</a>
     <ul>
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#skills">Compétences</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#education">Formations</a></li>
-      <li><a href="#projects">Projets</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a class="cv-btn" href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank">📄 CV</a></li>
+      <li><a href="#about">./about.sh</a></li>
+      <li><a href="#skills">./skills.sh</a></li>
+      <li><a href="#certifications">./certs.sh</a></li>
+      <li><a href="#education">./education.sh</a></li>
+      <li><a href="#projects">./projects.sh</a></li>
+      <li><a href="#contact">./contact.sh</a></li>
+      <li><a class="cv-btn" href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank">[ EXECUTE CV ]</a></li>
     </ul>
   </div>
 </nav>
 
 <!-- MOI -->
 <section class="hero">
-  <style>
-    @keyframes floatName {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0px); }
-    }
-    .hero-text h1 {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      font-weight: 600 !important;
-      letter-spacing: -0.5px;
-      color: var(--nc-blue-light) !important;
-      display: inline-block;
-      animation: floatName 4s ease-in-out infinite;
-      text-shadow: 0 4px 20px rgba(0, 165, 255, 0.35);
-      margin-bottom: 15px;
-    }
-    /* Nouvel effet doré pour la photo */
-    .hero-photo img {
-      transition: all 0.4s ease;
-      border: 2px solid transparent;
-    }
-    .hero-photo img:hover {
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4); /* Halo doré */
-      border-color: rgba(255, 215, 0, 0.6); /* Bordure dorée subtile */
-      transform: translateY(-5px) scale(1.02);
-    }
-  </style>
-
   <div class="hero-content">
     <div class="hero-text">
-      <h1>Mehdi MAZOUZ</h1>
-      <h2>Consultant IT / Ingénieur Systèmes & Réseaux / Administrateur Systèmes & Cloud</h2>
-      <p>Infrastructures hybrides - Automatisation - Sécurité - Supervision</p>
-      <span>📍 Île-de-France</span>
+      <h1 style="font-size: 2rem; margin-bottom: 10px;">
+        <span style="color: var(--term-text);">guest@sys:~$</span> <span class="typewriter-text">whoami</span>
+      </h1>
+      <h2 style="color: var(--term-green) !important; font-size: 1.5rem;">>_ MEHDI MAZOUZ</h2>
+      <p style="color: var(--term-text); font-weight: bold;">[ Consultant IT / Ingénieur Systèmes & Réseaux / Admin Cloud ]</p>
+      <p style="font-size: 0.9rem;">> Infrastructures hybrides - Automatisation - Sécurité - Supervision</p>
+      <span style="font-family: monospace;">> LOCATION: Île-de-France</span>
 
-      <div class="hero-buttons">
+      <div class="hero-buttons" style="margin-top: 20px;">
         <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank">
           <i class="fa-brands fa-linkedin"></i> LinkedIn
         </a>
@@ -150,9 +172,10 @@
     </div>
   </div>
 </section>
+
 <!-- ABOUT -->
 <section id="about" class="section">
-  <h3>À propos</h3>
+  <h3>>_ À propos</h3>
 
   <style>
     .about-grid {
@@ -162,32 +185,33 @@
         margin-top: 20px;
     }
     .about-card {
-        background: var(--nc-card);
-        border: 1px solid var(--nc-border);
-        border-radius: 8px; /* Style linux/dashboard */
+        background: var(--term-card);
+        border: 1px solid var(--term-border);
+        border-radius: 0px; 
         padding: 30px;
         transition: all 0.2s ease;
         line-height: 1.7;
     }
     .about-card:hover {
         transform: translateY(-4px);
-        background: var(--nc-card-hover);
-        border-color: var(--nc-blue-light);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        background: var(--term-card-hover);
+        border-color: var(--term-glow);
+        box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
     }
     .about-icon {
         font-size: 1.6rem;
-        color: var(--nc-muted);
+        color: var(--term-muted);
         margin-bottom: 15px;
         transition: color 0.2s ease;
     }
     .about-card:hover .about-icon {
-        color: var(--nc-blue-light);
+        color: var(--term-glow);
     }
     .about-title {
         font-size: 1.2rem;
         font-weight: 600;
         margin-bottom: 15px;
+        color: var(--term-green);
     }
     .about-cta {
         margin-top: 35px;
@@ -200,7 +224,7 @@
   <div class="about-grid">
     
     <div class="about-card">
-      <div class="about-icon"><i class="fa-solid fa-server"></i></div>
+      <div class="about-icon"><i class="fa-solid fa-terminal"></i></div>
       <div class="about-title">Parcours & Compétences</div>
       <p>
         Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. 
@@ -210,7 +234,7 @@
     </div>
 
     <div class="about-card">
-      <div class="about-icon"><i class="fa-solid fa-terminal"></i></div>
+      <div class="about-icon"><i class="fa-solid fa-code"></i></div>
       <div class="about-title">Implication & Motivation</div>
       <p>
         J’aime autant m’impliquer activement dans les projets d’une entreprise que mener des expérimentations personnelles, 
@@ -230,14 +254,14 @@
   </div>
 
   <p class="about-cta">
-    Pour en savoir plus sur mon parcours ou pour me contacter, n’hésitez pas à explorer ce site ou à télécharger mon CV !
+    [ Pour en savoir plus sur mon parcours ou pour me contacter, n’hésitez pas à explorer ce site ou à télécharger mon CV ! ]
   </p>
 
 </section>
 
 <!-- COMPÉTENCES -->
 <section id="skills" class="section alt">
-  <h3>Compétences</h3>
+  <h3>>_ Compétences</h3>
 
   <style>
     .skills-grid {
@@ -247,16 +271,16 @@
         margin-top: 20px;
     }
     .skill-card {
-        background: var(--nc-card);
-        border: 1px solid var(--nc-border);
-        border-radius: 8px;
+        background: var(--term-card);
+        border: 1px solid var(--term-border);
+        border-radius: 0px;
         padding: 30px;
         transition: all 0.2s ease;
     }
     .skill-card:hover {
-        background: var(--nc-card-hover);
-        border-color: var(--nc-blue-light);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        background: var(--term-card-hover);
+        border-color: var(--term-glow);
+        box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
     }
     .skill-title {
         font-size: 1.15rem;
@@ -266,10 +290,11 @@
         align-items: center;
         gap: 12px;
         padding-bottom: 12px;
-        border-bottom: 1px solid var(--nc-border);
+        border-bottom: 1px dashed var(--term-border);
+        color: var(--term-green);
     }
     .skill-title i {
-        color: var(--nc-blue);
+        color: var(--term-green);
         font-size: 1.3rem;
     }
     .skill-list {
@@ -285,9 +310,8 @@
         font-size: 0.95rem;
     }
     .skill-icon {
-        color: var(--nc-blue-light);
+        color: var(--term-muted);
         font-size: 0.8rem;
-        opacity: 0.8;
     }
   </style>
 
@@ -295,47 +319,47 @@
     
     <!-- Systèmes & Cloud -->
     <div class="skill-card">
-      <div class="skill-title"><i class="fa-solid fa-cloud"></i> Systèmes & Cloud</div>
+      <div class="skill-title"><i class="fa-solid fa-cloud"></i> [ Systèmes & Cloud ]</div>
       <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Windows Server & Active Directory</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Microsoft 365 & Entra ID</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> VMware ESXi</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Microsoft Azure</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Windows Server & Active Directory</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Microsoft 365 & Entra ID</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> VMware ESXi</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Microsoft Azure</li>
       </ul>
     </div>
 
     <!-- Réseaux & Sécurité -->
     <div class="skill-card">
-      <div class="skill-title"><i class="fa-solid fa-shield-halved"></i> Réseaux & Sécurité</div>
+      <div class="skill-title"><i class="fa-solid fa-shield-halved"></i> [ Réseaux & Sécurité ]</div>
       <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Firewall & pfSense</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> VPN IPsec</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> TCP/IP, DNS, DHCP</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Switching & VLAN (Packet Tracer/Meraki)</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Téléphonie VoIP</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Firewall & pfSense</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> VPN IPsec</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> TCP/IP, DNS, DHCP</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Switching & VLAN (Packet Tracer/Meraki)</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Téléphonie VoIP</li>
       </ul>
     </div>
 
     <!-- Automatisation & Supervision -->
     <div class="skill-card">
-      <div class="skill-title"><i class="fa-solid fa-gears"></i> Automatisation & Supervision</div>
+      <div class="skill-title"><i class="fa-solid fa-gears"></i> [ Automatisation & Supervision ]</div>
       <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Zabbix, NAS & Sauvegardes (PRA/PCA)</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Notions DevOps (Terraform, Ansible, K8s)</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Git / GitHub</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Zabbix, NAS & Sauvegardes (PRA/PCA)</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Notions DevOps (Terraform, Ansible, K8s)</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Git / GitHub</li>
       </ul>
     </div>
 
     <!-- Gestion de Projet IT & ITSM -->
     <div class="skill-card">
-      <div class="skill-title"><i class="fa-solid fa-list-check"></i> Gestion de Projet IT & ITSM</div>
+      <div class="skill-title"><i class="fa-solid fa-list-check"></i> [ Gestion de Projet IT & ITSM ]</div>
       <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Méthodologies Agiles (Scrum, Kanban)</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Planification & Suivi (Jira, Gantt)</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Cahier des charges, Spécifications</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> ITSM & Incidents (EasyVista, GLPI)</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Pilotage d'éditeurs & prestataires</li>
-        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Optimisation (Lean IT & Green IT)</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Méthodologies Agiles (Scrum, Kanban)</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Planification & Suivi (Jira, Gantt)</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Cahier des charges, Spécifications</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> ITSM & Incidents (EasyVista, GLPI)</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Pilotage d'éditeurs & prestataires</li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> Optimisation (Lean IT & Green IT)</li>
       </ul>
     </div>
 
@@ -344,7 +368,7 @@
 
 <!-- CERTIFICATIONS -->
 <section id="certifications" class="section" style="padding-bottom: 80px;">
-  <h3>Certifications</h3>
+  <h3>>_ Certifications</h3>
 
   <style>
     .cert-grid {
@@ -354,9 +378,9 @@
         width: 100%;
     }
     .cert-card {
-        background: var(--nc-card);
-        border: 1px solid var(--nc-border);
-        border-radius: 8px;
+        background: var(--term-card);
+        border: 1px solid var(--term-border);
+        border-radius: 0px;
         padding: 24px;
         display: flex;
         flex-direction: column;
@@ -366,9 +390,9 @@
     }
     .cert-card:hover {
         transform: translateY(-4px);
-        background: var(--nc-card-hover);
-        border-color: var(--nc-blue-light);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        background: var(--term-card-hover);
+        border-color: var(--term-glow);
+        box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
     }
     .cert-provider {
         font-weight: 600;
@@ -376,19 +400,20 @@
         margin: 0 0 8px 0;
         display: flex;
         align-items: center;
+        color: var(--term-text);
     }
     .cert-provider i {
-        color: var(--nc-blue);
+        color: var(--term-green);
         margin-right: 10px;
     }
     .cert-title {
-        color: var(--nc-muted);
+        color: var(--term-muted);
         margin: 0 0 24px 0;
         font-size: 0.95rem;
     }
     .cert-badge {
         padding: 6px 16px;
-        border-radius: 4px;
+        border-radius: 0px;
         font-size: 0.85rem;
         align-self: flex-start;
         transition: all 0.2s ease;
@@ -397,18 +422,18 @@
         display: inline-block;
     }
     .badge-active {
-        background: rgba(0, 130, 201, 0.15);
-        border: 1px solid var(--nc-blue);
-        color: var(--nc-blue-light);
+        background: transparent;
+        border: 1px solid var(--term-green);
+        color: var(--term-green);
     }
     .badge-active:hover {
-        background: var(--nc-blue);
-        color: #fff;
+        background: var(--term-green);
+        color: #000;
     }
     .badge-pending {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--nc-border);
-        color: var(--nc-muted);
+        background: transparent;
+        border: 1px dashed var(--term-border);
+        color: var(--term-muted);
     }
   </style>
 
@@ -419,7 +444,7 @@
         <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Dataiku</p>
         <p class="cert-title">Advanced Designer</p>
       </div>
-      <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="cert-badge badge-active">Voir la certification</a>
+      <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="cert-badge badge-active">/verify</a>
     </div>
 
     <div class="cert-card">
@@ -427,7 +452,7 @@
         <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Dataiku</p>
         <p class="cert-title">Core Designer</p>
       </div>
-      <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="cert-badge badge-active">Voir la certification</a>
+      <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="cert-badge badge-active">/verify</a>
     </div>
 
     <div class="cert-card">
@@ -435,7 +460,7 @@
         <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Dataiku</p>
         <p class="cert-title">ML Practitioner</p>
       </div>
-      <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="cert-badge badge-active">Voir la certification</a>
+      <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="cert-badge badge-active">/verify</a>
     </div>
 
     <div class="cert-card">
@@ -443,7 +468,7 @@
         <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Dataiku</p>
         <p class="cert-title">MLOps Practitioner</p>
       </div>
-      <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="cert-badge badge-active">Voir la certification</a>
+      <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="cert-badge badge-active">/verify</a>
     </div>
 
     <div class="cert-card">
@@ -451,7 +476,7 @@
         <p class="cert-provider"><i class="fa-solid fa-network-wired"></i> Cisco</p>
         <p class="cert-title">CCNA (200-301)</p>
       </div>
-      <span class="cert-badge badge-pending">En projet</span>
+      <span class="cert-badge badge-pending">status: pending</span>
     </div>
 
     <div class="cert-card">
@@ -459,7 +484,7 @@
         <p class="cert-provider"><i class="fa-solid fa-book"></i> ITIL</p>
         <p class="cert-title">ITIL 4 Foundation</p>
       </div>
-      <span class="cert-badge badge-pending">En projet</span>
+      <span class="cert-badge badge-pending">status: pending</span>
     </div>
 
   </div>
@@ -467,54 +492,53 @@
 
 <!-- FORMATION -->
 <section id="education" class="section alt">
-  <h3>Formations</h3>
+  <h3>>_ Formations</h3>
 
   <style>
       .pro-timeline {
-        border-left: 2px solid var(--nc-border); 
+        border-left: 2px dashed var(--term-border); 
         padding-left: 25px;
         margin-left: 10px;
       }
       .pro-timeline-item {
         position: relative;
-        background: var(--nc-card);
+        background: var(--term-card);
         padding: 24px;
-        border-radius: 8px;
+        border-radius: 0px;
         margin-bottom: 25px;
-        border: 1px solid var(--nc-border);
+        border: 1px solid var(--term-border);
         transition: all 0.2s ease;
       }
       .pro-timeline-item:hover {
-        background: var(--nc-card-hover);
-        border-color: var(--nc-blue-light);
+        background: var(--term-card-hover);
+        border-color: var(--term-glow);
       }
       .pro-timeline-dot {
         position: absolute;
         width: 12px;
         height: 12px;
-        background-color: var(--nc-blue);
-        border-radius: 50%;
+        background-color: var(--term-green);
         left: -32px;
         top: 30px;
-        box-shadow: 0 0 0 4px rgba(0, 130, 201, 0.2); /* Cercle de sélection style Linux/Ubuntu */
+        box-shadow: 0 0 10px var(--term-glow);
       }
       .pro-title {
         margin: 0 0 8px 0;
         font-size: 1.1rem;
         font-weight: 600;
+        color: var(--term-green);
       }
       .pro-school {
-        color: var(--nc-muted);
+        color: var(--term-text);
         margin: 0 0 8px 0;
         font-size: 0.95rem;
       }
-      .pro-school i { color: var(--nc-blue); margin-right: 8px; }
+      .pro-school i { color: var(--term-muted); margin-right: 8px; }
       
       .pro-date {
-        color: var(--nc-muted);
+        color: var(--term-muted);
         font-size: 0.85rem;
         display: block;
-        font-family: monospace; /* Touche Tech/Linux pour les dates */
       }
       .pro-date i { margin-right: 8px; }
   </style>
@@ -547,65 +571,64 @@
 
 <!-- EXPÉRIENCE -->
 <section id="experience" class="section">
-  <h3>Expérience Professionnelle</h3>
+  <h3>>_ Expérience Professionnelle</h3>
 
   <style>
     .exp-timeline {
-      border-left: 2px solid var(--nc-border);
+      border-left: 2px dashed var(--term-border);
       padding-left: 25px;
       margin-left: 10px;
       margin-top: 20px;
     }
     .exp-card {
       position: relative;
-      background: var(--nc-card);
+      background: var(--term-card);
       padding: 30px;
-      border-radius: 8px;
+      border-radius: 0px;
       margin-bottom: 25px;
-      border: 1px solid var(--nc-border);
+      border: 1px solid var(--term-border);
       transition: all 0.2s ease;
     }
     .exp-card:hover {
-      background: var(--nc-card-hover);
-      border-color: var(--nc-blue-light);
+      background: var(--term-card-hover);
+      border-color: var(--term-glow);
     }
     .exp-dot {
       position: absolute;
       width: 12px;
       height: 12px;
-      background-color: var(--nc-blue);
-      border-radius: 50%;
+      background-color: var(--term-green);
       left: -32px;
       top: 35px;
-      box-shadow: 0 0 0 4px rgba(0, 130, 201, 0.2);
+      box-shadow: 0 0 10px var(--term-glow);
     }
     .exp-header {
       margin-bottom: 20px;
-      border-bottom: 1px solid var(--nc-border);
+      border-bottom: 1px dashed var(--term-border);
       padding-bottom: 15px;
     }
     .exp-role {
       font-size: 1.25rem;
       font-weight: 600;
       margin: 0 0 8px 0;
+      color: var(--term-green);
     }
     .exp-company {
-      color: var(--nc-text);
+      color: var(--term-text);
       font-size: 1rem;
       margin: 0 0 8px 0;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .exp-company i { color: var(--nc-blue); }
+    .exp-company i { color: var(--term-muted); }
     
     .exp-date {
-      color: var(--nc-muted);
+      color: var(--term-muted);
       font-size: 0.85rem;
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: monospace;
     }
     .exp-tasks {
       list-style: none;
@@ -613,7 +636,7 @@
       margin: 0;
     }
     .exp-tasks li {
-      color: var(--nc-text);
+      color: var(--term-text);
       margin-bottom: 15px;
       line-height: 1.6;
       display: flex;
@@ -625,14 +648,14 @@
       margin-bottom: 0;
     }
     .exp-tasks li i {
-      color: var(--nc-blue-light);
+      color: var(--term-green);
       margin-top: 5px;
       font-size: 0.8rem;
       flex-shrink: 0;
     }
     .exp-tasks strong {
-      color: #fff;
-      font-weight: 600;
+      color: var(--term-green);
+      font-weight: normal;
     }
   </style>
 
@@ -649,19 +672,19 @@
 
       <ul class="exp-tasks">
         <li>
-          <i class="fa-solid fa-terminal"></i>
+          <i class="fa-solid fa-angle-right"></i>
           <span><strong>Pilotage & Déploiement Cloud (SaaS) :</strong> Conduite de projets SI de bout en bout (cahier des charges, chiffrage, spécifications) dans une architecture 100% Cloud.</span>
         </li>
         <li>
-          <i class="fa-solid fa-terminal"></i>
+          <i class="fa-solid fa-angle-right"></i>
           <span><strong>Urbanisation SI & ITSM :</strong> Cartographie du système d'information (Power BI) et administration de la plateforme de gestion des demandes et incidents (EasyVista).</span>
         </li>
         <li>
-          <i class="fa-solid fa-terminal"></i>
+          <i class="fa-solid fa-angle-right"></i>
           <span><strong>Maintien en Condition Opérationnelle (MCO) :</strong> Paramétrage, support et gestion des évolutions sur un parc applicatif et matériel (Contrôle d'accès, armoires sécurisées Traka, terminaux de paiement TPE).</span>
         </li>
         <li>
-          <i class="fa-solid fa-terminal"></i>
+          <i class="fa-solid fa-angle-right"></i>
           <span><strong>Coordination Technique & Sécurité :</strong> Pilotage des éditeurs et prestataires, avec une intégration des enjeux réseaux et cybersécurité aux déploiements.</span>
         </li>
       </ul>
@@ -673,7 +696,7 @@
 
 <!-- PROJECTS -->
 <section id="projects" class="section alt">
-  <h3>Projets</h3>
+  <h3>>_ Projets</h3>
 
   <style>
     .project-grid {
@@ -683,38 +706,27 @@
       margin-top: 20px;
     }
     .project-card {
-      background: var(--nc-card);
-      border: 1px solid var(--nc-border);
-      border-radius: 8px;
+      background: var(--term-card);
+      border: 1px solid var(--term-border);
+      border-radius: 0px;
       padding: 30px;
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
     }
     .project-card:hover {
-      background: var(--nc-card-hover);
-      border-color: var(--nc-blue-light);
+      background: var(--term-card-hover);
+      border-color: var(--term-glow);
       transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-    .project-tag {
-      align-self: flex-start;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--nc-blue-light);
-      background: rgba(0, 165, 255, 0.1);
-      padding: 4px 10px;
-      border-radius: 4px;
-      margin-bottom: 12px;
-      font-weight: 600;
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
     }
     .project-card h4 {
       font-size: 1.15rem;
       margin-bottom: 12px;
+      color: var(--term-green);
     }
     .project-card p {
-      color: var(--nc-muted);
+      color: var(--term-text);
       font-size: 0.95rem;
       line-height: 1.5;
       margin-bottom: 25px;
@@ -722,9 +734,9 @@
     }
     .project-btn {
       align-self: flex-start;
-      color: var(--nc-blue-light);
+      color: var(--term-green);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: bold;
       font-size: 0.9rem;
       transition: color 0.2s ease;
       display: flex;
@@ -733,48 +745,47 @@
     }
     .project-btn:hover {
       color: #fff;
+      text-shadow: 0 0 8px var(--term-glow);
     }
   </style>
 
   <div class="project-grid">
     <div class="project-card">
-      <span class="project-tag"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
-      <h4>Infrastructure SI Hybride Sécurisée</h4>
+      <h4>[ Infrastructure SI Hybride Sécurisée ]</h4>
       <p>Architecture SI Hybride Résiliente – Sécurité, Supervision & Continuité d’Activité</p>
-      <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="project-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="project-btn">./execute <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
     <div class="project-card">
-      <span class="project-tag"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
-      <h4>Architecture & Gouvernance SI</h4>
+      <h4>[ Architecture & Gouvernance SI ]</h4>
       <p>Analyser et définir la stratégie d’un système d’information aligné aux objectifs métier</p>
-      <a href="projects/architecture-si/architecture-si.html" class="project-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="projects/architecture-si/architecture-si.html" class="project-btn">./execute <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
     <div class="project-card">
-      <span class="project-tag"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
-      <h4>Gestion de Projet IT Agile & Cloud</h4>
+      <h4>[ Gestion de Projet IT Agile & Cloud ]</h4>
       <p>Pilotage agile, automatisation DevOps et déploiement avec Terraform, Ansible, Kubernetes</p>
-      <a href="projects/agile-projet/agile-gestion-projet.html" class="project-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="projects/agile-projet/agile-gestion-projet.html" class="project-btn">./execute <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
+
 <!-- CONTACT -->
 <section id="contact" class="section">
-  <h3>Contact</h3>
+  <h3>>_ Contact</h3>
 
   <style>
     .contact-intro {
-      color: var(--nc-text);
+      color: var(--term-text);
       text-align: center;
       margin-bottom: 40px;
       font-size: 1.1rem;
       line-height: 1.6;
     }
     .contact-wrapper {
-      background: var(--nc-card);
-      border: 1px solid var(--nc-border);
-      border-radius: 8px;
+      background: var(--term-card);
+      border: 1px solid var(--term-border);
+      border-radius: 0px;
       padding: 40px;
       text-align: center;
       max-width: 600px;
@@ -783,8 +794,8 @@
     }
     .contact-wrapper:hover {
       transform: translateY(-4px);
-      border-color: var(--nc-blue-light);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--term-glow);
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
     }
     .contact-links {
       display: flex;
@@ -793,7 +804,7 @@
       margin-bottom: 40px;
     }
     .contact-link-item {
-      color: var(--nc-text);
+      color: var(--term-text);
       text-decoration: none;
       font-size: 1.1rem;
       transition: all 0.2s ease;
@@ -803,12 +814,13 @@
       gap: 12px;
     }
     .contact-link-item i {
-      color: var(--nc-blue);
+      color: var(--term-green);
       font-size: 1.4rem;
       transition: transform 0.2s ease;
     }
     .contact-link-item:hover {
-      color: var(--nc-blue-light);
+      color: var(--term-glow);
+      text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
     }
     .contact-link-item:hover i {
       transform: scale(1.2);
@@ -820,44 +832,46 @@
       flex-wrap: wrap;
     }
     .btn-primary {
-      background: var(--nc-blue);
-      color: #fff;
+      background: transparent;
+      color: var(--term-green);
       padding: 12px 24px;
       text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
+      border: 1px solid var(--term-green);
+      border-radius: 0px;
+      font-weight: bold;
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
       gap: 8px;
     }
     .btn-primary:hover {
-      background: var(--nc-blue-light);
+      background: var(--term-green);
+      color: #000;
+      box-shadow: 0 0 10px var(--term-glow);
       transform: translateY(-2px);
     }
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--nc-text);
+      background: transparent;
+      color: var(--term-muted);
       padding: 12px 24px;
       text-decoration: none;
-      border: 1px solid var(--nc-border);
-      border-radius: 6px;
-      font-weight: 600;
+      border: 1px solid var(--term-border);
+      border-radius: 0px;
+      font-weight: bold;
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
       gap: 8px;
     }
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: var(--nc-blue-light);
-      color: var(--nc-blue-light);
+      border-color: var(--term-glow);
+      color: var(--term-glow);
     }
   </style>
 
   <p class="contact-intro">
-    Une idée à concrétiser ? Un poste à proposer ? Ou simplement un petit bonjour ?<br>
-    Faisons le premier pas, contactons-nous !
+    sys.msg("Une idée à concrétiser ? Un poste à proposer ?")<br>
+    await connect();
   </p>
 
   <div class="contact-wrapper">
@@ -876,10 +890,10 @@
 
     <div class="contact-actions">
       <a href="mailto:mehdimazouz78@gmail.com" class="btn-primary">
-        <i class="fa-solid fa-paper-plane"></i> M’envoyer un message
+        <i class="fa-solid fa-paper-plane"></i> ./send_message.sh
       </a>
       <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="btn-secondary">
-        <i class="fa-solid fa-download"></i> Télécharger CV
+        <i class="fa-solid fa-download"></i> ./download_cv.sh
       </a>
     </div>
 
@@ -887,10 +901,10 @@
 </section>
 
 <!-- FOOTER -->
-<footer style="text-align: center; padding: 40px 20px; color: var(--nc-muted); font-size: 0.95rem; border-top: 1px solid var(--nc-border); background: var(--nc-dark); margin-top: 60px;">
-  <p style="margin-bottom: 15px;">© 2026 Mehdi MAZOUZ — Consultant IT & Ingénieur Systèmes Cloud</p>
-  <a href="#" style="color: var(--nc-blue); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s ease;" onmouseover="this.style.color='var(--nc-blue-light)'" onmouseout="this.style.color='var(--nc-blue)'">
-    <i class="fa-solid fa-arrow-up"></i> Retour en haut
+<footer style="text-align: center; padding: 40px 20px; color: var(--term-muted); font-size: 0.95rem; border-top: 1px solid var(--term-border); background: var(--term-dark); margin-top: 60px;">
+  <p style="margin-bottom: 15px;">© 2026 Mehdi MAZOUZ — SYSADMIN_&_CLOUD_ENGINEER</p>
+  <a href="#" style="color: var(--term-green); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s ease;" onmouseover="this.style.color='var(--term-glow)'; this.style.textShadow='0 0 8px rgba(0,255,65,0.5)';" onmouseout="this.style.color='var(--term-green)'; this.style.textShadow='none';">
+    <i class="fa-solid fa-arrow-up"></i> return 0;
   </a>
 </footer>
 
