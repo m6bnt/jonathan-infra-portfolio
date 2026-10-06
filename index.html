@@ -763,25 +763,135 @@
 <section id="contact" class="section">
   <h3>Contact</h3>
 
-  <p class="contact-text" style="color: var(--nc-text); text-align: center; margin-bottom: 30px;">
+  <style>
+    .contact-intro {
+      color: var(--nc-text);
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .contact-wrapper {
+      background: var(--nc-card);
+      border: 1px solid var(--nc-border);
+      border-radius: 8px;
+      padding: 40px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+    }
+    .contact-wrapper:hover {
+      transform: translateY(-4px);
+      border-color: var(--nc-blue-light);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .contact-link-item {
+      color: var(--nc-text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .contact-link-item i {
+      color: var(--nc-blue);
+      font-size: 1.4rem;
+      transition: transform 0.2s ease;
+    }
+    .contact-link-item:hover {
+      color: var(--nc-blue-light);
+    }
+    .contact-link-item:hover i {
+      transform: scale(1.2);
+    }
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--nc-blue);
+      color: #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--nc-blue-light);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--nc-text);
+      padding: 12px 24px;
+      text-decoration: none;
+      border: 1px solid var(--nc-border);
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--nc-blue-light);
+      color: var(--nc-blue-light);
+    }
+  </style>
+
+  <p class="contact-intro">
     Une idée à concrétiser ? Un poste à proposer ? Ou simplement un petit bonjour ?<br>
     Faisons le premier pas, contactons-nous !
   </p>
 
-  <div class="contact-card" style="background: var(--nc-card); border: 1px solid var(--nc-border); border-radius: 8px; padding: 40px; text-align: center; max-width: 600px; margin: 0 auto;">
-    <p style="margin-bottom: 15px;"><i class="fa-solid fa-envelope" style="color: var(--nc-blue); margin-right: 10px;"></i> mehdimazouz78@gmail.com</p>
-    <p style="margin-bottom: 15px;"><i class="fa-brands fa-linkedin" style="color: var(--nc-blue); margin-right: 10px;"></i> LinkedIn</p>
-    <p style="margin-bottom: 30px;"><i class="fa-brands fa-github" style="color: var(--nc-blue); margin-right: 10px;"></i> GitHub</p>
-
-    <div class="hero-buttons" style="display: flex; justify-content: center; gap: 15px;">
-      <a href="mailto:mehdimazouz78@gmail.com" class="cv-btn" style="padding: 10px 20px; text-decoration: none;">M’envoyer un message</a>
-      <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" style="padding: 10px 20px; border: 1px solid var(--nc-border); color: var(--nc-text); text-decoration: none; border-radius: 6px;">Télécharger CV</a>
+  <div class="contact-wrapper">
+    
+    <div class="contact-links">
+      <a href="mailto:mehdimazouz78@gmail.com" class="contact-link-item">
+        <i class="fa-solid fa-envelope"></i> mehdimazouz78@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="contact-link-item">
+        <i class="fa-brands fa-linkedin"></i> linkedin.com/in/mehdi-mazouz
+      </a>
+      <a href="https://github.com/m6bnt" target="_blank" class="contact-link-item">
+        <i class="fa-brands fa-github"></i> github.com/m6bnt
+      </a>
     </div>
+
+    <div class="contact-actions">
+      <a href="mailto:mehdimazouz78@gmail.com" class="btn-primary">
+        <i class="fa-solid fa-paper-plane"></i> M’envoyer un message
+      </a>
+      <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="btn-secondary">
+        <i class="fa-solid fa-download"></i> Télécharger CV
+      </a>
+    </div>
+
   </div>
 </section>
 
-<footer style="text-align: center; padding: 30px; color: var(--nc-muted); font-size: 0.9rem; border-top: 1px solid var(--nc-border); background: var(--nc-dark);">
-  © Mehdi MAZOUZ — Consultant IT 
+<!-- FOOTER -->
+<footer style="text-align: center; padding: 40px 20px; color: var(--nc-muted); font-size: 0.95rem; border-top: 1px solid var(--nc-border); background: var(--nc-dark); margin-top: 60px;">
+  <p style="margin-bottom: 15px;">© 2026 Mehdi MAZOUZ — Consultant IT & Ingénieur Systèmes Cloud</p>
+  <a href="#" style="color: var(--nc-blue); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s ease;" onmouseover="this.style.color='var(--nc-blue-light)'" onmouseout="this.style.color='var(--nc-blue)'">
+    <i class="fa-solid fa-arrow-up"></i> Retour en haut
+  </a>
 </footer>
 
 <script>
