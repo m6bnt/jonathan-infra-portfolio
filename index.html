@@ -9,19 +9,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <!-- ========================================== -->
-  <!-- THÈME ULTIME : MODERN TECH / GLASSMORPHISM -->
+  <!-- THÈME : NEXT-GEN CLOUD / BENTO GRID UI    -->
   <!-- ========================================== -->
   <style>
     :root {
-      --bg-dark: #050505;          /* Noir absolu */
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --text-main: #ffffff;
-      --text-muted: #a1a1aa;
-      --accent-1: #00f2fe;         /* Cyan électrique */
-      --accent-2: #4facfe;         /* Bleu profond */
-      --accent-3: #8b5cf6;         /* Violet tech */
-      --gradient-main: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+      --bg-base: #000000;
+      --bg-surface: #0a0a0a;
+      --bg-card: #111111;
+      --border-color: #222222;
+      --border-hover: #333333;
+      --text-main: #ededed;
+      --text-muted: #888888;
+      --accent-cyan: #00e5ff;
+      --accent-purple: #7000ff;
+      --gradient-text: linear-gradient(90deg, #00e5ff, #7000ff);
     }
     
     * {
@@ -32,441 +33,384 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg-dark);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-base);
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
+      /* Background pattern subtil */
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(112, 0, 255, 0.05), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(0, 229, 255, 0.05), transparent 25%);
     }
 
-    /* Effet de lueur en arrière-plan (Glow Orb) */
-    .glow-bg {
-      position: fixed;
-      top: -20%;
-      left: -10%;
-      width: 50vw;
-      height: 50vw;
-      background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(80px);
-      z-index: -1;
-      pointer-events: none;
-    }
-    .glow-bg-2 {
-      position: fixed;
-      bottom: -20%;
-      right: -10%;
-      width: 50vw;
-      height: 50vw;
-      background: radial-gradient(circle, rgba(0,242,254,0.1) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(80px);
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    h1, h2, h3, h4 { color: var(--text-main); font-weight: 700; }
+    h1, h2, h3, h4 { color: #ffffff; letter-spacing: -0.02em; }
     a { text-decoration: none; }
 
-    /* Conteneur global */
+    /* LAYOUT GLOBAL */
     .section {
-      padding: 100px 20px;
-      max-width: 1200px;
+      padding: 120px 20px 40px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
-    /* Titres de section dynamiques */
     .section-title {
-      font-size: 2.2rem;
-      margin-bottom: 40px;
-      text-align: center;
-      background: var(--gradient-main);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 50px;
+      text-align: left;
+      letter-spacing: -1px;
+    }
+    .section-title span {
+      color: var(--text-muted);
+      font-weight: 400;
     }
 
-    /* Navbar Glassmorphism */
+    /* NAVBAR MINIMALISTE */
     nav {
       position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(5, 5, 5, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--card-border);
+      top: 0; width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
       z-index: 1000;
-      padding: 15px 20px;
+      padding: 16px 20px;
     }
     .nav-container {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: var(--gradient-main);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-icon {
+      background: var(--gradient-text);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: -0.5px;
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 30px;
+      gap: 32px;
       align-items: center;
     }
     nav ul li a {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      transition: all 0.3s ease;
+      transition: color 0.2s ease;
     }
     nav ul li a:hover, nav ul li a.active {
-      color: var(--text-main);
-      text-shadow: 0 0 10px rgba(255,255,255,0.3);
+      color: #fff;
     }
     .cv-btn {
-      background: var(--gradient-main);
-      color: #fff !important;
-      padding: 10px 20px;
-      border-radius: 30px;
+      background: #ffffff;
+      color: #000000 !important;
+      padding: 8px 18px;
+      border-radius: 6px;
       font-weight: 600;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.2s ease;
     }
     .cv-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+      background: #e5e5e5;
+      transform: scale(1.05);
     }
 
     /* HERO SECTION */
     .hero {
-      padding: 180px 20px 100px;
-      max-width: 1200px;
+      padding: 180px 20px 80px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 50px;
-      min-height: 100vh;
+      gap: 60px;
+      min-height: 90vh;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px;
+      background: var(--accent-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-cyan);
     }
     .hero-text h1 {
-      font-size: 4rem;
-      line-height: 1.1;
-      letter-spacing: -2px;
-      margin-bottom: 15px;
-      background: var(--gradient-main);
+      font-size: 4.5rem;
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .hero-text h2 {
       font-size: 1.5rem;
       color: var(--text-main);
-      margin-bottom: 20px;
-      font-weight: 600;
+      margin-bottom: 24px;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+    }
+    .hero-text h2 span {
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
     }
     .hero-text p {
       font-size: 1.1rem;
       color: var(--text-muted);
-      margin-bottom: 30px;
-      max-width: 600px;
-      line-height: 1.8;
-    }
-    .hero-location {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.05);
-      padding: 8px 16px;
-      border-radius: 20px;
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      max-width: 550px;
+      line-height: 1.7;
     }
     .hero-buttons {
       display: flex;
-      gap: 20px;
+      gap: 16px;
     }
-    .btn-social {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
+    .btn-primary {
+      background: #fff;
+      color: #000;
       padding: 12px 24px;
-      border-radius: 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-primary:hover {
+      background: #e5e5e5;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+    .btn-outline {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
       font-weight: 500;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
+      display: flex; align-items: center; gap: 8px;
+      transition: all 0.2s ease;
     }
-    .btn-social:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: var(--accent-1);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 242, 254, 0.2);
-    }
-    .btn-social i {
-      font-size: 1.2rem;
-      background: var(--gradient-main);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .btn-outline:hover {
+      border-color: var(--text-muted);
+      background: #1a1a1a;
     }
 
-    /* Animation Photo Glow */
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
-      50% { box-shadow: 0 0 50px rgba(0, 242, 254, 0.5); transform: translateY(-5px); }
-      100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
-    }
-    .hero-photo {
-      position: relative;
-    }
+    /* IMAGE ANIMATION */
+    .hero-photo { position: relative; }
     .hero-photo img {
-      width: 320px;
-      border-radius: 24px;
+      width: 340px;
+      border-radius: 20px;
       object-fit: cover;
-      animation: pulseGlow 6s infinite ease-in-out;
-      border: 2px solid rgba(255,255,255,0.1);
+      filter: grayscale(20%);
+      transition: all 0.5s ease;
       z-index: 2;
       position: relative;
     }
-
-    /* CARTES GLOBALES (Glassmorphism) */
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-    }
-    .glass-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 35px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-    }
-    .glass-card::before {
+    .hero-photo::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: var(--gradient-main);
-      opacity: 0;
-      transition: opacity 0.4s ease;
+      top: -20px; left: -20px; right: 20px; bottom: 20px;
+      background: var(--gradient-text);
+      border-radius: 20px;
+      z-index: 0;
+      opacity: 0.3;
+      filter: blur(30px);
+      transition: opacity 0.5s ease;
     }
-    .glass-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(139, 92, 246, 0.1);
-      border-color: rgba(255,255,255,0.15);
+    .hero-photo:hover img {
+      filter: grayscale(0%);
+      transform: translate(-5px, -5px);
     }
-    .glass-card:hover::before {
-      opacity: 1;
+    .hero-photo:hover::before { opacity: 0.6; }
+
+    /* BENTO CARDS (La magie opère ici) */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
     }
+    .bento-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Ligne lumineuse animée en haut de la carte */
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 2px;
+      background: var(--gradient-text);
+      transition: left 0.5s ease;
+    }
+    .bento-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .bento-card:hover::before { left: 100%; }
+    
     .card-icon {
-      font-size: 2.5rem;
+      font-size: 1.8rem;
+      color: #fff;
       margin-bottom: 20px;
-      background: var(--gradient-main);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      padding: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
     }
     .card-title {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-      color: var(--text-main);
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      font-weight: 600;
     }
     .card-desc {
       color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
-    /* Listes pour les compétences */
-    .skill-list { list-style: none; margin-top: 15px; }
+    /* SKILL LISTS */
+    .skill-list { list-style: none; margin-top: 16px; }
     .skill-item {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 12px;
       padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
       font-size: 0.95rem;
-      color: var(--text-muted);
+      color: var(--text-main);
     }
     .skill-item:last-child { border-bottom: none; }
-    .skill-icon {
-      color: var(--accent-1);
-      font-size: 0.9rem;
-      margin-top: 4px;
-    }
+    .skill-icon { color: var(--accent-cyan); font-size: 0.8rem; }
 
-    /* Timeline (Formations & Expériences) */
-    .timeline {
-      position: relative;
-      padding-left: 40px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--gradient-main);
-      opacity: 0.5;
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 40px;
-    }
+    /* TIMELINE */
+    .timeline { border-left: 1px solid var(--border-color); padding-left: 30px; margin-left: 10px; }
+    .timeline-item { position: relative; margin-bottom: 40px; }
     .timeline-dot {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: var(--bg-dark);
-      border: 3px solid var(--accent-3);
+      width: 11px; height: 11px;
+      background: var(--accent-cyan);
       border-radius: 50%;
-      left: -50px;
-      top: 0;
-      box-shadow: 0 0 15px var(--accent-3);
-    }
-    .timeline-content {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 30px;
-      border-radius: 16px;
-      transition: all 0.3s ease;
-    }
-    .timeline-content:hover {
-      border-color: var(--accent-3);
-      transform: translateX(10px);
+      left: -36px; top: 6px;
+      box-shadow: 0 0 10px var(--accent-cyan);
     }
     .timeline-date {
-      color: var(--accent-1);
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* Badges Certifs et Projets */
-    .badge {
-      padding: 6px 14px;
-      border-radius: 20px;
+      color: var(--text-muted);
       font-size: 0.85rem;
+      font-family: monospace;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .timeline-title { font-size: 1.2rem; margin-bottom: 4px; }
+    .timeline-company { color: var(--accent-cyan); font-size: 0.95rem; margin-bottom: 16px; font-weight: 500;}
+
+    /* BADGES */
+    .badge {
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
       font-weight: 600;
       display: inline-block;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    .badge-primary {
-      background: rgba(139, 92, 246, 0.15);
-      color: var(--accent-3);
-      border: 1px solid rgba(139, 92, 246, 0.3);
-    }
-    .badge-outline {
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px dashed var(--text-muted);
-    }
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      color: var(--accent-1);
-      font-weight: 600;
-      font-size: 1rem;
-      transition: gap 0.3s ease;
-    }
-    .project-link:hover {
-      gap: 15px;
-      color: #fff;
-    }
+    .badge-cyan { background: rgba(0, 229, 255, 0.1); color: var(--accent-cyan); border: 1px solid rgba(0, 229, 255, 0.2); }
+    .badge-purple { background: rgba(112, 0, 255, 0.1); color: #b070ff; border: 1px solid rgba(112, 0, 255, 0.2); }
+    .badge-outline { background: transparent; color: var(--text-muted); border: 1px dashed var(--border-color); }
 
-    /* Formulaire de Contact Visuel */
-    .contact-wrapper {
-      background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-      border: 1px solid var(--card-border);
+    .project-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 20px; color: #fff; font-size: 0.95rem; font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .project-link i { transition: transform 0.2s ease; }
+    .project-link:hover { color: var(--accent-cyan); }
+    .project-link:hover i { transform: translateX(4px); }
+
+    /* CONTACT BOX */
+    .contact-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: 24px;
       padding: 60px 40px;
       text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
       position: relative;
       overflow: hidden;
     }
-    .contact-wrapper::after {
+    .contact-box::before {
       content: '';
       position: absolute;
-      top: -50%; right: -50%;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle, rgba(0,242,254,0.1) 0%, rgba(0,0,0,0) 60%);
-      z-index: -1;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-text);
     }
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin: 30px 0;
-      flex-wrap: wrap;
+    .social-links {
+      display: flex; justify-content: center; gap: 24px; margin: 32px 0; flex-wrap: wrap;
     }
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      color: var(--text-main);
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
+    .social-link {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--text-muted); font-size: 1.1rem; font-weight: 500;
+      padding: 12px 24px; border-radius: 12px; border: 1px solid var(--border-color);
+      transition: all 0.2s ease; background: var(--bg-base);
     }
-    .contact-item i {
-      font-size: 2rem;
-      background: var(--gradient-main);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .social-link:hover {
+      color: #fff; border-color: var(--accent-cyan);
+      box-shadow: 0 4px 20px rgba(0, 229, 255, 0.1);
+      transform: translateY(-2px);
     }
-    .contact-item:hover {
-      transform: translateY(-5px);
-    }
+    .social-link i { color: #fff; }
 
     footer {
-      text-align: center;
-      padding: 40px 20px;
-      border-top: 1px solid var(--card-border);
-      color: var(--text-muted);
-      margin-top: 80px;
+      text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.9rem;
+      border-top: 1px solid var(--border-color); margin-top: 60px;
     }
 
-    /* Media Queries pour le responsive */
     @media (max-width: 900px) {
-      .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
-      .hero-text h1 { font-size: 2.8rem; }
-      .hero-buttons { justify-content: center; flex-wrap: wrap; }
-      nav ul { display: none; /* Simplification sur mobile */ }
+      .hero { flex-direction: column-reverse; text-align: left; padding-top: 140px; }
+      .hero-text h1 { font-size: 3rem; }
+      nav ul { display: none; }
     }
   </style>
 </head>
 <body>
 
-<div class="glow-bg"></div>
-<div class="glow-bg-2"></div>
-
 <!-- NAVBAR -->
 <nav>
   <div class="nav-container">
-    <a href="index.html" class="logo">Mehdi.</a>
+    <a href="index.html" class="logo">
+      <i class="fa-solid fa-cloud logo-icon"></i> Mehdi MAZOUZ
+    </a>
     <ul>
       <li><a href="#about">À propos</a></li>
-      <li><a href="#skills">Expertises</a></li>
+      <li><a href="#skills">Compétences</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#experience">Parcours</a></li>
       <li><a href="#projects">Projets</a></li>
@@ -478,20 +422,26 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <div class="hero-location"><i class="fa-solid fa-location-dot" style="color: var(--accent-1);"></i> Île-de-France</div>
+    <div class="hero-badge">
+      <div class="dot"></div> Disponible pour de nouveaux défis
+    </div>
     <h1>Mehdi MAZOUZ</h1>
-    <h2>Consultant IT / Ingénieur Systèmes & Réseaux</h2>
-    <p>Expert en architectures hybrides et cloud. J'automatise les déploiements, sécurise les infrastructures et garantis le maintien en condition opérationnelle des SI critiques.</p>
+    <h2><span>Cloud Engineer</span> & Architecte Systèmes</h2>
+    <p>Expert en architectures hybrides, j'automatise les déploiements (IaC), sécurise les infrastructures critiques et garantis le maintien en condition opérationnelle des systèmes d'information.</p>
     
+    <div class="hero-location" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px;">
+      <i class="fa-solid fa-location-dot"></i> Basé en Île-de-France
+    </div>
+
     <div class="hero-buttons">
-      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="btn-social">
+      <a href="mailto:mehdimazouz78@gmail.com" class="btn-primary">
+        <i class="fa-solid fa-paper-plane"></i> Me contacter
+      </a>
+      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="btn-outline">
         <i class="fa-brands fa-linkedin"></i> LinkedIn
       </a>
-      <a href="https://github.com/m6bnt" target="_blank" class="btn-social">
+      <a href="https://github.com/m6bnt" target="_blank" class="btn-outline">
         <i class="fa-brands fa-github"></i> GitHub
-      </a>
-      <a href="mailto:mehdimazouz78@gmail.com" class="btn-social">
-        <i class="fa-solid fa-paper-plane"></i> Contact
       </a>
     </div>
   </div>
@@ -502,34 +452,34 @@
 
 <!-- ABOUT -->
 <section id="about" class="section">
-  <h3 class="section-title">À propos</h3>
+  <h3 class="section-title">01. <span>À propos</span></h3>
 
-  <div class="grid-container">
-    <div class="glass-card">
+  <div class="bento-grid">
+    <div class="bento-card">
       <i class="fa-solid fa-server card-icon"></i>
       <h4 class="card-title">Profil & Expertise</h4>
-      <p class="card-desc">Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. Mon parcours m’a permis de concevoir des environnements robustes et d'automatiser des processus complexes.</p>
+      <p class="card-desc">Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. Mon parcours m’a permis de concevoir des environnements robustes et sécurisés.</p>
     </div>
-    <div class="glass-card">
+    <div class="bento-card">
       <i class="fa-solid fa-microchip card-icon"></i>
       <h4 class="card-title">Vision & Méthode</h4>
-      <p class="card-desc">J’aime autant m’impliquer activement dans les projets critiques d’une entreprise que mener des expérimentations en laboratoire. Concevoir des infrastructures fiables représente pour moi une véritable source de motivation quotidienne.</p>
+      <p class="card-desc">J’aime autant m’impliquer activement dans les projets critiques d’une entreprise que mener des expérimentations techniques. Concevoir des infrastructures scalables et fiables est ma motivation quotidienne.</p>
     </div>
-    <div class="glass-card">
-      <i class="fa-solid fa-bolt card-icon"></i>
+    <div class="bento-card">
+      <i class="fa-solid fa-network-wired card-icon"></i>
       <h4 class="card-title">L'Objectif</h4>
-      <p class="card-desc">Mon intérêt pour le cloud, l’automatisation DevOps et la supervision me pousse à rechercher constamment des solutions innovantes. L'objectif : rendre les systèmes résilients et l’expérience utilisateur parfaitement fluide.</p>
+      <p class="card-desc">Mon intérêt pour le cloud, l’automatisation DevOps et la supervision me pousse à rechercher constamment des solutions innovantes. L'objectif : rendre les systèmes résilients et l’expérience utilisateur fluide.</p>
     </div>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills" class="section">
-  <h3 class="section-title">Domaines d'Expertise</h3>
+  <h3 class="section-title">02. <span>Stack Technique</span></h3>
 
-  <div class="grid-container">
-    <div class="glass-card">
-      <h4 class="card-title"><i class="fa-solid fa-cloud" style="color: var(--text-muted); margin-right: 10px;"></i> Systèmes & Cloud</h4>
+  <div class="bento-grid">
+    <div class="bento-card">
+      <h4 class="card-title">Systèmes & Cloud</h4>
       <ul class="skill-list">
         <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Windows Server & Active Directory</li>
         <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Microsoft 365 & Entra ID</li>
@@ -538,8 +488,8 @@
       </ul>
     </div>
 
-    <div class="glass-card">
-      <h4 class="card-title"><i class="fa-solid fa-shield-halved" style="color: var(--text-muted); margin-right: 10px;"></i> Réseaux & Sécurité</h4>
+    <div class="bento-card">
+      <h4 class="card-title">Réseaux & Sécurité</h4>
       <ul class="skill-list">
         <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Firewall & pfSense</li>
         <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> VPN IPsec / OpenVPN</li>
@@ -548,21 +498,21 @@
       </ul>
     </div>
 
-    <div class="glass-card">
-      <h4 class="card-title"><i class="fa-solid fa-robot" style="color: var(--text-muted); margin-right: 10px;"></i> DevOps & Supervision</h4>
+    <div class="bento-card">
+      <h4 class="card-title">DevOps & Supervision</h4>
       <ul class="skill-list">
         <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Zabbix, NAS & Sauvegardes (PRA/PCA)</li>
         <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Terraform, Ansible, Kubernetes</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Git / GitHub CI/CD</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Git / GitHub</li>
       </ul>
     </div>
 
-    <div class="glass-card">
-      <h4 class="card-title"><i class="fa-solid fa-chart-pie" style="color: var(--text-muted); margin-right: 10px;"></i> Gouvernance IT & ITSM</h4>
+    <div class="bento-card">
+      <h4 class="card-title">Gouvernance IT & ITSM</h4>
       <ul class="skill-list">
         <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Méthodologies Agiles (Scrum, Kanban)</li>
         <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Gestion des incidents (EasyVista, GLPI)</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Cahier des charges & Pilotage prestataires</li>
+        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Pilotage d'éditeurs & prestataires</li>
       </ul>
     </div>
   </div>
@@ -570,151 +520,136 @@
 
 <!-- CERTIFICATIONS -->
 <section id="certifications" class="section">
-  <h3 class="section-title">Certifications</h3>
+  <h3 class="section-title">03. <span>Certifications</span></h3>
 
-  <div class="grid-container">
-    <div class="glass-card" style="padding: 25px;">
-      <span class="badge badge-primary">Dataiku</span>
-      <h4 class="card-title" style="margin-bottom: 5px;">Advanced Designer</h4>
+  <div class="bento-grid">
+    <div class="bento-card">
+      <span class="badge badge-cyan">Dataiku</span>
+      <h4 class="card-title">Advanced Designer</h4>
       <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="project-link">Voir le diplôme <i class="fa-solid fa-arrow-right"></i></a>
     </div>
     
-    <div class="glass-card" style="padding: 25px;">
-      <span class="badge badge-primary">Dataiku</span>
-      <h4 class="card-title" style="margin-bottom: 5px;">Core Designer</h4>
+    <div class="bento-card">
+      <span class="badge badge-cyan">Dataiku</span>
+      <h4 class="card-title">Core Designer</h4>
       <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="project-link">Voir le diplôme <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="glass-card" style="padding: 25px;">
-      <span class="badge badge-primary">Dataiku</span>
-      <h4 class="card-title" style="margin-bottom: 5px;">ML Practitioner</h4>
+    <div class="bento-card">
+      <span class="badge badge-purple">Dataiku</span>
+      <h4 class="card-title">ML Practitioner</h4>
       <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="project-link">Voir le diplôme <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="glass-card" style="padding: 25px;">
-      <span class="badge badge-primary">Dataiku</span>
-      <h4 class="card-title" style="margin-bottom: 5px;">MLOps Practitioner</h4>
+    <div class="bento-card">
+      <span class="badge badge-purple">Dataiku</span>
+      <h4 class="card-title">MLOps Practitioner</h4>
       <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="project-link">Voir le diplôme <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="glass-card" style="padding: 25px;">
+    <div class="bento-card">
       <span class="badge badge-outline">Cisco</span>
-      <h4 class="card-title" style="margin-bottom: 5px;">CCNA (200-301)</h4>
-      <p class="card-desc" style="margin-top: 15px;"><i class="fa-solid fa-spinner"></i> En cours de préparation</p>
+      <h4 class="card-title">CCNA (200-301)</h4>
+      <p class="card-desc" style="margin-top: auto;"><i class="fa-solid fa-spinner"></i> En préparation</p>
     </div>
 
-    <div class="glass-card" style="padding: 25px;">
+    <div class="bento-card">
       <span class="badge badge-outline">ITIL</span>
-      <h4 class="card-title" style="margin-bottom: 5px;">ITIL 4 Foundation</h4>
-      <p class="card-desc" style="margin-top: 15px;"><i class="fa-solid fa-spinner"></i> En cours de préparation</p>
+      <h4 class="card-title">ITIL 4 Foundation</h4>
+      <p class="card-desc" style="margin-top: auto;"><i class="fa-solid fa-spinner"></i> En préparation</p>
     </div>
   </div>
 </section>
 
-<!-- EXP & EDUCATION -->
+<!-- EXPÉRIENCE -->
 <section id="experience" class="section">
-  <h3 class="section-title">Expérience & Formations</h3>
+  <h3 class="section-title">04. <span>Parcours</span></h3>
 
   <div class="timeline">
-    
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-date">Oct. 2024 - Oct. 2026</div>
-        <h4 style="font-size: 1.3rem; margin-bottom: 5px;">Chef de projet SI (Alternance)</h4>
-        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 15px;"><i class="fa-solid fa-building"></i> Grand Paris Seine & Oise (GPS&O)</p>
-        <ul class="skill-list">
-          <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> <span><strong>Pilotage & Déploiement Cloud :</strong> Conduite de projets SI de bout en bout dans une architecture 100% Cloud SaaS.</span></li>
-          <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> <span><strong>Urbanisation SI & ITSM :</strong> Cartographie du SI (Power BI) et administration de la plateforme ITSM (EasyVista).</span></li>
-          <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> <span><strong>MCO & Cybersécurité :</strong> Paramétrage du parc, pilotage des éditeurs et intégration des enjeux réseaux/sécurité.</span></li>
-        </ul>
-      </div>
+      <div class="timeline-date">Oct. 2024 - Oct. 2026</div>
+      <h4 class="timeline-title">Chef de projet SI (Alternance)</h4>
+      <p class="timeline-company"><i class="fa-solid fa-building"></i> Grand Paris Seine & Oise (GPS&O)</p>
+      <ul class="skill-list">
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> <span><strong>Pilotage Cloud (SaaS) :</strong> Conduite de projets SI dans une architecture 100% Cloud.</span></li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> <span><strong>Urbanisation & ITSM :</strong> Cartographie SI (Power BI) et administration (EasyVista).</span></li>
+        <li class="skill-item"><i class="fa-solid fa-angle-right skill-icon"></i> <span><strong>MCO & Sécurité :</strong> Paramétrage, support et intégration des enjeux cybersécurité.</span></li>
+      </ul>
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-date">Sept. 2024 - Sept. 2026</div>
-        <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Mastère Expert Informatique & Systèmes d'Information</h4>
-        <p style="color: var(--text-muted);"><i class="fa-solid fa-graduation-cap"></i> EPSI, Courbevoie — Spécialité Infrastructure IT</p>
-      </div>
+      <div class="timeline-dot" style="background: var(--border-color); box-shadow: none; border-color: var(--text-muted);"></div>
+      <div class="timeline-date">Sept. 2024 - Sept. 2026</div>
+      <h4 class="timeline-title">Mastère Expert Informatique & Systèmes d'Information</h4>
+      <p class="card-desc"><i class="fa-solid fa-graduation-cap"></i> EPSI, Courbevoie — Spécialité Infrastructure IT</p>
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-date">Déc. 2022 - Sept. 2023</div>
-        <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Licence Sciences & Technologies Informatiques</h4>
-        <p style="color: var(--text-muted);"><i class="fa-solid fa-building-columns"></i> Conservatoire National des Arts et Métiers (CNAM), Paris</p>
-      </div>
+      <div class="timeline-dot" style="background: var(--border-color); box-shadow: none; border-color: var(--text-muted);"></div>
+      <div class="timeline-date">Déc. 2022 - Sept. 2023</div>
+      <h4 class="timeline-title">Licence Sciences & Technologies Informatiques</h4>
+      <p class="card-desc"><i class="fa-solid fa-building-columns"></i> Conservatoire National des Arts et Métiers (CNAM)</p>
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-date">Nov. 2021 - Juin 2022</div>
-        <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Titre pro Technicien Supérieur Systèmes & Réseaux</h4>
-        <p style="color: var(--text-muted);"><i class="fa-solid fa-laptop-code"></i> WebForce3, Paris</p>
-      </div>
+      <div class="timeline-dot" style="background: var(--border-color); box-shadow: none; border-color: var(--text-muted);"></div>
+      <div class="timeline-date">Nov. 2021 - Juin 2022</div>
+      <h4 class="timeline-title">Titre pro Technicien Supérieur Systèmes & Réseaux</h4>
+      <p class="card-desc"><i class="fa-solid fa-laptop-code"></i> WebForce3, Paris 18</p>
     </div>
-
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="section">
-  <h3 class="section-title">Réalisations</h3>
+  <h3 class="section-title">05. <span>Réalisations</span></h3>
 
-  <div class="grid-container">
-    <div class="glass-card">
-      <span class="badge badge-primary" style="align-self: flex-start;"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
-      <h4 class="card-title" style="margin-top: 15px;">Infrastructure SI Hybride Sécurisée</h4>
-      <p class="card-desc">Architecture multi-sites résiliente. Intégration de la virtualisation (ESXi), sécurité réseau (pfSense), supervision (Zabbix) et continuité d’activité (PCA/PRA).</p>
-      <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="project-link">Découvrir le projet <i class="fa-solid fa-arrow-right"></i></a>
+  <div class="bento-grid">
+    <div class="bento-card">
+      <span class="badge badge-purple" style="align-self: flex-start;">Projet Universitaire</span>
+      <h4 class="card-title">Infrastructure SI Hybride Sécurisée</h4>
+      <p class="card-desc">Architecture multi-sites résiliente. Virtualisation (ESXi), sécurité (pfSense), supervision (Zabbix) et continuité d’activité (PCA/PRA).</p>
+      <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="project-link">Consulter l'étude <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="glass-card">
-      <span class="badge badge-primary" style="align-self: flex-start;"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
-      <h4 class="card-title" style="margin-top: 15px;">Architecture & Gouvernance SI</h4>
-      <p class="card-desc">Analyse, urbanisation et définition stratégique d’un système d’information aligné sur les objectifs métier (Cartographie, BPMN, EBIOS, Green IT).</p>
-      <a href="projects/architecture-si/architecture-si.html" class="project-link">Découvrir le projet <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="bento-card">
+      <span class="badge badge-purple" style="align-self: flex-start;">Projet Universitaire</span>
+      <h4 class="card-title">Architecture & Gouvernance SI</h4>
+      <p class="card-desc">Analyse, urbanisation et définition stratégique d’un SI aligné sur les objectifs métier (BPMN, EBIOS, Green IT).</p>
+      <a href="projects/architecture-si/architecture-si.html" class="project-link">Consulter l'étude <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="glass-card">
-      <span class="badge badge-primary" style="align-self: flex-start;"><i class="fa-solid fa-graduation-cap"></i> Projet Universitaire</span>
-      <h4 class="card-title" style="margin-top: 15px;">Gestion de Projet IT Agile & Cloud</h4>
-      <p class="card-desc">Pilotage Scrum et automatisation DevOps complète. Déploiement d'une infrastructure avec Terraform, création d'images Packer, orchestration Ansible et cluster Kubernetes.</p>
-      <a href="projects/agile-projet/agile-gestion-projet.html" class="project-link">Découvrir le projet <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="bento-card">
+      <span class="badge badge-purple" style="align-self: flex-start;">Projet Universitaire</span>
+      <h4 class="card-title">Gestion de Projet IT Agile & Cloud</h4>
+      <p class="card-desc">Pilotage Scrum et automatisation DevOps. Infrastructure Terraform, images Packer, orchestration Ansible et Kubernetes.</p>
+      <a href="projects/agile-projet/agile-gestion-projet.html" class="project-link">Consulter l'étude <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="section">
-  <h3 class="section-title">Contact</h3>
-
-  <div class="contact-wrapper">
-    <h4 style="font-size: 1.8rem; margin-bottom: 20px;">Démarrons un projet ensemble</h4>
-    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; max-width: 500px; margin-inline: auto;">
-      Une idée à concrétiser ? Un poste à proposer ? Ou simplement échanger sur l'IT et le Cloud ? N'hésitez pas.
+  <div class="contact-box">
+    <h3 style="font-size: 2.5rem; margin-bottom: 15px; letter-spacing: -1px;">Démarrons un projet.</h3>
+    <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto;">
+      Une opportunité professionnelle, une question technique ou simplement envie d'échanger ? Contactez-moi.
     </p>
 
-    <div class="contact-links">
-      <a href="mailto:mehdimazouz78@gmail.com" class="contact-item">
-        <i class="fa-solid fa-envelope"></i>
-        <span>mehdimazouz78@gmail.com</span>
+    <div class="social-links">
+      <a href="mailto:mehdimazouz78@gmail.com" class="social-link">
+        <i class="fa-solid fa-envelope"></i> mehdimazouz78@gmail.com
       </a>
-      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="contact-item">
-        <i class="fa-brands fa-linkedin"></i>
-        <span>LinkedIn</span>
+      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-link">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
       </a>
-      <a href="https://github.com/m6bnt" target="_blank" class="contact-item">
-        <i class="fa-brands fa-github"></i>
-        <span>GitHub</span>
+      <a href="https://github.com/m6bnt" target="_blank" class="social-link">
+        <i class="fa-brands fa-github"></i> GitHub
       </a>
     </div>
 
-    <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="cv-btn" style="display: inline-block; margin-top: 20px; font-size: 1.1rem;">
+    <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" class="btn-primary" style="display: inline-flex;">
       <i class="fa-solid fa-download"></i> Télécharger mon CV
     </a>
   </div>
@@ -722,8 +657,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Mehdi MAZOUZ — Ingénieur Systèmes & Cloud</p>
-  <a href="#" style="color: var(--text-muted); margin-top: 10px; display: inline-block; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">
+  <p>© 2026 Mehdi MAZOUZ — Conçu avec passion & précision.</p>
+  <a href="#" style="color: var(--text-main); margin-top: 15px; display: inline-block; font-weight: 500;">
     <i class="fa-solid fa-arrow-up"></i> Retour en haut
   </a>
 </footer>
@@ -735,7 +670,7 @@ const navLinks = document.querySelectorAll("nav a[href^='#']");
 window.addEventListener("scroll", () => {
   let current = "";
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
+    const sectionTop = section.offsetTop - 150;
     const sectionHeight = section.clientHeight;
     if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
       current = section.getAttribute("id");
