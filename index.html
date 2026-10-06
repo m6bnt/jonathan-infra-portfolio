@@ -97,6 +97,27 @@
 
 <!-- MOI -->
 <section class="hero">
+  <style>
+    /* Animation de flottaison fluide */
+    @keyframes floatName {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    /* Nouveau style pour le nom */
+    .hero-text h1 {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-weight: 600 !important; /* Moins gras, plus élégant */
+      letter-spacing: -0.5px;
+      color: var(--nc-blue-light) !important; /* Bleu Nextcloud lumineux */
+      display: inline-block;
+      animation: floatName 4s ease-in-out infinite; /* Application de l'animation */
+      text-shadow: 0 4px 20px rgba(0, 165, 255, 0.35); /* Effet de halo cloud */
+      margin-bottom: 15px;
+    }
+  </style>
+
   <div class="hero-content">
     <div class="hero-text">
       <h1>Mehdi MAZOUZ</h1>
@@ -105,7 +126,7 @@
       <span>📍 Île-de-France</span>
 
       <div class="hero-buttons">
-      <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank">
+        <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank">
           <i class="fa-brands fa-linkedin"></i> LinkedIn
         </a>
         <a href="https://github.com/m6bnt" target="_blank">
@@ -122,7 +143,6 @@
     </div>
   </div>
 </section>
-
 <!-- ABOUT -->
 <section id="about" class="section">
   <h3>À propos</h3>
