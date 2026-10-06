@@ -11,8 +11,8 @@
 
     :root {
       --void-black: #000000;
-      --panel-bg: rgba(10, 10, 12, 0.3);
-      --glass-border: rgba(255, 255, 255, 0.05);
+      --panel-bg: rgba(10, 10, 12, 0.4);
+      --glass-border: rgba(255, 255, 255, 0.08);
       --text-pure: #ffffff;
       --text-muted: #8a8f98;
       --ai-cyan: #00f0ff;
@@ -53,12 +53,12 @@
     /* --- DYNAMIC PILL NAVBAR --- */
     nav {
       position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      background: rgba(5, 5, 5, 0.5);
+      background: rgba(5, 5, 5, 0.6);
       backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
       border: 1px solid var(--glass-border);
       border-radius: 100px; z-index: 1000;
       padding: 10px 16px 10px 24px;
-      display: flex; align-items: center; gap: 40px;
+      display: flex; align-items: center; gap: 30px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
     }
     .nav-logo {
@@ -78,10 +78,10 @@
     nav ul li a:hover, nav ul li a.active { color: var(--ai-cyan); text-shadow: 0 0 10px rgba(0,240,255,0.5); }
 
     /* --- LAYOUT GLOBAL --- */
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 80px 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 60px 0; }
     
-    .section-header { margin-bottom: 40px; }
+    .section-header { margin-bottom: 30px; }
     .section-tag {
       font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700;
       color: var(--ai-purple); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block;
@@ -91,7 +91,7 @@
     }
 
     /* --- HERO SECTION --- */
-    .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
+    .hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
     
     .system-badge {
       display: inline-flex; align-items: center; gap: 10px;
@@ -101,9 +101,9 @@
     }
     
     .hero h1 {
-      font-size: 4.5rem; font-weight: 900; line-height: 1; letter-spacing: -2px; margin-bottom: 20px;
+      font-size: 4rem; font-weight: 900; line-height: 1.1; letter-spacing: -2px; margin-bottom: 20px;
     }
-    .hero p { font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 700px; margin-bottom: 50px; font-weight: 300; }
+    .hero p { font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 800px; margin-bottom: 40px; font-weight: 300; }
 
     .action-group { display: flex; gap: 20px; flex-wrap: wrap; }
     
@@ -123,11 +123,13 @@
       padding: 50px;
       margin-bottom: 40px;
       backdrop-filter: blur(20px);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .content-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      border-color: rgba(0, 240, 255, 0.2);
     }
     
     .content-card p {
@@ -140,10 +142,10 @@
     .data-list { list-style: none; margin-top: 24px; padding: 0; }
     .data-list li {
       display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
-      font-size: 1rem; color: #d4d4d8;
+      font-size: 1rem; color: #d4d4d8; line-height: 1.6;
     }
     .data-list li::before {
-      content: '\f061'; /* FontAwesome arrow-right */
+      content: '\f061';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       color: var(--ai-cyan);
@@ -151,27 +153,56 @@
       margin-top: 4px;
     }
 
+    /* --- IMAGES & VISUALIZATION --- */
+    .project-image-container {
+      margin-top: 30px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      background: #0a0a0c;
+    }
+    
+    .project-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .project-image-container:hover .project-image {
+      transform: scale(1.02);
+    }
+    
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .image-caption {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 12px;
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid var(--glass-border);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
     /* --- TERMINAL FOOTER / CONTACT --- */
     .contact-panel {
       background: radial-gradient(circle at top, rgba(20,20,25,0.8) 0%, transparent 100%);
       border: 1px solid var(--glass-border); border-radius: 40px;
-      padding: 60px 40px; text-align: center; margin-top: 80px;
+      padding: 60px 40px; text-align: center; margin-top: 60px;
       backdrop-filter: blur(40px);
     }
     .contact-panel h3 { font-size: 2rem; font-weight: 800; margin-bottom: 24px; color: var(--ai-purple);}
-    
-    .social-dock { display: flex; justify-content: center; gap: 20px; margin: 30px 0; flex-wrap: wrap; }
-    .social-pill {
-      display: flex; align-items: center; gap: 12px; color: var(--text-pure);
-      padding: 12px 24px; border-radius: 100px; border: 1px solid var(--glass-border);
-      background: rgba(255,255,255,0.02); font-weight: 500; font-size: 0.95rem;
-      transition: all 0.3s; text-decoration: none;
-    }
-    .social-pill:hover { background: rgba(255,255,255,0.08); border-color: var(--ai-cyan); color: var(--ai-cyan); }
 
     footer {
       text-align: center; padding: 60px 20px 40px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
-      color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 100px;
+      color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 50px;
     }
 
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
@@ -181,6 +212,7 @@
       nav { width: calc(100% - 40px); justify-content: space-between; }
       nav ul { display: none; }
       .content-card { padding: 30px; }
+      .image-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -192,149 +224,180 @@
 <nav>
   <a href="../../index.html" class="nav-logo">SYS_CORE</a>
   <ul>
-    <li><a href="#contexte">Contexte</a></li>
-    <li><a href="#securite">Sécurité</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#supervision">Supervision</a></li>
-    <li><a href="#pra">PCA/PRA</a></li>
-    <li><a href="#datacenter">Datacenter & Cloud</a></li>
+    <li><a href="#contexte">Contexte ATP</a></li>
+    <li><a href="#schema">Architecture</a></li>
+    <li><a href="#securite">Sécurité (pfSense)</a></li>
+    <li><a href="#services">Services (AD/NAS)</a></li>
+    <li><a href="#pra">Supervision & PRA</a></li>
   </ul>
+  <div class="magnetic-wrap nav-magnetic">
+    <a href="../../assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-glass" style="padding: 8px 20px; font-size: 0.85rem; border-radius: 100px;">Extraire CV</a>
+  </div>
 </nav>
 
 <div class="container">
   
+  <!-- HERO -->
   <section class="hero">
     <div class="system-badge">
-      <div class="indicator"></div> LAB UNIVERSITAIRE
+      <div class="indicator"></div> PROJET MSPR - BLOC 5
     </div>
     <h1>Infrastructure SI Hybride Sécurisée</h1>
-    <p>Conception d'une infrastructure multi-sites sécurisée pour une entreprise fictive (ATP), intégrant virtualisation, haute disponibilité et accès nomade, avec migration progressive vers le cloud[cite: 45].</p>
+    <p>Conception et intégration d'une infrastructure multi-sites pour l'Association of Tennis Professionals (ATP). Virtualisation VMware ESXi, pare-feux pfSense en Haute Disponibilité, PRA/PCA à Monaco, et gestion de la mobilité sécurisée.</p>
     
     <div class="action-group">
       <a href="../../index.html" class="btn-glass">
-        <i class="fa-solid fa-arrow-left"></i> Retour aux projets
+        <i class="fa-solid fa-arrow-left"></i> Retour au portfolio
       </a>
-      <a href="../../assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-glass">
-        <i class="fa-solid fa-file-pdf"></i> CV
+      <a href="#schema" class="btn-glass" style="border-color: var(--ai-cyan); color: var(--ai-cyan);">
+        Voir l'architecture <i class="fa-solid fa-arrow-down"></i>
       </a>
     </div>
   </section>
 
+  <!-- CONTEXTE -->
   <section id="contexte" class="section">
     <div class="content-card">
       <div class="section-header">
-        <h3 class="section-title">Contexte</h3>
+        <span class="section-tag">01 / Enjeux</span>
+        <h3 class="section-title">Le contexte : Unification du SI de l'ATP</h3>
       </div>
-      <p>L'association de Tennis Professionals (ATP) rencontre des défis majeurs dans l'unification de son système d'information. Avec son siège mondial à Londres et des bureaux régionaux en Floride, Monaco et Sidney, l'ATP doit gérer la difficulté d'accès aux outils informatiques pour ses nombreux salariés nomades[cite: 45]. Ce projet vise à centraliser les applications au siège londonien, avec une perspective d'externalisation dans le cloud sur le moyen terme[cite: 45].</p>
+      <p>L'organisation de l'ATP rencontrait des défis majeurs dans la gestion de son SI réparti entre son siège de Londres et ses bureaux à Ponte Vedra (US), Sydney et Monaco. L'objectif de ce projet MSPR était de centraliser les ressources critiques, d'assurer une haute disponibilité et de garantir un accès sécurisé aux nombreux salariés nomades.</p>
       <ul class="data-list">
-        <li>Mise en place de l'ensemble de l'infrastructure des différents sites (UK, US, MONACO, AUSTRALIE)[cite: 45]</li>
-        <li>Configuration du PRA (Plan de Reprise d'Activité) et de l'hébergement Cloud sur le datacenter[cite: 45]</li>
-        <li>Interconnexion sécurisée via des tunnels VPN site-à-site (pfSense)[cite: 45]</li>
-        <li>Supervision de l'infrastructure (monitoring avec Zabbix)[cite: 45]</li>
+        <li><strong>Virtualisation :</strong> Déploiement d'un hyperviseur VMware ESXi (Type 1) hébergeant l'ensemble des machines virtuelles du projet.</li>
+        <li><strong>Interconnexion :</strong> Création de tunnels VPN IPsec pour relier l'ensemble des sites de manière sécurisée.</li>
+        <li><strong>Continuité d'activité :</strong> Conception d'un Plan de Reprise d'Activité (PRA) complet hébergé sur le site de Monaco.</li>
+        <li><strong>Mobilité :</strong> Implémentation d'accès distants (OpenVPN) et de bureaux virtuels (RDS) pour les collaborateurs en déplacement.</li>
       </ul>
     </div>
   </section>
 
+  <!-- SCHEMA SI -->
+  <section id="schema" class="section">
+    <div class="content-card">
+      <div class="section-header">
+        <span class="section-tag">02 / Topologie</span>
+        <h3 class="section-title">Architecture globale multi-sites</h3>
+      </div>
+      <p>L'infrastructure repose sur 5 sites logiques interconnectés. Chaque site dispose de son propre adressage IP (LAN, WAN, SYNC pour la haute disponibilité, et PRA pour Monaco). Le Datacenter centralise les échanges de fichiers.</p>
+      
+      <!-- IMAGE: Schéma de l'infrastructure -->
+      <div class="project-image-container">
+        <img src="../../assets/images/schema_infra_atp.png" alt="Schéma de l'infrastructure ATP" class="project-image">
+        <div class="image-caption">Topologie réseau : Siège (Londres), Filiales (US, Sydney), PRA (Monaco) et Datacenter.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITE & RESEAU -->
   <section id="securite" class="section">
     <div class="content-card">
       <div class="section-header">
-        <h3 class="section-title">Sécurité & Réseau</h3>
+        <span class="section-tag">03 / Sécurité</span>
+        <h3 class="section-title">Réseau, Pare-feux & Haute Disponibilité</h3>
       </div>
-      <p>L'infrastructure multi-sites repose sur une architecture sécurisée et résiliente, combinant firewalls redondants, tunnels VPN et segmentation réseau[cite: 46, 52].</p>
+      <p>La sécurité périmétrique de chaque site est assurée par une solution pfSense. Pour garantir une résilience totale, un cluster de pare-feux (Master / Backup) a été mis en place sur les sites critiques.</p>
       <ul class="data-list">
-        <li>Chaque site est équipé d'un cluster de pare-feux pfSense configuré en haute disponibilité (HA) via le protocole CARP[cite: 46].</li>
-        <li>Une adresse VIP CARP est partagée entre l'instance principale (Master) et secondaire (Backup), servant de point d'accès unique[cite: 46].</li>
-        <li>Une interface SYNC permet de synchroniser les configurations et les états entre les deux équipements pfSense[cite: 46].</li>
-        <li>Un utilisateur externe peut accéder aux services via un tunnel VPN configuré sur le pare-feu de Londres (OpenVPN), garantissant un accès sécurisé à distance[cite: 48].</li>
+        <li><strong>Cluster Haute Disponibilité (HA) :</strong> Utilisation du protocole CARP pour le partage d'une adresse IP virtuelle (VIP) entre les firewalls Master et Backup.</li>
+        <li><strong>Synchronisation :</strong> Configuration d'interfaces dédiées (SYNC) avec pfSync pour maintenir l'état des connexions en cas de bascule.</li>
+        <li><strong>Filtrage LAN/WAN :</strong> Mise en place de règles de filtrage strictes pour maîtriser les flux entre les différents VLANs et le Datacenter.</li>
       </ul>
+
+      <!-- GRID IMAGES: Securité -->
+      <div class="image-grid">
+        <div class="project-image-container">
+          <img src="../../assets/images/pfsense_carp.png" alt="Statut CARP pfSense" class="project-image">
+          <div class="image-caption">Vérification des statuts MASTER/BACKUP via CARP sur le site de Monaco.</div>
+        </div>
+        <div class="project-image-container">
+          <img src="../../assets/images/pfsense_ipsec.png" alt="Règles IPsec pfSense" class="project-image">
+          <div class="image-caption">Configuration des règles IPsec autorisant le trafic inter-sites.</div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- SERVICES & PLATEFORMES -->
   <section id="services" class="section">
     <div class="content-card">
       <div class="section-header">
-        <h3 class="section-title">Services & Plateformes</h3>
+        <span class="section-tag">04 / Services</span>
+        <h3 class="section-title">Active Directory, NAS & Mobilité</h3>
       </div>
-      <p>L'infrastructure fournit des services critiques et des plateformes centralisées, garantissant accessibilité, redondance et continuité des données entre les sites[cite: 49, 50, 51].</p>
+      <p>Pour répondre aux besoins métiers de l'ATP, nous avons déployé un ensemble de services Windows et Linux, en veillant toujours à la redondance de l'information.</p>
       <ul class="data-list">
-        <li>Le contrôleur de domaine principal a été installé sur le site de Londres[cite: 49].</li>
-        <li>Un contrôleur de domaine secondaire a été mis en place sur le site de Ponte Vedra, assurant la redondance du service AD[cite: 49].</li>
-        <li>Le serveur Nextcloud, installé sur le Datacenter, permet la centralisation et le partage des fichiers pour tous les sites[cite: 50].</li>
-        <li>Un serveur de bureau virtuel a été mis en place (VM-RDS-UK) pour permettre aux utilisateurs d'accéder à leur environnement de travail à distance via le protocole RDP[cite: 51].</li>
+        <li><strong>Active Directory Multisite :</strong> Contrôleur de domaine principal à Londres (VM-UK), secondaire à Ponte Vedra (VM-US) et serveur de secours à Monaco (PRA).</li>
+        <li><strong>Stockage Nextcloud :</strong> Hébergé dans le Datacenter, il permet le partage et la synchronisation sécurisée des fichiers. L'accès s'effectue via une interface web ou des clients lourds.</li>
+        <li><strong>Bureaux Virtuels (RDS) :</strong> Les collaborateurs nomades s'authentifient sur le VPN (OpenVPN) puis accèdent à une VM-RDS-UK via le protocole RDP pour travailler de manière centralisée.</li>
       </ul>
+
+      <!-- GRID IMAGES: Services -->
+      <div class="image-grid">
+        <div class="project-image-container">
+          <img src="../../assets/images/ad_multisite.png" alt="Active Directory Multisite" class="project-image">
+          <div class="image-caption">Gestion des sites et sous-réseaux dans Active Directory (UK, US, MONACO).</div>
+        </div>
+        <div class="project-image-container">
+          <img src="../../assets/images/nextcloud_sync.png" alt="Synchronisation Nextcloud" class="project-image">
+          <div class="image-caption">Dossiers synchronisés localement via le client Nextcloud.</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="supervision" class="section">
-    <div class="content-card">
-      <div class="section-header">
-        <h3 class="section-title">Supervision</h3>
-      </div>
-      <p>Le serveur de supervision a été mis en place avec Zabbix, avec un agent Zabbix installé sur le serveur du siège de Londres[cite: 50]. Zabbix permet de voir l'état des machines et d'envoyer des alertes mails si l'une d'elles est dans une phase critique[cite: 50].</p>
-      <ul class="data-list">
-         <li>Surveillance détaillée de la CPU, RAM et stockage des serveurs.</li>
-         <li>Alertes proactives en cas de dégradation de service.</li>
-         <li>Dashboard IT centralisé offrant une vision complète de l'état du système.</li>
-      </ul>
-    </div>
-  </section>
-
+  <!-- PRA & SUPERVISION -->
   <section id="pra" class="section">
     <div class="content-card">
       <div class="section-header">
-        <h3 class="section-title">PCA / PRA</h3>
+        <span class="section-tag">05 / Continuité</span>
+        <h3 class="section-title">Supervision Zabbix & Plan de Reprise d'Activité</h3>
       </div>
-      <p>Une réplication PRA (Plan de Reprise d'Activité) du contrôleur principal a été configurée sur le site de Monaco[cite: 49]. Une stratégie de sauvegarde des données Nextcloud a été mise en place pour garantir la continuité du service en cas de défaillance du Datacenter[cite: 53].</p>
+      <p>L'anticipation des pannes est au cœur de ce projet. Outre la redondance des pare-feux et des serveurs AD, un PRA complet a été documenté et scripté pour le site de Monaco.</p>
       <ul class="data-list">
-        <li>Une synchronisation des fichiers hébergés sur le serveur principal Nextcloud a été mise en œuvre vers une VM de secours située sur le site de Monaco[cite: 53].</li>
-        <li>Un script de sauvegarde Robocopy, lancé automatiquement via le planificateur de tâches Windows, permet de copier à intervalle régulier les fichiers depuis Londres vers Monaco[cite: 53].</li>
-        <li>Un serveur de bureau virtuel de secours (VM-RDS-MONACO) est installé sur le site de Monaco[cite: 51].</li>
+        <li><strong>Monitoring Zabbix :</strong> Installation d'un serveur Zabbix à Londres. Remontée des alertes via des agents déployés sur les machines critiques (CPU, RAM, Disque, Statut réseau).</li>
+        <li><strong>Sauvegarde automatisée :</strong> Création d'un script `Robocopy` planifié via le planificateur de tâches Windows, qui copie les données critiques de Londres vers le NAS de Monaco tous les jours à 22h.</li>
+        <li><strong>Bascule (Failover) :</strong> En cas de chute du site londonien, les utilisateurs sont redirigés vers le serveur VM-RDS-MONACO disposant des dernières données synchronisées.</li>
       </ul>
+
+      <div class="project-image-container" style="max-width: 800px; margin: 30px auto 0;">
+        <img src="../../assets/images/robocopy_script.png" alt="Script Robocopy PRA" class="project-image">
+        <div class="image-caption">Script d'automatisation des sauvegardes vers l'environnement PRA (Monaco).</div>
+      </div>
     </div>
   </section>
-  
-  <section id="datacenter" class="section">
+
+  <!-- CLOUD & EVOLUTION -->
+  <section id="cloud" class="section">
     <div class="content-card">
       <div class="section-header">
-        <h3 class="section-title">Datacenter & Cloud</h3>
+        <span class="section-tag">06 / Perspectives</span>
+        <h3 class="section-title">Stratégie Cloud & Modernisation (UCaaS)</h3>
       </div>
-      <p>Le Datacenter centralise le stockage et l'échange de fichiers pour toute l'organisation via un serveur Nextcloud hébergé localement[cite: 48]. Une infrastructure réseau dédiée sécurise cet accès[cite: 60]. Dans le but de moderniser ses outils de communication interne et de favoriser le télétravail, l'ATP souhaite mettre en place une solution complète UCaaS (Microsoft Teams)[cite: 62] et externaliser la gestion de l'authentification avec Entra ID (SSO Cloud)[cite: 63].</p>
+      <p>En conclusion du projet, nous avons proposé au bureau exécutif de l'ATP une feuille de route pour externaliser l'infrastructure vers le Cloud à moyen terme.</p>
       <ul class="data-list">
-        <li>Le Datacenter possède son propre cluster pfSense (Master/Backup) avec IP VIP CARP (10.10.5.3/24)[cite: 60].</li>
-        <li>Nextcloud offre un environnement sécurisé et personnalisable pour gérer, partager et collaborer sur des fichiers[cite: 60].</li>
-        <li>La solution Teams offre la téléphonie IP intégrée, une messagerie collaborative et des réunions en ligne sécurisées[cite: 62].</li>
-        <li>Entra ID offre le SSO vers les principales applications SaaS, et l'authentification multifactorielle (MFA) pour renforcer la sécurité[cite: 63].</li>
+        <li><strong>Migration vers Microsoft Azure :</strong> Choix justifié par la fiabilité (SLA 99.9%), la sécurité (ISO 27001) et l'intégration native avec l'écosystème Windows existant.</li>
+        <li><strong>Communication Unifiée (UCaaS) :</strong> Recommandation de Microsoft Teams pour centraliser la téléphonie IP, la messagerie et les visioconférences des salariés nomades.</li>
+        <li><strong>Authentification SSO :</strong> Intégration de Microsoft Entra ID pour sécuriser les accès distants via l'authentification multifactorielle (MFA) et faciliter l'expérience utilisateur (Single Sign-On).</li>
       </ul>
     </div>
   </section>
 
-  <section id="resultats" class="section">
-    <div class="content-card">
-      <div class="section-header">
-        <h3 class="section-title">Résultats & Apprentissage</h3>
-      </div>
-      <p>Un grand nombre de fonctionnalités a pu être mis en place, dont le bureau virtuel RDP, la synchronisation/échange des fichiers, la supervision, et l'AD/DNS[cite: 66]. L'hyperviseur ESXI avec les différents VPN pfSense, sites et serveurs sont opérationnels[cite: 66].</p>
-      
-      <br>
-      <h4 style="color: var(--text-pure); font-size: 1.5rem; margin-bottom: 15px;">Ce que j'ai appris</h4>
-      <p>Durant nos différentes missions, on a pu constater réellement les difficultés que ce projet proposait, mais aussi nous rendre compte de la rapidité d'analyse et d'action à avoir[cite: 66]. On a ainsi pu développer nos qualités d'analyse et notre communication dans le groupe[cite: 66].</p>
-    </div>
-  </section>
-
+  <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="contact-panel">
-      <h3 class="section-tag" style="margin-bottom: 20px;">Contact</h3>
-      <p style="color: var(--text-pure); font-size: 1.1rem; margin-bottom: 30px;">Une idée à concrétiser ? Un poste à proposer ? Ou simplement un petit bonjour ? Faisons le premier pas, contactons-nous !</p>
+      <h3>Intéressé par ce profil ?</h3>
+      <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">Ce projet démontre ma capacité à concevoir, déployer et maintenir des infrastructures complexes.</p>
       
-      <div style="background: rgba(0,0,0,0.5); padding: 30px; border-radius: 20px; border: 1px solid var(--glass-border); display: inline-block;">
-        <p style="color: var(--text-main); margin-bottom: 15px;"><i class="fa-solid fa-envelope"></i> mehdimazouz78@gmail.com</p>
-        <p style="color: var(--text-main); margin-bottom: 15px;"><i class="fa-brands fa-linkedin"></i> LinkedIn</p>
-        <p style="color: var(--text-main); margin-bottom: 30px;"><i class="fa-brands fa-github"></i> GitHub</p>
-        
-        <div style="display: flex; gap: 15px; justify-content: center;">
-          <a href="mailto:mehdimazouz78@gmail.com" class="btn-glass">M'envoyer un message</a>
-          <a href="../../assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-glass">Télécharger CV</a>
-        </div>
+      <div class="social-dock">
+        <a href="mailto:mehdimazouz78@gmail.com" class="social-pill">
+          <i class="fa-solid fa-envelope"></i> Me contacter
+        </a>
+        <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-pill">
+          <i class="fa-brands fa-linkedin" style="color: #e8a846;"></i> LinkedIn
+        </a>
+        <a href="../../assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="social-pill" style="border-color: var(--ai-cyan); color: var(--ai-cyan);">
+          <i class="fa-solid fa-download"></i> Télécharger CV
+        </a>
       </div>
     </div>
   </section>
