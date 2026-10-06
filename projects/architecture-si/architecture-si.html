@@ -545,17 +545,10 @@
     }
   }
 
-  span.onclick = function() { 
-    modal.style.display = "none";
-  }
-  
-  modal.onclick = function(e) {
-    if (e.target !== modalImg) {
-      modal.style.display = "none";
-    }
-  }
+  span.onclick = function() { modal.style.display = "none"; }
+  modal.onclick = function(e) { if (e.target !== modalImg) { modal.style.display = "none"; } }
 
-  // --- NEURAL NETWORK CANVAS ---
+  // --- NEURAL NETWORK CANVAS (Mouvement lent - Doré) ---
   const canvas = document.getElementById('neural-canvas');
   const ctx = canvas.getContext('2d');
   let particlesArray = [];
@@ -597,14 +590,8 @@
         let forceDirectionY = dy / distance;
         let maxDistance = mouse.radius;
         let force = (maxDistance - distance) / maxDistance;
-        let directionX = forceDirectionX * force * this.density;
-        let directionY = forceDirectionY * force * this.density;
-        
-        this.x -= directionX;
-        this.y -= directionY;
-      } else {
-        if (this.x !== this.baseX) { let dx = this.x - this.baseX; this.x -= dx/10; }
-        if (this.y !== this.baseY) { let dy = this.y - this.baseY; this.y -= dy/10; }
+        this.x -= forceDirectionX * force * this.density;
+        this.y -= forceDirectionY * force * this.density;
       }
 
       this.x += this.directionX;
@@ -615,14 +602,14 @@
 
   function init() {
     particlesArray = [];
-    let numberOfParticles = (canvas.height * canvas.width) / 15000;
+    let numberOfParticles = (canvas.height * canvas.width) / 18000;
     for (let i = 0; i < numberOfParticles; i++) {
       let size = (Math.random() * 2) + 1;
       let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
       let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-      let directionX = (Math.random() * 1) - 0.5;
-      let directionY = (Math.random() * 1) - 0.5;
-      let color = '#ffb703'; // Couleur dorée
+      let directionX = (Math.random() * 0.6) - 0.3;
+      let directionY = (Math.random() * 0.6) - 0.3;
+      let color = '#ffb703'; // Doré
       particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
   }
@@ -644,7 +631,7 @@
                        ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
         if (distance < (canvas.width/7) * (canvas.height/7)) {
           opacityValue = 1 - (distance/20000);
-          ctx.strokeStyle = 'rgba(255, 183, 3,' + opacityValue + ')'; // Lignes dorées
+          ctx.strokeStyle = 'rgba(255, 183, 3,' + opacityValue + ')';
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
