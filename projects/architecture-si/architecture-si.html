@@ -16,8 +16,8 @@
       --text-pure: #ffffff;
       --text-muted: #a1a1aa;
       /* Thème spécifique pour la Gouvernance (Doré/Magenta) */
-      --ai-cyan: #ffb703; /* Remplacé par un doré pour ce projet */
-      --ai-purple: #ff0055; /* Gardé magenta */
+      --ai-cyan: #ffb703; /* Doré */
+      --ai-purple: #ff0055; /* Magenta */
       --ai-magenta: #fb8500; /* Orange vif */
       --plasma-gradient: linear-gradient(135deg, var(--ai-cyan), var(--ai-purple), var(--ai-magenta));
     }
@@ -47,7 +47,7 @@
 
     .ambient-glow {
       position: fixed; top: -20vh; left: 10vw; width: 80vw; height: 80vh;
-      background: radial-gradient(circle, rgba(255, 0, 85, 0.08) 0%, transparent 60%); /* Halo magenta */
+      background: radial-gradient(circle, rgba(255, 0, 85, 0.08) 0%, transparent 60%);
       filter: blur(100px); z-index: -3; pointer-events: none;
     }
 
@@ -323,8 +323,8 @@
       <a href="#cartography" class="btn-glass" style="border-color: var(--ai-cyan); color: var(--ai-cyan);">
         Voir la cartographie <i class="fa-solid fa-arrow-down"></i>
       </a>
-      <!-- Lien vers le PDF du rapport Bloc 1 -->
-      <a href="../../assets/projects/architecture-si/BLOC1_Analyser_et_definir_la_strategie_d'un_systeme_d'information.pdf" target="_blank" class="btn-glass" style="border-color: var(--ai-purple); color: var(--ai-purple);">
+      <!-- Lien mis à jour vers le PDF avec le nom de fichier exact -->
+      <a href="../../assets/projects/architecture-si/BLOC1_Analyser_et_definir_la_strategie_d_un_systeme_d_information.pdf" target="_blank" class="btn-glass" style="border-color: var(--ai-purple); color: var(--ai-purple);">
         <i class="fa-solid fa-file-pdf"></i> Consulter le rapport (PDF)
       </a>
     </div>
@@ -335,10 +335,12 @@
     <div class="content-card">
       <div class="section-header">
         <span class="section-tag">01 / Enjeux</span>
-        <h3 class="section-title">Le contexte : Transformation de K-ElectroniK</h3>
+        <!-- Suppression du "Le" -->
+        <h3 class="section-title">Contexte : Transformation de K-ElectroniK</h3>
       </div>
       <p>Cette mission de conseil IT s’inscrit dans un contexte de transformation digitale suite au rachat d'une filiale à Madrid par l'entreprise K-ElectroniK. Le système d’information, historiquement construit par empilement d’outils métiers sur mesure (dette technique), présentait des limites majeures. L’objectif principal était d’accompagner la direction dans la structuration d’un SI cohérent, sécurisé et évolutif.</p>
       
+      <!-- Ajout de l'image SWOT -->
       <div class="project-image-container">
         <img src="../../assets/projects/architecture-si/analyse_swot.png" alt="Analyse SWOT" class="project-image zoomable">
         <div class="image-caption">Analyse SWOT du SI actuel de K-ElectroniK mettant en évidence la dette technique et les opportunités de modernisation. (Cliquez pour zoomer)</div>
