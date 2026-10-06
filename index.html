@@ -9,13 +9,80 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- ========================================== -->
+  <!-- THÈME GLOBAL NEXTCLOUD / CLOUD ENGINEER -->
+  <!-- ========================================== -->
+  <style>
+    :root {
+      --nc-blue: #0082c9;         /* Bleu classique Nextcloud */
+      --nc-blue-light: #00a5ff;   /* Bleu lumineux pour le survol */
+      --nc-dark: #181e25;         /* Fond Dark Mode Nextcloud */
+      --nc-card: #212932;         /* Fond des cartes */
+      --nc-card-hover: #293440;
+      --nc-text: #e5e7eb;
+      --nc-muted: #9ca3af;
+      --nc-border: rgba(255, 255, 255, 0.08);
+    }
+    
+    /* Écrasement du style.css précédent */
+    body {
+      background-color: var(--nc-dark) !important;
+      color: var(--nc-text) !important;
+    }
+    h1, h2, h3, h4 {
+      color: #ffffff !important;
+    }
+    .section.alt {
+      background-color: #1c242c !important; /* Alternance de fond subtile */
+    }
+    
+    /* Navbar façon Nextcloud */
+    nav {
+      background-color: rgba(24, 30, 37, 0.95) !important;
+      border-bottom: 1px solid var(--nc-border) !important;
+      backdrop-filter: blur(10px);
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: var(--nc-blue-light) !important;
+    }
+    .cv-btn {
+      background-color: var(--nc-blue) !important;
+      border: none !important;
+      color: #fff !important;
+      border-radius: 6px !important; /* Arrondi léger Nextcloud */
+    }
+    .cv-btn:hover {
+      background-color: var(--nc-blue-light) !important;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero-text p, .hero-text span {
+      color: var(--nc-muted) !important;
+    }
+    .hero-buttons a {
+      border-color: var(--nc-border) !important;
+      color: var(--nc-text) !important;
+      border-radius: 6px !important;
+    }
+    .hero-buttons a:hover {
+      border-color: var(--nc-blue-light) !important;
+      color: var(--nc-blue-light) !important;
+      background: rgba(0, 165, 255, 0.05) !important;
+    }
+    .logo {
+      color: #fff !important;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav>
   <div class="nav-container">
-    <a href="index.html" class="logo">Mehdi MAZOUZ</a>
+    <a href="index.html" class="logo"><i class="fa-solid fa-cloud" style="color: var(--nc-blue); margin-right: 8px;"></i>Mehdi MAZOUZ</a>
     <ul>
       <li><a href="#about">À propos</a></li>
       <li><a href="#skills">Compétences</a></li>
@@ -68,31 +135,29 @@
         margin-top: 20px;
     }
     .about-card {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 12px;
+        background: var(--nc-card);
+        border: 1px solid var(--nc-border);
+        border-radius: 8px; /* Style linux/dashboard */
         padding: 30px;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
         line-height: 1.7;
-        color: #cbd5e1;
     }
     .about-card:hover {
-        transform: translateY(-5px);
-        background: rgba(255, 255, 255, 0.04);
-        border-color: #8b5cf6; /* Harmonie avec vos titres */
-        box-shadow: 0 10px 20px rgba(139, 92, 246, 0.15);
+        transform: translateY(-4px);
+        background: var(--nc-card-hover);
+        border-color: var(--nc-blue-light);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
     .about-icon {
-        font-size: 1.5rem;
-        color: #94a3b8; /* Gris pro au repos */
+        font-size: 1.6rem;
+        color: var(--nc-muted);
         margin-bottom: 15px;
-        transition: color 0.3s ease;
+        transition: color 0.2s ease;
     }
     .about-card:hover .about-icon {
-        color: #8b5cf6; /* S'illumine au survol */
+        color: var(--nc-blue-light);
     }
     .about-title {
-        color: #f8fafc;
         font-size: 1.2rem;
         font-weight: 600;
         margin-bottom: 15px;
@@ -101,7 +166,6 @@
         margin-top: 35px;
         text-align: center;
         font-size: 1.1rem;
-        color: #e2e8f0;
         font-weight: 500;
     }
   </style>
@@ -112,27 +176,27 @@
       <div class="about-icon"><i class="fa-solid fa-server"></i></div>
       <div class="about-title">Parcours & Compétences</div>
       <p>
-    Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. 
-    Mon parcours m’a permis de travailler sur des infrastructures hybrides, d’automatiser des processus et de sécuriser des environnements de production, 
-    tout en portant la casquette de chef de projet, et en nourrissant ma curiosité pour les technologies émergentes.
+        Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. 
+        Mon parcours m’a permis de travailler sur des infrastructures hybrides, d’automatiser des processus et de sécuriser des environnements de production, 
+        tout en portant la casquette de chef de projet, et en nourrissant ma curiosité pour les technologies émergentes.
       </p>
     </div>
 
     <div class="about-card">
-      <div class="about-icon"><i class="fa-solid fa-lightbulb"></i></div>
+      <div class="about-icon"><i class="fa-solid fa-terminal"></i></div>
       <div class="about-title">Implication & Motivation</div>
       <p>
-    J’aime autant m’impliquer activement dans les projets d’une entreprise que mener des expérimentations personnelles, 
-    afin de continuer à apprendre et à perfectionner mes compétences. Concevoir des infrastructures fiables représente pour moi un véritable défi et une source de motivation quotidienne.
+        J’aime autant m’impliquer activement dans les projets d’une entreprise que mener des expérimentations personnelles, 
+        afin de continuer à apprendre et à perfectionner mes compétences. Concevoir des infrastructures fiables représente pour moi un véritable défi et une source de motivation quotidienne.
       </p>
     </div>
 
     <div class="about-card">
-      <div class="about-icon"><i class="fa-solid fa-rocket"></i></div>
+      <div class="about-icon"><i class="fa-solid fa-network-wired"></i></div>
       <div class="about-title">Vision & Objectifs</div>
       <p>
-    Mon intérêt pour l'administration systèmes et réseaux, le cloud, l’automatisation et la supervision me pousse à rechercher constamment des solutions innovantes, 
-    pour rendre les systèmes plus robustes et l’expérience utilisateur toujours plus fluide.
+        Mon intérêt pour l'administration systèmes et réseaux, le cloud, l’automatisation et la supervision me pousse à rechercher constamment des solutions innovantes, 
+        pour rendre les systèmes plus robustes et l’expérience utilisateur toujours plus fluide.
       </p>
     </div>
 
@@ -156,29 +220,30 @@
         margin-top: 20px;
     }
     .skill-card {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 12px;
+        background: var(--nc-card);
+        border: 1px solid var(--nc-border);
+        border-radius: 8px;
         padding: 30px;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
     }
     .skill-card:hover {
-        transform: translateY(-5px);
-        background: rgba(255, 255, 255, 0.04);
-        border-color: #8b5cf6;
-        box-shadow: 0 10px 20px rgba(139, 92, 246, 0.15);
+        background: var(--nc-card-hover);
+        border-color: var(--nc-blue-light);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
     .skill-title {
-        color: #f8fafc;
         font-size: 1.15rem;
         font-weight: 600;
         margin-bottom: 20px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--nc-border);
     }
     .skill-title i {
-        color: #8b5cf6; /* Icônes principales des cartes en violet */
+        color: var(--nc-blue);
+        font-size: 1.3rem;
     }
     .skill-list {
         list-style: none;
@@ -186,22 +251,16 @@
         margin: 0;
     }
     .skill-item {
-        color: #cbd5e1;
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 10px 0;
         display: flex;
-        align-items: flex-start;
-        gap: 10px;
+        align-items: center;
+        gap: 12px;
         font-size: 0.95rem;
-        line-height: 1.4;
-    }
-    .skill-item:last-child {
-        border-bottom: none;
     }
     .skill-icon {
-        color: #475569; /* Les petites coches restent grises pour la sobriété */
-        font-size: 0.85rem;
-        margin-top: 4px;
+        color: var(--nc-blue-light);
+        font-size: 0.8rem;
+        opacity: 0.8;
     }
   </style>
 
@@ -211,10 +270,10 @@
     <div class="skill-card">
       <div class="skill-title"><i class="fa-solid fa-cloud"></i> Systèmes & Cloud</div>
       <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Windows Server & Active Directory</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Microsoft 365 & Entra ID</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> VMware ESXi</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Microsoft Azure</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Windows Server & Active Directory</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Microsoft 365 & Entra ID</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> VMware ESXi</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Microsoft Azure</li>
       </ul>
     </div>
 
@@ -222,11 +281,11 @@
     <div class="skill-card">
       <div class="skill-title"><i class="fa-solid fa-shield-halved"></i> Réseaux & Sécurité</div>
       <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Firewall & pfSense</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> VPN IPsec</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> TCP/IP, DNS, DHCP</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Switching & VLAN (Cisco Packet Tracer/Meraki)</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Téléphonie VoIP</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Firewall & pfSense</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> VPN IPsec</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> TCP/IP, DNS, DHCP</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Switching & VLAN (Packet Tracer/Meraki)</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Téléphonie VoIP</li>
       </ul>
     </div>
 
@@ -234,9 +293,9 @@
     <div class="skill-card">
       <div class="skill-title"><i class="fa-solid fa-gears"></i> Automatisation & Supervision</div>
       <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Zabbix, NAS & Sauvegardes (PRA/PCA)</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Notions DevOps (Terraform, Ansible, Kubernetes)</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Git / GitHub</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Zabbix, NAS & Sauvegardes (PRA/PCA)</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Notions DevOps (Terraform, Ansible, K8s)</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Git / GitHub</li>
       </ul>
     </div>
 
@@ -244,12 +303,12 @@
     <div class="skill-card">
       <div class="skill-title"><i class="fa-solid fa-list-check"></i> Gestion de Projet IT & ITSM</div>
       <ul class="skill-list">
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Méthodologies Agiles (Scrum, Kanban)</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Planification & Suivi (Jira, Diagramme de Gantt, Burndown Chart)</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Cahier des charges, Spécifications & Chiffrage</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> ITSM & Gestion des incidents (EasyVista, GLPI, Oxygène)</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Pilotage d'éditeurs & prestataires</li>
-        <li class="skill-item"><i class="fa-solid fa-check skill-icon"></i> Démarches d'optimisation (Lean IT & Green IT)</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Méthodologies Agiles (Scrum, Kanban)</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Planification & Suivi (Jira, Gantt)</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Cahier des charges, Spécifications</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> ITSM & Incidents (EasyVista, GLPI)</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Pilotage d'éditeurs & prestataires</li>
+        <li class="skill-item"><i class="fa-solid fa-chevron-right skill-icon"></i> Optimisation (Lean IT & Green IT)</li>
       </ul>
     </div>
 
@@ -268,24 +327,23 @@
         width: 100%;
     }
     .cert-card {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 12px;
+        background: var(--nc-card);
+        border: 1px solid var(--nc-border);
+        border-radius: 8px;
         padding: 24px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: all 0.3s ease;
-        min-height: 180px;
+        transition: all 0.2s ease;
+        min-height: 170px;
     }
     .cert-card:hover {
-        transform: translateY(-5px);
-        background: rgba(255, 255, 255, 0.04);
-        border-color: #8b5cf6;
-        box-shadow: 0 10px 20px rgba(139, 92, 246, 0.15);
+        transform: translateY(-4px);
+        background: var(--nc-card-hover);
+        border-color: var(--nc-blue-light);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
     .cert-provider {
-        color: #f8fafc;
         font-weight: 600;
         font-size: 1.1rem;
         margin: 0 0 8px 0;
@@ -293,38 +351,37 @@
         align-items: center;
     }
     .cert-provider i {
-        color: #64748b; /* Icône discrète */
-        margin-right: 8px;
+        color: var(--nc-blue);
+        margin-right: 10px;
     }
     .cert-title {
-        color: #94a3b8;
+        color: var(--nc-muted);
         margin: 0 0 24px 0;
         font-size: 0.95rem;
     }
     .cert-badge {
         padding: 6px 16px;
-        border-radius: 20px;
+        border-radius: 4px; /* Bouton carré style console IT */
         font-size: 0.85rem;
         align-self: flex-start;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 600;
         display: inline-block;
     }
-    /* Style Premium "Fantôme" pour les boutons */
     .badge-active {
-        background: rgba(139, 92, 246, 0.1);
-        border: 1px solid rgba(139, 92, 246, 0.3);
-        color: #a78bfa;
+        background: rgba(0, 130, 201, 0.15);
+        border: 1px solid var(--nc-blue);
+        color: var(--nc-blue-light);
     }
     .badge-active:hover {
-        background: rgba(139, 92, 246, 0.2);
-        border-color: #8b5cf6;
+        background: var(--nc-blue);
+        color: #fff;
     }
     .badge-pending {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #64748b;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--nc-border);
+        color: var(--nc-muted);
     }
   </style>
 
@@ -386,81 +443,79 @@
   <h3>Formations</h3>
 
   <style>
-          .pro-timeline {
-            border-left: 2px solid #334155; /* Ligne grise discrète */
-            padding-left: 25px;
-            margin-left: 10px;
-          }
-          .pro-timeline-item {
-            position: relative;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-          }
-          .pro-timeline-item:hover {
-            transform: translateX(5px);
-            background: rgba(255, 255, 255, 0.04);
-            border-color: #8b5cf6;
-          }
-          .pro-timeline-dot {
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background-color: #8b5cf6; /* Le point reste violet */
-            border-radius: 50%;
-            left: -33px;
-            top: 25px;
-            box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
-          }
-          .pro-title {
-            margin: 0 0 8px 0;
-            color: #f8fafc;
-            font-size: 1.1rem;
-            font-weight: 600;
-          }
-          .pro-school {
-            color: #cbd5e1;
-            margin: 0 0 8px 0;
-            font-size: 0.95rem;
-          }
-          .pro-school i { color: #64748b; margin-right: 8px; }
-          
-          .pro-date {
-            color: #64748b;
-            font-size: 0.85rem;
-            display: block;
-          }
-          .pro-date i { color: #64748b; margin-right: 8px; }
-        </style>
+      .pro-timeline {
+        border-left: 2px solid var(--nc-border); 
+        padding-left: 25px;
+        margin-left: 10px;
+      }
+      .pro-timeline-item {
+        position: relative;
+        background: var(--nc-card);
+        padding: 24px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+        border: 1px solid var(--nc-border);
+        transition: all 0.2s ease;
+      }
+      .pro-timeline-item:hover {
+        background: var(--nc-card-hover);
+        border-color: var(--nc-blue-light);
+      }
+      .pro-timeline-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: var(--nc-blue);
+        border-radius: 50%;
+        left: -32px;
+        top: 30px;
+        box-shadow: 0 0 0 4px rgba(0, 130, 201, 0.2); /* Cercle de sélection style Linux/Ubuntu */
+      }
+      .pro-title {
+        margin: 0 0 8px 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+      .pro-school {
+        color: var(--nc-muted);
+        margin: 0 0 8px 0;
+        font-size: 0.95rem;
+      }
+      .pro-school i { color: var(--nc-blue); margin-right: 8px; }
+      
+      .pro-date {
+        color: var(--nc-muted);
+        font-size: 0.85rem;
+        display: block;
+        font-family: monospace; /* Touche Tech/Linux pour les dates */
+      }
+      .pro-date i { margin-right: 8px; }
+  </style>
 
-        <div class="pro-timeline">
-          
-          <div class="pro-timeline-item">
-            <div class="pro-timeline-dot"></div>
-            <h4 class="pro-title">Mastère Expert Informatique & Systèmes d'Information - Spécialité Infrastructure IT</h4>
-            <p class="pro-school"><i class="fa-solid fa-graduation-cap"></i>EPSI - L'école d'ingénierie informatique, Courbevoie</p>
-            <span class="pro-date"><i class="fa-regular fa-calendar"></i>Sept. 2024 - Sept. 2026</span>
-          </div>
+  <div class="pro-timeline">
+    
+    <div class="pro-timeline-item">
+      <div class="pro-timeline-dot"></div>
+      <h4 class="pro-title">Mastère Expert Informatique & Systèmes d'Information - Spécialité Infrastructure IT</h4>
+      <p class="pro-school"><i class="fa-solid fa-graduation-cap"></i>EPSI - L'école d'ingénierie informatique, Courbevoie</p>
+      <span class="pro-date"><i class="fa-regular fa-calendar"></i>Sept. 2024 - Sept. 2026</span>
+    </div>
 
-          <div class="pro-timeline-item">
-            <div class="pro-timeline-dot"></div>
-            <h4 class="pro-title">Licence Sciences technologies santé mention informatique, parcours Informatique générale</h4>
-            <p class="pro-school"><i class="fa-solid fa-building-columns"></i>Conservatoire National des Arts et Métiers (CNAM), Paris-Nanterre</p>
-            <span class="pro-date"><i class="fa-regular fa-calendar"></i>Déc. 2022 - Sept. 2023</span>
-          </div>
+    <div class="pro-timeline-item">
+      <div class="pro-timeline-dot"></div>
+      <h4 class="pro-title">Licence Sciences technologies santé mention informatique, parcours Informatique générale</h4>
+      <p class="pro-school"><i class="fa-solid fa-building-columns"></i>Conservatoire National des Arts et Métiers (CNAM), Paris-Nanterre</p>
+      <span class="pro-date"><i class="fa-regular fa-calendar"></i>Déc. 2022 - Sept. 2023</span>
+    </div>
 
-          <div class="pro-timeline-item">
-            <div class="pro-timeline-dot"></div>
-            <h4 class="pro-title">Titre professionnel Technicien supérieur systèmes et réseaux (Bac +2)</h4>
-            <p class="pro-school"><i class="fa-solid fa-laptop-code"></i>WebForce3, Paris 18</p>
-            <span class="pro-date"><i class="fa-regular fa-calendar"></i>Nov. 2021 - Juin 2022</span>
-          </div>
+    <div class="pro-timeline-item">
+      <div class="pro-timeline-dot"></div>
+      <h4 class="pro-title">Titre professionnel Technicien supérieur systèmes et réseaux (Bac +2)</h4>
+      <p class="pro-school"><i class="fa-solid fa-laptop-code"></i>WebForce3, Paris 18</p>
+      <span class="pro-date"><i class="fa-regular fa-calendar"></i>Nov. 2021 - Juin 2022</span>
+    </div>
 
-        </div>
-
+  </div>
 </section>
 
 <!-- EXPÉRIENCE -->
@@ -469,71 +524,69 @@
 
   <style>
     .exp-timeline {
-      border-left: 2px solid #334155;
+      border-left: 2px solid var(--nc-border);
       padding-left: 25px;
       margin-left: 10px;
       margin-top: 20px;
     }
     .exp-card {
       position: relative;
-      background: rgba(255, 255, 255, 0.02);
+      background: var(--nc-card);
       padding: 30px;
-      border-radius: 12px;
+      border-radius: 8px;
       margin-bottom: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease;
+      border: 1px solid var(--nc-border);
+      transition: all 0.2s ease;
     }
     .exp-card:hover {
-      transform: translateX(5px);
-      background: rgba(255, 255, 255, 0.04);
-      border-color: #8b5cf6;
-      box-shadow: 0 10px 20px rgba(139, 92, 246, 0.15);
+      background: var(--nc-card-hover);
+      border-color: var(--nc-blue-light);
     }
     .exp-dot {
       position: absolute;
-      width: 16px;
-      height: 16px;
-      background-color: #8b5cf6;
+      width: 12px;
+      height: 12px;
+      background-color: var(--nc-blue);
       border-radius: 50%;
-      left: -34px;
+      left: -32px;
       top: 35px;
-      box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 0 4px rgba(0, 130, 201, 0.2);
     }
     .exp-header {
       margin-bottom: 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid var(--nc-border);
       padding-bottom: 15px;
     }
     .exp-role {
-      color: #f8fafc;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 600;
       margin: 0 0 8px 0;
     }
     .exp-company {
-      color: #cbd5e1;
+      color: var(--nc-text);
       font-size: 1rem;
       margin: 0 0 8px 0;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .exp-company i { color: #64748b; }
+    .exp-company i { color: var(--nc-blue); }
+    
     .exp-date {
-      color: #64748b;
+      color: var(--nc-muted);
       font-size: 0.85rem;
       display: flex;
       align-items: center;
       gap: 8px;
+      font-family: monospace;
     }
-    .exp-date i { color: #64748b; }
     .exp-tasks {
       list-style: none;
       padding: 0;
       margin: 0;
     }
     .exp-tasks li {
-      color: #94a3b8;
+      color: var(--nc-text);
       margin-bottom: 15px;
       line-height: 1.6;
       display: flex;
@@ -545,14 +598,14 @@
       margin-bottom: 0;
     }
     .exp-tasks li i {
-      color: #475569;
+      color: var(--nc-blue-light);
       margin-top: 5px;
       font-size: 0.8rem;
       flex-shrink: 0;
     }
     .exp-tasks strong {
-      color: #cbd5e1;
-      font-weight: 500;
+      color: #fff;
+      font-weight: 600;
     }
   </style>
 
@@ -569,19 +622,19 @@
 
       <ul class="exp-tasks">
         <li>
-          <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-solid fa-terminal"></i>
           <span><strong>Pilotage & Déploiement Cloud (SaaS) :</strong> Conduite de projets SI de bout en bout (cahier des charges, chiffrage, spécifications) dans une architecture 100% Cloud.</span>
         </li>
         <li>
-          <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-solid fa-terminal"></i>
           <span><strong>Urbanisation SI & ITSM :</strong> Cartographie du système d'information (Power BI) et administration de la plateforme de gestion des demandes et incidents (EasyVista).</span>
         </li>
         <li>
-          <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-solid fa-terminal"></i>
           <span><strong>Maintien en Condition Opérationnelle (MCO) :</strong> Paramétrage, support et gestion des évolutions sur un parc applicatif et matériel (Contrôle d'accès, armoires sécurisées Traka, terminaux de paiement TPE).</span>
         </li>
         <li>
-          <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-solid fa-terminal"></i>
           <span><strong>Coordination Technique & Sécurité :</strong> Pilotage des éditeurs et prestataires, avec une intégration des enjeux réseaux et cybersécurité aux déploiements.</span>
         </li>
       </ul>
@@ -592,52 +645,101 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="section">
+<section id="projects" class="section alt">
   <h3>Projets</h3>
 
-  <div class="grid">
-    <div class="card project">
+  <style>
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    .project-card {
+      background: var(--nc-card);
+      border: 1px solid var(--nc-border);
+      border-radius: 8px;
+      padding: 30px;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      background: var(--nc-card-hover);
+      border-color: var(--nc-blue-light);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .project-card h4 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+    .project-card p {
+      color: var(--nc-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 25px;
+      flex-grow: 1;
+    }
+    .project-btn {
+      align-self: flex-start;
+      color: var(--nc-blue-light);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .project-btn:hover {
+      color: #fff;
+    }
+  </style>
+
+  <div class="project-grid">
+    <div class="project-card">
       <h4>Infrastructure SI Hybride Sécurisée</h4>
       <p>Architecture SI Hybride Résiliente – Sécurité, Supervision & Continuité d’Activité</p>
-      <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="btn">Voir le projet →</a>
+      <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="project-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="card project">
+    <div class="project-card">
       <h4>Architecture & Gouvernance SI</h4>
       <p>Analyser et définir la stratégie d’un système d’information aligné aux objectifs métier</p>
-      <a href="projects/architecture-si/architecture-si.html" class="btn">Voir le projet →</a>
+      <a href="projects/architecture-si/architecture-si.html" class="project-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <div class="card project">
+    <div class="project-card">
       <h4>Gestion de Projet IT Agile & Cloud</h4>
       <p>Pilotage agile, automatisation DevOps et déploiement avec Terraform, Ansible, Kubernetes</p>
-      <a href="projects/agile-projet/agile-gestion-projet.html" class="btn">Voir le projet →</a>
+      <a href="projects/agile-projet/agile-gestion-projet.html" class="project-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section alt">
+<section id="contact" class="section">
   <h3>Contact</h3>
 
-  <p class="contact-text">
-    Une idée à concrétiser ? Un poste à proposer ? Ou simplement un petit bonjour ?
+  <p class="contact-text" style="color: var(--nc-text); text-align: center; margin-bottom: 30px;">
+    Une idée à concrétiser ? Un poste à proposer ? Ou simplement un petit bonjour ?<br>
     Faisons le premier pas, contactons-nous !
   </p>
 
-  <div class="contact-card">
-    <p><i class="fa-solid fa-envelope"></i> mehdimazouz78@gmail.com</p>
-    <p><i class="fa-brands fa-linkedin"></i> LinkedIn</p>
-    <p><i class="fa-brands fa-github"></i> GitHub</p>
+  <div class="contact-card" style="background: var(--nc-card); border: 1px solid var(--nc-border); border-radius: 8px; padding: 40px; text-align: center; max-width: 600px; margin: 0 auto;">
+    <p style="margin-bottom: 15px;"><i class="fa-solid fa-envelope" style="color: var(--nc-blue); margin-right: 10px;"></i> mehdimazouz78@gmail.com</p>
+    <p style="margin-bottom: 15px;"><i class="fa-brands fa-linkedin" style="color: var(--nc-blue); margin-right: 10px;"></i> LinkedIn</p>
+    <p style="margin-bottom: 30px;"><i class="fa-brands fa-github" style="color: var(--nc-blue); margin-right: 10px;"></i> GitHub</p>
 
-    <div class="hero-buttons">
-      <a href="mailto:mehdimazouz78@gmail.com">M’envoyer un message</a>
-      <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank">Télécharger CV</a>
+    <div class="hero-buttons" style="display: flex; justify-content: center; gap: 15px;">
+      <a href="mailto:mehdimazouz78@gmail.com" class="cv-btn" style="padding: 10px 20px; text-decoration: none;">M’envoyer un message</a>
+      <a href="assets/CV Mehdi Mazouz 2026.pdf" target="_blank" style="padding: 10px 20px; border: 1px solid var(--nc-border); color: var(--nc-text); text-decoration: none; border-radius: 6px;">Télécharger CV</a>
     </div>
   </div>
 </section>
 
-<footer>
+<footer style="text-align: center; padding: 30px; color: var(--nc-muted); font-size: 0.9rem; border-top: 1px solid var(--nc-border); background: var(--nc-dark);">
   © Mehdi MAZOUZ — Consultant IT 
 </footer>
 
