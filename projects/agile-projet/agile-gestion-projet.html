@@ -15,10 +15,10 @@
       --glass-border: rgba(255, 255, 255, 0.1);
       --text-pure: #ffffff;
       --text-muted: #a1a1aa;
-      /* Thème spécifique Agile/Cloud (Bleu/Cyan) */
-      --ai-cyan: #00e5ff; /* Cyan vif */
-      --ai-purple: #4361ee; /* Bleu profond */
-      --ai-magenta: #3a0ca3; /* Violet foncé pour le contraste */
+      /* Thème spécifique Agile & Cloud (Bleu Azure / Cyan Cloud) */
+      --ai-cyan: #00d2ff; 
+      --ai-purple: #3a86ff; 
+      --ai-magenta: #7209b7; 
       --plasma-gradient: linear-gradient(135deg, var(--ai-cyan), var(--ai-purple), var(--ai-magenta));
     }
 
@@ -47,7 +47,7 @@
 
     .ambient-glow {
       position: fixed; top: -20vh; left: 10vw; width: 80vw; height: 80vh;
-      background: radial-gradient(circle, rgba(67, 97, 238, 0.08) 0%, transparent 60%); /* Halo bleu */
+      background: radial-gradient(circle, rgba(0, 210, 255, 0.08) 0%, transparent 60%);
       filter: blur(100px); z-index: -3; pointer-events: none;
     }
 
@@ -76,7 +76,7 @@
       color: var(--text-muted); font-size: 0.85rem; font-weight: 500; text-decoration: none;
       text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s;
     }
-    nav ul li a:hover, nav ul li a.active { color: var(--ai-cyan); text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
+    nav ul li a:hover, nav ul li a.active { color: var(--ai-cyan); text-shadow: 0 0 10px rgba(0, 210, 255, 0.5); }
 
     /* --- LAYOUT GLOBAL --- */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -96,7 +96,7 @@
     
     .system-badge {
       display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(0, 229, 255, 0.05); border: 1px solid rgba(0, 229, 255, 0.2);
+      background: rgba(0, 210, 255, 0.05); border: 1px solid rgba(0, 210, 255, 0.2);
       padding: 6px 16px; border-radius: 100px; font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem; color: var(--ai-cyan); margin-bottom: 30px; letter-spacing: 1px;
     }
@@ -131,7 +131,7 @@
     .content-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-      border-color: rgba(0, 229, 255, 0.2);
+      border-color: rgba(0, 210, 255, 0.2);
     }
     
     .content-card p {
@@ -164,6 +164,33 @@
       font-weight: 700;
       color: var(--text-pure);
       margin-right: 6px;
+    }
+
+    /* --- NAVIGATION ENTRE PROJETS (UX Améliorée) --- */
+    .project-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 40px 0;
+      padding: 20px;
+      background: var(--panel-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      backdrop-filter: blur(20px);
+    }
+    .project-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .project-nav-btn:hover {
+      color: var(--ai-cyan);
+      transform: translateY(-2px);
     }
 
     /* --- IMAGES & VISUALIZATION --- */
@@ -380,7 +407,6 @@
           <div class="image-caption">Tableau Kanban pour la gestion des tâches quotidiennes. (Cliquez pour zoomer)</div>
         </div>
         <div class="project-image-container">
-          <!-- Correction du chemin de l'image ici -->
           <img src="../../assets/projects/agile-projet/burn.png" alt="Burndown Chart" class="project-image zoomable">
           <div class="image-caption">Analyse de la vélocité via le Burndown Chart (Sprint 2). (Cliquez pour zoomer)</div>
         </div>
@@ -415,7 +441,7 @@
         <span class="section-tag">04 / Masterisation</span>
         <h3 class="section-title">Standardisation des Images avec Packer</h3>
       </div>
-      <p>Pour garantir un socle technique homogène, Packer a été intégré à la chaîne DevOps afin de générer images systèmes (Templates) prêtes à l’emploi pour l'hyperviseur ESXi.</p>
+      <p>Pour garantir un socle technique homogène, Packer a été intégré à la chaîne DevOps afin de générer des images systèmes (Templates) prêtes à l’emploi pour l'hyperviseur ESXi.</p>
       <ul class="data-list">
         <li><span class="list-title">Création d'images</span> Génération automatique de templates Ubuntu pré-configurés.</li>
         <li><span class="list-title">Efficacité</span> Réduction drastique du temps d'installation des OS lors du provisioning par Terraform.</li>
@@ -495,6 +521,16 @@
     </div>
   </section>
 
+  <!-- BARRE DE NAVIGATION RAPIDE ENTRE PROJETS (UX) -->
+  <div class="project-nav-bar">
+    <a href="../architecture-si/architecture-si.html" class="project-nav-btn">
+      <i class="fa-solid fa-arrow-left"></i> Projet Précédent (Architecture SI)
+    </a>
+    <a href="../infrastructure-cloud/infrastructure-cloud.html" class="project-nav-btn">
+      Projet Suivant (Infrastructure Cloud) <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+
   <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="contact-panel">
@@ -506,7 +542,7 @@
           <i class="fa-solid fa-envelope"></i> Me contacter
         </a>
         <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-pill">
-          <i class="fa-brands fa-linkedin" style="color: #4361ee;"></i> LinkedIn
+          <i class="fa-brands fa-linkedin" style="color: #00d2ff;"></i> LinkedIn
         </a>
         <a href="../../assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="social-pill" style="border-color: var(--ai-cyan); color: var(--ai-cyan);">
           <i class="fa-solid fa-download"></i> Télécharger CV
@@ -612,7 +648,7 @@
       let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
       let directionX = (Math.random() * 1) - 0.5;
       let directionY = (Math.random() * 1) - 0.5;
-      let color = '#00e5ff'; // Couleur cyan pour les particules (thème Cloud)
+      let color = '#00d2ff'; /* Couleur Bleu Azure / Cyan Cloud */
       particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
   }
@@ -634,7 +670,7 @@
                        ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
         if (distance < (canvas.width/7) * (canvas.height/7)) {
           opacityValue = 1 - (distance/20000);
-          ctx.strokeStyle = 'rgba(67, 97, 238,' + opacityValue + ')'; // Lignes de couleur bleue
+          ctx.strokeStyle = 'rgba(0, 210, 255,' + opacityValue + ')'; /* Lignes Bleu Azure */
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
