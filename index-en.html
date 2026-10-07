@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <title>Mehdi MAZOUZ | Junior System & Network Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- BALISE DE SÉCURITÉ CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com;">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   
   <style>
@@ -35,7 +39,6 @@
       scroll-behavior: smooth;
     }
 
-    /* --- NEURAL NETWORK CANVAS BACKGROUND --- */
     #neural-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -50,7 +53,6 @@
       filter: blur(100px); z-index: -3; pointer-events: none;
     }
 
-    /* --- DYNAMIC PILL NAVBAR --- */
     nav {
       position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
       background: rgba(5, 5, 5, 0.5);
@@ -97,7 +99,6 @@
     }
     .btn-nav:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,255,255,0.3); }
 
-    /* --- LAYOUT GLOBAL --- */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     .section { padding: 160px 0 60px; }
     
@@ -116,7 +117,6 @@
     }
     @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-    /* --- HERO SECTION --- */
     .hero { min-height: 100vh; display: flex; align-items: center; gap: 60px; padding-top: 120px; }
     .hero-content { flex: 1; z-index: 10; }
     
@@ -137,7 +137,6 @@
     }
     .hero-content p { font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 650px; margin-bottom: 50px; font-weight: 300; }
 
-    /* BADGE DISPONIBILITE VERT BRILLANT */
     .availability-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.4);
@@ -170,11 +169,7 @@
     }
     .btn-glass:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
 
-    .linkedin-premium {
-      color: #e8a846 !important;
-      filter: drop-shadow(0 0 8px rgba(232, 168, 70, 0.6));
-      transition: all 0.3s ease;
-    }
+    .linkedin-premium { color: #e8a846 !important; filter: drop-shadow(0 0 8px rgba(232, 168, 70, 0.6)); transition: all 0.3s ease; }
 
     .hero-visual { position: relative; flex-shrink: 0; z-index: 10; }
     .hero-visual img {
@@ -191,7 +186,6 @@
     .hero-visual:hover img { filter: grayscale(0%) contrast(1); transform: translateY(-10px) scale(1.02); }
     .hero-visual:hover::before { opacity: 0.6; }
 
-    /* --- SPOTLIGHT BENTO CARDS --- */
     .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
     .bento-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     
@@ -239,7 +233,6 @@
     .data-list li:last-child { border-bottom: none; padding-bottom: 0; }
     .data-list i { color: var(--ai-cyan); font-size: 0.85rem; margin-top: 4px; }
 
-    /* --- NEURAL TIMELINE --- */
     .timeline { position: relative; padding-left: 40px; }
     .timeline::before {
       content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 1px;
@@ -279,7 +272,6 @@
     }
     .action-link:hover { color: var(--ai-cyan); gap: 12px; }
 
-    /* --- TERMINAL FOOTER / CONTACT --- */
     .contact-panel {
       background: radial-gradient(circle at top, rgba(20,20,25,0.8) 0%, transparent 100%);
       border: 1px solid var(--glass-border); border-radius: 40px;
@@ -302,10 +294,96 @@
       color: var(--ai-cyan);
     }
 
-    footer {
-      text-align: center; padding: 60px 20px 40px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
-      color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 100px;
+    /* --- FOOTER SITE DURCI --- */
+    .footer-secure {
+      text-align: center;
+      padding: 60px 20px 40px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--glass-border);
+      margin-top: 100px;
+      background: rgba(0, 0, 0, 0.5);
     }
+    .footer-secure-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-pure);
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+    .footer-secure-links {
+      margin-top: 10px;
+      line-height: 1.8;
+    }
+    .footer-secure-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s;
+    }
+    .footer-secure-links a:hover {
+      color: var(--ai-cyan);
+      border-bottom-color: var(--ai-cyan);
+    }
+
+    /* --- COOKIE BANNER --- */
+    .cookie-banner {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #111827;
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      z-index: 9999;
+      max-width: 90%;
+      width: 700px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .cookie-banner.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .cookie-text {
+      color: var(--text-pure);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .cookie-actions {
+      display: flex;
+      gap: 15px;
+    }
+    .btn-accept {
+      background: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-accept:hover { background: #0052a3; }
+    .btn-refuse {
+      background: transparent;
+      color: var(--text-pure);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-refuse:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.5); }
 
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
@@ -322,15 +400,18 @@
       .contact-panel h3 { font-size: 3rem; }
       .bento-grid-2 { grid-template-columns: 1fr; }
     }
+    
+    @media (max-width: 768px) {
+      .cookie-banner { flex-direction: column; text-align: center; gap: 20px; }
+      .cookie-actions { width: 100%; justify-content: center; }
+    }
   </style>
 </head>
 <body>
 
-<!-- AI PARTICLE CANVAS BACKGROUND -->
 <canvas id="neural-canvas"></canvas>
 <div class="ambient-glow"></div>
 
-<!-- MAGNETIC PILL NAVBAR -->
 <nav>
   <a href="index-en.html" class="nav-logo">SYS_CORE</a>
   <ul>
@@ -343,7 +424,6 @@
   
   <div class="nav-actions">
     <div class="magnetic-wrap">
-      <!-- Ce bouton redirige vers la version française (index.html) -->
       <a href="index.html" class="btn-lang" title="Switch to French">FR</a>
     </div>
     <div class="magnetic-wrap nav-magnetic">
@@ -652,12 +732,26 @@
 
 </div>
 
-<footer>
-  > SYSTEM_HALTED // 2026 Mehdi MAZOUZ - Junior System & Network Engineer.
+<footer class="footer-secure">
+  <div class="footer-secure-name">Mehdi MAZOUZ</div>
+  <div>© 2026 All rights reserved.</div>
+  <div class="footer-secure-links">
+    Hardened site — CSP, HSTS, <a href=".well-known/security.txt" target="_blank">security.txt</a><br><br>
+    <a href="#" style="font-weight: bold; border-bottom: 2px solid white;">Privacy & cookies</a>
+  </div>
 </footer>
 
+<div id="cookieBanner" class="cookie-banner">
+  <div class="cookie-text">
+    Google Analytics is only activated with your consent. You can accept, refuse, and change this choice at any time from the footer.
+  </div>
+  <div class="cookie-actions">
+    <button id="acceptCookies" class="btn-accept">Accept analytics</button>
+    <button id="refuseCookies" class="btn-refuse">Refuse</button>
+  </div>
+</div>
+
 <script>
-  // --- 1. NEURAL NETWORK CANVAS (ANIMATION DYNAMIQUE CONTINUE EN DIRECT) ---
   const canvas = document.getElementById('neural-canvas');
   const ctx = canvas.getContext('2d');
   let particlesArray = [];
@@ -687,11 +781,9 @@
       ctx.fill();
     }
     update() {
-      // Rebond sur les bords de l'écran pour un mouvement constant
       if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
       if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
 
-      // Interaction fluide avec la souris
       let dx = mouse.x - this.x;
       let dy = mouse.y - this.y;
       let distance = Math.sqrt(dx*dx + dy*dy);
@@ -708,7 +800,6 @@
         this.y -= directionY;
       }
 
-      // Mouvement autonome permanent (effet dynamique en direct)
       this.x += this.directionX;
       this.y += this.directionY;
       this.draw();
@@ -722,9 +813,9 @@
       let size = (Math.random() * 2) + 1;
       let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
       let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-      let directionX = (Math.random() * 1.6) - 0.8; // Vitesse de déplacement en X
-      let directionY = (Math.random() * 1.6) - 0.8; // Vitesse de déplacement en Y
-      let color = '#00f0ff'; // Particules en bleu cyber dynamique
+      let directionX = (Math.random() * 1.6) - 0.8;
+      let directionY = (Math.random() * 1.6) - 0.8;
+      let color = '#00f0ff';
       particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
   }
@@ -746,7 +837,7 @@
                        ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
         if (distance < (canvas.width/7) * (canvas.height/7)) {
           opacityValue = 1 - (distance/20000);
-          ctx.strokeStyle = 'rgba(0, 240, 255,' + opacityValue + ')'; // Lignes ("bâtons") en bleu dynamique
+          ctx.strokeStyle = 'rgba(0, 240, 255,' + opacityValue + ')';
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -764,7 +855,6 @@
   init();
   animate();
 
-  // --- 2. BOUTONS MAGNÉTIQUES ---
   const magneticWraps = document.querySelectorAll('.magnetic-wrap');
   magneticWraps.forEach(wrap => {
     const btn = wrap.querySelector('.btn-magnetic, .btn-nav, .btn-lang');
@@ -783,7 +873,6 @@
     }
   });
 
-  // --- 3. SPOTLIGHT CARDS EFFECT ---
   const cardsWrappers = document.querySelectorAll('.cards-wrapper');
   cardsWrappers.forEach(wrapper => {
     wrapper.onmousemove = e => {
@@ -797,7 +886,6 @@
     };
   });
 
-  // --- 4. NAVBAR ACTIVE SCROLL ---
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("nav ul li a");
 
@@ -818,6 +906,47 @@
       }
     });
   });
+
+  // --- COOKIE CONSENT & GOOGLE ANALYTICS ---
+  const cookieBanner = document.getElementById('cookieBanner');
+  const acceptBtn = document.getElementById('acceptCookies');
+  const refuseBtn = document.getElementById('refuseCookies');
+
+  if (!localStorage.getItem('analyticsConsent')) {
+    setTimeout(() => {
+      cookieBanner.classList.add('show');
+    }, 1000);
+  } else if (localStorage.getItem('analyticsConsent') === 'accepted') {
+    initGoogleAnalytics();
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('analyticsConsent', 'accepted');
+    cookieBanner.classList.remove('show');
+    initGoogleAnalytics();
+  });
+
+  refuseBtn.addEventListener('click', () => {
+    localStorage.setItem('analyticsConsent', 'refused');
+    cookieBanner.classList.remove('show');
+  });
+
+  function initGoogleAnalytics() {
+    console.log("Google Analytics activated following consent.");
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-X7Y568RN76';
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X7Y568RN76');
+    `;
+    document.head.appendChild(script2);
+  }
 </script>
 
 </body>
