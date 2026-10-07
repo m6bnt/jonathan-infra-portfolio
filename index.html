@@ -77,11 +77,23 @@
     }
     nav ul li a:hover { color: var(--ai-cyan); text-shadow: 0 0 10px rgba(0,240,255,0.5); }
     
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    
+    .btn-lang {
+      background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border);
+      color: var(--text-pure); border-radius: 50%; width: 40px; height: 40px;
+      display: inline-flex; justify-content: center; align-items: center;
+      font-weight: 700; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-lang:hover { border-color: var(--ai-cyan); color: var(--ai-cyan); box-shadow: 0 0 15px rgba(0,240,255,0.2); }
+
     .btn-nav {
       background: var(--text-pure); color: var(--void-black);
       padding: 8px 20px; border-radius: 100px; font-weight: 700; font-size: 0.85rem;
       text-transform: uppercase; letter-spacing: 1px; text-decoration: none;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-block;
     }
     .btn-nav:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,255,255,0.3); }
 
@@ -118,7 +130,11 @@
     .hero-content h1 {
       font-size: 6rem; font-weight: 900; line-height: 0.95; letter-spacing: -3px; margin-bottom: 20px;
     }
-    .hero-content h2 { font-size: 1.8rem; font-weight: 400; color: var(--text-muted); margin-bottom: 30px; letter-spacing: -0.5px; display: flex; align-items: center; flex-wrap: wrap; }
+    .hero-content h2 { 
+      font-size: 1.8rem; font-weight: 400; color: var(--text-muted); 
+      margin-bottom: 30px; letter-spacing: -0.5px; 
+      display: flex; align-items: center; flex-wrap: wrap; gap: 15px; 
+    }
     .hero-content p { font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 650px; margin-bottom: 50px; font-weight: 300; }
 
     /* BADGE DISPONIBILITE VERT BRILLANT */
@@ -127,8 +143,7 @@
       background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.4);
       color: #00ff88; padding: 6px 14px; border-radius: 100px;
       font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 1px; text-transform: uppercase; vertical-align: middle;
-      margin-left: 15px;
+      letter-spacing: 1px; text-transform: uppercase;
       animation: glow-green 2s infinite alternate;
     }
     @keyframes glow-green {
@@ -298,8 +313,7 @@
       .hero { flex-direction: column-reverse; text-align: center; padding-top: 160px; }
       .hero-content h1 { font-size: 4rem; }
       .hero-content p { margin: 0 auto 40px; }
-      .hero-content h2 { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-      .availability-badge { margin-left: 0; }
+      .hero-content h2 { justify-content: center; text-align: center; }
       .action-group { justify-content: center; }
       .hero-visual img { width: 320px; height: 380px; }
       nav { width: calc(100% - 40px); justify-content: space-between; }
@@ -326,8 +340,15 @@
     <li><a href="#experience">Parcours</a></li>
     <li><a href="#projects">Projets</a></li>
   </ul>
-  <div class="magnetic-wrap nav-magnetic">
-    <a href="assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-nav">CV</a>
+  
+  <div class="nav-actions">
+    <div class="magnetic-wrap">
+      <!-- Ce bouton redirige vers index-en.html (la future version anglaise) -->
+      <a href="index-en.html" class="btn-lang" title="Passer en Anglais">EN</a>
+    </div>
+    <div class="magnetic-wrap nav-magnetic">
+      <a href="assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-nav">CV</a>
+    </div>
   </div>
 </nav>
 
@@ -339,13 +360,16 @@
       <div class="system-badge">
         <div class="indicator"></div> JUNIOR SYSADMIN & CLOUD ENGINEER
       </div>
+      
       <h1>Mehdi <br><span class="text-plasma">MAZOUZ</span></h1>
+      
       <h2>
         Ingénieur Système & Réseau Junior
         <span class="availability-badge" title="Recherche active d'opportunités en Île-de-France">
           <i class="fa-solid fa-location-dot"></i> Disponible en Île-de-France
         </span>
       </h2>
+      
       <p>Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. Mon parcours atypique, mêlant chefferie de projet SI en alternance et expérimentations techniques poussées en laboratoires universitaires, me permet aujourd'hui d'avoir une vision globale. J’aime autant m’impliquer activement dans les projets d’une entreprise que mener des expérimentations personnelles, afin de continuer à apprendre et à perfectionner mes compétences techniques.</p>
       
       <div class="action-group">
@@ -743,7 +767,7 @@
   // --- 2. BOUTONS MAGNÉTIQUES ---
   const magneticWraps = document.querySelectorAll('.magnetic-wrap');
   magneticWraps.forEach(wrap => {
-    const btn = wrap.querySelector('.btn-magnetic, .btn-nav');
+    const btn = wrap.querySelector('.btn-magnetic, .btn-nav, .btn-lang');
     wrap.addEventListener('mousemove', (e) => {
       const rect = wrap.getBoundingClientRect();
       const h = rect.width / 2;
