@@ -698,7 +698,7 @@
           <span class="badge badge-ghost" style="align-self: flex-start;">University Lab</span>
           <h4 class="card-title" style="margin-top: 10px;">Secure Hybrid IT Infrastructure</h4>
           <p class="card-desc">Ultra-resilient multi-site architecture. Deployment of ESXi, pfSense firewall clusters in HA, comprehensive Zabbix monitoring, and DRP failover strategy.</p>
-          <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="action-link">View architecture <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="btn-projet btn-infra">View architecture <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="spotlight-card">
@@ -706,7 +706,7 @@
           <span class="badge badge-ghost" style="align-self: flex-start;">University Lab</span>
           <h4 class="card-title" style="margin-top: 10px;">IT Architecture & Governance</h4>
           <p class="card-desc">Audit, urbanization, and strategic modeling of an IS for business alignment. Implementation of EBIOS standards, BPMN modeling, and Green IT.</p>
-          <a href="projects/architecture-si/architecture-si.html" class="action-link">View architecture <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="projects/architecture-si/architecture-si.html" class="btn-projet btn-archi">View architecture <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="spotlight-card">
@@ -714,7 +714,7 @@
           <span class="badge badge-ghost" style="align-self: flex-start;">University Lab</span>
           <h4 class="card-title" style="margin-top: 10px;">Agile & Cloud IT Project Management</h4>
           <p class="card-desc">Scrum management coupled with a complete DevOps chain: Infrastructure as Code (Terraform), masterization (Packer), configuration (Ansible), and orchestration (K8s).</p>
-          <a href="projects/agile-projet/agile-gestion-projet.html" class="action-link">View architecture <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="projects/agile-projet/agile-gestion-projet.html" class="btn-projet btn-cloud">View architecture <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -1018,5 +1018,60 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
     }
   });
 </script>
+<style>
+  /* DESIGN DES BOUTONS "PILULE NEON" */
+  .btn-projet {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 30px;
+    border-radius: 50px; 
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    background-color: #121418; 
+    transition: all 0.3s ease;
+    margin-top: 15px;
+  }
+  
+  .btn-projet:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Projet 1 : Infra (Vert) */
+  .btn-infra { 
+    border: 1px solid #00eba0; 
+    color: #00eba0; 
+    box-shadow: 0 0 12px rgba(0, 235, 160, 0.15); 
+  }
+  .btn-infra:hover { 
+    box-shadow: 0 0 20px rgba(0, 235, 160, 0.4); 
+    background-color: rgba(0, 235, 160, 0.05); 
+  }
+
+  /* Projet 2 : Architecture (Orange) */
+  .btn-archi { 
+    border: 1px solid #ff9d00; 
+    color: #ff9d00; 
+    box-shadow: 0 0 12px rgba(255, 157, 0, 0.15); 
+  }
+  .btn-archi:hover { 
+    box-shadow: 0 0 20px rgba(255, 157, 0, 0.4); 
+    background-color: rgba(255, 157, 0, 0.05); 
+  }
+
+  /* Projet 3 : Gestion & Cloud (Bleu) */
+  .btn-cloud { 
+    border: 1px solid #00a8ff; 
+    color: #00a8ff; 
+    box-shadow: 0 0 12px rgba(0, 168, 255, 0.15); 
+  }
+  .btn-cloud:hover { 
+    box-shadow: 0 0 20px rgba(0, 168, 255, 0.4); 
+    background-color: rgba(0, 168, 255, 0.05); 
+  }
+</style>  
 </body>
 </html>
