@@ -302,9 +302,100 @@
       color: var(--ai-cyan);
     }
 
-    footer {
-      text-align: center; padding: 60px 20px 40px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
-      color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 100px;
+    /* --- FOOTER SITE DURCI --- */
+    .footer-secure {
+      text-align: center;
+      padding: 60px 20px 40px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--glass-border);
+      margin-top: 100px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .footer-secure-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-pure);
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+    .footer-secure-links {
+      margin-top: 10px;
+      line-height: 1.8;
+    }
+    .footer-secure-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s;
+    }
+    .footer-secure-links a:hover {
+      color: var(--ai-cyan);
+      border-bottom-color: var(--ai-cyan);
+    }
+
+    /* --- COOKIE BANNER --- */
+    .cookie-banner {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #111827;
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      z-index: 9999;
+      max-width: 90%;
+      width: 700px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .cookie-banner.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .cookie-text {
+      color: var(--text-pure);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .cookie-actions {
+      display: flex;
+      gap: 15px;
+    }
+    .btn-accept {
+      background: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-accept:hover {
+      background: #0052a3;
+    }
+    .btn-refuse {
+      background: transparent;
+      color: var(--text-pure);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-refuse:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.5);
     }
 
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
@@ -321,6 +412,18 @@
       .section-title { font-size: 2.8rem; }
       .contact-panel h3 { font-size: 3rem; }
       .bento-grid-2 { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 768px) {
+      .cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+      .cookie-actions {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -343,7 +446,6 @@
   
   <div class="nav-actions">
     <div class="magnetic-wrap">
-      <!-- Ce bouton redirige vers index-en.html (la future version anglaise) -->
       <a href="index-en.html" class="btn-lang" title="Passer en Anglais">EN</a>
     </div>
     <div class="magnetic-wrap nav-magnetic">
@@ -652,9 +754,26 @@
 
 </div>
 
-<footer>
-  > SYSTEM_HALTED // 2026 Mehdi MAZOUZ - Ingénieur Système & Réseau Junior.
+<!-- NOUVEAU FOOTER SITE DURCI -->
+<footer class="footer-secure">
+  <div class="footer-secure-name">Mehdi MAZOUZ</div>
+  <div>© 2026 Tous droits réservés.</div>
+  <div class="footer-secure-links">
+    Site durci — CSP, HSTS, <a href="#">security.txt</a> · Rapports : <a href="#">SecurityHeaders</a> · <a href="#">SSL Labs</a><br><br>
+    <a href="#" style="font-weight: bold; border-bottom: 2px solid white;">Confidentialité & cookies</a>
+  </div>
 </footer>
+
+<!-- BANDEAU COOKIES -->
+<div id="cookieBanner" class="cookie-banner">
+  <div class="cookie-text">
+    Google Analytics n'est activé qu'avec votre accord. Vous pouvez accepter, refuser, puis modifier ce choix à tout moment depuis le pied de page.
+  </div>
+  <div class="cookie-actions">
+    <button id="acceptCookies" class="btn-accept">Accepter l'analyse</button>
+    <button id="refuseCookies" class="btn-refuse">Refuser</button>
+  </div>
+</div>
 
 <script>
   // --- 1. NEURAL NETWORK CANVAS (ANIMATION DYNAMIQUE CONTINUE EN DIRECT) ---
@@ -687,7 +806,7 @@
       ctx.fill();
     }
     update() {
-      // Rebond sur les bords de l'écran pour un mouvement constant
+      // Rebond sur les bords de l'écran
       if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
       if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
 
@@ -708,7 +827,7 @@
         this.y -= directionY;
       }
 
-      // Mouvement autonome permanent (effet dynamique en direct)
+      // Mouvement autonome permanent
       this.x += this.directionX;
       this.y += this.directionY;
       this.draw();
@@ -722,9 +841,9 @@
       let size = (Math.random() * 2) + 1;
       let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
       let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-      let directionX = (Math.random() * 1.6) - 0.8; // Vitesse de déplacement en X
-      let directionY = (Math.random() * 1.6) - 0.8; // Vitesse de déplacement en Y
-      let color = '#00f0ff'; // Particules en bleu cyber dynamique
+      let directionX = (Math.random() * 1.6) - 0.8;
+      let directionY = (Math.random() * 1.6) - 0.8;
+      let color = '#00f0ff';
       particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
   }
@@ -746,7 +865,7 @@
                        ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
         if (distance < (canvas.width/7) * (canvas.height/7)) {
           opacityValue = 1 - (distance/20000);
-          ctx.strokeStyle = 'rgba(0, 240, 255,' + opacityValue + ')'; // Lignes ("bâtons") en bleu dynamique
+          ctx.strokeStyle = 'rgba(0, 240, 255,' + opacityValue + ')';
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -768,17 +887,19 @@
   const magneticWraps = document.querySelectorAll('.magnetic-wrap');
   magneticWraps.forEach(wrap => {
     const btn = wrap.querySelector('.btn-magnetic, .btn-nav, .btn-lang');
-    wrap.addEventListener('mousemove', (e) => {
-      const rect = wrap.getBoundingClientRect();
-      const h = rect.width / 2;
-      const v = rect.height / 2;
-      const x = e.clientX - rect.left - h;
-      const y = e.clientY - rect.top - v;
-      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-    });
-    wrap.addEventListener('mouseleave', () => {
-      btn.style.transform = `translate(0px, 0px)`;
-    });
+    if (btn) {
+      wrap.addEventListener('mousemove', (e) => {
+        const rect = wrap.getBoundingClientRect();
+        const h = rect.width / 2;
+        const v = rect.height / 2;
+        const x = e.clientX - rect.left - h;
+        const y = e.clientY - rect.top - v;
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      });
+      wrap.addEventListener('mouseleave', () => {
+        btn.style.transform = `translate(0px, 0px)`;
+      });
+    }
   });
 
   // --- 3. SPOTLIGHT CARDS EFFECT ---
@@ -816,6 +937,35 @@
       }
     });
   });
+
+  // --- 5. COOKIE CONSENT LOGIC ---
+  const cookieBanner = document.getElementById('cookieBanner');
+  const acceptBtn = document.getElementById('acceptCookies');
+  const refuseBtn = document.getElementById('refuseCookies');
+
+  if (!localStorage.getItem('analyticsConsent')) {
+    setTimeout(() => {
+      cookieBanner.classList.add('show');
+    }, 1000);
+  } else if (localStorage.getItem('analyticsConsent') === 'accepted') {
+    initGoogleAnalytics();
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('analyticsConsent', 'accepted');
+    cookieBanner.classList.remove('show');
+    initGoogleAnalytics();
+  });
+
+  refuseBtn.addEventListener('click', () => {
+    localStorage.setItem('analyticsConsent', 'refused');
+    cookieBanner.classList.remove('show');
+  });
+
+  function initGoogleAnalytics() {
+    console.log("Google Analytics initialisé suite au consentement.");
+    // Script GA à insérer ici
+  }
 </script>
 
 </body>
