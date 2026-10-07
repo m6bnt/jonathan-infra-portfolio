@@ -724,7 +724,7 @@
           <span class="badge badge-ghost" style="align-self: flex-start;">Lab Universitaire</span>
           <h4 class="card-title" style="margin-top: 10px;">Infrastructure SI Hybride Sécurisée</h4>
           <p class="card-desc">Architecture multi-sites ultra-résiliente. Déploiement ESXi, clusters de pare-feux pfSense en HA, supervision Zabbix intégrale et stratégie de bascule PRA.</p>
-          <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="action-link">Consulter l'architecture <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="btn-projet btn-infra">Consulter l'architecture <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="spotlight-card">
@@ -732,7 +732,7 @@
           <span class="badge badge-ghost" style="align-self: flex-start;">Lab Universitaire</span>
           <h4 class="card-title" style="margin-top: 10px;">Architecture & Gouvernance SI</h4>
           <p class="card-desc">Audit, urbanisation et modélisation stratégique d’un SI pour l'alignement métier. Implémentation des standards EBIOS, modélisation BPMN et Green IT.</p>
-          <a href="projects/architecture-si/architecture-si.html" class="action-link">Consulter l'architecture <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="projects/architecture-si/architecture-si.html" class="btn-projet btn-archi">Consulter l'architecture <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="spotlight-card">
@@ -740,7 +740,7 @@
           <span class="badge badge-ghost" style="align-self: flex-start;">Lab Universitaire</span>
           <h4 class="card-title" style="margin-top: 10px;">Gestion de Projet IT Agile & Cloud</h4>
           <p class="card-desc">Pilotage Scrum couplé à une chaîne DevOps complète : Infrastructure as Code (Terraform), masterisation (Packer), configuration (Ansible) et orchestration (K8s).</p>
-          <a href="projects/agile-projet/agile-gestion-projet.html" class="action-link">Consulter l'architecture <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="projects/agile-projet/agile-gestion-projet.html" class="btn-projet btn-cloud">Consulter l'architecture <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -1051,5 +1051,34 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
     }
   });
 </script>
+  <style>
+  /* DESIGN DES BOUTONS DE PROJETS */
+  .btn-projet {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.03);
+    margin-top: 15px;
+  }
+  .btn-projet:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  /* Projet 1 : Infra (Vert) */
+  .btn-infra { border: 2px solid #00eba0; color: #00eba0; }
+  .btn-infra:hover { box-shadow: 0 0 15px rgba(0, 235, 160, 0.4); }
+
+  /* Projet 2 : Architecture (Orange) */
+  .btn-archi { border: 2px solid #ff9d00; color: #ff9d00; }
+  .btn-archi:hover { box-shadow: 0 0 15px rgba(255, 157, 0, 0.4); }
+
+  /* Projet 3 : Gestion & Cloud (Bleu) */
+  .btn-cloud { border: 2px solid #00a8ff; color: #00a8ff; }
+  .btn-cloud:hover { box-shadow: 0 0 15px rgba(0, 168, 255, 0.4); }
+</style>
 </body>
 </html>
