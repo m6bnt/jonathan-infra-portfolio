@@ -1052,33 +1052,59 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
   });
 </script>
   <style>
-  /* DESIGN DES BOUTONS DE PROJETS */
+  /* DESIGN DES BOUTONS "PILULE NEON" */
   .btn-projet {
-    display: inline-block;
-    padding: 10px 24px;
-    border-radius: 6px;
-    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 30px;
+    border-radius: 50px; /* Crée la forme arrondie façon pilule */
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.5px;
     text-decoration: none;
+    background-color: #121418; /* Fond très sombre comme sur ton image */
     transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.03);
     margin-top: 15px;
   }
+  
   .btn-projet:hover {
-    background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
   }
-  
+
   /* Projet 1 : Infra (Vert) */
-  .btn-infra { border: 2px solid #00eba0; color: #00eba0; }
-  .btn-infra:hover { box-shadow: 0 0 15px rgba(0, 235, 160, 0.4); }
+  .btn-infra { 
+    border: 1px solid #00eba0; 
+    color: #00eba0; 
+    box-shadow: 0 0 12px rgba(0, 235, 160, 0.15); 
+  }
+  .btn-infra:hover { 
+    box-shadow: 0 0 20px rgba(0, 235, 160, 0.4); 
+    background-color: rgba(0, 235, 160, 0.05); 
+  }
 
   /* Projet 2 : Architecture (Orange) */
-  .btn-archi { border: 2px solid #ff9d00; color: #ff9d00; }
-  .btn-archi:hover { box-shadow: 0 0 15px rgba(255, 157, 0, 0.4); }
+  .btn-archi { 
+    border: 1px solid #ff9d00; 
+    color: #ff9d00; 
+    box-shadow: 0 0 12px rgba(255, 157, 0, 0.15); 
+  }
+  .btn-archi:hover { 
+    box-shadow: 0 0 20px rgba(255, 157, 0, 0.4); 
+    background-color: rgba(255, 157, 0, 0.05); 
+  }
 
   /* Projet 3 : Gestion & Cloud (Bleu) */
-  .btn-cloud { border: 2px solid #00a8ff; color: #00a8ff; }
-  .btn-cloud:hover { box-shadow: 0 0 15px rgba(0, 168, 255, 0.4); }
+  .btn-cloud { 
+    border: 1px solid #00a8ff; 
+    color: #00a8ff; 
+    box-shadow: 0 0 12px rgba(0, 168, 255, 0.15); 
+  }
+  .btn-cloud:hover { 
+    box-shadow: 0 0 20px rgba(0, 168, 255, 0.4); 
+    background-color: rgba(0, 168, 255, 0.05); 
+  }
 </style>
 </body>
 </html>
