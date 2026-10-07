@@ -1001,6 +1001,54 @@
     document.head.appendChild(script2);
   }
 </script>
+<!-- TERMINAL EASTER EGG -->
+<div id="easter-terminal" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); width:650px; max-width:90%; height:400px; background:rgba(10, 10, 15, 0.95); border:1px solid var(--ai-cyan); border-radius:8px; z-index:9999; font-family:'JetBrains Mono', monospace; color:#00eba0; padding:15px; box-shadow:0 0 40px rgba(0, 240, 255, 0.2); overflow-y:auto; flex-direction:column; backdrop-filter:blur(10px);">
+  <div style="border-bottom:1px solid #333; padding-bottom:10px; margin-bottom:10px; display:flex; justify-content:space-between; color:#888; font-size:12px;">
+    <span>sysadmin@mazouz-server: /home/portfolio</span>
+    <span style="cursor:pointer; color:var(--ai-magenta);" onclick="document.getElementById('easter-terminal').style.display='none'">[ FERMER ]</span>
+  </div>
+  <div id="term-output" style="flex-grow:1; margin-bottom:10px; white-space:pre-wrap;">Connexion établie au serveur sécurisé...
+Bienvenue sur le terminal caché de Mehdi.
+Tapez 'help' pour afficher les commandes disponibles.</div>
+  <div style="display:flex;">
+    <span style="color:var(--ai-cyan); margin-right:8px;">sysadmin@mazouz:~$</span>
+    <input type="text" id="term-input" style="background:transparent; border:none; color:#fff; font-family:inherit; flex-grow:1; outline:none;" autocomplete="off">
+  </div>
+</div>
 
+<script>
+  const term = document.getElementById('easter-terminal');
+  const input = document.getElementById('term-input');
+  const output = document.getElementById('term-output');
+
+  // Afficher le terminal avec Ctrl + Alt + T
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.altKey && (e.key === 't' || e.key === 'T')) {
+      term.style.display = term.style.display === 'none' ? 'flex' : 'none';
+      if(term.style.display === 'flex') setTimeout(() => input.focus(), 100);
+    }
+  });
+
+  // Logique des commandes
+  input.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      let cmd = input.value.trim().toLowerCase();
+      let response = "";
+      output.innerHTML += `\n<span style="color:var(--ai-cyan)">sysadmin@mazouz:~$</span> ${cmd}`;
+      
+      if (cmd === 'help') response = "\nCommandes autorisées : \n - whoami : Identité de l'administrateur \n - skills : Compétences techniques \n - contact : Informations de liaison \n - clear : Nettoyer la console \n - sudo : [Accès restreint]";
+      else if (cmd === 'whoami') response = "\nMehdi MAZOUZ - Ingénieur Système, Réseau & Cloud. Spécialiste de la résolution de problèmes complexes.";
+      else if (cmd === 'skills') response = "\n[OK] Linux/Windows Server\n[OK] Virtualisation & Cloud\n[OK] Automatisation (Ansible, Scripts)\n[OK] Sécurité Réseau";
+      else if (cmd === 'contact') response = "\nÉtablissement de la connexion...\nLinkedIn : /in/mehdimazouz";
+      else if (cmd === 'clear') { output.innerHTML = ""; input.value = ""; return; }
+      else if (cmd.startsWith('sudo')) response = "\n[ALERTE] Accès root refusé. L'administrateur a été notifié de cette tentative. :)";
+      else if (cmd !== "") response = `\n${cmd}: commande introuvable. Tapez 'help'.`;
+      
+      output.innerHTML += response;
+      input.value = "";
+      term.scrollTop = term.scrollHeight;
+    }
+  });
+</script>
 </body>
 </html>
