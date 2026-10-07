@@ -1004,13 +1004,25 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
       let response = "";
       output.innerHTML += `\n<span style="color:var(--ai-cyan)">sysadmin@mazouz:~$</span> ${cmd}`;
       
-      if (cmd === 'help') response = "\nCommandes autorisées : \n - whoami : Identité de l'administrateur \n - skills : Compétences techniques \n - contact : Informations de liaison \n - clear : Nettoyer la console \n - sudo : [Accès restreint]";
-      else if (cmd === 'whoami') response = "\nMehdi MAZOUZ - Ingénieur Système, Réseau & Cloud. Spécialiste de la résolution de problèmes complexes.";
-      else if (cmd === 'skills') response = "\n[OK] Linux/Windows Server\n[OK] Virtualisation & Cloud\n[OK] Automatisation (Ansible, Scripts)\n[OK] Sécurité Réseau";
-      else if (cmd === 'contact') response = "\nÉtablissement de la connexion...\nLinkedIn : /in/mehdimazouz";
-      else if (cmd === 'clear') { output.innerHTML = ""; input.value = ""; return; }
-      else if (cmd.startsWith('sudo')) response = "\n[ALERTE] Accès root refusé. L'administrateur a été notifié de cette tentative. :)";
-      else if (cmd !== "") response = `\n${cmd}: commande introuvable. Tapez 'help'.`;
+      if (cmd === 'help') response = "\nAvailable commands : \n - whoami : Administrator identity \n - skills : Technical skills \n - contact : Contact information \n - clear : Clear terminal";
+          else if (cmd === 'whoami') response = "\nMehdi MAZOUZ - System, Network & Cloud Engineer. Complex problem solver.";
+          else if (cmd === 'skills') response = "\n[OK] Linux/Windows Server\n[OK] Virtualization & Cloud\n[OK] Automation (Ansible, Scripts)\n[OK] Network Security";
+          else if (cmd === 'contact') response = "\nEstablishing connection...\nLinkedIn : /in/mehdimazouz";
+          else if (cmd === 'clear') { output.innerHTML = ""; input.value = ""; return; }
+          else if (cmd.startsWith('sudo')) response = "\n[WARNING] Root access denied. The administrator has been notified of this attempt. :)";
+          else if (cmd === 'github') {
+              response = "\n<span style='color: #00a8ff'>Fetching GitHub API...</span>";
+              fetch('https://api.github.com/users/mazouz-mehdi')
+                  .then(res => res.json())
+                  .then(data => {
+                      output.innerHTML += `\n[OK] User : ${data.login}\n[+] Public Repos : ${data.public_repos}\n[+] Followers : ${data.followers}\n`;
+                      term.scrollTop = term.scrollHeight;
+                  })
+                  .catch(err => {
+                      output.innerHTML += "\n[ERROR] Unable to reach the API.";
+                  });
+          }
+          else if (cmd !== "") response = `\n${cmd}: command not found. Type 'help'.`;
       
       output.innerHTML += response;
       input.value = "";
