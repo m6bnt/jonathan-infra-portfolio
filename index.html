@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <title>Mehdi MAZOUZ | Ingénieur Système & Réseau Junior</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- BALISE DE SÉCURITÉ CSP (Content Security Policy) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com;">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   
   <style>
@@ -759,7 +763,7 @@
   <div class="footer-secure-name">Mehdi MAZOUZ</div>
   <div>© 2026 Tous droits réservés.</div>
   <div class="footer-secure-links">
-    Site durci — CSP, HSTS, <a href="#">security.txt</a> · Rapports : <a href="#">SecurityHeaders</a> · <a href="#">SSL Labs</a><br><br>
+    Site durci — CSP, HSTS, <a href=".well-known/security.txt" target="_blank">security.txt</a><br><br>
     <a href="#" style="font-weight: bold; border-bottom: 2px solid white;">Confidentialité & cookies</a>
   </div>
 </footer>
@@ -806,11 +810,9 @@
       ctx.fill();
     }
     update() {
-      // Rebond sur les bords de l'écran
       if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
       if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
 
-      // Interaction fluide avec la souris
       let dx = mouse.x - this.x;
       let dy = mouse.y - this.y;
       let distance = Math.sqrt(dx*dx + dy*dy);
@@ -827,7 +829,6 @@
         this.y -= directionY;
       }
 
-      // Mouvement autonome permanent
       this.x += this.directionX;
       this.y += this.directionY;
       this.draw();
@@ -938,7 +939,7 @@
     });
   });
 
-  // --- 5. COOKIE CONSENT LOGIC ---
+  // --- 5. COOKIE CONSENT & GOOGLE ANALYTICS ---
   const cookieBanner = document.getElementById('cookieBanner');
   const acceptBtn = document.getElementById('acceptCookies');
   const refuseBtn = document.getElementById('refuseCookies');
@@ -962,9 +963,22 @@
     cookieBanner.classList.remove('show');
   });
 
+  // Fonction d'initialisation de Google Analytics (ID : G-X7Y568RN76)
   function initGoogleAnalytics() {
-    console.log("Google Analytics initialisé suite au consentement.");
-    // Script GA à insérer ici
+    console.log("Google Analytics activé suite au consentement.");
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-X7Y568RN76';
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X7Y568RN76');
+    `;
+    document.head.appendChild(script2);
   }
 </script>
 
