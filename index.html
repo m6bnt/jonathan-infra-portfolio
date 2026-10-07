@@ -118,8 +118,23 @@
     .hero-content h1 {
       font-size: 6rem; font-weight: 900; line-height: 0.95; letter-spacing: -3px; margin-bottom: 20px;
     }
-    .hero-content h2 { font-size: 1.8rem; font-weight: 400; color: var(--text-muted); margin-bottom: 30px; letter-spacing: -0.5px; }
+    .hero-content h2 { font-size: 1.8rem; font-weight: 400; color: var(--text-muted); margin-bottom: 30px; letter-spacing: -0.5px; display: flex; align-items: center; flex-wrap: wrap; }
     .hero-content p { font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 650px; margin-bottom: 50px; font-weight: 300; }
+
+    /* BADGE DISPONIBILITE VERT BRILLANT */
+    .availability-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.4);
+      color: #00ff88; padding: 6px 14px; border-radius: 100px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; vertical-align: middle;
+      margin-left: 15px;
+      animation: glow-green 2s infinite alternate;
+    }
+    @keyframes glow-green {
+      0% { box-shadow: 0 0 10px rgba(0, 255, 136, 0.1); }
+      100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), inset 0 0 10px rgba(0, 255, 136, 0.2); border-color: rgba(0, 255, 136, 0.8); text-shadow: 0 0 5px rgba(0, 255, 136, 0.5); }
+    }
 
     .action-group { display: flex; gap: 20px; flex-wrap: wrap; }
     
@@ -283,6 +298,8 @@
       .hero { flex-direction: column-reverse; text-align: center; padding-top: 160px; }
       .hero-content h1 { font-size: 4rem; }
       .hero-content p { margin: 0 auto 40px; }
+      .hero-content h2 { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+      .availability-badge { margin-left: 0; }
       .action-group { justify-content: center; }
       .hero-visual img { width: 320px; height: 380px; }
       nav { width: calc(100% - 40px); justify-content: space-between; }
@@ -323,7 +340,12 @@
         <div class="indicator"></div> JUNIOR SYSADMIN & CLOUD ENGINEER
       </div>
       <h1>Mehdi <br><span class="text-plasma">MAZOUZ</span></h1>
-      <h2>Ingénieur Système & Réseau Junior</h2>
+      <h2>
+        Ingénieur Système & Réseau Junior
+        <span class="availability-badge" title="Recherche active d'opportunités en Île-de-France">
+          <i class="fa-solid fa-location-dot"></i> Disponible en Île-de-France
+        </span>
+      </h2>
       <p>Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. Mon parcours atypique, mêlant chefferie de projet SI en alternance et expérimentations techniques poussées en laboratoires universitaires, me permet aujourd'hui d'avoir une vision globale. J’aime autant m’impliquer activement dans les projets d’une entreprise que mener des expérimentations personnelles, afin de continuer à apprendre et à perfectionner mes compétences techniques.</p>
       
       <div class="action-group">
@@ -335,7 +357,7 @@
         <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="btn-glass">
           <i class="fa-brands fa-linkedin linkedin-premium"></i> LinkedIn
         </a>
-        <a href="https://github.com/m6bnt" target="_blank" class="btn-glass">
+        <a href="https://github.com/mazouz-mehdi" target="_blank" class="btn-glass">
           <i class="fa-brands fa-github"></i> GitHub
         </a>
       </div>
@@ -591,7 +613,7 @@
         <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-pill">
           <i class="fa-brands fa-linkedin linkedin-premium"></i> Réseau LinkedIn
         </a>
-        <a href="https://github.com/m6bnt" target="_blank" class="social-pill">
+        <a href="https://github.com/mazouz-mehdi" target="_blank" class="social-pill">
           <i class="fa-brands fa-github" style="color: var(--text-main);"></i> Dépôts GitHub
         </a>
       </div>
