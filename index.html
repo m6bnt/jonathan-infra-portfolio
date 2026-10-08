@@ -168,7 +168,7 @@
       100% { box-shadow: 0 0 20px rgba(0, 255, 170, 0.6), inset 0 0 10px rgba(0, 255, 170, 0.2); border-color: rgba(0, 255, 170, 0.8); text-shadow: 0 0 5px rgba(0, 255, 170, 0.5); }
     }
 
-    .action-group { display: flex; gap: 20px; flex-wrap: wrap; }
+    .action-group { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
     
     .magnetic-wrap { display: inline-block; padding: 10px; margin: -10px; }
     
@@ -422,7 +422,7 @@
       <p>Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. Mon parcours atypique, mêlant chefferie de projet SI en alternance et expérimentations techniques poussées en laboratoires universitaires, me permet aujourd'hui d'avoir une vision globale. J’aime autant m’impliquer activement dans les projets d’une entreprise que mener des expérimentations personnelles, afin de continuer à apprendre et à perfectionner mes compétences techniques.</p>
       
       <div class="action-group">
-        <!-- BOUTON DÉMARRER UN PROJET HAUTE QUALITÉ -->
+        <!-- BOUTON DÉMARRER UN PROJET ALIGNÉ ET SURLIGNÉ PLASMA -->
         <div class="magnetic-wrap hero-magnetic">
           <a href="#contact" class="btn-magnetic btn-cyber-cv" onclick="triggerCyberFlash(event, this)">
             <span class="cv-glow-bg"></span>
@@ -728,13 +728,10 @@
         </a>
       </div>
       
-      <!-- BOUTON ACCÉDER AU CV HAUTE QUALITÉ -->
+      <!-- BOUTON ACCÉDER AU CV SANS SURLIGNAGE / EFFET GLOW -->
       <div class="magnetic-wrap" style="margin-top: 20px;">
-        <a href="assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-magnetic btn-cyber-cv" onclick="openHologramCV(event, this)">
-          <span class="cv-glow-bg"></span>
-          <i class="fa-solid fa-file-shield" style="color: var(--ai-cyan);"></i> 
-          <span class="cv-text">Accéder au CV</span>
-          <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem; opacity: 0.7;"></i>
+        <a href="assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-glass" style="padding: 16px 36px; border-radius: 100px; font-weight: 600;">
+          <i class="fa-solid fa-file-shield" style="color: var(--ai-cyan);"></i> Accéder au CV <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem; opacity: 0.7;"></i>
         </a>
       </div>
     </div>
@@ -818,7 +815,7 @@
   // --- BOUTONS MAGNÉTIQUES ---
   const magneticWraps = document.querySelectorAll('.magnetic-wrap');
   magneticWraps.forEach(wrap => {
-    const btn = wrap.querySelector('.btn-magnetic, .btn-nav, .btn-lang');
+    const btn = wrap.querySelector('.btn-magnetic, .btn-nav, .btn-lang, .btn-glass');
     if (btn) {
       wrap.addEventListener('mousemove', (e) => {
         const rect = wrap.getBoundingClientRect();
@@ -978,17 +975,6 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
       element.classList.remove('cyber-opening');
     }, 500);
   }
-
-  // Fonction pour l'ouverture du CV
-  function openHologramCV(event, element) {
-    event.preventDefault();
-    const targetUrl = element.getAttribute('href');
-    element.classList.add('cyber-opening');
-    setTimeout(() => {
-      window.open(targetUrl, '_blank');
-      element.classList.remove('cyber-opening');
-    }, 450);
-  }
 </script>
 
 <style>
@@ -1015,18 +1001,23 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
   .btn-hybrid { border: 1px solid #ff0055; color: #ffffff; box-shadow: 0 0 12px rgba(255, 0, 85, 0.15); }
   .btn-hybrid:hover { box-shadow: 0 0 20px rgba(255, 0, 85, 0.5); background-color: rgba(255, 0, 85, 0.1); }
 
-  /* --- STYLE COMMUN HAUTE QUALITÉ : CYBERPUNK PLASMA --- */
+  /* --- STYLE BOUTON CYBERPUNK PLASMA POUR DÉMARRER UN PROJET --- */
   .btn-cyber-cv {
     position: relative;
     background: rgba(5, 10, 20, 0.8) !important;
     color: #ffffff !important;
-    font-weight: 700 !important;
+    font-weight: 500 !important;
+    font-size: 1.05rem !important;
     border: 1px solid rgba(0, 240, 255, 0.4) !important;
     padding: 16px 36px !important;
     border-radius: 100px !important;
     overflow: hidden;
     box-shadow: 0 0 25px rgba(0, 240, 255, 0.15), inset 0 0 15px rgba(0, 240, 255, 0.1);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    text-decoration: none !important;
   }
 
   .cv-glow-bg {
