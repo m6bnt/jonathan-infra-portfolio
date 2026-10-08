@@ -5,7 +5,6 @@
   <title>Mehdi MAZOUZ | Ingénieur Système & Réseau Junior</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO & OPEN GRAPH (Pour un bel aperçu sur LinkedIn & Google) -->
   <meta name="description" content="Portfolio de Mehdi MAZOUZ, Ingénieur Système, Réseau et Cloud Junior basé en Île-de-France. Découvrez mon parcours, mes compétences et mes projets d'infrastructure." />
   <meta property="og:title" content="Mehdi MAZOUZ | Ingénieur Système & Réseau" />
   <meta property="og:description" content="Expertise en Infrastructures Hybrides, Cloud, Automatisation et Sécurité. Disponible en Île-de-France." />
@@ -14,27 +13,26 @@
   <meta property="og:image" content="https://mazouz-mehdi.github.io/assets/images/apercu-portfolio.png" />
   <meta name="theme-color" content="#000000" />
 
-  <!-- FAVICON (Icône de l'onglet du navigateur) -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <link rel="manifest" href="manifest.json">
   
-  <!-- BALISE DE SÉCURITÉ CSP (Content Security Policy) -->
   <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://api.github.com https://www.google-analytics.com; default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://github.com https://*.githubusercontent.com https://img.shields.io https://logo.clearbit.com;">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&family=JetBrains+Mono:wght@400;700;800;900&display=swap');
 
     :root {
       --void-black: #000000;
-      --panel-bg: rgba(10, 10, 12, 0.3);
-      --glass-border: rgba(255, 255, 255, 0.05);
+      --panel-bg: rgba(10, 15, 12, 0.4);
+      --glass-border: rgba(0, 255, 102, 0.12);
       --text-pure: #ffffff;
-      --text-muted: #8a8f98;
+      --text-muted: #8a9890;
       --ai-cyan: #00f0ff;
+      --ai-green: #00ff66;
       --ai-purple: #8b5cf6;
       --ai-magenta: #ff0055;
-      --plasma-gradient: linear-gradient(135deg, var(--ai-cyan), var(--ai-purple), var(--ai-magenta));
+      --plasma-gradient: linear-gradient(135deg, var(--ai-green), var(--ai-cyan));
     }
 
     * {
@@ -51,7 +49,7 @@
       scroll-behavior: smooth;
     }
 
-    /* --- NEURAL NETWORK CANVAS BACKGROUND --- */
+    /* --- FOND CANVAS TERMINAL --- */
     #neural-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -62,20 +60,20 @@
 
     .ambient-glow {
       position: fixed; top: -20vh; left: 10vw; width: 80vw; height: 80vh;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
-      filter: blur(100px); z-index: -3; pointer-events: none;
+      background: radial-gradient(circle, rgba(0, 255, 102, 0.08) 0%, transparent 60%);
+      filter: blur(120px); z-index: -3; pointer-events: none;
     }
 
     /* --- DYNAMIC PILL NAVBAR --- */
     nav {
       position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      background: rgba(5, 5, 5, 0.5);
+      background: rgba(5, 10, 6, 0.7);
       backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
       border: 1px solid var(--glass-border);
       border-radius: 100px; z-index: 1000;
       padding: 10px 16px 10px 24px;
       display: flex; align-items: center; gap: 40px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(0, 255, 102, 0.1);
     }
     .nav-logo {
       font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.1rem;
@@ -83,15 +81,15 @@
       display: flex; align-items: center; gap: 8px;
     }
     .nav-logo::before {
-      content: ''; width: 8px; height: 8px; background: var(--ai-cyan); border-radius: 50%;
-      box-shadow: 0 0 12px var(--ai-cyan); animation: pulse 2s infinite;
+      content: ''; width: 8px; height: 8px; background: var(--ai-green); border-radius: 50%;
+      box-shadow: 0 0 12px var(--ai-green); animation: pulse 2s infinite;
     }
     nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
     nav ul li a {
       color: var(--text-muted); font-size: 0.85rem; font-weight: 500; text-decoration: none;
       text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s;
     }
-    nav ul li a:hover { color: var(--ai-cyan); text-shadow: 0 0 10px rgba(0,240,255,0.5); }
+    nav ul li a:hover { color: var(--ai-green); text-shadow: 0 0 10px rgba(0, 255, 102, 0.5); }
     
     .nav-actions { display: flex; align-items: center; gap: 10px; }
     
@@ -102,7 +100,7 @@
       font-weight: 700; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace;
       text-decoration: none; transition: all 0.3s;
     }
-    .btn-lang:hover { border-color: var(--ai-cyan); color: var(--ai-cyan); box-shadow: 0 0 15px rgba(0,240,255,0.2); }
+    .btn-lang:hover { border-color: var(--ai-green); color: var(--ai-green); box-shadow: 0 0 15px rgba(0, 255, 102, 0.3); }
 
     .btn-nav {
       background: var(--text-pure); color: var(--void-black);
@@ -120,7 +118,7 @@
     .section-header { margin-bottom: 70px; }
     .section-tag {
       font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700;
-      color: var(--ai-purple); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block;
+      color: var(--ai-green); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block;
     }
     .section-title {
       font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; color: var(--text-pure); line-height: 1;
@@ -138,13 +136,27 @@
     
     .system-badge {
       display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(0, 240, 255, 0.05); border: 1px solid rgba(0, 240, 255, 0.2);
+      background: rgba(0, 255, 102, 0.05); border: 1px solid rgba(0, 255, 102, 0.3);
       padding: 6px 16px; border-radius: 100px; font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem; color: var(--ai-cyan); margin-bottom: 30px; letter-spacing: 1px;
+      font-size: 0.8rem; color: var(--ai-green); margin-bottom: 30px; letter-spacing: 1px;
     }
     
+    /* PERSONNALISATION DU PRENOM "Mehdi" */
+    .firstname-it {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 5.5rem;
+      font-weight: 800;
+      color: #00ff66;
+      text-shadow: 0 0 25px rgba(0, 255, 102, 0.6), 0 0 50px rgba(0, 255, 102, 0.2);
+      letter-spacing: -2px;
+      display: inline-block;
+    }
+
     .hero-content h1 {
-      font-size: 6rem; font-weight: 900; line-height: 0.95; letter-spacing: -3px; margin-bottom: 20px;
+      line-height: 0.95; margin-bottom: 20px;
+    }
+    .hero-content .lastname {
+      font-size: 6rem; font-weight: 900; letter-spacing: -3px; color: #ffffff;
     }
     .hero-content h2 { 
       font-size: 1.8rem; font-weight: 400; color: var(--text-muted); 
@@ -171,12 +183,12 @@
     
     .magnetic-wrap { display: inline-block; padding: 10px; margin: -10px; }
     .btn-magnetic {
-      background: var(--text-pure); color: var(--void-black);
-      padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 1.05rem;
+      background: var(--ai-green); color: var(--void-black);
+      padding: 16px 36px; border-radius: 100px; font-weight: 800; font-size: 1.05rem;
       text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
       transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
     }
-    .magnetic-wrap:hover .btn-magnetic { box-shadow: 0 10px 30px rgba(255,255,255,0.25); }
+    .magnetic-wrap:hover .btn-magnetic { box-shadow: 0 10px 30px rgba(0, 255, 102, 0.4); }
     
     .btn-glass {
       background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); color: var(--text-pure);
@@ -184,7 +196,7 @@
       text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
       backdrop-filter: blur(10px); transition: all 0.3s;
     }
-    .btn-glass:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+    .btn-glass:hover { background: rgba(0, 255, 102, 0.08); border-color: var(--ai-green); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
 
     .linkedin-premium {
       color: #e8a846 !important;
@@ -192,44 +204,38 @@
       transition: all 0.3s ease;
     }
 
-    /* --- HERO VISUAL (PHOTO DE PROFIL) --- */
+    /* --- HERO VISUAL AVEC BORDURE TECH DYNAMIQUE --- */
     .hero-visual { position: relative; flex-shrink: 0; z-index: 10; }
-    
     .hero-visual img {
       width: 420px; height: 500px; object-fit: cover; border-radius: 24px;
-      border: 1px solid rgba(0, 240, 255, 0.2); /* Bordure cyan très légère */
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      border: 1px solid rgba(0, 255, 102, 0.3);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.9);
       filter: brightness(1.03) contrast(1.05);
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    
-    /* Le nouveau halo tech qui respire */
     .hero-visual::before {
       content: ''; position: absolute; inset: -4px;
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.8), rgba(0, 102, 255, 0.8)); /* Dégradé 100% tech (Cyan/Bleu) */
+      background: linear-gradient(135deg, rgba(0, 255, 102, 0.8), rgba(0, 240, 255, 0.6));
       border-radius: 28px; 
-      filter: blur(20px); 
+      filter: blur(22px); 
       z-index: -1;
-      animation: breatheGlow 4s ease-in-out infinite alternate; /* Animation de respiration */
+      animation: breatheGlow 4s ease-in-out infinite alternate;
     }
-    
     @keyframes breatheGlow {
-      0% { opacity: 0.2; transform: scale(0.98); }
-      100% { opacity: 0.5; transform: scale(1.03); filter: blur(25px); }
+      0% { opacity: 0.25; transform: scale(0.98); }
+      100% { opacity: 0.55; transform: scale(1.03); filter: blur(28px); }
     }
-    
-    /* Effet au survol de la souris */
     .hero-visual:hover img { 
       transform: translateY(-8px) scale(1.02); 
-      border-color: rgba(0, 240, 255, 0.8); /* La bordure s'illumine */
-      box-shadow: 0 30px 60px rgba(0, 240, 255, 0.15);
+      border-color: rgba(0, 255, 102, 0.9);
+      box-shadow: 0 30px 60px rgba(0, 255, 102, 0.2);
     }
-    
     .hero-visual:hover::before { 
-      opacity: 0.8; 
-      filter: blur(30px); 
-      animation-play-state: paused; /* Fige la respiration quand on survole */
+      opacity: 0.85; 
+      filter: blur(32px); 
+      animation-play-state: paused;
     }
+
     /* --- SPOTLIGHT BENTO CARDS --- */
     .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
     .bento-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -248,7 +254,7 @@
     }
     .spotlight-card::after {
       content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-      background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(0,240,255,0.5), transparent 40%);
+      background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(0,255,102,0.5), transparent 40%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor; mask-composite: exclude;
       z-index: 1; opacity: 0; transition: opacity 0.5s; pointer-events: none;
@@ -260,7 +266,7 @@
       z-index: 2; position: relative; height: calc(100% - 2px); display: flex; flex-direction: column;
       backdrop-filter: blur(20px); transition: transform 0.3s ease;
     }
-    .spotlight-card:hover .card-content { transform: scale(0.99); background: rgba(15, 15, 20, 0.5); }
+    .spotlight-card:hover .card-content { transform: scale(0.99); background: rgba(10, 20, 14, 0.6); }
 
     .card-icon {
       font-size: 2.2rem; margin-bottom: 24px;
@@ -276,39 +282,39 @@
       border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.95rem; color: #d4d4d8;
     }
     .data-list li:last-child { border-bottom: none; padding-bottom: 0; }
-    .data-list i { color: var(--ai-cyan); font-size: 0.85rem; margin-top: 4px; }
+    .data-list i { color: var(--ai-green); font-size: 0.85rem; margin-top: 4px; }
 
     /* --- NEURAL TIMELINE --- */
     .timeline { position: relative; padding-left: 40px; }
     .timeline::before {
       content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 1px;
-      background: linear-gradient(to bottom, var(--ai-cyan), var(--ai-purple), transparent); opacity: 0.5;
+      background: linear-gradient(to bottom, var(--ai-green), var(--ai-cyan), transparent); opacity: 0.5;
     }
     .timeline-item { position: relative; margin-bottom: 60px; }
     .timeline-dot {
       position: absolute; width: 15px; height: 15px;
-      background: var(--void-black); border: 2px solid var(--ai-cyan); border-radius: 50%;
-      left: -47px; top: 6px; box-shadow: 0 0 15px var(--ai-cyan);
+      background: var(--void-black); border: 2px solid var(--ai-green); border-radius: 50%;
+      left: -47px; top: 6px; box-shadow: 0 0 15px var(--ai-green);
     }
     .timeline-content {
       background: var(--panel-bg); border: 1px solid var(--glass-border);
       padding: 30px 40px; border-radius: 24px; backdrop-filter: blur(20px);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .timeline-content:hover { border-color: rgba(0,240,255,0.2); transform: translateX(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .timeline-content:hover { border-color: rgba(0,255,102,0.3); transform: translateX(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .timeline-date {
       display: inline-block; padding: 6px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
       border-radius: 100px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700;
       margin-bottom: 16px; letter-spacing: 1px;
     }
     .timeline-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; color: #fff; }
-    .timeline-org { color: var(--ai-cyan); font-size: 1.05rem; margin-bottom: 20px; font-weight: 500; }
+    .timeline-org { color: var(--ai-green); font-size: 1.05rem; margin-bottom: 20px; font-weight: 500; }
 
     .badge {
       font-family: 'JetBrains Mono', monospace; padding: 6px 14px; border-radius: 100px; font-size: 0.75rem; font-weight: 700;
       display: inline-block; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase;
     }
-    .badge-data { background: rgba(0, 240, 255, 0.1); color: var(--ai-cyan); border: 1px solid rgba(0, 240, 255, 0.2); }
+    .badge-data { background: rgba(0, 255, 102, 0.1); color: var(--ai-green); border: 1px solid rgba(0, 255, 102, 0.2); }
     .badge-ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--glass-border); }
 
     .action-link {
@@ -316,15 +322,15 @@
       color: var(--text-pure); font-size: 0.95rem; font-weight: 600; text-decoration: none;
       transition: gap 0.3s, color 0.3s;
     }
-    .action-link:hover { color: var(--ai-cyan); gap: 12px; }
+    .action-link:hover { color: var(--ai-green); gap: 12px; }
 
     /* --- TERMINAL FOOTER / CONTACT --- */
     .contact-panel {
-      background: radial-gradient(circle at top, rgba(20,20,25,0.8) 0%, transparent 100%);
+      background: radial-gradient(circle at top, rgba(15, 25, 18, 0.9) 0%, transparent 100%);
       border: 1px solid var(--glass-border); border-radius: 40px;
       padding: 100px 40px; text-align: center; max-width: 900px; margin: 0 auto;
       backdrop-filter: blur(40px); position: relative; overflow: hidden;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(0, 255, 102, 0.1);
     }
     .contact-panel h3 { font-size: 4.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 24px; line-height: 1; }
     
@@ -336,9 +342,9 @@
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none;
     }
     .social-pill:hover {
-      background: rgba(255,255,255,0.08); border-color: var(--ai-cyan);
-      transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,240,255,0.15);
-      color: var(--ai-cyan);
+      background: rgba(0, 255, 102, 0.08); border-color: var(--ai-green);
+      transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 255, 102, 0.2);
+      color: var(--ai-green);
     }
 
     /* --- FOOTER SITE DURCI --- */
@@ -349,7 +355,7 @@
       color: var(--text-muted);
       border-top: 1px solid var(--glass-border);
       margin-top: 100px;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.7);
     }
     .footer-secure-name {
       font-size: 1.2rem;
@@ -369,8 +375,8 @@
       transition: all 0.3s;
     }
     .footer-secure-links a:hover {
-      color: var(--ai-cyan);
-      border-bottom-color: var(--ai-cyan);
+      color: var(--ai-green);
+      border-bottom-color: var(--ai-green);
     }
 
     /* --- COOKIE BANNER --- */
@@ -379,7 +385,7 @@
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%) translateY(20px);
-      background: #111827;
+      background: #0d1510;
       border: 1px solid var(--glass-border);
       border-radius: 12px;
       padding: 20px 24px;
@@ -410,7 +416,7 @@
       gap: 15px;
     }
     .btn-accept {
-      background: #0066cc;
+      background: #00b347;
       color: white;
       border: none;
       padding: 10px 24px;
@@ -420,7 +426,7 @@
       transition: background 0.3s;
     }
     .btn-accept:hover {
-      background: #0052a3;
+      background: #00e65c;
     }
     .btn-refuse {
       background: transparent;
@@ -441,7 +447,8 @@
 
     @media (max-width: 950px) {
       .hero { flex-direction: column-reverse; text-align: center; padding-top: 160px; }
-      .hero-content h1 { font-size: 4rem; }
+      .firstname-it { font-size: 3.8rem; }
+      .hero-content .lastname { font-size: 4rem; }
       .hero-content p { margin: 0 auto 40px; }
       .hero-content h2 { justify-content: center; text-align: center; }
       .action-group { justify-content: center; }
@@ -468,11 +475,9 @@
 </head>
 <body>
 
-<!-- AI PARTICLE CANVAS BACKGROUND -->
 <canvas id="neural-canvas"></canvas>
 <div class="ambient-glow"></div>
 
-<!-- MAGNETIC PILL NAVBAR -->
 <nav>
   <a href="index.html" class="nav-logo">SYS_CORE</a>
   <ul>
@@ -495,14 +500,16 @@
 
 <div class="container">
   
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <div class="system-badge">
         <div class="indicator"></div> JUNIOR SYSADMIN & CLOUD ENGINEER
       </div>
       
-      <h1>Mehdi <br><span class="text-plasma">MAZOUZ</span></h1>
+      <h1>
+        <span class="firstname-it">&lt;Mehdi/&gt;</span><br>
+        <span class="lastname">MAZOUZ</span>
+      </h1>
       
       <h2>
         Ingénieur Système & Réseau Junior
@@ -532,7 +539,6 @@
     </div>
   </section>
 
-  <!-- OVERVIEW -->
   <section id="about" class="section">
     <div class="section-header">
       <span class="section-tag">01 / À propos</span>
@@ -564,7 +570,6 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills" class="section">
     <div class="section-header">
       <span class="section-tag">02 / Compétences</span>
@@ -625,7 +630,6 @@
     </div>
   </section>
 
-  <!-- CERTIFICATIONS -->
   <section id="certifications" class="section">
     <div class="section-header">
       <span class="section-tag">03 / Certifications</span>
@@ -678,7 +682,6 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
   <section id="experience" class="section">
     <div class="section-header">
       <span class="section-tag">04 / Parcours</span>
@@ -741,7 +744,6 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects" class="section">
     <div class="section-header">
       <span class="section-tag">05 / Projets</span>
@@ -785,7 +787,6 @@
         </div>
       </div>
 
-      <!-- NOUVEAU PROJET INFRASTRUCTURE HYBRIDE -->
       <div class="spotlight-card">
         <div class="card-content">
           <span class="badge badge-ghost" style="align-self: flex-start;">Projet Personnel</span>
@@ -798,7 +799,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="contact-panel">
       <h3 class="text-plasma">Initialiser l'intégration.</h3>
@@ -808,13 +808,13 @@
 
       <div class="social-dock">
         <a href="mailto:mehdimazouz78@gmail.com" class="social-pill">
-          <i class="fa-solid fa-envelope" style="color: var(--ai-cyan);"></i> Transmission (Mail)
+          <i class="fa-solid fa-envelope" style="color: var(--ai-green);"></i> Transmission (Mail)
         </a>
         <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-pill">
           <i class="fa-brands fa-linkedin linkedin-premium"></i> Réseau LinkedIn
         </a>
         <a href="https://github.com/mazouz-mehdi" target="_blank" class="social-pill">
-          <i class="fa-brands fa-github" style="color: var(--text-main);"></i> Dépôts GitHub
+          <i class="fa-brands fa-github" style="color: var(--text-pure);"></i> Dépôts GitHub
         </a>
       </div>
       
@@ -828,7 +828,6 @@
 
 </div>
 
-<!-- NOUVEAU FOOTER SITE DURCI -->
 <footer class="footer-secure">
   <div class="footer-secure-name">Mehdi MAZOUZ</div>
   <div>© 2026 Tous droits réservés.</div>
@@ -843,7 +842,6 @@
   </div>
 </footer>
 
-<!-- BANDEAU COOKIES -->
 <div id="cookieBanner" class="cookie-banner">
   <div class="cookie-text">
     Google Analytics n'est activé qu'avec votre accord. Vous pouvez accepter, refuser, puis modifier ce choix à tout moment depuis le pied de page.
@@ -855,7 +853,6 @@
 </div>
 
 <script>
-  // --- 1. NEURAL NETWORK CANVAS : ÉDITION "CYBER CIRCUIT & BINARY" ---
   const canvas = document.getElementById('neural-canvas');
   const ctx = canvas.getContext('2d');
   let particlesArray = [];
@@ -870,8 +867,8 @@
     mouse.y = event.y;
   });
 
-  // Cycle de couleur (Démarrage en Vert matrice)
-  let hue = 120; 
+  // Teinte Vert Informatique / Matrix
+  let baseHue = 135; 
 
   class Particle {
     constructor(x, y, size) {
@@ -880,35 +877,33 @@
       this.size = size;
       this.density = (Math.random() * 30) + 1;
       
-      // Mouvement Orthogonal (Effet Carte Mère / Serveur)
-      let speed = (Math.random() * 1.5) + 0.5;
+      // Mouvement orthogonal façon circuit imprimé
+      let speed = (Math.random() * 1.4) + 0.4;
       let isHorizontal = Math.random() > 0.5;
       this.directionX = isHorizontal ? (Math.random() > 0.5 ? speed : -speed) : 0;
       this.directionY = isHorizontal ? 0 : (Math.random() > 0.5 ? speed : -speed);
       
-      // Symboles Informatiques au lieu de simples points
-      const chars = ['0', '1', '1', '0', '{ }', '</>', '[ ]'];
+      const chars = ['0', '1', '1', '0', '{ }', '</>', '[ ]', 'root', 'ssh'];
       this.char = chars[Math.floor(Math.random() * chars.length)];
     }
 
     draw() {
-      ctx.fillStyle = `hsl(${hue}, 100%, 60%)`;
-      ctx.font = `${this.size * 4}px 'JetBrains Mono', monospace`;
+      ctx.fillStyle = `hsl(${baseHue}, 100%, 65%)`;
+      ctx.font = `${this.size * 3.5}px 'JetBrains Mono', monospace`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.shadowBlur = 10; // Effet néon sur le texte
-      ctx.shadowColor = `hsl(${hue}, 100%, 60%)`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = `hsl(${baseHue}, 100%, 50%)`;
       ctx.fillText(this.char, this.x, this.y);
-      ctx.shadowBlur = 0; // Reset pour ne pas faire lagger les lignes
+      ctx.shadowBlur = 0;
     }
 
     update() {
-      // Rebond sur les bords de l'écran
       if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
       if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
 
-      // Virages à 90 degrés aléatoires (crée l'effet circuit imprimé)
-      if (Math.random() < 0.015) { 
+      // Virages à 90° (circuit imprimé)
+      if (Math.random() < 0.012) { 
           if (this.directionX !== 0) {
               this.directionY = (Math.random() > 0.5 ? 1 : -1) * Math.abs(this.directionX);
               this.directionX = 0;
@@ -918,7 +913,6 @@
           }
       }
 
-      // Interaction d'évitement avec la souris
       let dx = mouse.x - this.x;
       let dy = mouse.y - this.y;
       let distance = Math.sqrt(dx*dx + dy*dy);
@@ -941,10 +935,9 @@
 
   function init() {
     particlesArray = [];
-    // Nombre de particules équilibré pour un beau rendu sans lag
-    let numberOfParticles = (canvas.height * canvas.width) / 12000; 
+    let numberOfParticles = (canvas.height * canvas.width) / 12500; 
     for (let i = 0; i < numberOfParticles; i++) {
-      let size = (Math.random() * 3) + 2;
+      let size = (Math.random() * 2.8) + 2;
       let x = Math.random() * canvas.width;
       let y = Math.random() * canvas.height;
       particlesArray.push(new Particle(x, y, size));
@@ -954,9 +947,6 @@
   function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0,0,innerWidth, innerHeight);
-    
-    // Évolution lente des couleurs (RGB Cycle)
-    hue += 0.2; 
 
     for (let i = 0; i < particlesArray.length; i++) {
       particlesArray[i].update();
@@ -966,7 +956,7 @@
 
   function connect() {
     let opacityValue = 1;
-    ctx.setLineDash([4, 6]); // Lignes en pointillés (Effet flux de données réseau)
+    ctx.setLineDash([3, 5]); // Lignes de flux console
     
     for (let a = 0; a < particlesArray.length; a++) {
       for (let b = a; b < particlesArray.length; b++) {
@@ -974,10 +964,9 @@
         let dy = particlesArray[a].y - particlesArray[b].y;
         let distance = (dx * dx) + (dy * dy);
         
-        // Connecte les particules proches
         if (distance < (canvas.width/8) * (canvas.height/8)) {
-          opacityValue = 1 - (distance/25000);
-          ctx.strokeStyle = `hsla(${hue}, 100%, 60%, ${opacityValue})`;
+          opacityValue = 1 - (distance/24000);
+          ctx.strokeStyle = `hsla(${baseHue}, 100%, 60%, ${opacityValue})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -986,7 +975,7 @@
         }
       }
     }
-    ctx.setLineDash([]); // Reset du style de ligne
+    ctx.setLineDash([]);
   }
 
   window.addEventListener('resize', () => {
@@ -995,19 +984,113 @@
   
   init();
   animate();
+
+  // --- BOUTONS MAGNÉTIQUES ---
+  const magneticWraps = document.querySelectorAll('.magnetic-wrap');
+  magneticWraps.forEach(wrap => {
+    const btn = wrap.querySelector('.btn-magnetic, .btn-nav, .btn-lang');
+    if (btn) {
+      wrap.addEventListener('mousemove', (e) => {
+        const rect = wrap.getBoundingClientRect();
+        const h = rect.width / 2;
+        const v = rect.height / 2;
+        const x = e.clientX - rect.left - h;
+        const y = e.clientY - rect.top - v;
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      });
+      wrap.addEventListener('mouseleave', () => {
+        btn.style.transform = `translate(0px, 0px)`;
+      });
+    }
+  });
+
+  // --- SPOTLIGHT CARDS EFFECT ---
+  const cardsWrappers = document.querySelectorAll('.cards-wrapper');
+  cardsWrappers.forEach(wrapper => {
+    wrapper.onmousemove = e => {
+      for(const card of wrapper.querySelectorAll('.spotlight-card')) {
+        const rect = card.getBoundingClientRect(),
+              x = e.clientX - rect.left,
+              y = e.clientY - rect.top;
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
+      }
+    };
+  });
+
+  // --- NAVBAR ACTIVE SCROLL ---
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll("nav ul li a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 300;
+      const sectionHeight = section.clientHeight;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  });
+
+  // --- COOKIE CONSENT & GOOGLE ANALYTICS ---
+  const cookieBanner = document.getElementById('cookieBanner');
+  const acceptBtn = document.getElementById('acceptCookies');
+  const refuseBtn = document.getElementById('refuseCookies');
+
+  if (!localStorage.getItem('analyticsConsent')) {
+    setTimeout(() => {
+      cookieBanner.classList.add('show');
+    }, 1000);
+  } else if (localStorage.getItem('analyticsConsent') === 'accepted') {
+    initGoogleAnalytics();
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('analyticsConsent', 'accepted');
+    cookieBanner.classList.remove('show');
+    initGoogleAnalytics();
+  });
+
+  refuseBtn.addEventListener('click', () => {
+    localStorage.setItem('analyticsConsent', 'refused');
+    cookieBanner.classList.remove('show');
+  });
+
+  function initGoogleAnalytics() {
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-X7Y568RN76';
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X7Y568RN76');
+    `;
+    document.head.appendChild(script2);
+  }
 </script>
 
-<!-- TERMINAL EASTER EGG -->
-<div id="easter-terminal" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); width:650px; max-width:90%; height:400px; background:rgba(10, 10, 15, 0.95); border:1px solid var(--ai-cyan); border-radius:8px; z-index:9999; font-family:'JetBrains Mono', monospace; color:#00eba0; padding:15px; box-shadow:0 0 40px rgba(0, 240, 255, 0.2); overflow-y:auto; flex-direction:column; backdrop-filter:blur(10px);">
-  <div style="border-bottom:1px solid #333; padding-bottom:10px; margin-bottom:10px; display:flex; justify-content:space-between; color:#888; font-size:12px;">
+<div id="easter-terminal" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); width:650px; max-width:90%; height:400px; background:rgba(5, 12, 8, 0.95); border:1px solid var(--ai-green); border-radius:8px; z-index:9999; font-family:'JetBrains Mono', monospace; color:#00ff66; padding:15px; box-shadow:0 0 40px rgba(0, 255, 102, 0.25); overflow-y:auto; flex-direction:column; backdrop-filter:blur(10px);">
+  <div style="border-bottom:1px solid #1a3322; padding-bottom:10px; margin-bottom:10px; display:flex; justify-content:space-between; color:#8a9890; font-size:12px;">
     <span>sysadmin@mazouz-server: /home/portfolio</span>
     <span style="cursor:pointer; color:var(--ai-magenta);" onclick="document.getElementById('easter-terminal').style.display='none'">[ FERMER ]</span>
   </div>
   <div id="term-output" style="flex-grow:1; margin-bottom:10px; white-space:pre-wrap;">Connexion établie au serveur sécurisé...
-Bienvenue sur le terminal caché de Mehdi.
+Bienvenue sur le terminal de Mehdi.
 Tapez 'help' pour afficher les commandes disponibles.</div>
   <div style="display:flex;">
-    <span style="color:var(--ai-cyan); margin-right:8px;">sysadmin@mazouz:~$</span>
+    <span style="color:var(--ai-green); margin-right:8px;">sysadmin@mazouz:~$</span>
     <input type="text" id="term-input" style="background:transparent; border:none; color:#fff; font-family:inherit; flex-grow:1; outline:none;" autocomplete="off">
   </div>
 </div>
@@ -1017,7 +1100,6 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
   const input = document.getElementById('term-input');
   const output = document.getElementById('term-output');
 
-  // Afficher le terminal avec Ctrl + Alt + T
   document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.altKey && (e.key === 't' || e.key === 'T')) {
       term.style.display = term.style.display === 'none' ? 'flex' : 'none';
@@ -1025,12 +1107,11 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
     }
   });
 
-  // Logique des commandes
   input.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
       let cmd = input.value.trim().toLowerCase();
       let response = "";
-      output.innerHTML += `\n<span style="color:var(--ai-cyan)">sysadmin@mazouz:~$</span> ${cmd}`;
+      output.innerHTML += `\n<span style="color:var(--ai-green)">sysadmin@mazouz:~$</span> ${cmd}`;
       
       if (cmd === 'help') response = "\nCommandes autorisées : \n - whoami : Identité de l'administrateur \n - skills : Compétences techniques \n - contact : Informations de liaison \n - clear : Nettoyer la console \n - sudo : [Accès restreint]";
       else if (cmd === 'whoami') response = "\nMehdi MAZOUZ - Ingénieur Système, Réseau & Cloud. Spécialiste de la résolution de problèmes complexes.";
@@ -1039,7 +1120,7 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
       else if (cmd === 'clear') { output.innerHTML = ""; input.value = ""; return; }
       else if (cmd.startsWith('sudo')) response = "\n[ALERTE] Accès root refusé. L'administrateur a été notifié de cette tentative. :)";
       else if (cmd === 'github') {
-              response = "\n<span style='color: #00a8ff'>Interrogation de l'API GitHub en cours...</span>";
+              response = "\n<span style='color: #00ff66'>Interrogation de l'API GitHub en cours...</span>";
               fetch('https://api.github.com/users/mazouz-mehdi')
                   .then(res => res.json())
                   .then(data => {
