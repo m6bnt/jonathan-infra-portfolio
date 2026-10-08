@@ -60,6 +60,16 @@
       pointer-events: none;
     }
 
+    /* --- HACKER BINARY RAIN CANVAS --- */
+    #matrix-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.25; /* Ajustez l'intensité si besoin (0.2 à 0.4 idéal pour ne pas masquer le texte) */
+    }
+
     .ambient-glow {
       position: fixed; top: -20vh; left: 10vw; width: 80vw; height: 80vh;
       background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
@@ -468,6 +478,8 @@
 </head>
 <body>
 
+<!-- CANVAS PLUIE BINAIRE (HACKER) -->
+<canvas id="matrix-canvas"></canvas>
 <!-- AI PARTICLE CANVAS BACKGROUND -->
 <canvas id="neural-canvas"></canvas>
 <div class="ambient-glow"></div>
@@ -855,6 +867,52 @@
 </div>
 
 <script>
+  // --- 0. MATRIX BINARY RAIN BACKGROUND ---
+  const matrixCanvas = document.getElementById('matrix-canvas');
+  const matrixCtx = matrixCanvas.getContext('2d');
+
+  matrixCanvas.width = window.innerWidth;
+  matrixCanvas.height = window.innerHeight;
+
+  const binaryChars = '01';
+  const fontSize = 14;
+  let columns = Math.floor(matrixCanvas.width / fontSize);
+  let drops = [];
+
+  for (let i = 0; i < columns; i++) {
+    drops[i] = 1;
+  }
+
+  function drawMatrix() {
+    matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+    matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+    matrixCtx.fillStyle = '#00f0ff'; // Couleur cyan style tech / hacking
+    matrixCtx.font = fontSize + 'px "JetBrains Mono", monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+      const text = binaryChars.charAt(Math.floor(Math.random() * binaryChars.length));
+      matrixCtx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+      if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+  }
+
+  setInterval(drawMatrix, 33);
+
+  window.addEventListener('resize', () => {
+    matrixCanvas.width = window.innerWidth;
+    matrixCanvas.height = window.innerHeight;
+    columns = Math.floor(matrixCanvas.width / fontSize);
+    drops = [];
+    for (let i = 0; i < columns; i++) {
+      drops[i] = 1;
+    }
+  });
+
   // --- 1. NEURAL NETWORK CANVAS (ANIMATION DYNAMIQUE CONTINUE EN DIRECT) ---
   const canvas = document.getElementById('neural-canvas');
   const ctx = canvas.getContext('2d');
@@ -1107,17 +1165,17 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
       else if (cmd === 'clear') { output.innerHTML = ""; input.value = ""; return; }
       else if (cmd.startsWith('sudo')) response = "\n[ALERTE] Accès root refusé. L'administrateur a été notifié de cette tentative. :)";
       else if (cmd === 'github') {
-              response = "\n<span style='color: #00a8ff'>Interrogation de l'API GitHub en cours...</span>";
-              fetch('https://api.github.com/users/mazouz-mehdi')
-                  .then(res => res.json())
-                  .then(data => {
-                      output.innerHTML += `\n[OK] Utilisateur : ${data.login}\n[+] Dépôts publics : ${data.public_repos}\n[+] Abonnés : ${data.followers}\n`;
-                      term.scrollTop = term.scrollHeight;
-                  })
-                  .catch(err => {
-                      output.innerHTML += "\n[ERREUR] Impossible de joindre l'API.";
-                  });
-          }  
+            response = "\n<span style='color: #00a8ff'>Interrogation de l'API GitHub en cours...</span>";
+            fetch('https://api.github.com/users/mazouz-mehdi')
+                .then(res => res.json())
+                .then(data => {
+                    output.innerHTML += `\n[OK] Utilisateur : ${data.login}\n[+] Dépôts publics : ${data.public_repos}\n[+] Abonnés : ${data.followers}\n`;
+                    term.scrollTop = term.scrollHeight;
+                })
+                .catch(err => {
+                    output.innerHTML += "\n[ERREUR] Impossible de joindre l'API.";
+                });
+        }  
       else if (cmd !== "") response = `\n${cmd}: commande introuvable. Tapez 'help'.`;
       
       output.innerHTML += response;
