@@ -5,7 +5,7 @@
   <title>Mehdi MAZOUZ | Ingénieur Système & Réseau Junior</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO & OPEN GRAPH (Pour un bel aperçu sur LinkedIn & Google) -->
+  <!-- SEO & OPEN GRAPH -->
   <meta name="description" content="Portfolio de Mehdi MAZOUZ, Ingénieur Système, Réseau et Cloud Junior basé en Île-de-France. Découvrez mon parcours, mes compétences et mes projets d'infrastructure." />
   <meta property="og:title" content="Mehdi MAZOUZ | Ingénieur Système & Réseau" />
   <meta property="og:description" content="Expertise en Infrastructures Hybrides, Cloud, Automatisation et Sécurité. Disponible en Île-de-France." />
@@ -14,11 +14,11 @@
   <meta property="og:image" content="https://mazouz-mehdi.github.io/assets/images/apercu-portfolio.png" />
   <meta name="theme-color" content="#000000" />
 
-  <!-- FAVICON (Icône de l'onglet du navigateur) -->
+  <!-- FAVICON -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <link rel="manifest" href="manifest.json">
   
-  <!-- BALISE DE SÉCURITÉ CSP (Content Security Policy) -->
+  <!-- CSP -->
   <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://api.github.com https://www.google-analytics.com; default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://github.com https://*.githubusercontent.com https://img.shields.io https://logo.clearbit.com;">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   
@@ -27,14 +27,15 @@
 
     :root {
       --void-black: #000000;
-      --panel-bg: rgba(10, 10, 12, 0.3);
-      --glass-border: rgba(255, 255, 255, 0.05);
+      --panel-bg: rgba(10, 10, 12, 0.4);
+      --glass-border: rgba(0, 240, 255, 0.1);
       --text-pure: #ffffff;
       --text-muted: #8a8f98;
+      /* NOUVELLE PALETTE DE COULEURS TECH / CLOUD / CYBER */
       --ai-cyan: #00f0ff;
-      --ai-purple: #8b5cf6;
-      --ai-magenta: #ff0055;
-      --plasma-gradient: linear-gradient(135deg, var(--ai-cyan), var(--ai-purple), var(--ai-magenta));
+      --ai-blue: #0066ff;
+      --ai-emerald: #00ffaa;
+      --plasma-gradient: linear-gradient(135deg, #00f0ff, #0066ff, #8b5cf6);
     }
 
     * {
@@ -58,19 +59,19 @@
       width: 100vw; height: 100vh;
       z-index: -2;
       pointer-events: none;
-      opacity: 0.3; /* Ajustez l'intensité si nécessaire */
+      opacity: 0.28;
     }
 
     .ambient-glow {
       position: fixed; top: -20vh; left: 10vw; width: 80vw; height: 80vh;
-      background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 60%);
       filter: blur(100px); z-index: -3; pointer-events: none;
     }
 
     /* --- DYNAMIC PILL NAVBAR --- */
     nav {
       position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      background: rgba(5, 5, 5, 0.5);
+      background: rgba(5, 5, 8, 0.6);
       backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
       border: 1px solid var(--glass-border);
       border-radius: 100px; z-index: 1000;
@@ -121,7 +122,7 @@
     .section-header { margin-bottom: 70px; }
     .section-tag {
       font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700;
-      color: var(--ai-purple); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block;
+      color: var(--ai-cyan); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block;
     }
     .section-title {
       font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; color: var(--text-pure); line-height: 1;
@@ -157,15 +158,15 @@
     /* BADGE DISPONIBILITE VERT BRILLANT */
     .availability-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.4);
-      color: #00ff88; padding: 6px 14px; border-radius: 100px;
+      background: rgba(0, 255, 170, 0.1); border: 1px solid rgba(0, 255, 170, 0.4);
+      color: var(--ai-emerald); padding: 6px 14px; border-radius: 100px;
       font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700;
       letter-spacing: 1px; text-transform: uppercase;
       animation: glow-green 2s infinite alternate;
     }
     @keyframes glow-green {
-      0% { box-shadow: 0 0 10px rgba(0, 255, 136, 0.1); }
-      100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), inset 0 0 10px rgba(0, 255, 136, 0.2); border-color: rgba(0, 255, 136, 0.8); text-shadow: 0 0 5px rgba(0, 255, 136, 0.5); }
+      0% { box-shadow: 0 0 10px rgba(0, 255, 170, 0.1); }
+      100% { box-shadow: 0 0 20px rgba(0, 255, 170, 0.6), inset 0 0 10px rgba(0, 255, 170, 0.2); border-color: rgba(0, 255, 170, 0.8); text-shadow: 0 0 5px rgba(0, 255, 170, 0.5); }
     }
 
     .action-group { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -177,7 +178,7 @@
       text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
       transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
     }
-    .magnetic-wrap:hover .btn-magnetic { box-shadow: 0 10px 30px rgba(255,255,255,0.25); }
+    .magnetic-wrap:hover .btn-magnetic { box-shadow: 0 10px 30px rgba(0,240,255,0.25); }
     
     .btn-glass {
       background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); color: var(--text-pure);
@@ -185,50 +186,39 @@
       text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
       backdrop-filter: blur(10px); transition: all 0.3s;
     }
-    .btn-glass:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+    .btn-glass:hover { background: rgba(255,255,255,0.08); border-color: var(--ai-cyan); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,240,255,0.15); }
 
     .linkedin-premium {
-      color: #e8a846 !important;
-      filter: drop-shadow(0 0 8px rgba(232, 168, 70, 0.6));
+      color: #00a8ff !important;
+      filter: drop-shadow(0 0 8px rgba(0, 168, 255, 0.6));
       transition: all 0.3s ease;
     }
 
-    /* --- HERO VISUAL (PHOTO DE PROFIL) --- */
+    /* --- HERO VISUAL --- */
     .hero-visual { position: relative; flex-shrink: 0; z-index: 10; }
-    
     .hero-visual img {
       width: 420px; height: 500px; object-fit: cover; border-radius: 24px;
-      border: 1px solid rgba(0, 240, 255, 0.2);
+      border: 1px solid rgba(0, 240, 255, 0.3);
       box-shadow: 0 20px 50px rgba(0,0,0,0.8);
       filter: brightness(1.03) contrast(1.05);
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    
     .hero-visual::before {
       content: ''; position: absolute; inset: -4px;
       background: linear-gradient(135deg, rgba(0, 240, 255, 0.8), rgba(0, 102, 255, 0.8));
-      border-radius: 28px; 
-      filter: blur(20px); 
-      z-index: -1;
+      border-radius: 28px; filter: blur(20px); z-index: -1;
       animation: breatheGlow 4s ease-in-out infinite alternate;
     }
-    
     @keyframes breatheGlow {
       0% { opacity: 0.2; transform: scale(0.98); }
       100% { opacity: 0.5; transform: scale(1.03); filter: blur(25px); }
     }
-    
     .hero-visual:hover img { 
       transform: translateY(-8px) scale(1.02); 
       border-color: rgba(0, 240, 255, 0.8);
-      box-shadow: 0 30px 60px rgba(0, 240, 255, 0.15);
+      box-shadow: 0 30px 60px rgba(0, 240, 255, 0.2);
     }
-    
-    .hero-visual:hover::before { 
-      opacity: 0.8; 
-      filter: blur(30px); 
-      animation-play-state: paused;
-    }
+    .hero-visual:hover::before { opacity: 0.8; filter: blur(30px); animation-play-state: paused; }
 
     /* --- SPOTLIGHT BENTO CARDS --- */
     .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
@@ -236,14 +226,11 @@
     
     .spotlight-card {
       background: rgba(255, 255, 255, 0.01);
-      border-radius: 24px;
-      position: relative;
-      overflow: hidden;
-      display: flex; flex-direction: column;
+      border-radius: 24px; position: relative; overflow: hidden; display: flex; flex-direction: column;
     }
     .spotlight-card::before {
       content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
+      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(0,240,255,0.06), transparent 40%);
       border-radius: inherit; z-index: 3; opacity: 0; transition: opacity 0.5s; pointer-events: none;
     }
     .spotlight-card::after {
@@ -260,7 +247,7 @@
       z-index: 2; position: relative; height: calc(100% - 2px); display: flex; flex-direction: column;
       backdrop-filter: blur(20px); transition: transform 0.3s ease;
     }
-    .spotlight-card:hover .card-content { transform: scale(0.99); background: rgba(15, 15, 20, 0.5); }
+    .spotlight-card:hover .card-content { transform: scale(0.99); background: rgba(10, 15, 25, 0.6); }
 
     .card-icon {
       font-size: 2.2rem; margin-bottom: 24px;
@@ -282,7 +269,7 @@
     .timeline { position: relative; padding-left: 40px; }
     .timeline::before {
       content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 1px;
-      background: linear-gradient(to bottom, var(--ai-cyan), var(--ai-purple), transparent); opacity: 0.5;
+      background: linear-gradient(to bottom, var(--ai-cyan), var(--ai-blue), transparent); opacity: 0.6;
     }
     .timeline-item { position: relative; margin-bottom: 60px; }
     .timeline-dot {
@@ -295,7 +282,7 @@
       padding: 30px 40px; border-radius: 24px; backdrop-filter: blur(20px);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .timeline-content:hover { border-color: rgba(0,240,255,0.2); transform: translateX(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .timeline-content:hover { border-color: rgba(0,240,255,0.4); transform: translateX(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .timeline-date {
       display: inline-block; padding: 6px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
       border-radius: 100px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700;
@@ -318,9 +305,9 @@
     }
     .action-link:hover { color: var(--ai-cyan); gap: 12px; }
 
-    /* --- TERMINAL FOOTER / CONTACT --- */
+    /* --- CONTACT PANEL --- */
     .contact-panel {
-      background: radial-gradient(circle at top, rgba(20,20,25,0.8) 0%, transparent 100%);
+      background: radial-gradient(circle at top, rgba(10,20,30,0.8) 0%, transparent 100%);
       border: 1px solid var(--glass-border); border-radius: 40px;
       padding: 100px 40px; text-align: center; max-width: 900px; margin: 0 auto;
       backdrop-filter: blur(40px); position: relative; overflow: hidden;
@@ -336,106 +323,42 @@
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none;
     }
     .social-pill:hover {
-      background: rgba(255,255,255,0.08); border-color: var(--ai-cyan);
-      transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,240,255,0.15);
+      background: rgba(0,240,255,0.05); border-color: var(--ai-cyan);
+      transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,240,255,0.2);
       color: var(--ai-cyan);
     }
 
     /* --- FOOTER SITE DURCI --- */
     .footer-secure {
-      text-align: center;
-      padding: 60px 20px 40px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--glass-border);
-      margin-top: 100px;
-      background: rgba(0, 0, 0, 0.5);
+      text-align: center; padding: 60px 20px 40px; font-size: 0.9rem; color: var(--text-muted);
+      border-top: 1px solid var(--glass-border); margin-top: 100px; background: rgba(0, 0, 0, 0.5);
     }
-    .footer-secure-name {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--text-pure);
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-    }
-    .footer-secure-links {
-      margin-top: 10px;
-      line-height: 1.8;
-    }
-    .footer-secure-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      transition: all 0.3s;
-    }
-    .footer-secure-links a:hover {
-      color: var(--ai-cyan);
-      border-bottom-color: var(--ai-cyan);
-    }
+    .footer-secure-name { font-size: 1.2rem; font-weight: 800; color: var(--text-pure); margin-bottom: 15px; letter-spacing: 1px; }
+    .footer-secure-links { margin-top: 10px; line-height: 1.8; }
+    .footer-secure-links a { color: var(--text-muted); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); transition: all 0.3s; }
+    .footer-secure-links a:hover { color: var(--ai-cyan); border-bottom-color: var(--ai-cyan); }
 
     /* --- COOKIE BANNER --- */
     .cookie-banner {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: #111827;
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-      z-index: 9999;
-      max-width: 90%;
-      width: 700px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: #0d1117; border: 1px solid var(--glass-border); border-radius: 12px;
+      padding: 20px 24px; display: flex; align-items: center; gap: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 9999; max-width: 90%; width: 700px;
+      opacity: 0; pointer-events: none; transition: opacity 0.5s ease, transform 0.5s ease;
     }
-    .cookie-banner.show {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
-    }
-    .cookie-text {
-      color: var(--text-pure);
-      font-size: 0.95rem;
-      line-height: 1.5;
-      flex: 1;
-    }
-    .cookie-actions {
-      display: flex;
-      gap: 15px;
-    }
+    .cookie-banner.show { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .cookie-text { color: var(--text-pure); font-size: 0.95rem; line-height: 1.5; flex: 1; }
+    .cookie-actions { display: flex; gap: 15px; }
     .btn-accept {
-      background: #0066cc;
-      color: white;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 100px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
+      background: var(--ai-blue); color: white; border: none; padding: 10px 24px;
+      border-radius: 100px; font-weight: 600; cursor: pointer; transition: background 0.3s;
     }
-    .btn-accept:hover {
-      background: #0052a3;
-    }
+    .btn-accept:hover { background: #0052cc; }
     .btn-refuse {
-      background: transparent;
-      color: var(--text-pure);
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 10px 24px;
-      border-radius: 100px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s;
+      background: transparent; color: var(--text-pure); border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 24px; border-radius: 100px; font-weight: 500; cursor: pointer; transition: all 0.3s;
     }
-    .btn-refuse:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.5);
-    }
+    .btn-refuse:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.5); }
 
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
@@ -454,15 +377,8 @@
     }
     
     @media (max-width: 768px) {
-      .cookie-banner {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-      }
-      .cookie-actions {
-        width: 100%;
-        justify-content: center;
-      }
+      .cookie-banner { flex-direction: column; text-align: center; gap: 20px; }
+      .cookie-actions { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -785,7 +701,6 @@
         </div>
       </div>
 
-      <!-- NOUVEAU PROJET INFRASTRUCTURE HYBRIDE -->
       <div class="spotlight-card">
         <div class="card-content">
           <span class="badge badge-ghost" style="align-self: flex-start;">Projet Personnel</span>
@@ -828,7 +743,7 @@
 
 </div>
 
-<!-- NOUVEAU FOOTER SITE DURCI -->
+<!-- FOOTER -->
 <footer class="footer-secure">
   <div class="footer-secure-name">Mehdi MAZOUZ</div>
   <div>© 2026 Tous droits réservés.</div>
@@ -875,7 +790,7 @@
     matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.08)';
     matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
 
-    matrixCtx.fillStyle = '#00f0ff'; // Couleur cyan style tech / hacking
+    matrixCtx.fillStyle = '#00f0ff'; // Cyan néon pur
     matrixCtx.font = fontSize + 'px "JetBrains Mono", monospace';
 
     for (let i = 0; i < drops.length; i++) {
@@ -901,7 +816,7 @@
     }
   });
 
-  // --- 2. BOUTONS MAGNÉTIQUES ---
+  // --- BOUTONS MAGNÉTIQUES ---
   const magneticWraps = document.querySelectorAll('.magnetic-wrap');
   magneticWraps.forEach(wrap => {
     const btn = wrap.querySelector('.btn-magnetic, .btn-nav, .btn-lang');
@@ -920,7 +835,7 @@
     }
   });
 
-  // --- 3. SPOTLIGHT CARDS EFFECT ---
+  // --- SPOTLIGHT CARDS EFFECT ---
   const cardsWrappers = document.querySelectorAll('.cards-wrapper');
   cardsWrappers.forEach(wrapper => {
     wrapper.onmousemove = e => {
@@ -934,7 +849,7 @@
     };
   });
 
-  // --- 4. NAVBAR ACTIVE SCROLL ---
+  // --- NAVBAR ACTIVE SCROLL ---
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("nav ul li a");
 
@@ -956,7 +871,7 @@
     });
   });
 
-  // --- 5. COOKIE CONSENT & GOOGLE ANALYTICS ---
+  // --- COOKIE CONSENT & GOOGLE ANALYTICS ---
   const cookieBanner = document.getElementById('cookieBanner');
   const acceptBtn = document.getElementById('acceptCookies');
   const refuseBtn = document.getElementById('refuseCookies');
@@ -980,7 +895,6 @@
     cookieBanner.classList.remove('show');
   });
 
-  // Fonction d'initialisation de Google Analytics (ID : G-X7Y568RN76)
   function initGoogleAnalytics() {
     console.log("Google Analytics activé suite au consentement.");
     const script1 = document.createElement('script');
@@ -1000,10 +914,10 @@
 </script>
 
 <!-- TERMINAL EASTER EGG -->
-<div id="easter-terminal" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); width:650px; max-width:90%; height:400px; background:rgba(10, 10, 15, 0.95); border:1px solid var(--ai-cyan); border-radius:8px; z-index:9999; font-family:'JetBrains Mono', monospace; color:#00eba0; padding:15px; box-shadow:0 0 40px rgba(0, 240, 255, 0.2); overflow-y:auto; flex-direction:column; backdrop-filter:blur(10px);">
+<div id="easter-terminal" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); width:650px; max-width:90%; height:400px; background:rgba(10, 10, 15, 0.95); border:1px solid var(--ai-cyan); border-radius:8px; z-index:9999; font-family:'JetBrains Mono', monospace; color:#00ffaa; padding:15px; box-shadow:0 0 40px rgba(0, 240, 255, 0.2); overflow-y:auto; flex-direction:column; backdrop-filter:blur(10px);">
   <div style="border-bottom:1px solid #333; padding-bottom:10px; margin-bottom:10px; display:flex; justify-content:space-between; color:#888; font-size:12px;">
     <span>sysadmin@mazouz-server: /home/portfolio</span>
-    <span style="cursor:pointer; color:var(--ai-magenta);" onclick="document.getElementById('easter-terminal').style.display='none'">[ FERMER ]</span>
+    <span style="cursor:pointer; color:#ff0055;" onclick="document.getElementById('easter-terminal').style.display='none'">[ FERMER ]</span>
   </div>
   <div id="term-output" style="flex-grow:1; margin-bottom:10px; white-space:pre-wrap;">Connexion établie au serveur sécurisé...
 Bienvenue sur le terminal caché de Mehdi.
@@ -1019,7 +933,6 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
   const input = document.getElementById('term-input');
   const output = document.getElementById('term-output');
 
-  // Afficher le terminal avec Ctrl + Alt + T
   document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.altKey && (e.key === 't' || e.key === 'T')) {
       term.style.display = term.style.display === 'none' ? 'flex' : 'none';
@@ -1027,7 +940,6 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
     }
   });
 
-  // Logique des commandes
   input.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
       let cmd = input.value.trim().toLowerCase();
@@ -1062,86 +974,28 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
 </script>
 
 <style>
-  /* DESIGN DES BOUTONS "PILULE NEON" */
   .btn-projet {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    background-color: #121418;
-    transition: all 0.3s ease;
-    margin-top: 15px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 12px 30px; border-radius: 50px; font-weight: 600; font-size: 15px;
+    letter-spacing: 0.5px; text-decoration: none; background-color: #0d1117;
+    transition: all 0.3s ease; margin-top: 15px;
   }
-  
-  .btn-projet:hover {
-    transform: translateY(-2px);
-  }
+  .btn-projet:hover { transform: translateY(-2px); }
 
-  /* Projet 1 : Infra (Bordure Verte, Texte Blanc) */
-  .btn-infra { 
-    border: 1px solid #00eba0; 
-    color: #ffffff; 
-    box-shadow: 0 0 12px rgba(0, 235, 160, 0.15); 
-  }
-  .btn-infra:hover { 
-    box-shadow: 0 0 20px rgba(0, 235, 160, 0.4); 
-    background-color: rgba(0, 235, 160, 0.1);
-    color: #ffffff;
-  }
+  .btn-infra { border: 1px solid #00eba0; color: #ffffff; box-shadow: 0 0 12px rgba(0, 235, 160, 0.15); }
+  .btn-infra:hover { box-shadow: 0 0 20px rgba(0, 235, 160, 0.4); background-color: rgba(0, 235, 160, 0.1); }
 
-  /* Projet 2 : Architecture (Bordure Orange, Texte Blanc) */
-  .btn-archi { 
-    border: 1px solid #ff9d00; 
-    color: #ffffff; 
-    box-shadow: 0 0 12px rgba(255, 157, 0, 0.15); 
-  }
-  .btn-archi:hover { 
-    box-shadow: 0 0 20px rgba(255, 157, 0, 0.4); 
-    background-color: rgba(255, 157, 0, 0.1);
-    color: #ffffff;
-  }
+  .btn-archi { border: 1px solid #ff9d00; color: #ffffff; box-shadow: 0 0 12px rgba(255, 157, 0, 0.15); }
+  .btn-archi:hover { box-shadow: 0 0 20px rgba(255, 157, 0, 0.4); background-color: rgba(255, 157, 0, 0.1); }
 
-  /* Projet 3 : Gestion & Cloud (Bordure Bleue, Texte Blanc) */
-  .btn-cloud { 
-    border: 1px solid #00a8ff; 
-    color: #ffffff; 
-    box-shadow: 0 0 12px rgba(0, 168, 255, 0.15); 
-  }
-  .btn-cloud:hover { 
-    box-shadow: 0 0 20px rgba(0, 168, 255, 0.4); 
-    background-color: rgba(0, 168, 255, 0.1);
-    color: #ffffff;
-  }
+  .btn-cloud { border: 1px solid #00a8ff; color: #ffffff; box-shadow: 0 0 12px rgba(0, 168, 255, 0.15); }
+  .btn-cloud:hover { box-shadow: 0 0 20px rgba(0, 168, 255, 0.4); background-color: rgba(0, 168, 255, 0.1); }
 
-  /* Projet 4 : AWS Terraform (Bordure Violette, Texte Blanc) */
-  .btn-aws { 
-    border: 1px solid #8b5cf6; 
-    color: #ffffff; 
-    box-shadow: 0 0 12px rgba(139, 92, 246, 0.15); 
-  }
-  .btn-aws:hover { 
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); 
-    background-color: rgba(139, 92, 246, 0.1); 
-    color: #ffffff; 
-  }
+  .btn-aws { border: 1px solid #8b5cf6; color: #ffffff; box-shadow: 0 0 12px rgba(139, 92, 246, 0.15); }
+  .btn-aws:hover { box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); background-color: rgba(139, 92, 246, 0.1); }
 
-  /* Projet 5 : Infrastructure Hybride (Bordure Magenta, Texte Blanc) */
-  .btn-hybrid { 
-    border: 1px solid #ff0055; 
-    color: #ffffff; 
-    box-shadow: 0 0 12px rgba(255, 0, 85, 0.15); 
-  }
-  .btn-hybrid:hover { 
-    box-shadow: 0 0 20px rgba(255, 0, 85, 0.5); 
-    background-color: rgba(255, 0, 85, 0.1);
-    color: #ffffff;
-  }
+  .btn-hybrid { border: 1px solid #ff0055; color: #ffffff; box-shadow: 0 0 12px rgba(255, 0, 85, 0.15); }
+  .btn-hybrid:hover { box-shadow: 0 0 20px rgba(255, 0, 85, 0.5); background-color: rgba(255, 0, 85, 0.1); }
 </style>
 
 </body>
