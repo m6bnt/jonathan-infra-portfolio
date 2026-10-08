@@ -51,28 +51,19 @@
       scroll-behavior: smooth;
     }
 
-    /* --- NEURAL NETWORK CANVAS BACKGROUND --- */
-    #neural-canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      z-index: -2;
-      pointer-events: none;
-    }
-
     /* --- HACKER BINARY RAIN CANVAS --- */
     #matrix-canvas {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      z-index: -1;
+      z-index: -2;
       pointer-events: none;
-      opacity: 0.25; /* Ajustez l'intensité si besoin (0.2 à 0.4 idéal pour ne pas masquer le texte) */
+      opacity: 0.3; /* Ajustez l'intensité si nécessaire */
     }
 
     .ambient-glow {
       position: fixed; top: -20vh; left: 10vw; width: 80vw; height: 80vh;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
       filter: blur(100px); z-index: -3; pointer-events: none;
     }
 
@@ -207,20 +198,19 @@
     
     .hero-visual img {
       width: 420px; height: 500px; object-fit: cover; border-radius: 24px;
-      border: 1px solid rgba(0, 240, 255, 0.2); /* Bordure cyan très légère */
+      border: 1px solid rgba(0, 240, 255, 0.2);
       box-shadow: 0 20px 50px rgba(0,0,0,0.8);
       filter: brightness(1.03) contrast(1.05);
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
-    /* Le nouveau halo tech qui respire */
     .hero-visual::before {
       content: ''; position: absolute; inset: -4px;
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.8), rgba(0, 102, 255, 0.8)); /* Dégradé 100% tech (Cyan/Bleu) */
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.8), rgba(0, 102, 255, 0.8));
       border-radius: 28px; 
       filter: blur(20px); 
       z-index: -1;
-      animation: breatheGlow 4s ease-in-out infinite alternate; /* Animation de respiration */
+      animation: breatheGlow 4s ease-in-out infinite alternate;
     }
     
     @keyframes breatheGlow {
@@ -228,18 +218,18 @@
       100% { opacity: 0.5; transform: scale(1.03); filter: blur(25px); }
     }
     
-    /* Effet au survol de la souris */
     .hero-visual:hover img { 
       transform: translateY(-8px) scale(1.02); 
-      border-color: rgba(0, 240, 255, 0.8); /* La bordure s'illumine */
+      border-color: rgba(0, 240, 255, 0.8);
       box-shadow: 0 30px 60px rgba(0, 240, 255, 0.15);
     }
     
     .hero-visual:hover::before { 
       opacity: 0.8; 
       filter: blur(30px); 
-      animation-play-state: paused; /* Fige la respiration quand on survole */
+      animation-play-state: paused;
     }
+
     /* --- SPOTLIGHT BENTO CARDS --- */
     .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
     .bento-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -480,8 +470,6 @@
 
 <!-- CANVAS PLUIE BINAIRE (HACKER) -->
 <canvas id="matrix-canvas"></canvas>
-<!-- AI PARTICLE CANVAS BACKGROUND -->
-<canvas id="neural-canvas"></canvas>
 <div class="ambient-glow"></div>
 
 <!-- MAGNETIC PILL NAVBAR -->
@@ -867,7 +855,7 @@
 </div>
 
 <script>
-  // --- 0. MATRIX BINARY RAIN BACKGROUND ---
+  // --- MATRIX BINARY RAIN BACKGROUND ---
   const matrixCanvas = document.getElementById('matrix-canvas');
   const matrixCtx = matrixCanvas.getContext('2d');
 
@@ -912,118 +900,6 @@
       drops[i] = 1;
     }
   });
-
-  // --- 1. NEURAL NETWORK CANVAS (ANIMATION DYNAMIQUE CONTINUE EN DIRECT) ---
-  const canvas = document.getElementById('neural-canvas');
-  const ctx = canvas.getContext('2d');
-  let particlesArray = [];
-  
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  let mouse = { x: null, y: null, radius: 150 };
-
-  window.addEventListener('mousemove', function(event) {
-    mouse.x = event.x;
-    mouse.y = event.y;
-  });
-
-  // Ajout de la variable HUE pour le cycle de couleur infini (120 = Vert Matrice au démarrage)
-  let hue = 120;
-
-  class Particle {
-    constructor(x, y, directionX, directionY, size) {
-      this.x = x; this.y = y;
-      this.directionX = directionX; this.directionY = directionY;
-      this.size = size;
-      this.baseX = this.x; this.baseY = this.y;
-      this.density = (Math.random() * 30) + 1;
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-      // Utilisation du hsl() avec la variable dynamique pour parcourir tout le cercle chromatique
-      ctx.fillStyle = `hsl(${hue}, 100%, 60%)`;
-      ctx.fill();
-    }
-    update() {
-      if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-      if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-
-      let dx = mouse.x - this.x;
-      let dy = mouse.y - this.y;
-      let distance = Math.sqrt(dx*dx + dy*dy);
-      
-      if (distance < mouse.radius + this.size) {
-        let forceDirectionX = dx / distance;
-        let forceDirectionY = dy / distance;
-        let maxDistance = mouse.radius;
-        let force = (maxDistance - distance) / maxDistance;
-        let directionX = forceDirectionX * force * this.density;
-        let directionY = forceDirectionY * force * this.density;
-        
-        this.x -= directionX;
-        this.y -= directionY;
-      }
-
-      this.x += this.directionX;
-      this.y += this.directionY;
-      this.draw();
-    }
-  }
-
-  function init() {
-    particlesArray = [];
-    let numberOfParticles = (canvas.height * canvas.width) / 15000;
-    for (let i = 0; i < numberOfParticles; i++) {
-      let size = (Math.random() * 2) + 1;
-      let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-      let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-      let directionX = (Math.random() * 1.6) - 0.8;
-      let directionY = (Math.random() * 1.6) - 0.8;
-      particlesArray.push(new Particle(x, y, directionX, directionY, size));
-    }
-  }
-
-  function animate() {
-    requestAnimationFrame(animate);
-    ctx.clearRect(0,0,innerWidth, innerHeight);
-    
-    // Incrémente la teinte à chaque image. C'est ce qui crée le cycle de couleurs.
-    hue += 0.3; 
-
-    for (let i = 0; i < particlesArray.length; i++) {
-      particlesArray[i].update();
-    }
-    connect();
-  }
-
-  function connect() {
-    let opacityValue = 1;
-    for (let a = 0; a < particlesArray.length; a++) {
-      for (let b = a; b < particlesArray.length; b++) {
-        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
-                       ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-        if (distance < (canvas.width/7) * (canvas.height/7)) {
-          opacityValue = 1 - (distance/20000);
-          // Utilisation du hsla() pour les lignes de liaison pour qu'elles aient la même couleur
-          ctx.strokeStyle = `hsla(${hue}, 100%, 60%, ${opacityValue})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-          ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-          ctx.stroke();
-        }
-      }
-    }
-  }
-
-  window.addEventListener('resize', () => {
-    canvas.width = innerWidth; canvas.height = innerHeight; init();
-  });
-  
-  init();
-  animate();
 
   // --- 2. BOUTONS MAGNÉTIQUES ---
   const magneticWraps = document.querySelectorAll('.magnetic-wrap');
