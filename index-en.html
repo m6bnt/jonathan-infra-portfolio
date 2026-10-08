@@ -4,26 +4,22 @@
   <meta charset="UTF-8" />
   <title>Mehdi MAZOUZ | Junior System & Network Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta charset="UTF-8" />
-    <title>Mehdi MAZOUZ | Ingénieur Système & Réseau Junior</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO & OPEN GRAPH (Pour un bel aperçu sur LinkedIn & Google) -->
-    <meta name="description" content="Portfolio de Mehdi MAZOUZ, Ingénieur Système, Réseau et Cloud Junior basé en Île-de-France. Découvrez mon parcours, mes compétences et mes projets d'infrastructure." />
-    <meta property="og:title" content="Mehdi MAZOUZ | Ingénieur Système & Réseau" />
-    <meta property="og:description" content="Expertise en Infrastructures Hybrides, Cloud, Automatisation et Sécurité. Disponible en Île-de-France." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mazouz-mehdi.github.io/" />
-    <meta property="og:image" content="https://mazouz-mehdi.github.io/assets/images/apercu-portfolio.png" />
-    <meta name="theme-color" content="#000000" />
+  
+  <!-- SEO & OPEN GRAPH (Pour un bel aperçu sur LinkedIn & Google) -->
+  <meta name="description" content="Portfolio of Mehdi MAZOUZ, Junior System, Network and Cloud Engineer based in Île-de-France. Discover my background, skills, and infrastructure projects." />
+  <meta property="og:title" content="Mehdi MAZOUZ | Junior System & Network Engineer" />
+  <meta property="og:description" content="Expertise in Hybrid Infrastructures, Cloud, Automation and Security. Available in Île-de-France." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mazouz-mehdi.github.io/index-en.html" />
+  <meta property="og:image" content="https://mazouz-mehdi.github.io/assets/images/apercu-portfolio.png" />
+  <meta name="theme-color" content="#000000" />
 
-    <!-- FAVICON (Icône de l'onglet du navigateur) -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
-    <link rel="manifest" href="manifest.json">
-
-    <!-- BALISE DE SÉCURITÉ CSP (Content Security Policy) -->
-    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://api.github.com https://www.google-analytics.com; default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://github.com https://*.githubusercontent.com https://img.shields.io;">
-
+  <!-- FAVICON (Icône de l'onglet du navigateur) -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- BALISE DE SÉCURITÉ CSP (Content Security Policy) -->
+  <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://api.github.com https://www.google-analytics.com; default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://github.com https://*.githubusercontent.com https://img.shields.io;">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   
   <style>
@@ -55,6 +51,7 @@
       scroll-behavior: smooth;
     }
 
+    /* --- NEURAL NETWORK CANVAS BACKGROUND --- */
     #neural-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -69,6 +66,7 @@
       filter: blur(100px); z-index: -3; pointer-events: none;
     }
 
+    /* --- DYNAMIC PILL NAVBAR --- */
     nav {
       position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
       background: rgba(5, 5, 5, 0.5);
@@ -115,6 +113,7 @@
     }
     .btn-nav:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,255,255,0.3); }
 
+    /* --- LAYOUT GLOBAL --- */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     .section { padding: 160px 0 60px; }
     
@@ -133,6 +132,7 @@
     }
     @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
+    /* --- HERO SECTION --- */
     .hero { min-height: 100vh; display: flex; align-items: center; gap: 60px; padding-top: 120px; }
     .hero-content { flex: 1; z-index: 10; }
     
@@ -153,6 +153,7 @@
     }
     .hero-content p { font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 650px; margin-bottom: 50px; font-weight: 300; }
 
+    /* BADGE DISPONIBILITE VERT BRILLANT */
     .availability-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.4);
@@ -185,7 +186,11 @@
     }
     .btn-glass:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
 
-    .linkedin-premium { color: #e8a846 !important; filter: drop-shadow(0 0 8px rgba(232, 168, 70, 0.6)); transition: all 0.3s ease; }
+    .linkedin-premium {
+      color: #e8a846 !important;
+      filter: drop-shadow(0 0 8px rgba(232, 168, 70, 0.6));
+      transition: all 0.3s ease;
+    }
 
     .hero-visual { position: relative; flex-shrink: 0; z-index: 10; }
 .hero-visual img {
@@ -210,6 +215,8 @@
     opacity: 0.85; 
     filter: blur(35px); 
 }
+
+    /* --- SPOTLIGHT BENTO CARDS --- */
     .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
     .bento-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     
@@ -257,6 +264,7 @@
     .data-list li:last-child { border-bottom: none; padding-bottom: 0; }
     .data-list i { color: var(--ai-cyan); font-size: 0.85rem; margin-top: 4px; }
 
+    /* --- NEURAL TIMELINE --- */
     .timeline { position: relative; padding-left: 40px; }
     .timeline::before {
       content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 1px;
@@ -296,6 +304,7 @@
     }
     .action-link:hover { color: var(--ai-cyan); gap: 12px; }
 
+    /* --- TERMINAL FOOTER / CONTACT --- */
     .contact-panel {
       background: radial-gradient(circle at top, rgba(20,20,25,0.8) 0%, transparent 100%);
       border: 1px solid var(--glass-border); border-radius: 40px;
@@ -396,7 +405,9 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-    .btn-accept:hover { background: #0052a3; }
+    .btn-accept:hover {
+      background: #0052a3;
+    }
     .btn-refuse {
       background: transparent;
       color: var(--text-pure);
@@ -407,7 +418,10 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-    .btn-refuse:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.5); }
+    .btn-refuse:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.5);
+    }
 
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
@@ -426,29 +440,38 @@
     }
     
     @media (max-width: 768px) {
-      .cookie-banner { flex-direction: column; text-align: center; gap: 20px; }
-      .cookie-actions { width: 100%; justify-content: center; }
+      .cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+      .cookie-actions {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
 
+<!-- AI PARTICLE CANVAS BACKGROUND -->
 <canvas id="neural-canvas"></canvas>
 <div class="ambient-glow"></div>
 
+<!-- MAGNETIC PILL NAVBAR -->
 <nav>
   <a href="index-en.html" class="nav-logo">SYS_CORE</a>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#experience">Journey</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
   </ul>
   
   <div class="nav-actions">
     <div class="magnetic-wrap">
-      <a href="index.html" class="btn-lang" title="Switch to French">FR</a>
+      <a href="index.html" class="btn-lang" title="Passer en Français">FR</a>
     </div>
     <div class="magnetic-wrap nav-magnetic">
       <a href="assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-nav">Resume</a>
@@ -469,12 +492,12 @@
       
       <h2>
         Junior System & Network Engineer
-        <span class="availability-badge" title="Actively looking for opportunities in Île-de-France">
-          <i class="fa-solid fa-location-dot"></i> Available in Île-de-France
+        <span class="availability-badge" title="Actively looking for opportunities in Paris Region">
+          <i class="fa-solid fa-location-dot"></i> Available in Paris Region
         </span>
       </h2>
       
-      <p>Graduated with a Master's degree in IT and Information Systems, I am passionate about system administration, virtualization, and the cloud. My atypical background, blending IT project management on a work-study basis and advanced technical experiments in university labs, gives me a global vision today. I enjoy getting actively involved in a company's projects as much as conducting personal experiments to continue learning and perfecting my technical skills.</p>
+      <p>Holding an MSc in IT Infrastructure, I am passionate about system administration, virtualization, and cloud computing. My unique background, combining IT Project Management in work-study and advanced technical experimentation in university labs, gives me a comprehensive vision. I enjoy being actively involved in enterprise projects just as much as conducting personal experiments to constantly learn and improve my technical skills.</p>
       
       <div class="action-group">
         <div class="magnetic-wrap hero-magnetic">
@@ -507,21 +530,21 @@
         <div class="card-content">
           <i class="fa-solid fa-microchip card-icon"></i>
           <h4 class="card-title">Hybrid Infrastructures</h4>
-          <p class="card-desc">Designing reliable infrastructures is a real challenge for me and a source of daily motivation. Through my university projects, I have worked on deploying cloud and on-premise environments.</p>
+          <p class="card-desc">Designing reliable infrastructures is a real challenge and a daily source of motivation for me. Through my university projects, I have worked on deploying both cloud and on-premise environments.</p>
         </div>
       </div>
       <div class="spotlight-card">
         <div class="card-content">
           <i class="fa-solid fa-terminal card-icon"></i>
           <h4 class="card-title">Automation & Scripting</h4>
-          <p class="card-desc">My interest in the cloud and automation drives me to constantly seek innovative solutions. I had the opportunity to learn Infrastructure as Code (Ansible, Terraform) during my university projects, and I continue to learn through active technological watch.</p>
+          <p class="card-desc">My interest in cloud computing and automation drives me to constantly seek innovative solutions. I was introduced to Infrastructure as Code (Ansible, Terraform) during my university projects, and I continue to learn through active technological watch.</p>
         </div>
       </div>
       <div class="spotlight-card">
         <div class="card-content">
           <i class="fa-solid fa-shield-virus card-icon"></i>
-          <h4 class="card-title">Networks & Monitoring</h4>
-          <p class="card-desc">I have a great curiosity for technologies related to security and monitoring. I have configured isolated networks (VLAN, IPsec) and deployed monitoring (Zabbix) as part of my university labs, foundations that I continuously enrich to stay up to date.</p>
+          <h4 class="card-title">Network & SecOps</h4>
+          <p class="card-desc">I have a deep curiosity for security and monitoring technologies. I configured secure networks (VLAN, IPsec) and deployed monitoring solutions (Zabbix) in university labs, building a foundation I continuously enrich to stay up-to-date.</p>
         </div>
       </div>
     </div>
@@ -543,7 +566,7 @@
             <li><i class="fa-solid fa-arrow-right"></i> Windows Server & Active Directory</li>
             <li><i class="fa-solid fa-arrow-right"></i> Microsoft 365 & Entra ID</li>
             <li><i class="fa-solid fa-arrow-right"></i> VMware ESXi / vSphere</li>
-            <li><i class="fa-solid fa-arrow-right"></i> Microsoft Azure Cloud</li>
+            <li><i class="fa-solid fa-arrow-right"></i> Public Cloud (Microsoft Azure, AWS)</li>
           </ul>
         </div>
       </div>
@@ -577,8 +600,8 @@
           <h4 class="card-title">DevOps & Observability</h4>
           <ul class="data-list">
             <li><i class="fa-solid fa-arrow-right"></i> Intro to IaC with Terraform</li>
-            <li><i class="fa-solid fa-arrow-right"></i> Configuration Management (Ansible)</li>
-            <li><i class="fa-solid fa-arrow-right"></i> Intro to Containers (Docker/K8s)</li>
+            <li><i class="fa-solid fa-arrow-right"></i> Configuration basics (Ansible)</li>
+            <li><i class="fa-solid fa-arrow-right"></i> Intro to containers (Docker/K8s)</li>
             <li><i class="fa-solid fa-arrow-right"></i> Monitoring awareness (Zabbix)</li>
             <li><i class="fa-solid fa-arrow-right"></i> Intro to CI/CD (GitHub Actions)</li>
           </ul>
@@ -592,7 +615,7 @@
   <section id="certifications" class="section">
     <div class="section-header">
       <span class="section-tag">03 / Certifications</span>
-      <h3 class="section-title">Earned <span class="text-plasma">Certifications</span></h3>
+      <h3 class="section-title">Obtained <span class="text-plasma">Certifications</span></h3>
     </div>
 
     <div class="bento-grid cards-wrapper">
@@ -628,14 +651,14 @@
         <div class="card-content" style="padding: 30px;">
           <span class="badge badge-ghost">CISCO</span>
           <h4 class="card-title" style="margin-bottom: 5px;">CCNA (200-301)</h4>
-          <p style="color: var(--text-muted); margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"><i class="fa-solid fa-circle-notch fa-spin"></i> In progress</p>
+          <p style="color: var(--text-muted); margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"><i class="fa-solid fa-circle-notch fa-spin"></i> Processing</p>
         </div>
       </div>
       <div class="spotlight-card">
         <div class="card-content" style="padding: 30px;">
           <span class="badge badge-ghost">ITIL</span>
           <h4 class="card-title" style="margin-bottom: 5px;">ITIL 4 Foundation</h4>
-          <p style="color: var(--text-muted); margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"><i class="fa-solid fa-circle-notch fa-spin"></i> In progress</p>
+          <p style="color: var(--text-muted); margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"><i class="fa-solid fa-circle-notch fa-spin"></i> Processing</p>
         </div>
       </div>
     </div>
@@ -644,7 +667,7 @@
   <!-- EXPERIENCE -->
   <section id="experience" class="section">
     <div class="section-header">
-      <span class="section-tag">04 / Journey</span>
+      <span class="section-tag">04 / Experience</span>
       <h3 class="section-title">Experience & <span class="text-plasma">Education</span></h3>
     </div>
 
@@ -653,11 +676,11 @@
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <div class="timeline-date">OCT. 2024 — OCT. 2026</div>
-          <h4 class="timeline-title">IT Project Manager (Work-study)</h4>
+          <h4 class="timeline-title">IT Project Manager Apprentice</h4>
           <div class="timeline-org"><i class="fa-solid fa-building"></i> Grand Paris Seine & Oise (GPS&O)</div>
           <ul class="data-list">
             <li><i class="fa-solid fa-terminal"></i> <span><strong>Cloud Management (SaaS):</strong> Leading critical IT projects in a cloud-native architecture.</span></li>
-            <li><i class="fa-solid fa-terminal"></i> <span><strong>IT Urbanization & ITSM:</strong> Administration of the EasyVista platform and mapping via Power BI.</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span><strong>IT Architecture & ITSM:</strong> Administration of EasyVista platform and mapping via Power BI.</span></li>
             <li><i class="fa-solid fa-terminal"></i> <span><strong>Business Vision:</strong> Translating business needs into technical specifications.</span></li>
           </ul>
         </div>
@@ -667,8 +690,8 @@
         <div class="timeline-dot" style="background: transparent; border-color: var(--text-muted); box-shadow: none;"></div>
         <div class="timeline-content" style="padding: 25px 40px;">
           <div class="timeline-date">SEPT. 2024 — SEPT. 2026</div>
-          <h4 class="timeline-title" style="font-size: 1.15rem;">Master's Degree in IT and Information Systems</h4>
-          <div class="card-desc">EPSI - Computer Engineering School<br><span style="font-size: 0.9rem; color: #a1a1aa;">Master of Science (MSc) in Computer Science - IT Infrastructure</span></div>
+          <h4 class="timeline-title" style="font-size: 1.15rem;">Master of Science (MSc) in Computer Science - IT Infrastructure</h4>
+          <div class="card-desc">EPSI - Computer Engineering School</div>
         </div>
       </div>
 
@@ -676,16 +699,16 @@
         <div class="timeline-dot" style="background: transparent; border-color: var(--text-muted); box-shadow: none;"></div>
         <div class="timeline-content" style="padding: 25px 40px;">
           <div class="timeline-date">DEC. 2022 — SEPT. 2023</div>
-          <h4 class="timeline-title" style="font-size: 1.15rem;">Bachelor's degree in Sciences, Technologies, Health, majoring in Computer Science</h4>
-          <div class="card-desc">Conservatoire National des Arts et Métiers</div>
+          <h4 class="timeline-title" style="font-size: 1.15rem;">Bachelor's Degree in Computer Science</h4>
+          <div class="card-desc">Conservatoire National des Arts et Métiers (CNAM)</div>
         </div>
       </div>
 
       <div class="timeline-item">
         <div class="timeline-dot" style="background: transparent; border-color: var(--text-muted); box-shadow: none;"></div>
         <div class="timeline-content" style="padding: 25px 40px;">
-          <div class="timeline-date">NOV. 2021 — JUNE 2022</div>
-          <h4 class="timeline-title" style="font-size: 1.15rem;">Professional Title: Superior Systems and Networks Technician</h4>
+          <div class="timeline-date">NOV. 2021 — JUN. 2022</div>
+          <h4 class="timeline-title" style="font-size: 1.15rem;">IT Systems and Networks Technician Degree (Associate's Level)</h4>
           <div class="card-desc">WebForce3</div>
         </div>
       </div>
@@ -703,27 +726,40 @@
       <div class="spotlight-card">
         <div class="card-content">
           <span class="badge badge-ghost" style="align-self: flex-start;">University Lab</span>
-          <h4 class="card-title" style="margin-top: 10px;">Secure Hybrid IT Infrastructure</h4>
-          <p class="card-desc">Ultra-resilient multi-site architecture. Deployment of ESXi, pfSense firewall clusters in HA, comprehensive Zabbix monitoring, and DRP failover strategy.</p>
-          <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="btn-projet btn-infra">View architecture <i class="fa-solid fa-arrow-right"></i></a>
+          <h4 class="card-title" style="margin-top: 10px;">Hybrid Secure IT Infrastructure</h4>
+          <p class="card-desc">Ultra-resilient multi-site architecture. Deployment of ESXi, pfSense firewall clusters in HA, comprehensive Zabbix monitoring, and Disaster Recovery Plan strategy.</p>
+          <a href="projects/infrastructure-cloud/infrastructure-cloud.html" class="btn-projet btn-infra">View Architecture <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
+      
       <div class="spotlight-card">
         <div class="card-content">
           <span class="badge badge-ghost" style="align-self: flex-start;">University Lab</span>
           <h4 class="card-title" style="margin-top: 10px;">IT Architecture & Governance</h4>
-          <p class="card-desc">Audit, urbanization, and strategic modeling of an IS for business alignment. Implementation of EBIOS standards, BPMN modeling, and Green IT.</p>
-          <a href="projects/architecture-si/architecture-si.html" class="btn-projet btn-archi">View architecture <i class="fa-solid fa-arrow-right"></i></a>
+          <p class="card-desc">Audit, urbanization, and strategic modeling of an IS for business alignment. Implementation of EBIOS standards, BPMN modeling, and Green IT practices.</p>
+          <a href="projects/architecture-si/architecture-si.html" class="btn-projet btn-archi">View Architecture <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
+      
       <div class="spotlight-card">
         <div class="card-content">
           <span class="badge badge-ghost" style="align-self: flex-start;">University Lab</span>
-          <h4 class="card-title" style="margin-top: 10px;">Agile & Cloud IT Project Management</h4>
-          <p class="card-desc">Scrum management coupled with a complete DevOps chain: Infrastructure as Code (Terraform), masterization (Packer), configuration (Ansible), and orchestration (K8s).</p>
-          <a href="projects/agile-projet/agile-gestion-projet.html" class="btn-projet btn-cloud">View architecture <i class="fa-solid fa-arrow-right"></i></a>
+          <h4 class="card-title" style="margin-top: 10px;">Agile IT Project Management & Cloud</h4>
+          <p class="card-desc">Scrum management coupled with a complete DevOps chain: Infrastructure as Code (Terraform), mastering (Packer), configuration (Ansible), and orchestration (K8s).</p>
+          <a href="projects/agile-projet/agile-gestion-projet.html" class="btn-projet btn-cloud">View Architecture <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
+
+      <!-- NOUVEAU PROJET AWS TRADUIT -->
+      <div class="spotlight-card">
+        <div class="card-content">
+          <span class="badge badge-ghost" style="align-self: flex-start;">Personal Project</span>
+          <h4 class="card-title" style="margin-top: 10px;">AWS 3-Tier Architecture (IaC)</h4>
+          <p class="card-desc">Design, security (Zero Trust), and 100% automated deployment of a highly available infrastructure via Terraform (ALB, ASG, S3, DynamoDB).</p>
+          <a href="https://github.com/mazouz-mehdi/aws-terraform-3tiers-architecture" target="_blank" class="btn-projet btn-aws">View on GitHub <i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -737,7 +773,7 @@
 
       <div class="social-dock">
         <a href="mailto:mehdimazouz78@gmail.com" class="social-pill">
-          <i class="fa-solid fa-envelope" style="color: var(--ai-cyan);"></i> Transmission (Mail)
+          <i class="fa-solid fa-envelope" style="color: var(--ai-cyan);"></i> Transmission (Email)
         </a>
         <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="social-pill">
           <i class="fa-brands fa-linkedin linkedin-premium"></i> LinkedIn Network
@@ -757,6 +793,7 @@
 
 </div>
 
+<!-- NOUVEAU FOOTER SITE DURCI -->
 <footer class="footer-secure">
   <div class="footer-secure-name">Mehdi MAZOUZ</div>
   <div>© 2026 All rights reserved.</div>
@@ -767,21 +804,23 @@
       </div>
   <div class="footer-secure-links">
     Hardened site — CSP, HSTS, <a href=".well-known/security.txt" target="_blank">security.txt</a><br><br>
-    <a href="#" style="font-weight: bold; border-bottom: 2px solid white;">Privacy & cookies</a>
+    <a href="#" style="font-weight: bold; border-bottom: 2px solid white;">Privacy & Cookies</a>
   </div>
 </footer>
 
+<!-- BANDEAU COOKIES -->
 <div id="cookieBanner" class="cookie-banner">
   <div class="cookie-text">
-    Google Analytics is only activated with your consent. You can accept, refuse, and change this choice at any time from the footer.
+    Google Analytics is only activated with your consent. You can accept, refuse, and modify this choice at any time from the footer.
   </div>
   <div class="cookie-actions">
-    <button id="acceptCookies" class="btn-accept">Accept analytics</button>
+    <button id="acceptCookies" class="btn-accept">Accept Analytics</button>
     <button id="refuseCookies" class="btn-refuse">Refuse</button>
   </div>
 </div>
 
 <script>
+  // --- 1. NEURAL NETWORK CANVAS (ANIMATION DYNAMIQUE CONTINUE EN DIRECT) ---
   const canvas = document.getElementById('neural-canvas');
   const ctx = canvas.getContext('2d');
   let particlesArray = [];
@@ -885,6 +924,7 @@
   init();
   animate();
 
+  // --- 2. BOUTONS MAGNÉTIQUES ---
   const magneticWraps = document.querySelectorAll('.magnetic-wrap');
   magneticWraps.forEach(wrap => {
     const btn = wrap.querySelector('.btn-magnetic, .btn-nav, .btn-lang');
@@ -903,6 +943,7 @@
     }
   });
 
+  // --- 3. SPOTLIGHT CARDS EFFECT ---
   const cardsWrappers = document.querySelectorAll('.cards-wrapper');
   cardsWrappers.forEach(wrapper => {
     wrapper.onmousemove = e => {
@@ -916,6 +957,7 @@
     };
   });
 
+  // --- 4. NAVBAR ACTIVE SCROLL ---
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("nav ul li a");
 
@@ -937,7 +979,7 @@
     });
   });
 
-  // --- COOKIE CONSENT & GOOGLE ANALYTICS ---
+  // --- 5. COOKIE CONSENT & GOOGLE ANALYTICS ---
   const cookieBanner = document.getElementById('cookieBanner');
   const acceptBtn = document.getElementById('acceptCookies');
   const refuseBtn = document.getElementById('refuseCookies');
@@ -961,8 +1003,9 @@
     cookieBanner.classList.remove('show');
   });
 
+  // Fonction d'initialisation de Google Analytics (ID : G-X7Y568RN76)
   function initGoogleAnalytics() {
-    console.log("Google Analytics activated following consent.");
+    console.log("Google Analytics activé suite au consentement.");
     const script1 = document.createElement('script');
     script1.async = true;
     script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-X7Y568RN76';
@@ -982,11 +1025,11 @@
 <div id="easter-terminal" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); width:650px; max-width:90%; height:400px; background:rgba(10, 10, 15, 0.95); border:1px solid var(--ai-cyan); border-radius:8px; z-index:9999; font-family:'JetBrains Mono', monospace; color:#00eba0; padding:15px; box-shadow:0 0 40px rgba(0, 240, 255, 0.2); overflow-y:auto; flex-direction:column; backdrop-filter:blur(10px);">
   <div style="border-bottom:1px solid #333; padding-bottom:10px; margin-bottom:10px; display:flex; justify-content:space-between; color:#888; font-size:12px;">
     <span>sysadmin@mazouz-server: /home/portfolio</span>
-    <span style="cursor:pointer; color:var(--ai-magenta);" onclick="document.getElementById('easter-terminal').style.display='none'">[ FERMER ]</span>
+    <span style="cursor:pointer; color:var(--ai-magenta);" onclick="document.getElementById('easter-terminal').style.display='none'">[ CLOSE ]</span>
   </div>
-  <div id="term-output" style="flex-grow:1; margin-bottom:10px; white-space:pre-wrap;">Connexion établie au serveur sécurisé...
-Bienvenue sur le terminal caché de Mehdi.
-Tapez 'help' pour afficher les commandes disponibles.</div>
+  <div id="term-output" style="flex-grow:1; margin-bottom:10px; white-space:pre-wrap;">Connection established to the secure server...
+Welcome to Mehdi's hidden terminal.
+Type 'help' to see available commands.</div>
   <div style="display:flex;">
     <span style="color:var(--ai-cyan); margin-right:8px;">sysadmin@mazouz:~$</span>
     <input type="text" id="term-input" style="background:transparent; border:none; color:#fff; font-family:inherit; flex-grow:1; outline:none;" autocomplete="off">
@@ -1013,25 +1056,25 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
       let response = "";
       output.innerHTML += `\n<span style="color:var(--ai-cyan)">sysadmin@mazouz:~$</span> ${cmd}`;
       
-      if (cmd === 'help') response = "\nAvailable commands : \n - whoami : Administrator identity \n - skills : Technical skills \n - contact : Contact information \n - clear : Clear terminal";
-          else if (cmd === 'whoami') response = "\nMehdi MAZOUZ - System, Network & Cloud Engineer. Complex problem solver.";
-          else if (cmd === 'skills') response = "\n[OK] Linux/Windows Server\n[OK] Virtualization & Cloud\n[OK] Automation (Ansible, Scripts)\n[OK] Network Security";
-          else if (cmd === 'contact') response = "\nEstablishing connection...\nLinkedIn : /in/mehdimazouz";
-          else if (cmd === 'clear') { output.innerHTML = ""; input.value = ""; return; }
-          else if (cmd.startsWith('sudo')) response = "\n[WARNING] Root access denied. The administrator has been notified of this attempt. :)";
-          else if (cmd === 'github') {
-              response = "\n<span style='color: #00a8ff'>Fetching GitHub API...</span>";
+      if (cmd === 'help') response = "\nAllowed commands: \n - whoami : Administrator identity \n - skills : Technical skills \n - contact : Liaison information \n - clear : Clear console \n - sudo : [Restricted access]";
+      else if (cmd === 'whoami') response = "\nMehdi MAZOUZ - System, Network & Cloud Engineer. Specialist in complex problem solving.";
+      else if (cmd === 'skills') response = "\n[OK] Linux/Windows Server\n[OK] Virtualization & Cloud\n[OK] Automation (Ansible, Scripts)\n[OK] Network Security";
+      else if (cmd === 'contact') response = "\nEstablishing connection...\nLinkedIn : /in/mehdimazouz";
+      else if (cmd === 'clear') { output.innerHTML = ""; input.value = ""; return; }
+      else if (cmd.startsWith('sudo')) response = "\n[ALERT] Root access denied. The administrator has been notified of this attempt. :)";
+      else if (cmd === 'github') {
+              response = "\n<span style='color: #00a8ff'>Querying GitHub API...</span>";
               fetch('https://api.github.com/users/mazouz-mehdi')
                   .then(res => res.json())
                   .then(data => {
-                      output.innerHTML += `\n[OK] User : ${data.login}\n[+] Public Repos : ${data.public_repos}\n[+] Followers : ${data.followers}\n`;
+                      output.innerHTML += `\n[OK] User: ${data.login}\n[+] Public repos: ${data.public_repos}\n[+] Followers: ${data.followers}\n`;
                       term.scrollTop = term.scrollHeight;
                   })
                   .catch(err => {
-                      output.innerHTML += "\n[ERROR] Unable to reach the API.";
+                      output.innerHTML += "\n[ERROR] Unable to reach API.";
                   });
-          }
-          else if (cmd !== "") response = `\n${cmd}: command not found. Type 'help'.`;
+          }  
+      else if (cmd !== "") response = `\n${cmd}: command not found. Type 'help'.`;
       
       output.innerHTML += response;
       input.value = "";
@@ -1039,7 +1082,7 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
     }
   });
 </script>
-<style>
+  <style>
   /* DESIGN DES BOUTONS "PILULE NEON" */
   .btn-projet {
     display: inline-flex;
@@ -1047,12 +1090,12 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
     justify-content: center;
     gap: 10px;
     padding: 12px 30px;
-    border-radius: 50px; 
+    border-radius: 50px;
     font-weight: 600;
     font-size: 15px;
     letter-spacing: 0.5px;
     text-decoration: none;
-    background-color: #121418; 
+    background-color: #121418;
     transition: all 0.3s ease;
     margin-top: 15px;
   }
@@ -1093,6 +1136,18 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
     box-shadow: 0 0 20px rgba(0, 168, 255, 0.4); 
     background-color: rgba(0, 168, 255, 0.05); 
   }
-</style>  
+
+  /* Projet 4 : AWS Terraform (Jaune AWS / Blanc) */
+  .btn-aws { 
+    border: 1px solid #FF9900; 
+    color: #FFFFFF; 
+    box-shadow: 0 0 12px rgba(255, 153, 0, 0.15); 
+  }
+  .btn-aws:hover { 
+    box-shadow: 0 0 20px rgba(255, 153, 0, 0.5); 
+    background-color: rgba(255, 153, 0, 0.1); 
+    color: #FF9900; 
+  }
+</style>
 </body>
 </html>
