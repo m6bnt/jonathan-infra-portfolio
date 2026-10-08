@@ -856,18 +856,22 @@
     mouse.y = event.y;
   });
 
+  // Ajout de la variable HUE pour le cycle de couleur infini (120 = Vert Matrice au démarrage)
+  let hue = 120;
+
   class Particle {
-    constructor(x, y, directionX, directionY, size, color) {
+    constructor(x, y, directionX, directionY, size) {
       this.x = x; this.y = y;
       this.directionX = directionX; this.directionY = directionY;
-      this.size = size; this.color = color;
+      this.size = size;
       this.baseX = this.x; this.baseY = this.y;
       this.density = (Math.random() * 30) + 1;
     }
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-      ctx.fillStyle = this.color;
+      // Utilisation du hsl() avec la variable dynamique pour parcourir tout le cercle chromatique
+      ctx.fillStyle = `hsl(${hue}, 100%, 60%)`;
       ctx.fill();
     }
     update() {
@@ -905,14 +909,17 @@
       let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
       let directionX = (Math.random() * 1.6) - 0.8;
       let directionY = (Math.random() * 1.6) - 0.8;
-      let color = '#00f0ff';
-      particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+      particlesArray.push(new Particle(x, y, directionX, directionY, size));
     }
   }
 
   function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0,0,innerWidth, innerHeight);
+    
+    // Incrémente la teinte à chaque image. C'est ce qui crée le cycle de couleurs.
+    hue += 0.3; 
+
     for (let i = 0; i < particlesArray.length; i++) {
       particlesArray[i].update();
     }
@@ -927,7 +934,8 @@
                        ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
         if (distance < (canvas.width/7) * (canvas.height/7)) {
           opacityValue = 1 - (distance/20000);
-          ctx.strokeStyle = 'rgba(0, 240, 255,' + opacityValue + ')';
+          // Utilisation du hsla() pour les lignes de liaison pour qu'elles aient la même couleur
+          ctx.strokeStyle = `hsla(${hue}, 100%, 60%, ${opacityValue})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
