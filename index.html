@@ -171,13 +171,6 @@
     .action-group { display: flex; gap: 20px; flex-wrap: wrap; }
     
     .magnetic-wrap { display: inline-block; padding: 10px; margin: -10px; }
-    .btn-magnetic {
-      background: var(--text-pure); color: var(--void-black);
-      padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 1.05rem;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
-      transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
-    }
-    .magnetic-wrap:hover .btn-magnetic { box-shadow: 0 10px 30px rgba(0,240,255,0.25); }
     
     .btn-glass {
       background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); color: var(--text-pure);
@@ -429,9 +422,12 @@
       <p>Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. Mon parcours atypique, mêlant chefferie de projet SI en alternance et expérimentations techniques poussées en laboratoires universitaires, me permet aujourd'hui d'avoir une vision globale. J’aime autant m’impliquer activement dans les projets d’une entreprise que mener des expérimentations personnelles, afin de continuer à apprendre et à perfectionner mes compétences techniques.</p>
       
       <div class="action-group">
+        <!-- BOUTON DÉMARRER UN PROJET HAUTE QUALITÉ -->
         <div class="magnetic-wrap hero-magnetic">
-          <a href="#contact" class="btn-magnetic">
-            <i class="fa-solid fa-bolt"></i> Démarrer un projet
+          <a href="#contact" class="btn-magnetic btn-cyber-cv" onclick="triggerCyberFlash(event, this)">
+            <span class="cv-glow-bg"></span>
+            <i class="fa-solid fa-bolt" style="color: var(--ai-cyan);"></i> 
+            <span class="cv-text">Démarrer un projet</span>
           </a>
         </div>
         <a href="https://www.linkedin.com/in/mehdi-mazouz-936536205/" target="_blank" class="btn-glass">
@@ -732,7 +728,7 @@
         </a>
       </div>
       
-      <!-- BOUTON HAUTE QUALITÉ CYBERPUNK / PLASMA HOLOGRAPHIQUE -->
+      <!-- BOUTON ACCÉDER AU CV HAUTE QUALITÉ -->
       <div class="magnetic-wrap" style="margin-top: 20px;">
         <a href="assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-magnetic btn-cyber-cv" onclick="openHologramCV(event, this)">
           <span class="cv-glow-bg"></span>
@@ -974,6 +970,25 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
       term.scrollTop = term.scrollHeight;
     }
   });
+
+  // Fonction d'animation pour le bouton Démarrer un projet
+  function triggerCyberFlash(event, element) {
+    element.classList.add('cyber-opening');
+    setTimeout(() => {
+      element.classList.remove('cyber-opening');
+    }, 500);
+  }
+
+  // Fonction pour l'ouverture du CV
+  function openHologramCV(event, element) {
+    event.preventDefault();
+    const targetUrl = element.getAttribute('href');
+    element.classList.add('cyber-opening');
+    setTimeout(() => {
+      window.open(targetUrl, '_blank');
+      element.classList.remove('cyber-opening');
+    }, 450);
+  }
 </script>
 
 <style>
@@ -1000,21 +1015,20 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
   .btn-hybrid { border: 1px solid #ff0055; color: #ffffff; box-shadow: 0 0 12px rgba(255, 0, 85, 0.15); }
   .btn-hybrid:hover { box-shadow: 0 0 20px rgba(255, 0, 85, 0.5); background-color: rgba(255, 0, 85, 0.1); }
 
-  /* --- BOUTON HAUTE QUALITÉ : CYBERPUNK PLASMA / HOLOGRAPHIQUE --- */
+  /* --- STYLE COMMUN HAUTE QUALITÉ : CYBERPUNK PLASMA --- */
   .btn-cyber-cv {
     position: relative;
     background: rgba(5, 10, 20, 0.8) !important;
     color: #ffffff !important;
     font-weight: 700 !important;
     border: 1px solid rgba(0, 240, 255, 0.4) !important;
-    padding: 18px 40px !important;
+    padding: 16px 36px !important;
     border-radius: 100px !important;
     overflow: hidden;
     box-shadow: 0 0 25px rgba(0, 240, 255, 0.15), inset 0 0 15px rgba(0, 240, 255, 0.1);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
-  /* Fond lumineux animé en arrière-plan du bouton */
   .cv-glow-bg {
     position: absolute;
     inset: -2px;
@@ -1044,7 +1058,6 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
     opacity: 1;
   }
 
-  /* Effet d'explosion plasma au clic */
   @keyframes cyberFlash {
     0% { transform: scale(1); filter: brightness(1); }
     40% { transform: scale(1.12); filter: brightness(2); background: #00f0ff !important; color: #000 !important; box-shadow: 0 0 70px 20px #00f0ff, 0 0 100px 50px #8b5cf6; }
@@ -1055,18 +1068,6 @@ Tapez 'help' pour afficher les commandes disponibles.</div>
     animation: cyberFlash 0.5s cubic-bezier(0.1, 1, 0.3, 1) forwards;
   }
 </style>
-
-<script>
-  function openHologramCV(event, element) {
-    event.preventDefault();
-    const targetUrl = element.getAttribute('href');
-    element.classList.add('cyber-opening');
-    setTimeout(() => {
-      window.open(targetUrl, '_blank');
-      element.classList.remove('cyber-opening');
-    }, 450);
-  }
-</script>
 
 </body>
 </html>
