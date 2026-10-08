@@ -855,7 +855,7 @@
 </div>
 
 <script>
-  // --- 1. NEURAL NETWORK CANVAS (ANIMATION DYNAMIQUE CONTINUE EN DIRECT) ---
+  // --- 1. NEURAL NETWORK CANVAS : ÉDITION "CYBER CIRCUIT & BINARY" ---
   const canvas = document.getElementById('neural-canvas');
   const ctx = canvas.getContext('2d');
   let particlesArray = [];
@@ -870,28 +870,55 @@
     mouse.y = event.y;
   });
 
-  // Ajout de la variable HUE pour le cycle de couleur infini (120 = Vert Matrice au démarrage)
-  let hue = 120;
+  // Cycle de couleur (Démarrage en Vert matrice)
+  let hue = 120; 
 
   class Particle {
-    constructor(x, y, directionX, directionY, size) {
-      this.x = x; this.y = y;
-      this.directionX = directionX; this.directionY = directionY;
+    constructor(x, y, size) {
+      this.x = x; 
+      this.y = y;
       this.size = size;
-      this.baseX = this.x; this.baseY = this.y;
       this.density = (Math.random() * 30) + 1;
+      
+      // Mouvement Orthogonal (Effet Carte Mère / Serveur)
+      let speed = (Math.random() * 1.5) + 0.5;
+      let isHorizontal = Math.random() > 0.5;
+      this.directionX = isHorizontal ? (Math.random() > 0.5 ? speed : -speed) : 0;
+      this.directionY = isHorizontal ? 0 : (Math.random() > 0.5 ? speed : -speed);
+      
+      // Symboles Informatiques au lieu de simples points
+      const chars = ['0', '1', '1', '0', '{ }', '</>', '[ ]'];
+      this.char = chars[Math.floor(Math.random() * chars.length)];
     }
+
     draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-      // Utilisation du hsl() avec la variable dynamique pour parcourir tout le cercle chromatique
       ctx.fillStyle = `hsl(${hue}, 100%, 60%)`;
-      ctx.fill();
+      ctx.font = `${this.size * 4}px 'JetBrains Mono', monospace`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowBlur = 10; // Effet néon sur le texte
+      ctx.shadowColor = `hsl(${hue}, 100%, 60%)`;
+      ctx.fillText(this.char, this.x, this.y);
+      ctx.shadowBlur = 0; // Reset pour ne pas faire lagger les lignes
     }
+
     update() {
+      // Rebond sur les bords de l'écran
       if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
       if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
 
+      // Virages à 90 degrés aléatoires (crée l'effet circuit imprimé)
+      if (Math.random() < 0.015) { 
+          if (this.directionX !== 0) {
+              this.directionY = (Math.random() > 0.5 ? 1 : -1) * Math.abs(this.directionX);
+              this.directionX = 0;
+          } else {
+              this.directionX = (Math.random() > 0.5 ? 1 : -1) * Math.abs(this.directionY);
+              this.directionY = 0;
+          }
+      }
+
+      // Interaction d'évitement avec la souris
       let dx = mouse.x - this.x;
       let dy = mouse.y - this.y;
       let distance = Math.sqrt(dx*dx + dy*dy);
@@ -901,11 +928,9 @@
         let forceDirectionY = dy / distance;
         let maxDistance = mouse.radius;
         let force = (maxDistance - distance) / maxDistance;
-        let directionX = forceDirectionX * force * this.density;
-        let directionY = forceDirectionY * force * this.density;
         
-        this.x -= directionX;
-        this.y -= directionY;
+        this.x -= forceDirectionX * force * this.density;
+        this.y -= forceDirectionY * force * this.density;
       }
 
       this.x += this.directionX;
@@ -916,14 +941,13 @@
 
   function init() {
     particlesArray = [];
-    let numberOfParticles = (canvas.height * canvas.width) / 15000;
+    // Nombre de particules équilibré pour un beau rendu sans lag
+    let numberOfParticles = (canvas.height * canvas.width) / 12000; 
     for (let i = 0; i < numberOfParticles; i++) {
-      let size = (Math.random() * 2) + 1;
-      let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-      let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-      let directionX = (Math.random() * 1.6) - 0.8;
-      let directionY = (Math.random() * 1.6) - 0.8;
-      particlesArray.push(new Particle(x, y, directionX, directionY, size));
+      let size = (Math.random() * 3) + 2;
+      let x = Math.random() * canvas.width;
+      let y = Math.random() * canvas.height;
+      particlesArray.push(new Particle(x, y, size));
     }
   }
 
@@ -931,8 +955,8 @@
     requestAnimationFrame(animate);
     ctx.clearRect(0,0,innerWidth, innerHeight);
     
-    // Incrémente la teinte à chaque image. C'est ce qui crée le cycle de couleurs.
-    hue += 0.3; 
+    // Évolution lente des couleurs (RGB Cycle)
+    hue += 0.2; 
 
     for (let i = 0; i < particlesArray.length; i++) {
       particlesArray[i].update();
@@ -942,13 +966,17 @@
 
   function connect() {
     let opacityValue = 1;
+    ctx.setLineDash([4, 6]); // Lignes en pointillés (Effet flux de données réseau)
+    
     for (let a = 0; a < particlesArray.length; a++) {
       for (let b = a; b < particlesArray.length; b++) {
-        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
-                       ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-        if (distance < (canvas.width/7) * (canvas.height/7)) {
-          opacityValue = 1 - (distance/20000);
-          // Utilisation du hsla() pour les lignes de liaison pour qu'elles aient la même couleur
+        let dx = particlesArray[a].x - particlesArray[b].x;
+        let dy = particlesArray[a].y - particlesArray[b].y;
+        let distance = (dx * dx) + (dy * dy);
+        
+        // Connecte les particules proches
+        if (distance < (canvas.width/8) * (canvas.height/8)) {
+          opacityValue = 1 - (distance/25000);
           ctx.strokeStyle = `hsla(${hue}, 100%, 60%, ${opacityValue})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
@@ -958,6 +986,7 @@
         }
       }
     }
+    ctx.setLineDash([]); // Reset du style de ligne
   }
 
   window.addEventListener('resize', () => {
@@ -966,103 +995,6 @@
   
   init();
   animate();
-
-  // --- 2. BOUTONS MAGNÉTIQUES ---
-  const magneticWraps = document.querySelectorAll('.magnetic-wrap');
-  magneticWraps.forEach(wrap => {
-    const btn = wrap.querySelector('.btn-magnetic, .btn-nav, .btn-lang');
-    if (btn) {
-      wrap.addEventListener('mousemove', (e) => {
-        const rect = wrap.getBoundingClientRect();
-        const h = rect.width / 2;
-        const v = rect.height / 2;
-        const x = e.clientX - rect.left - h;
-        const y = e.clientY - rect.top - v;
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-      });
-      wrap.addEventListener('mouseleave', () => {
-        btn.style.transform = `translate(0px, 0px)`;
-      });
-    }
-  });
-
-  // --- 3. SPOTLIGHT CARDS EFFECT ---
-  const cardsWrappers = document.querySelectorAll('.cards-wrapper');
-  cardsWrappers.forEach(wrapper => {
-    wrapper.onmousemove = e => {
-      for(const card of wrapper.querySelectorAll('.spotlight-card')) {
-        const rect = card.getBoundingClientRect(),
-              x = e.clientX - rect.left,
-              y = e.clientY - rect.top;
-        card.style.setProperty("--mouse-x", `${x}px`);
-        card.style.setProperty("--mouse-y", `${y}px`);
-      }
-    };
-  });
-
-  // --- 4. NAVBAR ACTIVE SCROLL ---
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll("nav ul li a");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 300;
-      const sectionHeight = section.clientHeight;
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
-      }
-    });
-  });
-
-  // --- 5. COOKIE CONSENT & GOOGLE ANALYTICS ---
-  const cookieBanner = document.getElementById('cookieBanner');
-  const acceptBtn = document.getElementById('acceptCookies');
-  const refuseBtn = document.getElementById('refuseCookies');
-
-  if (!localStorage.getItem('analyticsConsent')) {
-    setTimeout(() => {
-      cookieBanner.classList.add('show');
-    }, 1000);
-  } else if (localStorage.getItem('analyticsConsent') === 'accepted') {
-    initGoogleAnalytics();
-  }
-
-  acceptBtn.addEventListener('click', () => {
-    localStorage.setItem('analyticsConsent', 'accepted');
-    cookieBanner.classList.remove('show');
-    initGoogleAnalytics();
-  });
-
-  refuseBtn.addEventListener('click', () => {
-    localStorage.setItem('analyticsConsent', 'refused');
-    cookieBanner.classList.remove('show');
-  });
-
-  // Fonction d'initialisation de Google Analytics (ID : G-X7Y568RN76)
-  function initGoogleAnalytics() {
-    console.log("Google Analytics activé suite au consentement.");
-    const script1 = document.createElement('script');
-    script1.async = true;
-    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-X7Y568RN76';
-    document.head.appendChild(script1);
-
-    const script2 = document.createElement('script');
-    script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-X7Y568RN76');
-    `;
-    document.head.appendChild(script2);
-  }
 </script>
 
 <!-- TERMINAL EASTER EGG -->
