@@ -187,7 +187,7 @@
       transition: all 0.3s ease;
     }
 
-    /* --- HERO VISUAL (AVEC CONTOURNEMENT / LUEUR BRILLANTE CONSTANTE) --- */
+    /* --- HERO VISUAL --- */
     .hero-visual {
       position: relative;
       flex-shrink: 0;
@@ -263,70 +263,31 @@
     .data-list li:last-child { border-bottom: none; padding-bottom: 0; }
     .data-list i { color: var(--ai-cyan); font-size: 0.85rem; margin-top: 4px; }
 
-    <!-- CERTIFICATIONS -->
-  <section id="certifications" class="section">
-    <div class="section-header">
-      <span class="section-tag">03 / Certifications</span>
-      <h3 class="section-title">Certifications <span class="text-plasma">Obtenues</span></h3>
-    </div>
+    /* --- CERTIFICATIONS : STYLE ENCADRÉ CYBER NÉON --- */
+    #certifications .spotlight-card {
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      background: rgba(5, 15, 25, 0.4);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.05), inset 0 0 15px rgba(0, 240, 255, 0.03);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #certifications .spotlight-card:hover {
+      border-color: rgba(0, 240, 255, 0.8);
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.3), inset 0 0 20px rgba(0, 240, 255, 0.1);
+      transform: translateY(-4px);
+    }
 
-    <div class="bento-grid cards-wrapper">
-      <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px;">
-          <span class="badge badge-data">DATAIKU</span>
-          <h4 class="card-title" style="margin-bottom: 5px;">Advanced Designer</h4>
-          <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="action-link">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px;">
-          <span class="badge badge-data">DATAIKU</span>
-          <h4 class="card-title" style="margin-bottom: 5px;">Core Designer</h4>
-          <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="action-link">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px;">
-          <span class="badge badge-data">DATAIKU</span>
-          <h4 class="card-title" style="margin-bottom: 5px;">ML Practitioner</h4>
-          <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="action-link">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px;">
-          <span class="badge badge-data">DATAIKU</span>
-          <h4 class="card-title" style="margin-bottom: 5px;">MLOps Practitioner</h4>
-          <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="action-link">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px;">
-          <span class="badge badge-ghost">CISCO</span>
-          <h4 class="card-title" style="margin-bottom: 5px;">CCNA (200-301)</h4>
-          <p style="color: var(--text-muted); margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"><i class="fa-solid fa-circle-notch fa-spin"></i> Traitement en cours</p>
-        </div>
-      </div>
-      <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px;">
-          <span class="badge badge-ghost">ITIL</span>
-          <h4 class="card-title" style="margin-bottom: 5px;">ITIL 4 Foundation</h4>
-          <p style="color: var(--text-muted); margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"><i class="fa-solid fa-circle-notch fa-spin"></i> Traitement en cours</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    /* --- NEURAL TIMELINE --- */
+    /* --- NEURAL TIMELINE (AVEC LA LIGNE LUMINEUSE ET LES CERCLES) --- */
     .timeline { position: relative; padding-left: 40px; }
     .timeline::before {
-      content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 1px;
-      background: linear-gradient(to bottom, var(--ai-cyan), var(--ai-blue), transparent); opacity: 0.6;
+      content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px;
+      background: linear-gradient(to bottom, var(--ai-cyan), var(--ai-blue), var(--ai-purple), transparent); 
+      box-shadow: 0 0 10px var(--ai-cyan);
     }
     .timeline-item { position: relative; margin-bottom: 40px; }
     .timeline-dot {
-      position: absolute; width: 15px; height: 15px;
+      position: absolute; width: 16px; height: 16px;
       background: var(--void-black); border: 2px solid var(--ai-cyan); border-radius: 50%;
-      left: -47px; top: 6px; box-shadow: 0 0 15px var(--ai-cyan);
+      left: -48px; top: 6px; box-shadow: 0 0 15px var(--ai-cyan), inset 0 0 5px var(--ai-cyan);
     }
     
     .timeline-content {
@@ -336,25 +297,25 @@
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .timeline-content.exp-pro {
-      border-color: rgba(0, 240, 255, 0.25);
+      border-color: rgba(0, 240, 255, 0.3);
     }
     .timeline-content.exp-pro:hover { 
-      border-color: rgba(0, 240, 255, 0.6); 
+      border-color: rgba(0, 240, 255, 0.7); 
       transform: translateX(8px); 
-      box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1); 
+      box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15); 
     }
 
     .timeline-content.formation {
-      border-color: rgba(139, 92, 246, 0.25);
+      border-color: rgba(139, 92, 246, 0.3);
     }
     .timeline-content.formation .timeline-dot {
       border-color: var(--ai-purple);
-      box-shadow: 0 0 15px var(--ai-purple);
+      box-shadow: 0 0 15px var(--ai-purple), inset 0 0 5px var(--ai-purple);
     }
     .timeline-content.formation:hover { 
-      border-color: rgba(139, 92, 246, 0.6); 
+      border-color: rgba(139, 92, 246, 0.7); 
       transform: translateX(8px); 
-      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1); 
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15); 
     }
 
     .timeline-date {
@@ -618,7 +579,7 @@
     </div>
   </section>
 
-  <!-- CERTIFICATIONS (AVEC LE FORMAT DE LA PREMIÈRE CAPTURE ET CONTOUR GRIS BRILLANT) -->
+  <!-- CERTIFICATIONS (STYLE CYBER NÉON ÉPURÉ AVEC BADGES) -->
   <section id="certifications" class="section">
     <div class="section-header">
       <span class="section-tag">03 / Certifications</span>
@@ -626,67 +587,48 @@
     </div>
 
     <div class="bento-grid cards-wrapper">
-      
       <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span class="badge badge-data" style="margin-bottom: 15px;">DATAIKU</span>
-            <h4 class="card-title" style="margin-bottom: 25px;">Advanced Designer</h4>
-          </div>
-          <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="action-link" style="margin-top: auto;">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="card-content" style="padding: 30px;">
+          <span class="badge badge-data">DATAIKU</span>
+          <h4 class="card-title" style="margin-bottom: 5px;">Advanced Designer</h4>
+          <a href="https://verify.skilljar.com/c/madjnow5s89g" target="_blank" class="action-link">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
-
       <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span class="badge badge-data" style="margin-bottom: 15px;">DATAIKU</span>
-            <h4 class="card-title" style="margin-bottom: 25px;">Core Designer</h4>
-          </div>
-          <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="action-link" style="margin-top: auto;">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="card-content" style="padding: 30px;">
+          <span class="badge badge-data">DATAIKU</span>
+          <h4 class="card-title" style="margin-bottom: 5px;">Core Designer</h4>
+          <a href="https://verify.skilljar.com/c/m8t4i64g9z2h" target="_blank" class="action-link">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
-
       <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span class="badge badge-data" style="margin-bottom: 15px;">DATAIKU</span>
-            <h4 class="card-title" style="margin-bottom: 25px;">ML Practitioner</h4>
-          </div>
-          <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="action-link" style="margin-top: auto;">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="card-content" style="padding: 30px;">
+          <span class="badge badge-data">DATAIKU</span>
+          <h4 class="card-title" style="margin-bottom: 5px;">ML Practitioner</h4>
+          <a href="https://verify.skilljar.com/c/9iyjgt5pjcsu" target="_blank" class="action-link">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
-
       <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span class="badge badge-data" style="margin-bottom: 15px;">DATAIKU</span>
-            <h4 class="card-title" style="margin-bottom: 25px;">MLOps Practitioner</h4>
-          </div>
-          <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="action-link" style="margin-top: auto;">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="card-content" style="padding: 30px;">
+          <span class="badge badge-data">DATAIKU</span>
+          <h4 class="card-title" style="margin-bottom: 5px;">MLOps Practitioner</h4>
+          <a href="https://verify.skilljar.com/c/rivhp3hsrjrm" target="_blank" class="action-link">Authentifier <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
-
       <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span class="badge badge-ghost" style="margin-bottom: 15px;">CISCO</span>
-            <h4 class="card-title" style="margin-bottom: 25px;">CCNA (200-301)</h4>
-          </div>
+        <div class="card-content" style="padding: 30px;">
+          <span class="badge badge-ghost">CISCO</span>
+          <h4 class="card-title" style="margin-bottom: 5px;">CCNA (200-301)</h4>
           <p style="color: var(--text-muted); margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"><i class="fa-solid fa-circle-notch fa-spin"></i> Traitement en cours</p>
         </div>
       </div>
-
       <div class="spotlight-card">
-        <div class="card-content" style="padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span class="badge badge-ghost" style="margin-bottom: 15px;">ITIL</span>
-            <h4 class="card-title" style="margin-bottom: 25px;">ITIL 4 Foundation</h4>
-          </div>
+        <div class="card-content" style="padding: 30px;">
+          <span class="badge badge-ghost">ITIL</span>
+          <h4 class="card-title" style="margin-bottom: 5px;">ITIL 4 Foundation</h4>
           <p style="color: var(--text-muted); margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"><i class="fa-solid fa-circle-notch fa-spin"></i> Traitement en cours</p>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -699,7 +641,7 @@
 
     <div class="timeline">
 
-      <!-- 1. GPS&O (Oct. 2024 — Oct. 2026) AVEC LES ANCIENS POINTS -->
+      <!-- 1. GPS&O (Oct. 2024 — Oct. 2026) AVEC LES POINTS D'ORIGINE -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content exp-pro">
