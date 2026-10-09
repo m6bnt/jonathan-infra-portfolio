@@ -401,7 +401,7 @@
 </head>
 <body>
 
-<!-- CANVAS PLUIE BINAIRE (HACKER) -->
+<!-- CANVAS PLUIE BINAIRE (AVEC CONTOURNEMENT DE LA PHOTO) -->
 <canvas id="matrix-canvas"></canvas>
 <div class="ambient-glow"></div>
 
@@ -462,7 +462,7 @@
         </a>
       </div>
     </div>
-    <div class="hero-visual">
+    <div class="hero-visual" id="profile-photo-container">
       <img src="assets/images/ma_photo.webp" alt="Mehdi Mazouz">
     </div>
   </section>
@@ -648,7 +648,7 @@
         </div>
       </div>
 
-      <!-- 3. Crédit Agricole (Juill. 2024 — Sept. 2024) -->
+      <!-- 3. Crédit Agricole (Juil. 2024 — Sept. 2024) -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content exp-pro">
@@ -796,7 +796,7 @@
         Pour en savoir plus sur mon parcours ou pour me contacter, n’hésitez pas à explorer ce site ou à télécharger mon CV ! 
       </p>
 
-      <!-- BOUTONS DU HAUT BIEN ALIGNÉS -->
+      <!-- 3 BOUTONS DU HAUT ALIGNÉS -->
       <div class="social-dock">
         <a href="mailto:mehdimazouz78@gmail.com" class="social-pill">
           <i class="fa-solid fa-envelope" style="color: var(--ai-cyan);"></i> Email
@@ -849,7 +849,7 @@
 </div>
 
 <script>
-  // --- MATRIX BINARY RAIN BACKGROUND ---
+  // --- MATRIX BINARY RAIN BACKGROUND AVEC CONTOURNEMENT DE LA PHOTO ---
   const matrixCanvas = document.getElementById('matrix-canvas');
   const matrixCtx = matrixCanvas.getContext('2d');
 
@@ -872,11 +872,29 @@
     matrixCtx.fillStyle = '#00f0ff';
     matrixCtx.font = fontSize + 'px "JetBrains Mono", monospace';
 
+    // Récupérer la position de la photo de profil en temps réel pour contourner la pluie
+    const photoEl = document.getElementById('profile-photo-container');
+    let photoRect = photoEl ? photoEl.getBoundingClientRect() : null;
+
     for (let i = 0; i < drops.length; i++) {
       const text = binaryChars.charAt(Math.floor(Math.random() * binaryChars.length));
-      matrixCtx.fillText(text, i * fontSize, drops[i] * fontSize);
+      let x = i * fontSize;
+      let y = drops[i] * fontSize;
 
-      if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+      // Si la pluie arrive au niveau de la photo, on l'interrompt pour qu'elle la contourne
+      if (photoRect) {
+        let isAbovePhoto = y >= photoRect.top - 20 && y <= photoRect.bottom + 20;
+        let isAcrossPhoto = x >= photoRect.left - 20 && x <= photoRect.right + 20;
+
+        if (isAbovePhoto && isAcrossPhoto) {
+          // Fait sauter la goutte en bas de la photo pour simuler le contournement
+          drops[i] = Math.floor((photoRect.bottom + 30) / fontSize);
+        }
+      }
+
+      matrixCtx.fillText(text, x, y);
+
+      if (y > matrixCanvas.height && Math.random() > 0.975) {
         drops[i] = 0;
       }
       drops[i]++;
