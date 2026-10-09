@@ -34,6 +34,7 @@
       --ai-cyan: #00f0ff;
       --ai-blue: #0066ff;
       --ai-emerald: #00ffaa;
+      --ai-purple: #8b5cf6;
       --plasma-gradient: linear-gradient(135deg, #00f0ff, #0066ff, #8b5cf6);
     }
 
@@ -251,7 +252,7 @@
 
     .data-list { list-style: none; margin-top: 24px; }
     .data-list li {
-      display: flex; align-items: flex-start; gap: 12px; padding: 12px 0;
+      display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
       border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.95rem; color: #d4d4d8;
     }
     .data-list li:last-child { border-bottom: none; padding-bottom: 0; }
@@ -263,32 +264,50 @@
       content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 1px;
       background: linear-gradient(to bottom, var(--ai-cyan), var(--ai-blue), transparent); opacity: 0.6;
     }
-    .timeline-item { position: relative; margin-bottom: 60px; }
+    .timeline-item { position: relative; margin-bottom: 40px; }
     .timeline-dot {
       position: absolute; width: 15px; height: 15px;
       background: var(--void-black); border: 2px solid var(--ai-cyan); border-radius: 50%;
       left: -47px; top: 6px; box-shadow: 0 0 15px var(--ai-cyan);
     }
+    
+    /* Distinction visuelle : Expérience Pro (Cyan) vs Formations (Violet) */
     .timeline-content {
-      background: var(--panel-bg); border: 1px solid var(--glass-border);
+      background: var(--panel-bg); 
+      border: 1px solid var(--glass-border);
       padding: 30px 40px; border-radius: 24px; backdrop-filter: blur(20px);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .timeline-content:hover { border-color: rgba(0,240,255,0.4); transform: translateX(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .timeline-content.exp-pro {
+      border-color: rgba(0, 240, 255, 0.25);
+    }
+    .timeline-content.exp-pro:hover { 
+      border-color: rgba(0, 240, 255, 0.6); 
+      transform: translateX(8px); 
+      box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1); 
+    }
+
+    .timeline-content.formation {
+      border-color: rgba(139, 92, 246, 0.25);
+    }
+    .timeline-content.formation .timeline-dot {
+      border-color: var(--ai-purple);
+      box-shadow: 0 0 15px var(--ai-purple);
+    }
+    .timeline-content.formation:hover { 
+      border-color: rgba(139, 92, 246, 0.6); 
+      transform: translateX(8px); 
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1); 
+    }
+
     .timeline-date {
       display: inline-block; padding: 6px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
       border-radius: 100px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700;
       margin-bottom: 16px; letter-spacing: 1px;
     }
-    .timeline-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; color: #fff; }
-    .timeline-org { color: var(--ai-cyan); font-size: 1.05rem; margin-bottom: 20px; font-weight: 500; }
-
-    .badge {
-      font-family: 'JetBrains Mono', monospace; padding: 6px 14px; border-radius: 100px; font-size: 0.75rem; font-weight: 700;
-      display: inline-block; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase;
-    }
-    .badge-data { background: rgba(0, 240, 255, 0.1); color: var(--ai-cyan); border: 1px solid rgba(0, 240, 255, 0.2); }
-    .badge-ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--glass-border); }
+    .timeline-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.5px; color: #fff; }
+    .timeline-org { color: var(--ai-cyan); font-size: 1.02rem; margin-bottom: 16px; font-weight: 500; }
+    .timeline-org.purple { color: var(--ai-purple); }
 
     .action-link {
       display: inline-flex; align-items: center; gap: 8px; margin-top: 24px;
@@ -422,7 +441,6 @@
       <p>Diplômé d’un Mastère Expert en Informatique et Systèmes d’Information, je suis passionné par l’administration des systèmes, la virtualisation et le cloud. Mon parcours atypique, mêlant chefferie de projet SI en alternance et expérimentations techniques poussées en laboratoires universitaires, me permet aujourd'hui d'avoir une vision globale. J’aime autant m’impliquer activement dans les projets d’une entreprise que mener des expérimentations personnelles, afin de continuer à apprendre et à perfectionner mes compétences techniques.</p>
       
       <div class="action-group">
-        <!-- BOUTON DÉMARRER UN PROJET ALIGNÉ ET SURLIGNÉ PLASMA -->
         <div class="magnetic-wrap hero-magnetic">
           <a href="#contact" class="btn-magnetic btn-cyber-cv" onclick="triggerCyberFlash(event, this)">
             <span class="cv-glow-bg"></span>
@@ -589,7 +607,7 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
+  <!-- EXPERIENCE & FORMATION (TIMELINE) -->
   <section id="experience" class="section">
     <div class="section-header">
       <span class="section-tag">04 / Parcours</span>
@@ -597,58 +615,114 @@
     </div>
 
     <div class="timeline">
+
+      <!-- 1. EXPRO PRO : GPS&O -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-content">
+        <div class="timeline-content exp-pro">
           <div class="timeline-date">OCT. 2024 — OCT. 2026</div>
-          <h4 class="timeline-title" style="display: flex; align-items: center; gap: 10px;">
-            Alternant Chef de projet SI 
-            <img src="https://logo.clearbit.com/gpseo.fr" alt="Logo GPS&O" style="height: 24px; border-radius: 4px;" onerror="this.style.display='none'">
-          </h4>
-          <div class="timeline-org"><i class="fa-solid fa-building"></i> Grand Paris Seine & Oise (GPS&O)</div>
+          <h4 class="timeline-title">Chef de projet Solutions Métiers (Alternance)</h4>
+          <div class="timeline-org"><i class="fa-solid fa-building"></i> GPS&O, Aubergenville</div>
           <ul class="data-list">
-            <li><i class="fa-solid fa-terminal"></i> <span><strong>Pilotage Cloud (SaaS) :</strong> Conduite de projets SI critiques dans une architecture cloud-native.</span></li>
-            <li><i class="fa-solid fa-terminal"></i> <span><strong>Urbanisation SI & ITSM :</strong> Administration de la plateforme EasyVista et cartographie via Power BI.</span></li>
-            <li><i class="fa-solid fa-terminal"></i> <span><strong>Vision Métier :</strong> Traduction des besoins métiers en spécifications techniques.</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span><strong>Projet refonte du système de Gestion de File d'Attente et de RDV :</strong> Cadre & benchmark (3 solutions comparées, TCO sur 5 ans), recommandation Synbird (11,1 k€).</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span><strong>Cahier des charges :</strong> Définition des exigences techniques (disponibilité 99,9%, sécurité, authentification SSO via Microsoft Entra ID).</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span><strong>Déploiement & MCO :</strong> Pilotage de la mise en production sur les sites pilotes (Magnanville et Mantes), suivi des incidents et conduite du changement.</span></li>
           </ul>
         </div>
       </div>
 
+      <!-- 2. EXPRO PRO : Crédit Agricole -->
       <div class="timeline-item">
-        <div class="timeline-dot" style="background: transparent; border-color: var(--text-muted); box-shadow: none;"></div>
-        <div class="timeline-content" style="padding: 25px 40px;">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content exp-pro">
+          <div class="timeline-date">SEPT. 2024</div>
+          <h4 class="timeline-title">Technicien déploiement</h4>
+          <div class="timeline-org"><i class="fa-solid fa-building"></i> Crédit Agricole, Campus Sqy Park</div>
+          <ul class="data-list">
+            <li><i class="fa-solid fa-terminal"></i> <span>Assistance support IT aux utilisateurs clients.</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span>Configuration Citrix, Office 365, et masterisation de postes.</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span>Vérification du bon fonctionnement du VPN et tests associés (token).</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. EXPRO PRO : MEAE (SPIE ICS) -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content exp-pro">
+          <div class="timeline-date">JANV. 2024 — JUIN 2024</div>
+          <h4 class="timeline-title">Technicien de proximité VIP</h4>
+          <div class="timeline-org"><i class="fa-solid fa-building"></i> Ministère de l'Europe et des Affaires Étrangères (SPIE ICS), Paris 07</div>
+          <ul class="data-list">
+            <li><i class="fa-solid fa-terminal"></i> <span>Projet de modernisation et suivi du bon fonctionnement du matériel informatique.</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span>Gestion des incidents VIP (Secrétaire d'État, Ambassadeur, Directeur adjoint...).</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span>Déploiement des postes Windows, masterisation de PC portables et résolution via GLPI.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4. FORMATION : EPSI (Mastère) -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content formation">
           <div class="timeline-date">SEPT. 2024 — SEPT. 2026</div>
-          <h4 class="timeline-title" style="font-size: 1.15rem; display: flex; align-items: center; gap: 10px;">
-            Mastère Expert en Informatique et Systèmes d'Information
-            <img src="https://logo.clearbit.com/epsi.fr" alt="Logo EPSI" style="height: 24px; border-radius: 4px;" onerror="this.style.display='none'">
-          </h4>
-          <div class="card-desc">EPSI - L'école d'ingénierie informatique<br><span style="font-size: 0.9rem; color: #a1a1aa;">Master of Science (MSc) in Computer Science - IT Infrastructure</span></div>
+          <h4 class="timeline-title">Mastère Expert en Informatique et Systèmes d'Information</h4>
+          <div class="timeline-org purple"><i class="fa-solid fa-graduation-cap"></i> EPSI - L'école d'ingénierie informatique</div>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Master of Science (MSc) in Computer Science - IT Infrastructure & Cloud.</p>
         </div>
       </div>
 
+      <!-- 5. EXPRO PRO : CAPGEMINI -->
       <div class="timeline-item">
-        <div class="timeline-dot" style="background: transparent; border-color: var(--text-muted); box-shadow: none;"></div>
-        <div class="timeline-content" style="padding: 25px 40px;">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content exp-pro">
+          <div class="timeline-date">AOÛT — DÉC. 2022</div>
+          <h4 class="timeline-title">Chef de projet déploiement réseaux / télécom (Stage)</h4>
+          <div class="timeline-org"><i class="fa-solid fa-building"></i> CAPGEMINI, Meudon</div>
+          <ul class="data-list">
+            <li><i class="fa-solid fa-terminal"></i> <span>Relation client, rédaction de cahier des charges et étude des bons de commandes.</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span>Gestion de projet lancement et coordination pour la téléphonie et la voix IP (migration/portabilité) de SDA.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6. EXPRO PRO : IDEMIA -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content exp-pro">
+          <div class="timeline-date">JUIL. — AOÛT 2022</div>
+          <h4 class="timeline-title">Technicien déploiement (Team leader support proximité)</h4>
+          <div class="timeline-org"><i class="fa-solid fa-building"></i> IDEMIA, Courbevoie</div>
+          <ul class="data-list">
+            <li><i class="fa-solid fa-terminal"></i> <span>Mise en place de tableaux de suivi de projet et gestion de ticketing (Oxygène).</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span>Vérification et test de la prise en compte de la migration et du bon fonctionnement du VPN.</span></li>
+            <li><i class="fa-solid fa-terminal"></i> <span>Résolution des problèmes d'authentification des utilisateurs sur l'Active Directory (AD).</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 7. FORMATION : CNAM (Licence) -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content formation">
           <div class="timeline-date">DÉC. 2022 — SEPT. 2023</div>
-          <h4 class="timeline-title" style="font-size: 1.15rem; display: flex; align-items: center; gap: 10px;">
-            Licence Sciences technologies santé mention informatique parcours Informatique générale
-            <img src="https://logo.clearbit.com/cnam.fr" alt="Logo CNAM" style="height: 24px; border-radius: 4px;" onerror="this.style.display='none'">
-          </h4>
-          <div class="card-desc">Conservatoire National des Arts et Métiers</div>
+          <h4 class="timeline-title">Licence Sciences Technologies Santé - Informatique</h4>
+          <div class="timeline-org purple"><i class="fa-solid fa-graduation-cap"></i> Conservatoire National des Arts et Métiers (CNAM)</div>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Parcours Informatique générale.</p>
         </div>
       </div>
 
+      <!-- 8. FORMATION : WebForce3 (TSSR) -->
       <div class="timeline-item">
-        <div class="timeline-dot" style="background: transparent; border-color: var(--text-muted); box-shadow: none;"></div>
-        <div class="timeline-content" style="padding: 25px 40px;">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content formation">
           <div class="timeline-date">NOV. 2021 — JUIN 2022</div>
-          <h4 class="timeline-title" style="font-size: 1.15rem; display: flex; align-items: center; gap: 10px;">
-            Titre professionnel Technicien supérieur systèmes et réseaux - niveau bac +2
-            <img src="https://logo.clearbit.com/wf3.fr" alt="Logo WebForce3" style="height: 24px; border-radius: 4px;" onerror="this.style.display='none'">
-          </h4>
-          <div class="card-desc">WebForce3</div>
+          <h4 class="timeline-title">Titre pro Technicien supérieur systèmes et réseaux (Bac+2)</h4>
+          <div class="timeline-org purple"><i class="fa-solid fa-graduation-cap"></i> WebForce3</div>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Administration systèmes et réseaux.</p>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -728,7 +802,7 @@
         </a>
       </div>
       
-      <!-- BOUTON ACCÉDER AU CV SANS SURLIGNAGE / EFFET GLOW -->
+      <!-- BOUTON ACCÉDER AU CV SANS SURLIGNAGE -->
       <div class="magnetic-wrap" style="margin-top: 20px;">
         <a href="assets/CV%20Mehdi%20Mazouz%202026.pdf" target="_blank" class="btn-glass" style="padding: 16px 36px; border-radius: 100px; font-weight: 600;">
           <i class="fa-solid fa-file-shield" style="color: var(--ai-cyan);"></i> Accéder au CV <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem; opacity: 0.7;"></i>
