@@ -187,7 +187,7 @@
       transition: all 0.3s ease;
     }
 
-    /* --- HERO VISUAL --- */
+    /* --- HERO VISUAL : CONTOUR SOMBRE ET ÉCLATANT --- */
     .hero-visual {
       position: relative;
       flex-shrink: 0;
@@ -275,7 +275,7 @@
     .timeline { position: relative; padding-left: 40px; }
     .timeline::before {
       content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px;
-      background: linear-gradient(to bottom, var(--ai-cyan), var(--ai-blue), #00ffaa, transparent); 
+      background: linear-gradient(to bottom, var(--ai-cyan), var(--ai-blue), #00ff80, transparent); 
       box-shadow: 0 0 10px var(--ai-cyan);
     }
     .timeline-item { position: relative; margin-bottom: 40px; }
@@ -300,22 +300,25 @@
       box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15); 
     }
 
-    /* --- FORMATION : VERT MATRIX CYBER --- */
+    /* --- FORMATION : VERT MATRIX FLUO & LUMINEUX --- */
     .timeline-content.formation {
-      border-color: rgba(0, 255, 170, 0.3);
+      border-color: rgba(0, 255, 128, 0.5);
+      background: rgba(0, 20, 15, 0.45);
     }
     .timeline-content.formation .timeline-dot {
-      border-color: #00ffaa;
-      box-shadow: 0 0 15px rgba(0, 255, 170, 0.6), inset 0 0 5px rgba(0, 255, 170, 0.4);
+      border-color: #00ff80;
+      background: #00ff80;
+      box-shadow: 0 0 20px #00ff80, inset 0 0 8px #ffffff;
     }
     .timeline-content.formation:hover { 
-      border-color: rgba(0, 255, 170, 0.8); 
+      border-color: rgba(0, 255, 128, 1); 
       transform: translateX(8px); 
-      box-shadow: 0 10px 30px rgba(0, 255, 170, 0.2); 
+      box-shadow: 0 10px 35px rgba(0, 255, 128, 0.3); 
     }
     .timeline-org.matrix-green {
-      color: #00ffaa;
-      text-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
+      color: #00ff80;
+      font-weight: 700;
+      text-shadow: 0 0 12px rgba(0, 255, 128, 0.5);
     }
 
     .timeline-date {
