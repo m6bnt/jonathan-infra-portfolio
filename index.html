@@ -187,7 +187,7 @@
       transition: all 0.3s ease;
     }
 
-    /* --- HERO VISUAL : CONTOUR SOMBRE ET ÉCLATANT --- */
+    /* --- HERO VISUAL --- */
     .hero-visual {
       position: relative;
       flex-shrink: 0;
@@ -275,7 +275,7 @@
     .timeline { position: relative; padding-left: 40px; }
     .timeline::before {
       content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px;
-      background: linear-gradient(to bottom, var(--ai-cyan), var(--ai-blue), #ef4444, transparent); 
+      background: linear-gradient(to bottom, var(--ai-cyan), var(--ai-blue), #00ffaa, transparent); 
       box-shadow: 0 0 10px var(--ai-cyan);
     }
     .timeline-item { position: relative; margin-bottom: 40px; }
@@ -300,22 +300,22 @@
       box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15); 
     }
 
-    /* --- FORMATION : ROUGE FONCÉ BRILLANT --- */
+    /* --- FORMATION : VERT MATRIX CYBER --- */
     .timeline-content.formation {
-      border-color: rgba(239, 68, 68, 0.3);
+      border-color: rgba(0, 255, 170, 0.3);
     }
     .timeline-content.formation .timeline-dot {
-      border-color: #ef4444;
-      box-shadow: 0 0 15px rgba(239, 68, 68, 0.6), inset 0 0 5px rgba(239, 68, 68, 0.4);
+      border-color: #00ffaa;
+      box-shadow: 0 0 15px rgba(0, 255, 170, 0.6), inset 0 0 5px rgba(0, 255, 170, 0.4);
     }
     .timeline-content.formation:hover { 
-      border-color: rgba(239, 68, 68, 0.8); 
+      border-color: rgba(0, 255, 170, 0.8); 
       transform: translateX(8px); 
-      box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2); 
+      box-shadow: 0 10px 30px rgba(0, 255, 170, 0.2); 
     }
-    .timeline-org.red {
-      color: #ff4d4d;
-      text-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+    .timeline-org.matrix-green {
+      color: #00ffaa;
+      text-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
     }
 
     .timeline-date {
@@ -675,7 +675,7 @@
         <div class="timeline-content formation">
           <div class="timeline-date">SEPT. 2024 — SEPT. 2026</div>
           <h4 class="timeline-title">Mastère Expert en Informatique et Systèmes d'Information</h4>
-          <div class="timeline-org red"><i class="fa-solid fa-graduation-cap"></i> EPSI - L'école d'ingénierie informatique</div>
+          <div class="timeline-org matrix-green"><i class="fa-solid fa-graduation-cap"></i> EPSI - L'école d'ingénierie informatique</div>
           <p style="color: var(--text-muted); font-size: 0.95rem;">Master of Science (MSc) in Computer Science - IT Infrastructure & Cloud.</p>
         </div>
       </div>
@@ -716,7 +716,7 @@
         <div class="timeline-content formation">
           <div class="timeline-date">DÉC. 2022 — SEPT. 2023</div>
           <h4 class="timeline-title">Licence Sciences Technologies Santé - Informatique</h4>
-          <div class="timeline-org red"><i class="fa-solid fa-graduation-cap"></i> Conservatoire National des Arts et Métiers (CNAM)</div>
+          <div class="timeline-org matrix-green"><i class="fa-solid fa-graduation-cap"></i> Conservatoire National des Arts et Métiers (CNAM)</div>
           <p style="color: var(--text-muted); font-size: 0.95rem;">Parcours Informatique générale.</p>
         </div>
       </div>
@@ -756,7 +756,7 @@
         <div class="timeline-content formation">
           <div class="timeline-date">NOV. 2021 — JUIN 2022</div>
           <h4 class="timeline-title">Titre pro Technicien supérieur systèmes et réseaux (Bac+2)</h4>
-          <div class="timeline-org red"><i class="fa-solid fa-graduation-cap"></i> WebForce3, Paris 18</div>
+          <div class="timeline-org matrix-green"><i class="fa-solid fa-graduation-cap"></i> WebForce3, Paris 18</div>
           <p style="color: var(--text-muted); font-size: 0.95rem;">Administration systèmes et réseaux.</p>
         </div>
       </div>
